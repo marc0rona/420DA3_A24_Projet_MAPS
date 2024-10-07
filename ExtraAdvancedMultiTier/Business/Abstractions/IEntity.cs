@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace _420DA3_A24_Projet.Business.Extras.Abstractions;
+﻿namespace ExtraAdvancedMultiTier.Business.Abstractions;
 
 /// <summary>
 /// Interface pour les entités du domaine.
@@ -21,8 +15,7 @@ namespace _420DA3_A24_Projet.Business.Extras.Abstractions;
 /// </list>
 /// </remarks>
 /// <typeparam name="TIdentifier">Le type de données de l'identifiant de l'entité du domaine.</typeparam>
-public interface IEntity<TIdentifier>
-{
+public interface IEntity<TIdentifier> {
 
     /// <summary>
     /// Getter pour l'identifiant dans la base de données de l'instance.
@@ -31,22 +24,28 @@ public interface IEntity<TIdentifier>
     TIdentifier? GetId();
 
     /// <summary>
-    /// Getter pour la date de création dans la base de données de l'instance.
+    /// Getter pour la date de création l'instance dans la base de données de.
     /// </summary>
     /// <returns>La date de création de l'instance ou <see langword="null"/>.</returns>
     DateTime? GetDateCreated();
 
     /// <summary>
-    /// Getter pour la date de dernière modification dans la base de données de l'instance.
+    /// Getter pour la date de dernière modification de l'instance dans la base de données.
     /// </summary>
     /// <returns>La date de dernière modification de l'instance ou <see langword="null"/>.</returns>
     DateTime? GetDateModified();
 
     /// <summary>
-    /// Getter pour la date de suppression dans la base de données de l'instance.
+    /// Getter pour la date de suppression de l'instance dans la base de données.
     /// </summary>
     /// <returns>La date de suppression de l'instance ou <see langword="null"/>.</returns>
     DateTime? GetDateDeleted();
+
+    /// <summary>
+    /// Setter pour la date de suppression dans la base de données
+    /// </summary>
+    /// <param name="deletionDate">La date de suppression à setter ou <see langword="null"/>.</param>
+    void SetDateDeleted(DateTime? deletionDate);
 
     /// <summary>
     /// Retourne <see langword="true"/> si l'instance est considérée comme supprimée dans la base de données.

@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>Exemple_Enseignant_Avance.Program</StartupObject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Buniness\Domain\" />
+    <Folder Include="Buniness\Facades\" />
+    <Folder Include="Buniness\Services\" />
+    <Folder Include="DataAccess\Daos\" />
+    <Folder Include="DataAccess\Contexts\" />
+    <Folder Include="Presentation\Views\" />
+  </ItemGroup>
+
+</Project>

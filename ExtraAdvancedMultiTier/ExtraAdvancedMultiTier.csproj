@@ -1,22 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
     <TargetFramework>net6.0-windows</TargetFramework>
-    <RootNamespace>_420DA3_A24_Projet</RootNamespace>
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
-    <StartupObject>_420DA3_A24_Projet.Program</StartupObject>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Folder Include="Business\Services\" />
-    <Folder Include="DataAccess\DAOs\" />
-    <Folder Include="DataAccess\Contexts\" />
-    <Folder Include="data\images\products\" />
-    <Folder Include="Documents\" />
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.20" />
@@ -29,9 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ExtraAdvancedMultiTier\ExtraAdvancedMultiTier.csproj" />
-    <ProjectReference Include="..\FakeShipmentsLibrary\FakeShipmentsLibrary.csproj" />
-    <ProjectReference Include="..\Project_Utilities\Project_Utilities.csproj" />
+    <Folder Include="Presentation\Abstractions\" />
   </ItemGroup>
 
 </Project>

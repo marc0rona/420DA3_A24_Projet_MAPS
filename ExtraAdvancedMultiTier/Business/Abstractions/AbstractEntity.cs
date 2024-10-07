@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace _420DA3_A24_Projet.Business.Extras.Abstractions;
+namespace ExtraAdvancedMultiTier.Business.Abstractions;
 
 /// <summary>
 /// Classe abstraite pour les entités du domaine. Implémente <see cref="IEntity{TIdentifier}"/>.
@@ -22,8 +17,7 @@ namespace _420DA3_A24_Projet.Business.Extras.Abstractions;
 /// </list>
 /// </summary>
 /// <typeparam name="TIdentifier">Le type de données de l'identifiant de l'entité du domaine.</typeparam>
-public abstract class AbstractEntity<TIdentifier> : IEntity<TIdentifier>
-{
+public abstract class AbstractEntity<TIdentifier> : IEntity<TIdentifier> {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public TIdentifier? Id { get; set; }
@@ -58,9 +52,8 @@ public abstract class AbstractEntity<TIdentifier> : IEntity<TIdentifier>
     protected AbstractEntity(TIdentifier id,
         DateTime dateCreated,
         DateTime? dateModified,
-        DateTime? dateDeleted, 
-        byte[] rowVersion)
-    {
+        DateTime? dateDeleted,
+        byte[] rowVersion) {
 
         this.Id = id;
         this.DateCreated = dateCreated;
@@ -77,8 +70,7 @@ public abstract class AbstractEntity<TIdentifier> : IEntity<TIdentifier>
     /// de <see cref="AbstractEntity{TIdentifier}"/> dont héritent les classes du domaine.
     /// </remarks>
     /// <returns>L'identifiant de l'instance ou <see langword="null"/>.</returns>
-    public TIdentifier? GetId()
-    {
+    public TIdentifier? GetId() {
         return this.Id;
     }
 
@@ -86,8 +78,7 @@ public abstract class AbstractEntity<TIdentifier> : IEntity<TIdentifier>
     /// Getter pour <see cref="DateCreated"/>, la date de création dans la base de données de l'instance.
     /// </summary>
     /// <returns>La date de création de l'instance ou <see langword="null"/>.</returns>
-    public DateTime? GetDateCreated()
-    {
+    public DateTime? GetDateCreated() {
         return this.DateCreated;
     }
 
@@ -96,8 +87,7 @@ public abstract class AbstractEntity<TIdentifier> : IEntity<TIdentifier>
     /// Getter pour <see cref="DateModified"/>, la date de dernière modification dans la base de données de l'instance.
     /// </summary>
     /// <returns>La date de dernière modification de l'instance ou <see langword="null"/>.</returns>
-    public DateTime? GetDateModified()
-    {
+    public DateTime? GetDateModified() {
         return this.DateModified;
     }
 
@@ -105,9 +95,16 @@ public abstract class AbstractEntity<TIdentifier> : IEntity<TIdentifier>
     /// Getter pour <see cref="DateDeleted"/>, la date de suppression dans la base de données de l'instance.
     /// </summary>
     /// <returns>La date de suppression de l'instance ou <see langword="null"/>.</returns>
-    public DateTime? GetDateDeleted()
-    {
+    public DateTime? GetDateDeleted() {
         return this.DateDeleted;
+    }
+
+    /// <summary>
+    /// Setter pour <see cref="DateDeleted"/>, la date de suppression dans la base de données de l'instance.
+    /// </summary>
+    /// <param name="deletionDate">La date de suppression à setter ou <see langword="null"/>.</param>
+    public void SetDateDeleted(DateTime? deletionDate) {
+        this.DateDeleted = deletionDate;
     }
 
     /// <summary>
@@ -118,8 +115,7 @@ public abstract class AbstractEntity<TIdentifier> : IEntity<TIdentifier>
     /// sa propriété de date de suppression <see cref="DateDeleted"/>.
     /// </remarks>
     /// <returns><see langword="true"/> si l'instance est considérée comme supprimée, <see langword="false"/> sinon.</returns>
-    public bool IsDeleted()
-    {
+    public bool IsDeleted() {
         return this.DateDeleted != null;
     }
 }
