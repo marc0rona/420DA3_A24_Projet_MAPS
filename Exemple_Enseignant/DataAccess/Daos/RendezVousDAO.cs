@@ -12,7 +12,10 @@ internal class RendezVousDAO {
 
 
     public List<RendezVous> GetAllRendezVous() {
-        return this.context.RendezVous.Where(rdv => rdv.DateDeleted == null).ToList();
+        return this.context.RendezVous
+            .Include(rdv => rdv.Patient)
+            .Include(rdv => rdv.Medecin)
+            .Where(rdv => rdv.DateDeleted == null).ToList();
     }
 
     public RendezVous? GetRendezVousById(int id) {

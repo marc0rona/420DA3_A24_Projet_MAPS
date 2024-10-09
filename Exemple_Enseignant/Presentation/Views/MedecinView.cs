@@ -1,68 +1,59 @@
 ﻿using _420DA3_A24_Exemple_Enseignant.Business;
 using _420DA3_A24_Exemple_Enseignant.Business.Domain;
 using _420DA3_A24_Exemple_Enseignant.Presentation.Enums;
-using System.CodeDom;
+using Project_Utilities.Exceptions;
 
 namespace _420DA3_A24_Exemple_Enseignant.Presentation.Views;
 internal partial class MedecinView : Form {
     private readonly ExempleApplication application;
     private ViewActionsEnum currentAction;
+    private Medecin? currentInstance;
 
     public MedecinView(ExempleApplication app) {
         this.application = app;
         this.currentAction = ViewActionsEnum.Visualization; // default
         this.InitializeComponent();
+        this.copyrightLabel.Text = this.application.GetCopyrightNotice();
     }
 
-    public Medecin? OpenForCreation() {
+    public DialogResult OpenForCreation() {
         this.currentAction = ViewActionsEnum.Creation;
+        this.currentInstance = null;
         this.viewModeValueLabel.Text = "Création";
         this.ResetControls();
         this.EnableEditableControls();
         this.actionButton.Text = "CRÉER";
-        DialogResult result = this.ShowDialog();
-        return result == DialogResult.OK
-            ? this.application.MedecinService.DoCreateMedecin(
-                this.nomTextBox.Text,
-                this.prenomTextBox.Text,
-                (int) this.licenseNumericUpDown.Value)
-            :  null;
+        return this.ShowDialog();
     }
 
-    public void OpenForVisualization(Medecin medecin) {
+    public DialogResult OpenForVisualization(Medecin medecin) {
         this.currentAction = ViewActionsEnum.Visualization;
+        this.currentInstance = medecin;
         this.viewModeValueLabel.Text = "Visualisation";
-        this.LoadDataInControls(medecin);
-        this.EnableEditableControls();
+        this.LoadCurrentInstanceInControls();
+        this.DisableEditableControls();
         this.actionButton.Text = "OK";
-        _ = this.ShowDialog();
+        return this.ShowDialog();
     }
 
-    public void OpenForEdition(Medecin medecin) {
+    public DialogResult OpenForEdition(Medecin medecin) {
         this.currentAction = ViewActionsEnum.Edition;
+        this.currentInstance = medecin;
         this.viewModeValueLabel.Text = "Édition";
-        this.LoadDataInControls(medecin);
+        this.LoadCurrentInstanceInControls();
         this.EnableEditableControls();
         this.actionButton.Text = "SAUVEGARDER";
-        DialogResult result = this.ShowDialog();
-        if (result == DialogResult.OK) {
-            medecin.Nom = this.nomTextBox.Text.Trim();
-            medecin.Prenom = this.prenomTextBox.Text.Trim();
-            medecin.NumLicenseMedicale = (int) this.licenseNumericUpDown.Value;
-            this.OpenForVisualization(this.application.MedecinService.DoUpdateMedecin(medecin));
-        }
+        return this.ShowDialog();
     }
 
-    public void OpenForDeletion(Medecin medecin) {
+    public DialogResult OpenForDeletion(Medecin medecin) {
         this.currentAction = ViewActionsEnum.Deletion;
         this.viewModeValueLabel.Text = "Suppression";
-        this.LoadDataInControls(medecin);
-        this.EnableEditableControls();
+        this.currentInstance = medecin;
+        this.LoadCurrentInstanceInControls();
+        this.DisableEditableControls();
         this.actionButton.Text = "SUPPRIMER";
-        DialogResult result = this.ShowDialog();
-        if (result == DialogResult.OK) {
-            this.application.MedecinService.DoDeleteMedecin(medecin);
-        }
+        return this.ShowDialog();
     }
 
     private void ResetControls() {
@@ -75,14 +66,16 @@ internal partial class MedecinView : Form {
         this.dateDeletedDTPicker.Value = DateTime.Now;
     }
 
-    private void LoadDataInControls(Medecin medecin) {
-        this.idNumericUpDown.Value = medecin.Id;
-        this.nomTextBox.Text = medecin.Nom;
-        this.prenomTextBox.Text = medecin.Prenom;
-        this.licenseNumericUpDown.Value = medecin.NumLicenseMedicale;
-        this.dateCreatedDTPicker.Value = medecin.DateCreated;
-        this.dateModifiedDTPicker.Value = medecin.DateModified ?? DateTime.Now;
-        this.dateDeletedDTPicker.Value = medecin.DateDeleted ?? DateTime.Now;
+    private void LoadCurrentInstanceInControls() {
+        if (this.currentInstance != null) {
+            this.idNumericUpDown.Value = this.currentInstance.Id;
+            this.nomTextBox.Text = this.currentInstance.Nom;
+            this.prenomTextBox.Text = this.currentInstance.Prenom;
+            this.licenseNumericUpDown.Value = this.currentInstance.NumLicenseMedicale;
+            this.dateCreatedDTPicker.Value = this.currentInstance.DateCreated;
+            this.dateModifiedDTPicker.Value = this.currentInstance.DateModified ?? DateTime.Now;
+            this.dateDeletedDTPicker.Value = this.currentInstance.DateDeleted ?? DateTime.Now;
+        }
     }
 
     private void EnableEditableControls() {
@@ -103,35 +96,39 @@ internal partial class MedecinView : Form {
     }
 
     private void ActionButton_Click(object sender, EventArgs e) {
-        switch (this.currentAction) {
-            case ViewActionsEnum.Creation:
-                if (this.ValidateControlsForCreation()) {
+        try {
+            switch (this.currentAction) {
+                case ViewActionsEnum.Creation:
+                    this.ProcessCreation();
+                    break;
+                case ViewActionsEnum.Edition:
+                    this.ProcessEdition();
+                    break;
+                case ViewActionsEnum.Deletion:
+                    this.ProcessDeletion();
+                    break;
+                case ViewActionsEnum.Visualization:
+                default:
                     this.DialogResult = DialogResult.OK;
-                }
-                break;
-            case ViewActionsEnum.Edition:
-                if (this.ValidateControlsForEdition()) {
-                    this.DialogResult = DialogResult.OK;
-                }
-                break;
-            case ViewActionsEnum.Deletion:
-            case ViewActionsEnum.Visualization:
-            default:
-                this.DialogResult = DialogResult.OK;
-                break;
+                    break;
+            }
+            this.DialogResult = DialogResult.OK;
+
+        } catch (Exception ex) {
+            this.application.LogException(ex);
         }
     }
 
-    private bool ValidateControlsForCreation() {
-        string message = String.Empty;
-        if (String.IsNullOrEmpty(this.nomTextBox.Text.Trim())) {
+    private void ValidateControlsForCreation() {
+        string message = string.Empty;
+        if (string.IsNullOrEmpty(this.nomTextBox.Text.Trim())) {
             message += Environment.NewLine + "\t- Le nom ne peut être vide.";
         }
         if (this.nomTextBox.Text.Trim().Length > Medecin.LASTNAME_MAX_LENGTH) {
             message += Environment.NewLine + $"\t- Le nom ne peut dépasser {Medecin.LASTNAME_MAX_LENGTH} caractères.";
         }
 
-        if (String.IsNullOrEmpty(this.prenomTextBox.Text.Trim())) {
+        if (string.IsNullOrEmpty(this.prenomTextBox.Text.Trim())) {
             message += Environment.NewLine + "\t- Le prénom ne peut être vide.";
         }
         if (this.prenomTextBox.Text.Trim().Length > Medecin.FIRSTNAME_MAX_LENGTH) {
@@ -145,16 +142,14 @@ internal partial class MedecinView : Form {
             message += Environment.NewLine + "\t- Le numéro de license médicale ne peut être négatif.";
         }
 
-        if (!String.IsNullOrEmpty(message)) {
+        if (!string.IsNullOrEmpty(message)) {
             message = "Impossible de créer le nouveau médecin:" + message;
-            _ = MessageBox.Show(message);
-            return false;
+            throw new ValidationException(message);
         }
-        return true;
     }
 
-    private bool ValidateControlsForEdition() {
-        string message = String.Empty;
+    private void ValidateControlsForEdition() {
+        string message = string.Empty;
 
         if (this.idNumericUpDown.Value == 0) {
             message += Environment.NewLine + "\t- Le numéro d'ID ne peut être vide.";
@@ -163,14 +158,14 @@ internal partial class MedecinView : Form {
             message += Environment.NewLine + "\t- Le numéro d'ID ne peut être négatif.";
         }
 
-        if (String.IsNullOrEmpty(this.nomTextBox.Text.Trim())) {
+        if (string.IsNullOrEmpty(this.nomTextBox.Text.Trim())) {
             message += Environment.NewLine + "\t- Le nom ne peut être vide.";
         }
         if (this.nomTextBox.Text.Trim().Length > Medecin.LASTNAME_MAX_LENGTH) {
             message += Environment.NewLine + $"\t- Le nom ne peut dépasser {Medecin.LASTNAME_MAX_LENGTH} caractères.";
         }
 
-        if (String.IsNullOrEmpty(this.prenomTextBox.Text.Trim())) {
+        if (string.IsNullOrEmpty(this.prenomTextBox.Text.Trim())) {
             message += Environment.NewLine + "\t- Le prénom ne peut être vide.";
         }
         if (this.prenomTextBox.Text.Trim().Length > Medecin.FIRSTNAME_MAX_LENGTH) {
@@ -184,13 +179,56 @@ internal partial class MedecinView : Form {
             message += Environment.NewLine + "\t- Le numéro de license médicale ne peut être négatif.";
         }
 
-        if (!String.IsNullOrEmpty(message)) {
+        if (!string.IsNullOrEmpty(message)) {
             message = "Impossible de modifier le médecin:" + message;
-            _ = MessageBox.Show(message);
-            return false;
+            throw new ValidationException(message);
         }
-        return true;
+    }
 
+    private void ProcessCreation() {
+        try {
+            this.ValidateControlsForCreation();
+            Medecin createdMedecin = this.application.MedecinService.DoCreateMedecin(
+            this.nomTextBox.Text.Trim(),
+            this.prenomTextBox.Text.Trim(),
+            (int) this.licenseNumericUpDown.Value);
+
+
+        } catch (Exception ex) {
+            _ = MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            throw new Exception("Failed to process creation of medecin entity.", ex);
+        }
+    }
+
+    private void ProcessEdition() {
+        try {
+            if (this.currentInstance == null) {
+                throw new Exception("Pas d'instance de Medecin chargé.");
+            }
+            this.ValidateControlsForEdition();
+            this.currentInstance.Nom = this.nomTextBox.Text.Trim();
+            this.currentInstance.Prenom = this.prenomTextBox.Text.Trim();
+            this.currentInstance.NumLicenseMedicale = (int) this.licenseNumericUpDown.Value;
+            this.application.MedecinService.DoUpdateMedecin(this.currentInstance);
+
+
+        } catch (Exception ex) {
+            _ = MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            throw new Exception("Failed to process modification of medecin entity.", ex);
+        }
+    }
+
+    private void ProcessDeletion() {
+        try {
+            if (this.currentInstance == null) {
+                throw new Exception("Pas d'instance de Medecin chargé.");
+            }
+            this.application.MedecinService.DoDeleteMedecin(this.currentInstance);
+
+        } catch (Exception ex) {
+            _ = MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            throw new Exception("Failed to process deletion of medecin entity.", ex);
+        }
     }
 
 }

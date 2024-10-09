@@ -29,7 +29,7 @@ internal class ExempleDbContext : DbContext {
         // Permet de trvailler avec des temps UTC dans la BdD et de les convertir en temps local
         // pour l'application.
         ValueConverter<DateTime, DateTime> dateTimeUtcConverter = new ValueConverter<DateTime, DateTime>(
-            dt => dt.ToUniversalTime(), 
+            dt => dt.ToUniversalTime(),
             dt => DateTime.SpecifyKind(dt, DateTimeKind.Utc).ToLocalTime());
 
 
@@ -46,7 +46,7 @@ internal class ExempleDbContext : DbContext {
             .HasColumnName("Id")                // Liée à une colonne nommée 'Id' dans la table
             .HasColumnOrder(0)                  // Qui est la première colonne (index 0) dans la table
             .HasColumnType("int");              // Et dont le type est INT
-            // NOTE: la colonne de clé primaire est toujours NOT NULL
+                                                // NOTE: la colonne de clé primaire est toujours NOT NULL
 
         _ = modelBuilder.Entity<Medecin>()
             .Property(medecin => medecin.Nom)
@@ -119,7 +119,7 @@ internal class ExempleDbContext : DbContext {
             .HasColumnName("Id")                // Liée à une colonne nommée 'Id' dans la table
             .HasColumnOrder(0)                  // Qui est la première colonne (index 0) dans la table
             .HasColumnType("int");              // Et dont le type est INT
-            // NOTE: la colonne de clé primaire est toujours NOT NULL
+                                                // NOTE: la colonne de clé primaire est toujours NOT NULL
 
         _ = modelBuilder.Entity<Patient>()
             .Property(patient => patient.Nom)
@@ -191,7 +191,7 @@ internal class ExempleDbContext : DbContext {
             .HasColumnName("Id")                // Liée à une colonne nommée 'Id' dans la table
             .HasColumnOrder(0)                  // Qui est la première colonne (index 0) dans la table
             .HasColumnType("int");              // Et dont le type est INT
-            // NOTE: la colonne de clé primaire est toujours NOT NULL
+                                                // NOTE: la colonne de clé primaire est toujours NOT NULL
 
         _ = modelBuilder.Entity<RendezVous>()
             .Property(rdv => rdv.DateRendezVous)
@@ -243,6 +243,26 @@ internal class ExempleDbContext : DbContext {
             .HasPrecision(6)
             .HasConversion(dateTimeUtcConverter)
             .IsRequired(false);
+
+        #endregion
+
+
+        #region Configuration des relations entre les entités
+
+        _ = modelBuilder.Entity<RendezVous>()
+            .HasOne(rdv => rdv.Patient)
+            .WithMany(patient => patient.RendezVous)
+            .HasForeignKey(rdv => rdv.PatientId)
+            .IsRequired(true)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        _ = modelBuilder.Entity<RendezVous>()
+            .HasOne(rdv => rdv.Medecin)
+            .WithMany(medecin => medecin.RendezVous)
+            .HasForeignKey(rdv => rdv.MedecinId)
+            .IsRequired(true)
+            .OnDelete(DeleteBehavior.Cascade);
+
 
         #endregion
 

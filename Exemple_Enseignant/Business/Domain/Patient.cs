@@ -45,4 +45,8 @@ internal class Patient {
     }
 
 
+    public override string ToString() {
+        return $"#{this.Id} - {this.Nom}, {this.Prenom} - {this.NumAssMaladie}";
+    }
+
 }

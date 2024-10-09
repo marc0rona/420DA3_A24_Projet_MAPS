@@ -2,11 +2,7 @@
 global using global::System;
 global using global::System.Collections.Generic;
 global using global::System.Drawing;
-global using global::System.IO;
 global using global::System.Linq;
-global using global::System.Net.Http;
-global using global::System.Threading;
-global using global::System.Threading.Tasks;
 global using global::System.Windows.Forms;
 using _420DA3_A24_Exemple_Enseignant.Business.Services;
 using _420DA3_A24_Exemple_Enseignant.DataAccess.Contexts;
@@ -23,10 +19,25 @@ internal class ExempleApplication {
     public ExempleApplication() {
         ApplicationConfiguration.Initialize();
         this.dbContext = new ExempleDbContext();
-        this.mainMenu = new MainMenu();
         this.MedecinService = new MedecinService(this, this.dbContext);
         this.PatientService = new PatientService(this, this.dbContext);
         this.RendezVousService = new RendezVousService(this, this.dbContext);
+        this.mainMenu = new MainMenu(this);
+    }
+
+    public void LogException(Exception ex) {
+        string? stack = ex.StackTrace;
+        Console.Error.WriteLine(ex.Message);
+        while (ex.InnerException != null) {
+            ex = ex.InnerException;
+            Console.Error.WriteLine(ex.Message);
+        }
+        Console.Error.WriteLine("Stack trace:");
+        Console.Error.WriteLine(stack);
+    }
+
+    public string GetCopyrightNotice() {
+        return $"(c) {DateTime.Now.Year} Marc-Eric Boury - All rights reserved.";
     }
 
     public void Start() {

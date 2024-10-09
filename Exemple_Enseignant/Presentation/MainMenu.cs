@@ -1,16 +1,73 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using _420DA3_A24_Exemple_Enseignant.Business;
+using _420DA3_A24_Exemple_Enseignant.Business.Domain;
 
 namespace _420DA3_A24_Exemple_Enseignant.Presentation;
-public partial class MainMenu : Form {
-    public MainMenu() {
-        InitializeComponent();
+internal partial class MainMenu : Form {
+    private ExempleApplication app;
+
+    public MainMenu(ExempleApplication app) {
+        this.app = app;
+        this.InitializeComponent();
     }
+
+    #region Gestion des médecins
+
+    private void MedecinSearchBox_TextChanged(object sender, EventArgs e) {
+        List<Medecin> results = this.app.MedecinService.SearchMedecin(this.medecinSearchBox.Text);
+        this.medecinSearchResultsListBox.Items.Clear();
+        this.medecinSearchResultsListBox.SelectedItem = null;
+        foreach (Medecin medecin in results) {
+            this.medecinSearchResultsListBox.Items.Add(medecin);
+        }
+    }
+
+    private void MedecinSearchResultsListBox_SelectedIndexChanged(object sender, EventArgs e) {
+        Medecin? medecin = this.medecinSearchResultsListBox.SelectedItem as Medecin;
+        if (medecin is not null) {
+            this.EnableMedecinActionButtons();
+        } else {
+            this.DisableMedecinActionButtons();
+        }
+    }
+
+    private void EnableMedecinActionButtons() {
+        this.btnMedecinModifier.Enabled = true;
+        this.btnMedecinSupprimer.Enabled = true;
+        this.btnMedecinViewDetails.Enabled = true;
+    }
+
+    private void DisableMedecinActionButtons() {
+        this.btnMedecinModifier.Enabled = false;
+        this.btnMedecinSupprimer.Enabled = false;
+        this.btnMedecinViewDetails.Enabled = false;
+    }
+
+    private void BtnCreateMedecin_Click(object sender, EventArgs e) {
+        this.app.MedecinService.OpenWindowForCreation();
+    }
+
+    private void BtnMedecinViewDetails_Click(object sender, EventArgs e) {
+        Medecin? medecin = this.medecinSearchResultsListBox.SelectedItem as Medecin;
+        if (medecin is not null) {
+            this.app.MedecinService.OpenWindowForVisualization(medecin);
+        }
+    }
+
+    private void BtnMedecinModifier_Click(object sender, EventArgs e) {
+        Medecin? medecin = this.medecinSearchResultsListBox.SelectedItem as Medecin;
+        if (medecin is not null) {
+            this.app.MedecinService.OpenWindowForEdition(medecin);
+        }
+    }
+
+    private void BtnMedecinSupprimer_Click(object sender, EventArgs e) {
+        Medecin? medecin = this.medecinSearchResultsListBox.SelectedItem as Medecin;
+        if (medecin is not null) {
+            this.app.MedecinService.OpenWindowForSuppression(medecin);
+        }
+    }
+
+    #endregion
+
+
 }

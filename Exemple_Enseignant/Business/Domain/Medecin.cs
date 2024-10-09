@@ -43,4 +43,8 @@ internal class Medecin {
         this.RowVersion = rowVersion;
     }
 
+    public override string ToString() {
+        return $"#{this.Id} - {this.Nom}, {this.Prenom} - {this.NumLicenseMedicale}";
+    }
+
 }
