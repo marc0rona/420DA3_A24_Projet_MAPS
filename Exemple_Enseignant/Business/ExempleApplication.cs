@@ -24,9 +24,9 @@ internal class ExempleApplication {
         ApplicationConfiguration.Initialize();
         this.dbContext = new ExempleDbContext();
         this.mainMenu = new MainMenu();
-        this.MedecinService = new MedecinService(this.dbContext);
-        this.PatientService = new PatientService(this.dbContext);
-        this.RendezVousService = new RendezVousService(this.dbContext);
+        this.MedecinService = new MedecinService(this, this.dbContext);
+        this.PatientService = new PatientService(this, this.dbContext);
+        this.RendezVousService = new RendezVousService(this, this.dbContext);
     }
 
     public void Start() {

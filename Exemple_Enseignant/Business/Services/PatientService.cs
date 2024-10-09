@@ -5,7 +5,7 @@ namespace _420DA3_A24_Exemple_Enseignant.Business.Services;
 internal class PatientService {
     private readonly PatientDAO patientDAO;
 
-    public PatientService(ExempleDbContext context) {
+    public PatientService(ExempleApplication app, ExempleDbContext context) {
         this.patientDAO = new PatientDAO(context);
     }
 

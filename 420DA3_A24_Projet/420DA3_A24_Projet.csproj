@@ -15,7 +15,6 @@
     <Folder Include="DataAccess\DAOs\" />
     <Folder Include="DataAccess\Contexts\" />
     <Folder Include="data\images\products\" />
-    <Folder Include="Documents\" />
   </ItemGroup>
 
   <ItemGroup>

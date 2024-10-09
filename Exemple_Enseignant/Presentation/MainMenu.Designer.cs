@@ -24,10 +24,16 @@ partial class MainMenu {
     /// the contents of this method with the code editor.
     /// </summary>
     private void InitializeComponent() {
-        this.components = new System.ComponentModel.Container();
-        this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-        this.ClientSize = new System.Drawing.Size(800, 450);
+        this.SuspendLayout();
+        // 
+        // MainMenu
+        // 
+        this.AutoScaleDimensions = new SizeF(7F, 15F);
+        this.AutoScaleMode = AutoScaleMode.Font;
+        this.ClientSize = new Size(1197, 599);
+        this.Name = "MainMenu";
         this.Text = "MainMenu";
+        this.ResumeLayout(false);
     }
 
     #endregion

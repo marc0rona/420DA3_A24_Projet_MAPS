@@ -33,10 +33,10 @@ partial class MedecinView {
         this.cancelButton = new Button();
         this.centralTableLayoutPanel = new TableLayoutPanel();
         this.centralPanel = new Panel();
+        this.licenseNumericUpDown = new NumericUpDown();
         this.dateDeletedDTPicker = new DateTimePicker();
         this.dateModifiedDTPicker = new DateTimePicker();
         this.dateCreatedDTPicker = new DateTimePicker();
-        this.licenseTextBox = new TextBox();
         this.prenomTextBox = new TextBox();
         this.idNumericUpDown = new NumericUpDown();
         this.nomTextBox = new TextBox();
@@ -51,6 +51,7 @@ partial class MedecinView {
         this.bottomBarPanel.SuspendLayout();
         this.centralTableLayoutPanel.SuspendLayout();
         this.centralPanel.SuspendLayout();
+        ((System.ComponentModel.ISupportInitialize) this.licenseNumericUpDown).BeginInit();
         ((System.ComponentModel.ISupportInitialize) this.idNumericUpDown).BeginInit();
         this.SuspendLayout();
         // 
@@ -143,10 +144,10 @@ partial class MedecinView {
         // 
         // centralPanel
         // 
+        this.centralPanel.Controls.Add(this.licenseNumericUpDown);
         this.centralPanel.Controls.Add(this.dateDeletedDTPicker);
         this.centralPanel.Controls.Add(this.dateModifiedDTPicker);
         this.centralPanel.Controls.Add(this.dateCreatedDTPicker);
-        this.centralPanel.Controls.Add(this.licenseTextBox);
         this.centralPanel.Controls.Add(this.prenomTextBox);
         this.centralPanel.Controls.Add(this.idNumericUpDown);
         this.centralPanel.Controls.Add(this.nomTextBox);
@@ -163,8 +164,16 @@ partial class MedecinView {
         this.centralPanel.Size = new Size(634, 354);
         this.centralPanel.TabIndex = 0;
         // 
+        // licenseNumericUpDown
+        // 
+        this.licenseNumericUpDown.Location = new Point(215, 148);
+        this.licenseNumericUpDown.Name = "licenseNumericUpDown";
+        this.licenseNumericUpDown.Size = new Size(250, 23);
+        this.licenseNumericUpDown.TabIndex = 14;
+        // 
         // dateDeletedDTPicker
         // 
+        this.dateDeletedDTPicker.Enabled = false;
         this.dateDeletedDTPicker.Location = new Point(215, 265);
         this.dateDeletedDTPicker.Name = "dateDeletedDTPicker";
         this.dateDeletedDTPicker.Size = new Size(250, 23);
@@ -172,6 +181,7 @@ partial class MedecinView {
         // 
         // dateModifiedDTPicker
         // 
+        this.dateModifiedDTPicker.Enabled = false;
         this.dateModifiedDTPicker.Location = new Point(215, 235);
         this.dateModifiedDTPicker.Name = "dateModifiedDTPicker";
         this.dateModifiedDTPicker.Size = new Size(250, 23);
@@ -179,17 +189,11 @@ partial class MedecinView {
         // 
         // dateCreatedDTPicker
         // 
+        this.dateCreatedDTPicker.Enabled = false;
         this.dateCreatedDTPicker.Location = new Point(215, 205);
         this.dateCreatedDTPicker.Name = "dateCreatedDTPicker";
         this.dateCreatedDTPicker.Size = new Size(250, 23);
         this.dateCreatedDTPicker.TabIndex = 11;
-        // 
-        // licenseTextBox
-        // 
-        this.licenseTextBox.Location = new Point(215, 147);
-        this.licenseTextBox.Name = "licenseTextBox";
-        this.licenseTextBox.Size = new Size(250, 23);
-        this.licenseTextBox.TabIndex = 10;
         // 
         // prenomTextBox
         // 
@@ -200,6 +204,7 @@ partial class MedecinView {
         // 
         // idNumericUpDown
         // 
+        this.idNumericUpDown.Enabled = false;
         this.idNumericUpDown.Location = new Point(215, 37);
         this.idNumericUpDown.Name = "idNumericUpDown";
         this.idNumericUpDown.Size = new Size(250, 23);
@@ -291,7 +296,7 @@ partial class MedecinView {
         this.Controls.Add(this.bottomBarPanel);
         this.Controls.Add(this.topBarPanel);
         this.Name = "MedecinView";
-        this.Text = "MedecinView";
+        this.Text = "Gestion des médecins";
         this.topBarPanel.ResumeLayout(false);
         this.topBarPanel.PerformLayout();
         this.bottomBarPanel.ResumeLayout(false);
@@ -299,6 +304,7 @@ partial class MedecinView {
         this.centralTableLayoutPanel.ResumeLayout(false);
         this.centralPanel.ResumeLayout(false);
         this.centralPanel.PerformLayout();
+        ((System.ComponentModel.ISupportInitialize) this.licenseNumericUpDown).EndInit();
         ((System.ComponentModel.ISupportInitialize) this.idNumericUpDown).EndInit();
         this.ResumeLayout(false);
     }
@@ -324,8 +330,8 @@ partial class MedecinView {
     private DateTimePicker dateDeletedDTPicker;
     private DateTimePicker dateModifiedDTPicker;
     private DateTimePicker dateCreatedDTPicker;
-    private TextBox licenseTextBox;
     private TextBox prenomTextBox;
     private NumericUpDown idNumericUpDown;
     private TextBox nomTextBox;
+    private NumericUpDown licenseNumericUpDown;
 }
