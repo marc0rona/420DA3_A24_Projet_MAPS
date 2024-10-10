@@ -49,7 +49,7 @@ internal class RendezVous {
     }
 
     public override string ToString() {
-        return $"#{this.Id} le {this.DateRendezVous.ToString("dd MMM yyyy à HH:mm")} - {this.Patient.Nom}, {this.Patient.Prenom} avec Dr. {this.Medecin.Nom}";
+        return $"#{this.Id} le {this.DateRendezVous:dd MMM yyyy à HH:mm} - {this.Patient.Nom}, {this.Patient.Prenom} avec Dr. {this.Medecin.Nom}";
     }
 
 }
