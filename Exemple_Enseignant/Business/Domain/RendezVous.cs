@@ -19,8 +19,8 @@ internal class RendezVous {
 
     // Propriétés de navigation EF Core
     // Une pour chaque propriété XxxxxId
-    public Patient Patient { get; set; } = null!;
-    public Medecin Medecin { get; set; } = null!;
+    public virtual Patient Patient { get; set; } = null!;
+    public virtual Medecin Medecin { get; set; } = null!;
 
 
 

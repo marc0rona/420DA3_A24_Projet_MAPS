@@ -17,7 +17,7 @@ internal class Medecin {
 
     // Propriétés de navigation EF Core
     // Ici l'inverse du Medecin / MedecinId dans RendezVous
-    public List<RendezVous> RendezVous { get; set; } = new List<RendezVous>();
+    public virtual List<RendezVous> RendezVous { get; set; } = new List<RendezVous>();
 
     public Medecin(string nom, string prenom, int numLicenseMedicale) {
         this.Nom = nom;

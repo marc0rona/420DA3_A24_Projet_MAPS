@@ -99,6 +99,7 @@ internal class ExempleDbContext : DbContext {
 
         _ = modelBuilder.Entity<Medecin>()
             .Property(medecin => medecin.RowVersion)
+            .HasColumnOrder(7)
             .HasColumnName("RowVersion")
             .IsRowVersion(); // colonne spéciale de protection contre les modifications concurrentes
 
@@ -173,6 +174,7 @@ internal class ExempleDbContext : DbContext {
         _ = modelBuilder.Entity<Patient>()
             .Property(patient => patient.RowVersion)
             .HasColumnName("RowVersion")
+            .HasColumnOrder(7)
             .IsRowVersion();
 
 
@@ -180,12 +182,12 @@ internal class ExempleDbContext : DbContext {
 
 
         #region CONFIGURATION DE LA LIAISON ENTITÉ RendezVous À TABLE 'RendezVous'
-        // CONFIGURATION DE LA TABLE 'Medecins' ET DE SA CLÉ PRIMAIRE
+        // CONFIGURATION DE LA TABLE 'RendezVous' ET DE SA CLÉ PRIMAIRE
         _ = modelBuilder.Entity<RendezVous>()   // L'entité RendezVous
             .ToTable("RendezVous")              // Est liée à une table nommée 'RendezVous'
             .HasKey(rdv => rdv.Id);             // Dont la clé primaire est la popriété 'Id' de l'entité
 
-        // CONFIGURATION DES COLONNES DE LA TABLE 'Medecins'
+        // CONFIGURATION DES COLONNES DE LA TABLE 'RendezVous'
         _ = modelBuilder.Entity<RendezVous>()   // L'entité RendezVous
             .Property(rdv => rdv.Id)            // A sa propriété 'Id'
             .HasColumnName("Id")                // Liée à une colonne nommée 'Id' dans la table
@@ -244,10 +246,28 @@ internal class ExempleDbContext : DbContext {
             .HasConversion(dateTimeUtcConverter)
             .IsRequired(false);
 
+        _ = modelBuilder.Entity<RendezVous>()
+            .Property(rdv => rdv.RowVersion)
+            .HasColumnOrder(7)
+            .HasColumnName("RowVersion")
+            .IsRowVersion(); // colonne spéciale de protection contre les modifications concurrentes
+
         #endregion
 
 
         #region Configuration des relations entre les entités
+
+        _ = modelBuilder.Entity<Patient>()
+            .HasMany(patient => patient.RendezVous)
+            .WithOne(rdv => rdv.Patient)
+            .HasForeignKey(rdv => rdv.PatientId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+        _ = modelBuilder.Entity<Medecin>()
+            .HasMany(medecin => medecin.RendezVous)
+            .WithOne(rdv => rdv.Medecin)
+            .HasForeignKey(rdv => rdv.PatientId)
+            .OnDelete(DeleteBehavior.Restrict);
 
         _ = modelBuilder.Entity<RendezVous>()
             .HasOne(rdv => rdv.Patient)
@@ -263,6 +283,35 @@ internal class ExempleDbContext : DbContext {
             .IsRequired(true)
             .OnDelete(DeleteBehavior.Cascade);
 
+
+        #endregion
+
+        #region Données initiales / de test
+
+        Patient patient1 = new Patient("Doe", "John", "DOEJ12345678") {
+            Id = 1
+        };
+        Patient patient2 = new Patient("Doe", "Jane", "DOEJ87654321") {
+            Id = 2
+        };
+        _ = modelBuilder.Entity<Patient>()
+            .HasData(patient1, patient2);
+
+
+        Medecin medecin1 = new Medecin("Jones", "Indianna", 1234567) {
+            Id = 1
+        };
+        _ = modelBuilder.Entity<Medecin>()
+            .HasData(medecin1);
+
+        RendezVous rdv1 = new RendezVous(DateTime.Now, 1, 1) {
+            Id = 1
+        };
+        RendezVous rdv2 = new RendezVous(DateTime.Now, 2, 1) {
+            Id = 2
+        };
+        _ = modelBuilder.Entity<RendezVous>()
+            .HasData(rdv1, rdv2);
 
         #endregion
 
