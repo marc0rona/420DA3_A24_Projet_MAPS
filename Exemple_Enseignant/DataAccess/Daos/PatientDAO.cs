@@ -9,18 +9,18 @@ internal class PatientDAO {
         this.context = context;
     }
 
-    public List<Patient> GetAllPatients() {
+    public List<Patient> GetAll() {
         return this.context.Patients.Where(patient => patient.DateDeleted == null).ToList();
     }
 
-    public Patient? GetPatientById(int id) {
+    public Patient? GetById(int id) {
         return this.context.Patients.Where(
             patient => patient.Id == id
             && patient.DateDeleted == null
             ).FirstOrDefault();
     }
 
-    public List<Patient> SearchPatients(string filter) {
+    public List<Patient> Search(string filter) {
         return this.context.Patients.Where(
             patient => (
                 patient.Nom.Contains(filter)
@@ -31,20 +31,20 @@ internal class PatientDAO {
             ).ToList();
     }
 
-    public Patient CreatePatient(Patient patient) {
+    public Patient Create(Patient patient) {
         _ = this.context.Patients.Add(patient);
         _ = this.context.SaveChanges();
         return patient;
     }
 
-    public Patient UpdatePatient(Patient patient) {
+    public Patient Update(Patient patient) {
         patient.DateModified = DateTime.Now;
         _ = this.context.Patients.Update(patient);
         _ = this.context.SaveChanges();
         return patient;
     }
 
-    public void DeletePatient(Patient patient, bool softDeletes = true) {
+    public void Delete(Patient patient, bool softDeletes = true) {
         if (softDeletes) {
             patient.DateDeleted = DateTime.Now;
             _ = this.context.Patients.Update(patient);

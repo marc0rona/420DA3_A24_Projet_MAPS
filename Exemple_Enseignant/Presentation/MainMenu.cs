@@ -14,11 +14,15 @@ internal partial class MainMenu : Form {
     #region Gestion des médecins
 
     private void MedecinSearchBox_TextChanged(object sender, EventArgs e) {
-        List<Medecin> results = this.app.MedecinService.SearchMedecin(this.medecinSearchBox.Text);
+        List<Medecin> results = this.app.MedecinService.Search(this.medecinSearchBox.Text);
         this.medecinSearchResultsListBox.Items.Clear();
+        int? selectedMedecinId = (this.medecinSearchResultsListBox.SelectedItem as Medecin)?.Id;
         this.medecinSearchResultsListBox.SelectedItem = null;
         foreach (Medecin medecin in results) {
             this.medecinSearchResultsListBox.Items.Add(medecin);
+            if (selectedMedecinId is not null && medecin.Id == selectedMedecinId) {
+                this.medecinSearchResultsListBox.SelectedItem = medecin;
+            }
         }
     }
 
@@ -70,5 +74,68 @@ internal partial class MainMenu : Form {
 
     #endregion
 
+
+    #region Gestion des patients
+
+    private void PatientSearchBox_TextChanged(object sender, EventArgs e) {
+        List<Patient> results = this.app.PatientService.Search(this.patientSearchBox.Text);
+        this.patientSearchResultsListBox.Items.Clear();
+        int? selectedPatientId = (this.patientSearchResultsListBox.SelectedItem as Patient)?.Id;
+        this.patientSearchResultsListBox.SelectedItem = null;
+        foreach (Patient patient in results) {
+            this.patientSearchResultsListBox.Items.Add(patient);
+            if (selectedPatientId is not null && patient.Id == selectedPatientId) {
+                this.patientSearchResultsListBox.SelectedItem = patient;
+            }
+        }
+    }
+
+    private void PatientSearchResultsListBox_SelectedIndexChanged(object sender, EventArgs e) {
+        Patient? patient = this.patientSearchResultsListBox.SelectedItem as Patient;
+        if (patient is not null) {
+            this.EnablePatientActionButtons();
+        } else {
+            this.DisablePatientActionButtons();
+        }
+    }
+
+    private void EnablePatientActionButtons() {
+        this.btnPatientViewDetails.Enabled = true;
+        this.btnPatientModifier.Enabled = true;
+        this.btnPatientSupprimer.Enabled = true;
+    }
+
+    private void DisablePatientActionButtons() {
+        this.btnPatientViewDetails.Enabled = false;
+        this.btnPatientModifier.Enabled = false;
+        this.btnPatientSupprimer.Enabled = false;
+    }
+
+    private void BtnCreatePatient_Click(object sender, EventArgs e) {
+        this.app.PatientService.OpenViewFor(ViewActionsEnum.Creation);
+    }
+
+    private void BtnPatientViewDetails_Click(object sender, EventArgs e) {
+        Patient? patient = this.patientSearchResultsListBox.SelectedItem as Patient;
+        if (patient is not null) {
+            this.app.PatientService.OpenViewFor(ViewActionsEnum.Visualization, patient);
+        }
+    }
+
+    private void BtnPatientModifier_Click(object sender, EventArgs e) {
+        Patient? patient = this.patientSearchResultsListBox.SelectedItem as Patient;
+        if (patient is not null) {
+            this.app.PatientService.OpenViewFor(ViewActionsEnum.Edition, patient);
+        }
+    }
+
+    private void BtnPatientSupprimer_Click(object sender, EventArgs e) {
+        Patient? patient = this.patientSearchResultsListBox.SelectedItem as Patient;
+        if (patient is not null) {
+            this.app.PatientService.OpenViewFor(ViewActionsEnum.Deletion, patient);
+        }
+    }
+
+    #endregion
 
 }

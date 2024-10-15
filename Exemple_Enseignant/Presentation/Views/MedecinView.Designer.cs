@@ -167,6 +167,7 @@ partial class MedecinView {
         // licenseNumericUpDown
         // 
         this.licenseNumericUpDown.Location = new Point(215, 148);
+        this.licenseNumericUpDown.Maximum = new decimal(new int[] { 2000000000, 0, 0, 0 });
         this.licenseNumericUpDown.Name = "licenseNumericUpDown";
         this.licenseNumericUpDown.Size = new Size(250, 23);
         this.licenseNumericUpDown.TabIndex = 14;

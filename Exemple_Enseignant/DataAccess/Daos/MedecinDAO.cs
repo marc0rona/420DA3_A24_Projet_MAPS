@@ -9,19 +9,19 @@ internal class MedecinDAO {
         this.context = context;
     }
 
-    public List<Medecin> GetAllMedecins(bool includeDeleted = false) {
+    public List<Medecin> GetAll(bool includeDeleted = false) {
         return includeDeleted
             ? this.context.Medecins.ToList()
             : this.context.Medecins.Where(medecin => medecin.DateDeleted == null).ToList();
     }
 
-    public Medecin? GetMedecinById(int id, bool includeDeleted = false) {
+    public Medecin? GetById(int id, bool includeDeleted = false) {
         return includeDeleted
             ? this.context.Medecins.Where(medecin => medecin.Id == id).FirstOrDefault()
             : this.context.Medecins.Where(medecin => medecin.Id == id && medecin.DateDeleted == null).FirstOrDefault();
     }
 
-    public List<Medecin> SearchMedecin(string filter) {
+    public List<Medecin> Search(string filter) {
         List<Medecin> results = this.context.Medecins.Where(doc =>
             (
                 doc.Nom.Contains(filter)
@@ -33,20 +33,20 @@ internal class MedecinDAO {
         return results;
     }
 
-    public Medecin CreateMedecin(Medecin medecin) {
+    public Medecin Create(Medecin medecin) {
         _ = this.context.Medecins.Add(medecin);
         _ = this.context.SaveChanges();
         return medecin;
     }
 
-    public Medecin UpdateMedecin(Medecin medecin) {
+    public Medecin Update(Medecin medecin) {
         medecin.DateModified = DateTime.Now;
         _ = this.context.Medecins.Update(medecin);
         _ = this.context.SaveChanges();
         return medecin;
     }
 
-    public void DeleteMedecin(Medecin medecin, bool softDeletes = true) {
+    public void Delete(Medecin medecin, bool softDeletes = true) {
         if (softDeletes) {
             medecin.DateDeleted = DateTime.Now;
             _ = this.context.Medecins.Update(medecin);

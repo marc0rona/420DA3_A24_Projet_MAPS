@@ -7,6 +7,7 @@ global using global::System.Windows.Forms;
 using _420DA3_A24_Exemple_Enseignant.Business.Services;
 using _420DA3_A24_Exemple_Enseignant.DataAccess.Contexts;
 using _420DA3_A24_Exemple_Enseignant.Presentation;
+using System.Text;
 
 namespace _420DA3_A24_Exemple_Enseignant.Business;
 internal class ExempleApplication {
@@ -25,15 +26,20 @@ internal class ExempleApplication {
         this.mainMenu = new MainMenu(this);
     }
 
-    public void LogException(Exception ex) {
+    public void HandleException(Exception ex) {
         string? stack = ex.StackTrace;
+        StringBuilder messageBuilder = new StringBuilder();
         Console.Error.WriteLine(ex.Message);
+        messageBuilder.Append(ex.Message);
         while (ex.InnerException != null) {
             ex = ex.InnerException;
             Console.Error.WriteLine(ex.Message);
+            messageBuilder.Append(Environment.NewLine + "Caused By: " + ex.Message);
         }
         Console.Error.WriteLine("Stack trace:");
         Console.Error.WriteLine(stack);
+        _ = MessageBox.Show(messageBuilder.ToString(), "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
     }
 
     public string GetCopyrightNotice() {
