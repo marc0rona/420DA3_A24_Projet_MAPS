@@ -1,5 +1,5 @@
 ﻿namespace _420DA3_A24_Exemple_Enseignant.Business.Domain;
-internal class RendezVous {
+public class RendezVous {
 
 
     // Identifiant

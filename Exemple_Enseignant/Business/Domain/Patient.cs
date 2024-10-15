@@ -1,5 +1,5 @@
 ﻿namespace _420DA3_A24_Exemple_Enseignant.Business.Domain;
-internal class Patient {
+public class Patient {
     public const int FIRSTNAME_MAX_LENGTH = 64;
     public const int LASTNAME_MAX_LENGTH = 64;
     public const int ASSNUMBER_MAX_LENGTH = 12;
