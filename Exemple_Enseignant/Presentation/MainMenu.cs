@@ -1,5 +1,6 @@
 ﻿using _420DA3_A24_Exemple_Enseignant.Business;
 using _420DA3_A24_Exemple_Enseignant.Business.Domain;
+using _420DA3_A24_Exemple_Enseignant.Presentation.Enums;
 
 namespace _420DA3_A24_Exemple_Enseignant.Presentation;
 internal partial class MainMenu : Form {
@@ -43,27 +44,27 @@ internal partial class MainMenu : Form {
     }
 
     private void BtnCreateMedecin_Click(object sender, EventArgs e) {
-        this.app.MedecinService.OpenWindowForCreation();
+        this.app.MedecinService.OpenViewFor(ViewActionsEnum.Creation);
     }
 
     private void BtnMedecinViewDetails_Click(object sender, EventArgs e) {
         Medecin? medecin = this.medecinSearchResultsListBox.SelectedItem as Medecin;
         if (medecin is not null) {
-            this.app.MedecinService.OpenWindowForVisualization(medecin);
+            this.app.MedecinService.OpenViewFor(ViewActionsEnum.Visualization, medecin);
         }
     }
 
     private void BtnMedecinModifier_Click(object sender, EventArgs e) {
         Medecin? medecin = this.medecinSearchResultsListBox.SelectedItem as Medecin;
         if (medecin is not null) {
-            this.app.MedecinService.OpenWindowForEdition(medecin);
+            this.app.MedecinService.OpenViewFor(ViewActionsEnum.Edition, medecin);
         }
     }
 
     private void BtnMedecinSupprimer_Click(object sender, EventArgs e) {
         Medecin? medecin = this.medecinSearchResultsListBox.SelectedItem as Medecin;
         if (medecin is not null) {
-            this.app.MedecinService.OpenWindowForSuppression(medecin);
+            this.app.MedecinService.OpenViewFor(ViewActionsEnum.Deletion, medecin);
         }
     }
 

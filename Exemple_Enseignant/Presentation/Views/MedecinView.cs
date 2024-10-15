@@ -16,66 +16,79 @@ internal partial class MedecinView : Form {
         this.copyrightLabel.Text = this.application.GetCopyrightNotice();
     }
 
-    public DialogResult OpenForCreation() {
-        this.currentAction = ViewActionsEnum.Creation;
-        this.currentInstance = null;
-        this.viewModeValueLabel.Text = "Création";
-        this.ResetControls();
-        this.EnableEditableControls();
-        this.actionButton.Text = "CRÉER";
-        return this.ShowDialog();
-    }
-
-    public DialogResult OpenForVisualization(Medecin medecin) {
-        this.currentAction = ViewActionsEnum.Visualization;
-        this.currentInstance = medecin;
-        this.viewModeValueLabel.Text = "Visualisation";
-        this.LoadCurrentInstanceInControls();
-        this.DisableEditableControls();
-        this.actionButton.Text = "OK";
-        return this.ShowDialog();
-    }
-
-    public DialogResult OpenForEdition(Medecin medecin) {
-        this.currentAction = ViewActionsEnum.Edition;
-        this.currentInstance = medecin;
-        this.viewModeValueLabel.Text = "Édition";
-        this.LoadCurrentInstanceInControls();
-        this.EnableEditableControls();
-        this.actionButton.Text = "SAUVEGARDER";
-        return this.ShowDialog();
-    }
-
-    public DialogResult OpenForDeletion(Medecin medecin) {
-        this.currentAction = ViewActionsEnum.Deletion;
-        this.viewModeValueLabel.Text = "Suppression";
-        this.currentInstance = medecin;
-        this.LoadCurrentInstanceInControls();
-        this.DisableEditableControls();
-        this.actionButton.Text = "SUPPRIMER";
-        return this.ShowDialog();
-    }
-
-    private void ResetControls() {
-        this.idNumericUpDown.Value = 0;
-        this.nomTextBox.Text = "";
-        this.prenomTextBox.Text = "";
-        this.licenseNumericUpDown.Value = 0;
-        this.dateCreatedDTPicker.Value = DateTime.Now;
-        this.dateModifiedDTPicker.Value = DateTime.Now;
-        this.dateDeletedDTPicker.Value = DateTime.Now;
-    }
-
-    private void LoadCurrentInstanceInControls() {
-        if (this.currentInstance != null) {
-            this.idNumericUpDown.Value = this.currentInstance.Id;
-            this.nomTextBox.Text = this.currentInstance.Nom;
-            this.prenomTextBox.Text = this.currentInstance.Prenom;
-            this.licenseNumericUpDown.Value = this.currentInstance.NumLicenseMedicale;
-            this.dateCreatedDTPicker.Value = this.currentInstance.DateCreated;
-            this.dateModifiedDTPicker.Value = this.currentInstance.DateModified ?? DateTime.Now;
-            this.dateDeletedDTPicker.Value = this.currentInstance.DateDeleted ?? DateTime.Now;
+    public DialogResult OpenFor(ViewActionsEnum currentAction, Medecin? medecin = null) {
+        this.currentAction = currentAction;
+        this.LoadInstanceInControls(medecin);
+        switch (currentAction) {
+            case ViewActionsEnum.Creation:
+                return this.OpenForCreation();
+            case ViewActionsEnum.Visualization:
+                if (medecin is null) {
+                    throw new ArgumentException($"Parameter [medecin] cannot be null for view action [{currentAction}].");
+                }
+                return this.OpenForVisualization();
+            case ViewActionsEnum.Edition:
+                if (medecin is null) {
+                    throw new ArgumentException($"Parameter [medecin] cannot be null for view action [{currentAction}].");
+                }
+                return this.OpenForEdition();
+            case ViewActionsEnum.Deletion:
+                if (medecin is null) {
+                    throw new ArgumentException($"Parameter [medecin] cannot be null for view action [{currentAction}].");
+                }
+                return this.OpenForDeletion();
+            default:
+                throw new NotImplementedException($"View action [{currentAction}] is not implemented.");
         }
+    }
+
+    private DialogResult OpenForCreation() {
+        this.viewModeValueLabel.Text = "Création";
+        this.actionButton.Text = "CRÉER";
+        this.EnableEditableControls();
+        return this.ShowDialog();
+    }
+
+    private DialogResult OpenForVisualization() {
+        this.viewModeValueLabel.Text = "Visualisation";
+        this.actionButton.Text = "OK";
+        this.DisableEditableControls();
+        return this.ShowDialog();
+    }
+
+    private DialogResult OpenForEdition() {
+        this.viewModeValueLabel.Text = "Édition";
+        this.actionButton.Text = "SAUVEGARDER";
+        this.EnableEditableControls();
+        return this.ShowDialog();
+    }
+
+    private DialogResult OpenForDeletion() {
+        this.viewModeValueLabel.Text = "Suppression";
+        this.actionButton.Text = "SUPPRIMER";
+        this.DisableEditableControls();
+        return this.ShowDialog();
+    }
+
+    private void LoadInstanceInControls(Medecin? medecin) {
+        if (medecin is not null) {
+            this.idNumericUpDown.Value = medecin.Id;
+            this.nomTextBox.Text = medecin.Nom;
+            this.prenomTextBox.Text = medecin.Prenom;
+            this.licenseNumericUpDown.Value = medecin.NumLicenseMedicale;
+            this.dateCreatedDTPicker.Value = medecin.DateCreated;
+            this.dateModifiedDTPicker.Value = medecin.DateModified ?? DateTime.Now;
+            this.dateDeletedDTPicker.Value = medecin.DateDeleted ?? DateTime.Now;
+        } else {
+            this.idNumericUpDown.Value = 0;
+            this.nomTextBox.Text = "";
+            this.prenomTextBox.Text = "";
+            this.licenseNumericUpDown.Value = 0;
+            this.dateCreatedDTPicker.Value = DateTime.Now;
+            this.dateModifiedDTPicker.Value = DateTime.Now;
+            this.dateDeletedDTPicker.Value = DateTime.Now;
+        }
+        this.currentInstance = medecin;
     }
 
     private void EnableEditableControls() {

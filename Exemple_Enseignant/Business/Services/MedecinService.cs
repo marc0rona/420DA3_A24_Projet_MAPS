@@ -1,6 +1,7 @@
 ﻿using _420DA3_A24_Exemple_Enseignant.Business.Domain;
 using _420DA3_A24_Exemple_Enseignant.DataAccess.Contexts;
 using _420DA3_A24_Exemple_Enseignant.DataAccess.Daos;
+using _420DA3_A24_Exemple_Enseignant.Presentation.Enums;
 using _420DA3_A24_Exemple_Enseignant.Presentation.Views;
 
 namespace _420DA3_A24_Exemple_Enseignant.Business.Services;
@@ -13,20 +14,8 @@ internal class MedecinService {
         this.medecinView = new MedecinView(app);
     }
 
-    public void OpenWindowForCreation() {
-        _ = this.medecinView.OpenForCreation();
-    }
-
-    public void OpenWindowForVisualization(Medecin medecin) {
-        this.medecinView.OpenForVisualization(medecin);
-    }
-
-    public void OpenWindowForEdition(Medecin medecin) {
-        this.medecinView.OpenForEdition(medecin);
-    }
-
-    public void OpenWindowForSuppression(Medecin medecin) {
-        this.medecinView.OpenForDeletion(medecin);
+    public void OpenViewFor(ViewActionsEnum viewAction, Medecin? medecin = null) {
+        _ = this.medecinView.OpenFor(viewAction, medecin);
     }
 
     public List<Medecin> SearchMedecin(string filter) {
