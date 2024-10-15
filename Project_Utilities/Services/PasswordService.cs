@@ -58,7 +58,7 @@ public class PasswordService {
     /// <param name="motDePasseNonEncrypte"></param>
     /// <param name="hashDuMotDePasseDansLaBdD"></param>
     /// <returns>True si le mot de passe est valide.</returns>
-    public static bool VerifyPassword(string motDePasseNonEncrypte, string hashDuMotDePasseDansLaBdD) {
+    public static bool ValidatePassword(string motDePasseNonEncrypte, string hashDuMotDePasseDansLaBdD) {
         string[] segments = hashDuMotDePasseDansLaBdD.Split(hashSegmentDelimiter);
         byte[] key = Convert.FromHexString(segments[0]);
         byte[] salt = Convert.FromHexString(segments[1]);
