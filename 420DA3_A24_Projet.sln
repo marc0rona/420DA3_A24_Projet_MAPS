@@ -7,13 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "420DA3_A24_Projet", "420DA3
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Exemple_Enseignant", "Exemple_Enseignant\Exemple_Enseignant.csproj", "{F6190E21-0827-4123-96E4-004D9C36A680}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FakeShipmentsLibrary", "FakeShipmentsLibrary\FakeShipmentsLibrary.csproj", "{27A49D02-148B-4514-89D3-15FD30812BD0}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExtraAdvancedMultiTier", "ExtraAdvancedMultiTier\ExtraAdvancedMultiTier.csproj", "{FC259944-CE1E-4868-8D8B-00887775D7D0}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Exemple_Enseignant_Avance", "Exemple_Enseignant_Avance\Exemple_Enseignant_Avance.csproj", "{243658DE-433C-4DCC-AC93-B18F4C050D97}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project_Utilities", "Project_Utilities\Project_Utilities.csproj", "{9CEE0D8B-B931-45F3-8BFC-A74AE50D807C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Project_Utilities", "Project_Utilities\Project_Utilities.csproj", "{9CEE0D8B-B931-45F3-8BFC-A74AE50D807C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +27,6 @@ Global
 		{F6190E21-0827-4123-96E4-004D9C36A680}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F6190E21-0827-4123-96E4-004D9C36A680}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F6190E21-0827-4123-96E4-004D9C36A680}.Release|Any CPU.Build.0 = Release|Any CPU
-		{27A49D02-148B-4514-89D3-15FD30812BD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{27A49D02-148B-4514-89D3-15FD30812BD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{27A49D02-148B-4514-89D3-15FD30812BD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{27A49D02-148B-4514-89D3-15FD30812BD0}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FC259944-CE1E-4868-8D8B-00887775D7D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FC259944-CE1E-4868-8D8B-00887775D7D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FC259944-CE1E-4868-8D8B-00887775D7D0}.Release|Any CPU.ActiveCfg = Release|Any CPU

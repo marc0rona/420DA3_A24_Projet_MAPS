@@ -1,7 +1,6 @@
-﻿using FakeShipmentsLibrary.Internals;
-using Project_Utilities.Enums;
+﻿using Project_Utilities.Enums;
 
-namespace FakeShipmentsLibrary;
+namespace Project_Utilities.Services;
 public class TrackingNumberFactory {
 
     private static readonly FakeCanadaPostAPI fakeCanadaPostAPI = new FakeCanadaPostAPI();

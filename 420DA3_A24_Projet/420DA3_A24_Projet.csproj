@@ -29,7 +29,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ExtraAdvancedMultiTier\ExtraAdvancedMultiTier.csproj" />
-    <ProjectReference Include="..\FakeShipmentsLibrary\FakeShipmentsLibrary.csproj" />
     <ProjectReference Include="..\Project_Utilities\Project_Utilities.csproj" />
   </ItemGroup>
 

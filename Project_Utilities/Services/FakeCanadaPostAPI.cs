@@ -1,6 +1,6 @@
-﻿using FakeShipmentsLibrary.Internals.Abstracts;
+﻿using Project_Utilities.Services.Abstracts;
 
-namespace FakeShipmentsLibrary.Internals;
+namespace Project_Utilities.Services;
 internal class FakeCanadaPostAPI : IShipmentDataProvider {
     public string GetTrackingNumber() {
         return "CAN-" + IShipmentDataProvider.GenerateNumber();
