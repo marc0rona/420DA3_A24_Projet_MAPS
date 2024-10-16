@@ -1,0 +1,199 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.7.17 Chrome/128.0.6613.36 Electron/32.0.1 Safari/537.36" version="24.7.17">
+  <diagram name="Page-1" id="JsVEFWNmWK_QEJ6qH602">
+    <mxGraphModel dx="2284" dy="1936" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="PsPJ7mUmcsS5uumMFOID-1" value="" style="rounded=1;whiteSpace=wrap;html=1;arcSize=2;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="40" y="160" width="800" height="520" as="geometry" />
+        </mxCell>
+        <mxCell id="PsPJ7mUmcsS5uumMFOID-2" value="" style="endArrow=none;html=1;rounded=0;exitX=-0.001;exitY=0.079;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.077;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="PsPJ7mUmcsS5uumMFOID-1" target="PsPJ7mUmcsS5uumMFOID-1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="400" y="450" as="sourcePoint" />
+            <mxPoint x="450" y="400" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PsPJ7mUmcsS5uumMFOID-3" value="X" style="whiteSpace=wrap;html=1;aspect=fixed;spacing=0;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="803" y="166" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="PsPJ7mUmcsS5uumMFOID-4" value="Top bar" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="200" width="800" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="PsPJ7mUmcsS5uumMFOID-5" value="Bottom bar" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="640" width="800" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="PsPJ7mUmcsS5uumMFOID-7" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="240" width="160" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="PsPJ7mUmcsS5uumMFOID-8" value="Container pour entité" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="240" width="160" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="PsPJ7mUmcsS5uumMFOID-9" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="240" width="160" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="PsPJ7mUmcsS5uumMFOID-10" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="520" y="240" width="160" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="PsPJ7mUmcsS5uumMFOID-11" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="680" y="240" width="160" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="PsPJ7mUmcsS5uumMFOID-12" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="440" width="160" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="PsPJ7mUmcsS5uumMFOID-13" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="440" width="160" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="PsPJ7mUmcsS5uumMFOID-14" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="440" width="160" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="PsPJ7mUmcsS5uumMFOID-15" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="520" y="440" width="160" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="PsPJ7mUmcsS5uumMFOID-16" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="680" y="440" width="160" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="PsPJ7mUmcsS5uumMFOID-17" value="BTN CREATION" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="250" width="120" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="PsPJ7mUmcsS5uumMFOID-18" value="CHMP RECHERCHE" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="280" width="120" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="PsPJ7mUmcsS5uumMFOID-20" value="LIST RESULTATS&lt;br&gt;RECHERCHE" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="300" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="PsPJ7mUmcsS5uumMFOID-21" value="BTN VISUALISATION" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="370" width="120" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="PsPJ7mUmcsS5uumMFOID-22" value="BTN EDITION" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="390" width="120" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="PsPJ7mUmcsS5uumMFOID-23" value="BTN SUPPRESSION" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="410" width="120" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="PsPJ7mUmcsS5uumMFOID-24" value="BTN LOGOUT" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="733" y="645" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="PsPJ7mUmcsS5uumMFOID-25" value="&lt;h1 style=&quot;margin-top: 0px; line-height: 90%;&quot;&gt;&lt;font style=&quot;font-size: 18px;&quot;&gt;Sections individuelles pour chaque entité&lt;/font&gt;&lt;/h1&gt;&lt;p&gt;Sections individuelles pour chaque entité avec les contrôles permettant les opérations de base CRUD.&lt;/p&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="360" y="-50" width="240" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="PsPJ7mUmcsS5uumMFOID-26" value="" style="endArrow=none;html=1;rounded=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;strokeWidth=2;fillColor=#d5e8d4;strokeColor=#82b366;" edge="1" parent="1" target="PsPJ7mUmcsS5uumMFOID-25">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="285" y="296" as="sourcePoint" />
+            <mxPoint x="450" y="300" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PsPJ7mUmcsS5uumMFOID-27" value="" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;strokeWidth=2;fillColor=#d5e8d4;strokeColor=#82b366;" edge="1" parent="1" target="PsPJ7mUmcsS5uumMFOID-25">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="444" y="331" as="sourcePoint" />
+            <mxPoint x="430" y="80" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PsPJ7mUmcsS5uumMFOID-28" value="" style="endArrow=none;html=1;rounded=0;entryX=0.75;entryY=1;entryDx=0;entryDy=0;strokeWidth=2;fillColor=#d5e8d4;strokeColor=#82b366;" edge="1" parent="1" target="PsPJ7mUmcsS5uumMFOID-25">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="604" y="317" as="sourcePoint" />
+            <mxPoint x="440" y="90" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PsPJ7mUmcsS5uumMFOID-30" value="Bouton de création d&#39;entité; ouvre la fenêtre correspondante en mode création." style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="-320" y="180" width="240" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="PsPJ7mUmcsS5uumMFOID-31" value="" style="endArrow=none;html=1;rounded=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;fillColor=#d5e8d4;strokeColor=#82b366;" edge="1" parent="1" target="PsPJ7mUmcsS5uumMFOID-30">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="73" y="260" as="sourcePoint" />
+            <mxPoint x="430" y="80" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PsPJ7mUmcsS5uumMFOID-32" value="Champ de recherche d&#39;entités: recherche des entrées par texte et les charge dans la liste des résultats" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="-340" y="265" width="240" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="PsPJ7mUmcsS5uumMFOID-33" value="" style="endArrow=none;html=1;rounded=0;entryX=1;entryY=0.25;entryDx=0;entryDy=0;strokeWidth=2;fillColor=#d5e8d4;strokeColor=#82b366;" edge="1" parent="1" target="PsPJ7mUmcsS5uumMFOID-32">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="67" y="290" as="sourcePoint" />
+            <mxPoint x="-70" y="210" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PsPJ7mUmcsS5uumMFOID-34" value="" style="endArrow=none;html=1;rounded=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;strokeWidth=2;fillColor=#d5e8d4;strokeColor=#82b366;" edge="1" parent="1" target="PsPJ7mUmcsS5uumMFOID-32">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="72" y="335" as="sourcePoint" />
+            <mxPoint x="-90" y="288" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PsPJ7mUmcsS5uumMFOID-35" value="Boutons d&#39;actions. Activés lorsque un résultat est sélectionné dans la liste. Désactivés sinon. ouvrent la fenêtre correspondante dans le mode correspondant." style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="-320" y="360" width="240" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="PsPJ7mUmcsS5uumMFOID-36" value="" style="endArrow=none;html=1;rounded=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;fillColor=#d5e8d4;strokeColor=#82b366;" edge="1" parent="1" target="PsPJ7mUmcsS5uumMFOID-35">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="69" y="380" as="sourcePoint" />
+            <mxPoint x="-90" y="313" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PsPJ7mUmcsS5uumMFOID-37" value="" style="endArrow=none;html=1;rounded=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;fillColor=#d5e8d4;strokeColor=#82b366;" edge="1" parent="1" target="PsPJ7mUmcsS5uumMFOID-35">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="75" y="401" as="sourcePoint" />
+            <mxPoint x="-70" y="410" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PsPJ7mUmcsS5uumMFOID-38" value="" style="endArrow=none;html=1;rounded=0;strokeWidth=2;fillColor=#d5e8d4;strokeColor=#82b366;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" target="PsPJ7mUmcsS5uumMFOID-35">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="70" y="419" as="sourcePoint" />
+            <mxPoint x="-70" y="430" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PsPJ7mUmcsS5uumMFOID-39" value="Bouton de déconnexion. Ferme le menu principal et ré-ouvre la fenêtre de connexion." style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="440" y="720" width="240" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="PsPJ7mUmcsS5uumMFOID-40" value="" style="endArrow=none;html=1;rounded=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;fillColor=#d5e8d4;strokeColor=#82b366;" edge="1" parent="1" target="PsPJ7mUmcsS5uumMFOID-39">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="781" y="670" as="sourcePoint" />
+            <mxPoint x="697" y="750" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PsPJ7mUmcsS5uumMFOID-41" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeWidth=3;strokeColor=#FFD966;" vertex="1" parent="1">
+          <mxGeometry x="40" y="240" width="800" height="400" as="geometry" />
+        </mxCell>
+        <mxCell id="PsPJ7mUmcsS5uumMFOID-42" value="TableLayourPanel: 2 lignes, 5 colonnes; Dock: Fill" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="-320" y="520" width="240" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="PsPJ7mUmcsS5uumMFOID-43" value="" style="endArrow=none;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.001;entryY=0.668;entryDx=0;entryDy=0;entryPerimeter=0;fillColor=#fff2cc;strokeColor=#FFD966;strokeWidth=3;" edge="1" parent="1" source="PsPJ7mUmcsS5uumMFOID-42" target="PsPJ7mUmcsS5uumMFOID-41">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="30" y="560" as="sourcePoint" />
+            <mxPoint x="80" y="510" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PsPJ7mUmcsS5uumMFOID-44" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#b85450;strokeWidth=3;" vertex="1" parent="1">
+          <mxGeometry x="43" y="440" width="157" height="197" as="geometry" />
+        </mxCell>
+        <mxCell id="PsPJ7mUmcsS5uumMFOID-45" value="Panels ou autres conteneurs individuels dans chaque cellule du TableLayourPanel" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="-300" y="640" width="240" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="PsPJ7mUmcsS5uumMFOID-46" value="" style="endArrow=none;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.025;entryY=0.817;entryDx=0;entryDy=0;entryPerimeter=0;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=3;" edge="1" parent="1" source="PsPJ7mUmcsS5uumMFOID-45" target="PsPJ7mUmcsS5uumMFOID-44">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="-70" y="550" as="sourcePoint" />
+            <mxPoint x="51" y="517" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PsPJ7mUmcsS5uumMFOID-47" value="Top bar panel. Vous pouvez y mettre de quoi si vous voulez, genre un message de bienvenue à l&#39;utilisateur. Dock: Top" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="-120" y="40" width="240" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="PsPJ7mUmcsS5uumMFOID-48" value="" style="endArrow=none;html=1;rounded=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;fillColor=#d5e8d4;strokeColor=#82b366;" edge="1" parent="1" target="PsPJ7mUmcsS5uumMFOID-47">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="299" y="222" as="sourcePoint" />
+            <mxPoint x="160" y="70" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PsPJ7mUmcsS5uumMFOID-49" value="Bottom bar panel. Dock: Bottom" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="-40" y="760" width="240" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="PsPJ7mUmcsS5uumMFOID-50" value="" style="endArrow=none;html=1;rounded=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;fillColor=#d5e8d4;strokeColor=#82b366;" edge="1" parent="1" target="PsPJ7mUmcsS5uumMFOID-49">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="347" y="661" as="sourcePoint" />
+            <mxPoint x="220" y="780" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PsPJ7mUmcsS5uumMFOID-51" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;Ordre d&#39;ajout&lt;/h1&gt;&lt;p&gt;&lt;/p&gt;IMPORTANT sinon la fenêtre ne s&#39;Adaptera pas en taille correctement. Lorsqu&#39;on utilise le système de dock d&#39;éléments dans un conteneur, l&#39;élément qui &#39;Fill&#39; le centre doit être ajouté en dernier.&lt;br&gt;&lt;ul&gt;&lt;li&gt;Top bar panel -&amp;gt; Dock top&lt;/li&gt;&lt;li&gt;Bottom bar panel -&amp;gt; Dock bottom&lt;/li&gt;&lt;li&gt;TableLayoutPanel -&amp;gt; Dock fill&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;/p&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry y="-180" width="280" height="180" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
