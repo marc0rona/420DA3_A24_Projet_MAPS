@@ -1,29 +1,41 @@
 ﻿using ExtraAdvancedMultiTier.Business.Abstractions;
+using ExtraAdvancedMultiTier.Business.Abstractions.Daos;
 
 namespace ExtraAdvancedMultiTier.DataAccess.Abstractions;
-public abstract class AbstractDao<EntityType, EntityIdType> : IDao<EntityType, EntityIdType>
-    where EntityType : class, IEntity<EntityIdType>
-    where EntityIdType : struct, IEquatable<EntityIdType> {
+public abstract class AbstractDao<TEntity, TEntityKey> : IDao<TEntity, TEntityKey>
+    where TEntity : class, IEntity<TEntityKey>
+    where TEntityKey : struct, IEquatable<TEntityKey> {
 
+    private AbstractDbContext context;
 
-
-    public EntityType Create(EntityType instance) {
-        throw new NotImplementedException();
+    protected AbstractDao(AbstractDbContext context) {
+        this.context = context;
     }
 
-    public EntityType Delete(EntityType instance) {
-        throw new NotImplementedException();
+
+    public virtual TEntity Create(TEntity instance) {
+        this.context.GetDbSet<TEntity>().Add(instance);
+        this.context.SaveChanges();
+        return instance;
     }
 
-    public List<EntityType> GetAll() {
-        throw new NotImplementedException();
+    public virtual List<TEntity> GetAll() {
+        return this.context.GetDbSet<TEntity>().ToList();
     }
 
-    public EntityType? GetById(EntityType id) {
-        throw new NotImplementedException();
+    public virtual TEntity? GetById(TEntityKey id) {
+        return this.context?.GetDbSet<TEntity>().Where(entity => entity.GetId().Equals(id)).FirstOrDefault();
     }
 
-    public EntityType Update(EntityType instance) {
-        throw new NotImplementedException();
+    public virtual TEntity Update(TEntity instance) {
+        this.context.GetDbSet<TEntity>().Update(instance);
+        this.context?.SaveChanges();
+        return instance;
+    }
+
+    public virtual TEntity Delete(TEntity instance) {
+        this.context.GetDbSet<TEntity>().Remove(instance);
+        this.context?.SaveChanges();
+        return instance;
     }
 }

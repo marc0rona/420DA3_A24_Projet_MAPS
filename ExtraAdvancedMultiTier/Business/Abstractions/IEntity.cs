@@ -14,14 +14,14 @@
 /// <item>DateDeleted</item>
 /// </list>
 /// </remarks>
-/// <typeparam name="TIdentifier">Le type de données de l'identifiant de l'entité du domaine.</typeparam>
-public interface IEntity<TIdentifier> {
+/// <typeparam name="Tkey">Le type de données de l'identifiant de l'entité du domaine.</typeparam>
+public interface IEntity<Tkey> where Tkey : IEquatable<Tkey> {
 
     /// <summary>
     /// Getter pour l'identifiant dans la base de données de l'instance.
     /// </summary>
     /// <returns>L'identifiant de l'instance ou <see langword="null"/>.</returns>
-    TIdentifier? GetId();
+    Tkey? GetId();
 
     /// <summary>
     /// Getter pour la date de création l'instance dans la base de données de.
