@@ -9,18 +9,18 @@ namespace ExtraAdvancedMultiTier.Business.Abstractions;
 /// Définit des propriétés considérées comme générales que toutes les entités 
 /// du domaine devraient posséder:
 /// <list type="bullet">
-/// <item>Id : <typeparamref name="TIdentifier"/></item>
+/// <item>Id : <typeparamref name="Tkey"/></item>
 /// <item>DateCreated : <see cref="DateTime"/></item>
 /// <item>DateModified : <see cref="DateTime"/></item>
 /// <item>DateDeleted : <see cref="DateTime"/></item>
 /// <item>RowVersion : <see cref="byte"/>[]</item>
 /// </list>
 /// </summary>
-/// <typeparam name="TIdentifier">Le type de données de l'identifiant de l'entité du domaine.</typeparam>
-public abstract class AbstractEntity<TIdentifier> : IEntity<TIdentifier> {
+/// <typeparam name="Tkey">Le type de données de l'identifiant de l'entité du domaine.</typeparam>
+public abstract class AbstractEntity<Tkey> : IEntity<Tkey> where Tkey : IEquatable<Tkey> {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public TIdentifier? Id { get; set; }
+    public Tkey? Id { get; set; }
 
     [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
     public DateTime? DateCreated { get; set; }
@@ -49,7 +49,7 @@ public abstract class AbstractEntity<TIdentifier> : IEntity<TIdentifier> {
     /// <param name="dateModified">La date de dernière modification de l'entité.</param>
     /// <param name="dateDeleted">La date de suppression de l'entité.</param>
     /// <param name="rowVersion">Le numéro de version de l'entité.</param>
-    protected AbstractEntity(TIdentifier id,
+    protected AbstractEntity(Tkey id,
         DateTime dateCreated,
         DateTime? dateModified,
         DateTime? dateDeleted,
@@ -66,11 +66,11 @@ public abstract class AbstractEntity<TIdentifier> : IEntity<TIdentifier> {
     /// Getter pour <see cref="Id"/>, l'identifiant dans la base de données de l'instance.
     /// </summary>
     /// <remarks>
-    /// Le type de l'identifiant <typeparamref name="TIdentifier"/> doit être spécifié comme paramètre de type
+    /// Le type de l'identifiant <typeparamref name="Tkey"/> doit être spécifié comme paramètre de type
     /// de <see cref="AbstractEntity{TIdentifier}"/> dont héritent les classes du domaine.
     /// </remarks>
     /// <returns>L'identifiant de l'instance ou <see langword="null"/>.</returns>
-    public TIdentifier? GetId() {
+    public Tkey? GetId() {
         return this.Id;
     }
 

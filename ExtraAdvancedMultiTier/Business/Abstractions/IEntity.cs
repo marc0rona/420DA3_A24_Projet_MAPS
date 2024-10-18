@@ -21,7 +21,7 @@ public interface IEntity<Tkey> where Tkey : IEquatable<Tkey> {
     /// Getter pour l'identifiant dans la base de données de l'instance.
     /// </summary>
     /// <returns>L'identifiant de l'instance ou <see langword="null"/>.</returns>
-    Tkey? GetId();
+    public Tkey? GetId();
 
     /// <summary>
     /// Getter pour la date de création l'instance dans la base de données de.
