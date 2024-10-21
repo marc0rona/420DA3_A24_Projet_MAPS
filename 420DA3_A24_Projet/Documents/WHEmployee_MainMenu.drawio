@@ -4,6 +4,75 @@
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="7oJCTgPkj-AoVVujGY5o-1" value="" style="rounded=1;whiteSpace=wrap;html=1;arcSize=4;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="40" y="160" width="800" height="560" as="geometry" />
+        </mxCell>
+        <mxCell id="7oJCTgPkj-AoVVujGY5o-2" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="200" width="800" height="520" as="geometry" />
+        </mxCell>
+        <mxCell id="7oJCTgPkj-AoVVujGY5o-3" value="X" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;spacing=0;verticalAlign=middle;align=center;" vertex="1" parent="1">
+          <mxGeometry x="796" y="165" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="7oJCTgPkj-AoVVujGY5o-4" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="210" width="190" height="500" as="geometry" />
+        </mxCell>
+        <mxCell id="7oJCTgPkj-AoVVujGY5o-5" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="250" y="210" width="190" height="500" as="geometry" />
+        </mxCell>
+        <mxCell id="7oJCTgPkj-AoVVujGY5o-6" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="440" y="210" width="190" height="500" as="geometry" />
+        </mxCell>
+        <mxCell id="7oJCTgPkj-AoVVujGY5o-8" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="630" y="210" width="190" height="500" as="geometry" />
+        </mxCell>
+        <mxCell id="7oJCTgPkj-AoVVujGY5o-10" value="" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="70" y="220" width="170" height="480" as="geometry" />
+        </mxCell>
+        <mxCell id="7oJCTgPkj-AoVVujGY5o-11" value="ListBox des ordres d&#39;expédition ayant le statut &quot;unassigned&quot; et dont l&#39;entrepôt du client est le même que celui de l&#39;employé d&#39;entrepot connecté" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="270" width="150" height="380" as="geometry" />
+        </mxCell>
+        <mxCell id="7oJCTgPkj-AoVVujGY5o-12" value="REFRESH BTN" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="95" y="240" width="120" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="7oJCTgPkj-AoVVujGY5o-13" value="ASSIGN TO ME BTN" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="95" y="660" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="7oJCTgPkj-AoVVujGY5o-14" value="" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="260" y="220" width="170" height="480" as="geometry" />
+        </mxCell>
+        <mxCell id="7oJCTgPkj-AoVVujGY5o-15" value="ListBox des ordres d&#39;expédition assignés à l&#39;employé d&#39;entrepôt et ayant le statut &quot;processing&quot;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="270" y="270" width="150" height="380" as="geometry" />
+        </mxCell>
+        <mxCell id="7oJCTgPkj-AoVVujGY5o-16" value="REFRESH BTN" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="285" y="240" width="120" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="7oJCTgPkj-AoVVujGY5o-17" value="PACKAGING COMPLETE BTN" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="285" y="660" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="7oJCTgPkj-AoVVujGY5o-22" value="" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="450" y="220" width="170" height="480" as="geometry" />
+        </mxCell>
+        <mxCell id="7oJCTgPkj-AoVVujGY5o-20" value="ListBox des ordres d&#39;expédition ayant le statut &quot;packaged&quot;&amp;nbsp;et dont l&#39;entrepôt du client est le même que celui de l&#39;employé d&#39;entrepot connecté" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="460" y="270" width="150" height="380" as="geometry" />
+        </mxCell>
+        <mxCell id="7oJCTgPkj-AoVVujGY5o-21" value="SHIPPED BTN" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="475" y="660" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="7oJCTgPkj-AoVVujGY5o-23" value="" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="640" y="220" width="170" height="480" as="geometry" />
+        </mxCell>
+        <mxCell id="7oJCTgPkj-AoVVujGY5o-24" value="REFRESH BTN" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="475" y="240" width="120" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="7oJCTgPkj-AoVVujGY5o-25" value="REFRESH BTN" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="665" y="240" width="120" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="7oJCTgPkj-AoVVujGY5o-26" value="ListBox des ordres de restockage ayant le statut &quot;new&quot;&amp;nbsp;et dont l&#39;entrepôt du de destination est le même que celui de l&#39;employé d&#39;entrepot connecté" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="650" y="270" width="150" height="380" as="geometry" />
+        </mxCell>
+        <mxCell id="7oJCTgPkj-AoVVujGY5o-27" value="RECEIVED BTN" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="665" y="660" width="120" height="30" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
