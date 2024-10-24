@@ -6,16 +6,38 @@ using _420DA3_A24_Exemple_Enseignant.Presentation.Views;
 
 namespace _420DA3_A24_Exemple_Enseignant.Business.Services;
 internal class PatientService {
+    private readonly ExempleApplication application;
     private readonly PatientDAO dao;
     private readonly PatientView view;
 
     public PatientService(ExempleApplication app, ExempleDbContext context) {
+        this.application = app;
         this.dao = new PatientDAO(context);
         this.view = new PatientView(app);
     }
 
-    public void OpenViewFor(ViewActionsEnum viewAction, Patient? patient = null) {
-        _ = this.view.OpenFor(viewAction, patient);
+    public Patient? OpenViewFor(ViewActionsEnum viewAction, Patient? patient = null) {
+        try {
+            DialogResult result = this.view.OpenFor(viewAction, patient);
+            if (result == DialogResult.OK) {
+                switch (viewAction) {
+                    case ViewActionsEnum.Creation:
+                    case ViewActionsEnum.Edition:
+                        // open the view in visualization mode after edition and creation
+                        // get the medecin from the view's current instance so we get the
+                        // created one during creation (the parameter would be null here otherwise)
+                        _ = this.OpenViewFor(ViewActionsEnum.Visualization, this.view.GetCurrentInstance());
+                        break;
+                    default:
+                        break;
+                }
+            }
+            return this.view.GetCurrentInstance();
+
+        } catch (Exception ex) {
+            this.application.HandleException(ex);
+            return null;
+        }
     }
 
     public List<Patient> Search(string filter) {

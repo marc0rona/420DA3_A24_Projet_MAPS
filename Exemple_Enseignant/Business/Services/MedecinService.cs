@@ -16,7 +16,7 @@ internal class MedecinService {
         this.view = new MedecinView(app);
     }
 
-    public void OpenViewFor(ViewActionsEnum viewAction, Medecin? medecin = null) {
+    public Medecin? OpenViewFor(ViewActionsEnum viewAction, Medecin? medecin = null) {
         try {
             DialogResult result = this.view.OpenFor(viewAction, medecin);
             if (result == DialogResult.OK) {
@@ -26,15 +26,17 @@ internal class MedecinService {
                         // open the view in visualization mode after edition and creation
                         // get the medecin from the view's current instance so we get the
                         // created one during creation (the parameter would be null here otherwise)
-                        this.OpenViewFor(ViewActionsEnum.Visualization, this.view.GetCurrentInstance());
+                        _ = this.OpenViewFor(ViewActionsEnum.Visualization, this.view.GetCurrentInstance());
                         break;
                     default:
                         break;
                 }
             }
+            return this.view.GetCurrentInstance();
 
         } catch (Exception ex) {
             this.application.HandleException(ex);
+            return null;
         }
     }
 
