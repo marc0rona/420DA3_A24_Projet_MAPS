@@ -1,4 +1,8 @@
-﻿using System;
+﻿using _420DA3_A24_Exemple_Enseignant.Business;
+using _420DA3_A24_Exemple_Enseignant.Business.Domain;
+using _420DA3_A24_Exemple_Enseignant.Presentation.Enums;
+using Project_Utilities.Exceptions;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,8 +13,192 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace _420DA3_A24_Exemple_Enseignant.Presentation.Views;
-public partial class RendezVousView : Form {
-    public RendezVousView() {
-        InitializeComponent();
+internal partial class RendezVousView : Form {
+    private readonly ExempleApplication application;
+    private ViewActionsEnum currentAction;
+    private RendezVous? currentInstance;
+
+    public RendezVousView(ExempleApplication app) {
+        this.application = app;
+        this.currentAction = ViewActionsEnum.Visualization; // default
+        this.InitializeComponent();
+    }
+
+    public RendezVous? GetCurrentInstance() {
+        return this.currentInstance;
+    }
+
+    public DialogResult OpenFor(ViewActionsEnum currentAction, RendezVous? rendezVous = null) {
+        this.currentAction = currentAction;
+        this.LoadInstanceInControls(rendezVous);
+        // TODO: @TEACHER Complete Form design and logic
+        /*
+        switch (currentAction) {
+            case ViewActionsEnum.Creation:
+                this.viewModeValueLabel.Text = "Creation";
+                this.actionButton.Text = "Créer";
+                this.EnableEditableControls();
+                break;
+            case ViewActionsEnum.Visualization:
+                if (rendezVous is null) {
+                    throw new ArgumentException($"Parameter [medecin] cannot be null for view action [{currentAction}].");
+                }
+                this.viewModeValueLabel.Text = "Visualization";
+                this.actionButton.Text = "OK";
+                this.DisableEditableControls();
+                break;
+            case ViewActionsEnum.Edition:
+                if (rendezVous is null) {
+                    throw new ArgumentException($"Parameter [medecin] cannot be null for view action [{currentAction}].");
+                }
+                this.viewModeValueLabel.Text = "Edition";
+                this.actionButton.Text = "Save Changes";
+                this.EnableEditableControls();
+                break;
+            case ViewActionsEnum.Deletion:
+                if (rendezVous is null) {
+                    throw new ArgumentException($"Parameter [medecin] cannot be null for view action [{currentAction}].");
+                }
+                this.viewModeValueLabel.Text = "Deletion";
+                this.actionButton.Text = "Delete";
+                this.DisableEditableControls();
+                break;
+            default:
+                throw new NotImplementedException($"View action [{currentAction}] is not implemented.");
+        }
+        */
+        return this.ShowDialog();
+    }
+
+    private void LoadInstanceInControls(RendezVous? rendezVous) {
+        // TODO: @TEACHER Complete Form design and logic
+        /*
+        if (rendezVous is not null) {
+            this.idNumericUpDown.Value = rendezVous.Id;
+            this.nomTextBox.Text = rendezVous.Nom;
+            this.prenomTextBox.Text = rendezVous.Prenom;
+            this.licenseNumericUpDown.Value = rendezVous.NumLicenseMedicale;
+            this.dateCreatedDTPicker.Value = rendezVous.DateCreated;
+            this.dateModifiedDTPicker.Value = rendezVous.DateModified ?? DateTime.Now;
+            this.dateDeletedDTPicker.Value = rendezVous.DateDeleted ?? DateTime.Now;
+        } else {
+            this.idNumericUpDown.Value = 0;
+            this.nomTextBox.Text = null;
+            this.prenomTextBox.Text = null;
+            this.licenseNumericUpDown.Value = 0;
+            this.dateCreatedDTPicker.Value = DateTime.Now;
+            this.dateModifiedDTPicker.Value = DateTime.Now;
+            this.dateDeletedDTPicker.Value = DateTime.Now;
+        }
+        */
+        this.currentInstance = rendezVous;
+    }
+
+    private void EnableEditableControls() {
+        // TODO: @TEACHER Complete Form design and logic
+        /*
+        this.nomTextBox.Enabled = true;
+        this.prenomTextBox.Enabled = true;
+        this.licenseNumericUpDown.Enabled = true;
+        */
+    }
+
+    private void DisableEditableControls() {
+        // TODO: @TEACHER Complete Form design and logic
+        /*
+        this.nomTextBox.Enabled = false;
+        this.prenomTextBox.Enabled = false;
+        this.licenseNumericUpDown.Enabled = false;
+        */
+    }
+
+
+    private void ProcessAction() {
+        this.ValidateControlsForAction();
+        // TODO: @TEACHER Complete Form design and logic
+        /*
+        switch (this.currentAction) {
+            case ViewActionsEnum.Creation:
+                Medecin newMedecin = new Medecin(
+                    this.nomTextBox.Text.Trim(),
+                    this.prenomTextBox.Text.Trim(),
+                    (int) this.licenseNumericUpDown.Value
+                );
+                this.currentInstance = this.application.MedecinService.Create(newMedecin);
+                break;
+            case ViewActionsEnum.Visualization:
+                // do nothing on visualization
+                break;
+            case ViewActionsEnum.Edition:
+                if (this.currentInstance == null) {
+                    throw new Exception("No current instance of [Medecin] loaded.");
+                }
+                this.currentInstance.Nom = this.nomTextBox.Text.Trim();
+                this.currentInstance.Prenom = this.prenomTextBox.Text.Trim();
+                this.currentInstance.NumLicenseMedicale = (int) this.licenseNumericUpDown.Value;
+                this.currentInstance = this.application.MedecinService.Update(this.currentInstance);
+                break;
+            case ViewActionsEnum.Deletion:
+                if (this.currentInstance == null) {
+                    throw new Exception("No current instance of [Medecin] loaded.");
+                }
+                this.application.MedecinService.Delete(this.currentInstance);
+                this.currentInstance = null;
+                break;
+            default:
+                throw new NotImplementedException($"View action [{this.currentAction}] is not implemented.");
+        }
+        */
+    }
+
+    private void ValidateControlsForAction() {
+        string message = string.Empty;
+        // TODO: @TEACHER Complete Form design and logic
+        /*
+
+        // Checks on the ID value for edition and deletion actions only
+        // since an ID is required for those operations.
+        if (this.currentAction == ViewActionsEnum.Edition
+            || this.currentAction == ViewActionsEnum.Deletion) {
+
+            if (this.idNumericUpDown.Value == 0) {
+                message += Environment.NewLine + "\t- Le numéro d'ID ne peut être vide.";
+            }
+            if (this.idNumericUpDown.Value < 0) {
+                message += Environment.NewLine + "\t- Le numéro d'ID ne peut être négatif.";
+            }
+        }
+
+        // Checks on input values for edition and creation actions only
+        // since those values get stored in the database for those operations.
+        if (this.currentAction == ViewActionsEnum.Creation
+            || this.currentAction == ViewActionsEnum.Edition) {
+
+            if (string.IsNullOrEmpty(this.nomTextBox.Text.Trim())) {
+                message += Environment.NewLine + "\t- Le nom ne peut être vide.";
+            }
+            if (this.nomTextBox.Text.Trim().Length > Medecin.LASTNAME_MAX_LENGTH) {
+                message += Environment.NewLine + $"\t- Le nom ne peut dépasser {Medecin.LASTNAME_MAX_LENGTH} caractères.";
+            }
+
+            if (string.IsNullOrEmpty(this.prenomTextBox.Text.Trim())) {
+                message += Environment.NewLine + "\t- Le prénom ne peut être vide.";
+            }
+            if (this.prenomTextBox.Text.Trim().Length > Medecin.FIRSTNAME_MAX_LENGTH) {
+                message += Environment.NewLine + $"\t- Le prénom ne peut dépasser {Medecin.FIRSTNAME_MAX_LENGTH} caractères.";
+            }
+
+            if (this.licenseNumericUpDown.Value == 0) {
+                message += Environment.NewLine + "\t- Le numéro de license médicale ne peut être vide.";
+            }
+            if (this.licenseNumericUpDown.Value < 0) {
+                message += Environment.NewLine + "\t- Le numéro de license médicale ne peut être négatif.";
+            }
+        }
+        */
+
+        if (!string.IsNullOrEmpty(message)) {
+            throw new ValidationException(message);
+        }
     }
 }
