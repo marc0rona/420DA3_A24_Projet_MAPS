@@ -176,7 +176,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="zkfFHV4jXpPFQw0GAbJ--0" value="Client" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
-          <mxGeometry x="40" y="80" width="240" height="684" as="geometry">
+          <mxGeometry x="40" y="80" width="240" height="640" as="geometry">
             <mxRectangle x="230" y="140" width="160" height="26" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
@@ -2208,7 +2208,7 @@
         <mxCell id="IX0M0BOvFIVmJp4ZuIyW-90" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="IX0M0BOvFIVmJp4ZuIyW-84">
           <mxGeometry y="118" width="440" height="8" as="geometry" />
         </mxCell>
-        <mxCell id="IX0M0BOvFIVmJp4ZuIyW-91" value="+ GetNewTrackingNumber(ShippingProvidersEnum): string" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontStyle=4" vertex="1" parent="IX0M0BOvFIVmJp4ZuIyW-84">
+        <mxCell id="IX0M0BOvFIVmJp4ZuIyW-91" value="+ GetNewTrackingNumber(ShippingProvidersEnum): string" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontStyle=0" vertex="1" parent="IX0M0BOvFIVmJp4ZuIyW-84">
           <mxGeometry y="126" width="440" height="26" as="geometry" />
         </mxCell>
         <mxCell id="IX0M0BOvFIVmJp4ZuIyW-101" value="PurchaseOrderService" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">

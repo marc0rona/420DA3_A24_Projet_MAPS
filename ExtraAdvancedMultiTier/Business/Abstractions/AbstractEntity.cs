@@ -92,6 +92,14 @@ public abstract class AbstractEntity<Tkey> : IEntity<Tkey> where Tkey : IEquatab
     }
 
     /// <summary>
+    /// Setter pour <see cref="DateModified"/>, la date de dernière modification dans la base de données de l'instance.
+    /// </summary>
+    /// <param name="dateModified">La date de dernière modification à setter.</param>
+    public void SetDateModified(DateTime dateModified) {
+        this.DateModified = dateModified;
+    }
+
+    /// <summary>
     /// Getter pour <see cref="DateDeleted"/>, la date de suppression dans la base de données de l'instance.
     /// </summary>
     /// <returns>La date de suppression de l'instance ou <see langword="null"/>.</returns>

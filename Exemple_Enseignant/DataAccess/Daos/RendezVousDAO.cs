@@ -49,9 +49,9 @@ internal class RendezVousDAO {
             .Include(rdv => rdv.Medecin)
             .Where(
                 rdv =>
-                    rdv.Patient.Id == patient.Id
-                    && includePastRdvs ? true : DateTime.Compare(rdv.DateRendezVous, DateTime.Now) >= 0
-                    && rdv.DateDeleted == null
+                    (rdv.Patient.Id == patient.Id
+                    && includePastRdvs) || (DateTime.Compare(rdv.DateRendezVous, DateTime.Now) >= 0
+                    && rdv.DateDeleted == null)
                 )
             .ToList();
     }
@@ -62,9 +62,9 @@ internal class RendezVousDAO {
             .Include(rdv => rdv.Medecin)
             .Where(
                 rdv =>
-                    rdv.Medecin.Id == medecin.Id
-                    && includePastRdvs ? true : DateTime.Compare(rdv.DateRendezVous, DateTime.Now) >= 0
-                    && rdv.DateDeleted == null
+                    (rdv.Medecin.Id == medecin.Id
+                    && includePastRdvs) || (DateTime.Compare(rdv.DateRendezVous, DateTime.Now) >= 0
+                    && rdv.DateDeleted == null)
                 )
             .ToList();
     }

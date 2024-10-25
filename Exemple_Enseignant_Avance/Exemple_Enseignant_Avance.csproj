@@ -10,12 +10,18 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Buniness\Domain\" />
-    <Folder Include="Buniness\Facades\" />
-    <Folder Include="Buniness\Services\" />
-    <Folder Include="DataAccess\Daos\" />
-    <Folder Include="DataAccess\Contexts\" />
+    <Folder Include="Business\Facades\" />
     <Folder Include="Presentation\Views\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MySql.Data" Version="9.1.0" />
+    <PackageReference Include="MySql.EntityFrameworkCore" Version="8.0.8" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ExtraAdvancedMultiTier\ExtraAdvancedMultiTier.csproj" />
+    <ProjectReference Include="..\Project_Utilities\Project_Utilities.csproj" />
   </ItemGroup>
 
 </Project>

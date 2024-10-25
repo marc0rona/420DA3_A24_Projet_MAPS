@@ -1,15 +1,18 @@
-﻿using Project_Utilities.Enums;
+﻿using ExtraAdvancedMultiTier.Business.Abstractions;
+using Project_Utilities.Enums;
 using Project_Utilities.Services.APIs;
 
 namespace Project_Utilities.Services;
-public class TrackingNumberFactory {
+public class TrackingNumberFactory : AbstractService {
 
     private static readonly FakeCanadaPostAPI fakeCanadaPostAPI = new FakeCanadaPostAPI();
     private static readonly FakeFedExAPI fakeFedExAPI = new FakeFedExAPI();
     private static readonly FakePurolatorAPI fakePurolatorAPI = new FakePurolatorAPI();
 
 
-    public static string GetNewTrackingNumber(ShippingProvidersEnum shipmentProvider) {
+    public TrackingNumberFactory(IServiceContainer? parent = null) : base(parent) { }
+
+    public string GetNewTrackingNumber(ShippingProvidersEnum shipmentProvider) {
         string trackingNumber;
         switch (shipmentProvider) {
             case ShippingProvidersEnum.Purolator:

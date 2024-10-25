@@ -1,4 +1,5 @@
-﻿using System.Security.Cryptography;
+﻿using ExtraAdvancedMultiTier.Business.Abstractions;
+using System.Security.Cryptography;
 
 namespace Project_Utilities.Services;
 
@@ -8,7 +9,7 @@ namespace Project_Utilities.Services;
 /// </summary>
 /// <remarks>
 /// </remarks>
-public class PasswordService {
+public class PasswordService : AbstractService {
     // Paramètres de hashage.
     private const int saltSize = 16; // sel cryptographique de 128 bits
     private const int keySize = 32; // clé cryptographique de 256 bits
@@ -16,6 +17,8 @@ public class PasswordService {
     private const char hashSegmentDelimiter = ':'; // séparateur des sections générées - NE PAS CHANGER (sinon hashs existants invalidables)
     private static readonly HashAlgorithmName cryptographicAlgorithm = HashAlgorithmName.SHA256; // algorithme de base
 
+
+    public PasswordService(IServiceContainer? parent = null) : base(parent) { }
 
 
     /// <summary>
@@ -27,7 +30,7 @@ public class PasswordService {
     /// </remarks>
     /// <param name="motDePasseNonEncrypte">Le mot de passe en clair, non-encrypté.</param>
     /// <returns></returns>
-    public static string HashPassword(string motDePasseNonEncrypte) {
+    public string HashPassword(string motDePasseNonEncrypte) {
         byte[] salt = RandomNumberGenerator.GetBytes(saltSize);
         byte[] key = Rfc2898DeriveBytes.Pbkdf2(
             motDePasseNonEncrypte,
@@ -58,7 +61,7 @@ public class PasswordService {
     /// <param name="motDePasseNonEncrypte"></param>
     /// <param name="hashDuMotDePasseDansLaBdD"></param>
     /// <returns>True si le mot de passe est valide.</returns>
-    public static bool ValidatePassword(string motDePasseNonEncrypte, string hashDuMotDePasseDansLaBdD) {
+    public bool ValidatePassword(string motDePasseNonEncrypte, string hashDuMotDePasseDansLaBdD) {
         string[] segments = hashDuMotDePasseDansLaBdD.Split(hashSegmentDelimiter);
         byte[] key = Convert.FromHexString(segments[0]);
         byte[] salt = Convert.FromHexString(segments[1]);

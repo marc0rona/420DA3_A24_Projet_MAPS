@@ -1,12 +1,13 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using ExtraAdvancedMultiTier.Business.Abstractions;
+using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
 namespace ExtraAdvancedMultiTier.DataAccess.Abstractions;
-public abstract class AbstractDbContext : DbContext {
+public abstract class AbstractDataContext : DbContext, IDataContext {
 
-    protected AbstractDbContext() : base() { }
+    protected AbstractDataContext() : base() { }
 
-    public AbstractDbContext(DbContextOptions options) : base(options) { }
+    public AbstractDataContext(DbContextOptions options) : base(options) { }
 
     /// <summary>
     /// Méthode générique permettant d'obtenir le <see cref="DbSet{TEntity}"/> d'une entité
@@ -18,7 +19,7 @@ public abstract class AbstractDbContext : DbContext {
     /// Cette méthode au code assez compliqué est nécessaire pour généraliser dans 
     /// <see cref="AbstractDao{EntityType, EntityIdType}"/> les méthodes d'opérations
     /// de base des DAOs. Elle utilise la fonctionnalité de réflection pour analyser la classe 
-    /// de contexte concrète qui hérite de <see cref="AbstractDbContext"/>, obtenir la liste 
+    /// de contexte concrète qui hérite de <see cref="AbstractDataContext"/>, obtenir la liste 
     /// de ses <see cref="PropertyInfo">propriétés</see>, comparer le type des propriétés avec 
     /// celui passé à <typeparamref name="TEntity"/> et retourner la valeur de la propriété 
     /// dont les types correspondent.

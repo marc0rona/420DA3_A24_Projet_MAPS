@@ -1,4 +1,6 @@
-﻿namespace ExtraAdvancedMultiTier.Business.Abstractions;
+﻿using System.CodeDom;
+
+namespace ExtraAdvancedMultiTier.Business.Abstractions;
 
 /// <summary>
 /// Interface pour les entités du domaine.
@@ -34,6 +36,12 @@ public interface IEntity<Tkey> where Tkey : IEquatable<Tkey> {
     /// </summary>
     /// <returns>La date de dernière modification de l'instance ou <see langword="null"/>.</returns>
     DateTime? GetDateModified();
+
+    /// <summary>
+    /// Setter pour <see cref="DateModified"/>, la date de dernière modification dans la base de données de l'instance.
+    /// </summary>
+    /// <param name="dateModified">La date de dernière modification à setter.</param>
+    public void SetDateModified(DateTime dateModified);
 
     /// <summary>
     /// Getter pour la date de suppression de l'instance dans la base de données.
