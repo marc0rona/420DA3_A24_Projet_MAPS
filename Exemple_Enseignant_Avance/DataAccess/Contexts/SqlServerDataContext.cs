@@ -1,5 +1,4 @@
-﻿using Exemple_Enseignant_Avance.DataAccess.Abstractions;
-using ExtraAdvancedMultiTier.Business.Abstractions;
+﻿using ExtraAdvancedMultiTier.Business.Abstractions;
 using ExtraAdvancedMultiTier.DataAccess.Abstractions;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -8,10 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Exemple_Enseignant_Avance.DataAccess.SqlServer;
-internal class SqlServerDataContext : AbstractExempleAvanceContext {
+namespace Exemple_Enseignant_Avance.DataAccess.Contexts;
+internal class SqlServerDataContext : AbstractAdvancedExampleContext
+{
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
         base.OnConfiguring(optionsBuilder);
 
         _ = optionsBuilder

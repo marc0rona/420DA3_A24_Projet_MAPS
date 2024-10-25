@@ -1,13 +1,13 @@
 ﻿using Exemple_Enseignant_Avance.Business.Abstractions;
 using Exemple_Enseignant_Avance.Business.Domain;
-using Exemple_Enseignant_Avance.DataAccess.Abstractions;
+using Exemple_Enseignant_Avance.DataAccess.Contexts;
 using ExtraAdvancedMultiTier.DataAccess.Abstractions;
 using Microsoft.EntityFrameworkCore;
 
 namespace Exemple_Enseignant_Avance.DataAccess.Daos;
 internal class RendezVousDAO : AbstractDao<RendezVous, int>, IRendezVousDAO {
 
-    public RendezVousDAO(AbstractExempleAvanceContext context) : base(context) { }
+    public RendezVousDAO(AbstractAdvancedExampleContext context) : base(context) { }
 
 
     public List<RendezVous> Search(string filter) {

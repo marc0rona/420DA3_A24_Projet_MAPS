@@ -1,7 +1,6 @@
 ﻿using Exemple_Enseignant_Avance.Business.Abstractions;
 using Exemple_Enseignant_Avance.Business.Services;
-using Exemple_Enseignant_Avance.DataAccess.MySql;
-using Exemple_Enseignant_Avance.DataAccess.SqlServer;
+using Exemple_Enseignant_Avance.DataAccess.DataProviders;
 using ExtraAdvancedMultiTier.Business.Domain;
 using ExtraAdvancedMultiTier.Business.Enums;
 using System;
