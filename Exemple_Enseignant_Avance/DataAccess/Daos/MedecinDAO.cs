@@ -1,12 +1,12 @@
 ﻿using Exemple_Enseignant_Avance.Business.Abstractions;
 using Exemple_Enseignant_Avance.Business.Domain;
-using Exemple_Enseignant_Avance.DataAccess.Abstractions;
+using Exemple_Enseignant_Avance.DataAccess.Contexts;
 using ExtraAdvancedMultiTier.DataAccess.Abstractions;
 
 namespace Exemple_Enseignant_Avance.DataAccess.Daos;
 internal class MedecinDAO : AbstractDao<Medecin, int>, IMedecinDAO {
 
-    public MedecinDAO(AbstractExempleAvanceContext context) : base(context) { }
+    public MedecinDAO(AbstractAdvancedExampleContext context) : base(context) { }
 
 
     public List<Medecin> Search(string filter) {

@@ -8,15 +8,17 @@ using System.Text;
 using System.Threading.Tasks;
 using Exemple_Enseignant_Avance.Business.Domain;
 
-namespace Exemple_Enseignant_Avance.DataAccess.Abstractions;
-public abstract class AbstractExempleAvanceContext : AbstractDataContext {
+namespace Exemple_Enseignant_Avance.DataAccess.Contexts;
+public abstract class AbstractAdvancedExampleContext : AbstractDataContext
+{
 
     public DbSet<Medecin> Medecins { get; set; }
     public DbSet<Patient> Patients { get; set; }
     public DbSet<RendezVous> RendezVous { get; set; }
 
 
-    protected override void OnModelCreating(ModelBuilder modelBuilder) {
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
         base.OnModelCreating(modelBuilder);
 
         // CONFIGURATIONS DU MODÈLE DE DONNÉES ENTITY FRAMEWORK
@@ -284,26 +286,31 @@ public abstract class AbstractExempleAvanceContext : AbstractDataContext {
 
         #region Données initiales / de test
 
-        Patient patient1 = new Patient("Doe", "John", "DOEJ12345678") {
+        Patient patient1 = new Patient("Doe", "John", "DOEJ12345678")
+        {
             Id = 1
         };
-        Patient patient2 = new Patient("Doe", "Jane", "DOEJ87654321") {
+        Patient patient2 = new Patient("Doe", "Jane", "DOEJ87654321")
+        {
             Id = 2
         };
         _ = modelBuilder.Entity<Patient>()
             .HasData(patient1, patient2);
 
 
-        Medecin medecin1 = new Medecin("Jones", "Indianna", 1234567) {
+        Medecin medecin1 = new Medecin("Jones", "Indianna", 1234567)
+        {
             Id = 1
         };
         _ = modelBuilder.Entity<Medecin>()
             .HasData(medecin1);
 
-        RendezVous rdv1 = new RendezVous(DateTime.Now, 1, 1) {
+        RendezVous rdv1 = new RendezVous(DateTime.Now, 1, 1)
+        {
             Id = 1
         };
-        RendezVous rdv2 = new RendezVous(DateTime.Now, 2, 1) {
+        RendezVous rdv2 = new RendezVous(DateTime.Now, 2, 1)
+        {
             Id = 2
         };
         _ = modelBuilder.Entity<RendezVous>()

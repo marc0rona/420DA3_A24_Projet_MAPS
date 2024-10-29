@@ -9,9 +9,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Exemple_Enseignant_Avance.Business;
-internal class ExempleAdvancedApplication : AbstractApplication {
+internal class AdvancedExampleApplication : AbstractApplication {
 
-    public ExempleAdvancedApplication() {
+    public AdvancedExampleApplication() {
         _ = new DataProviderService(this);
     }
 
