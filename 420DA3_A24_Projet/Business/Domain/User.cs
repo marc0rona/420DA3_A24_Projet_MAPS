@@ -55,7 +55,7 @@ public class User {
     public virtual List<Role> Roles { get; set; } = new List<Role>();
     //public virtual List<ShippingOrder> CreatedShippingOrders { get; set; } = new List<ShippingOrder>();
     //public virtual List<ShippingOrder> FulfilledShippingOrders { get; set; } = new List<ShippingOrder>();
-    //public virtual Warehouse? EmployeeWarehouse { get; set; };
+    public virtual Warehouse? EmployeeWarehouse { get; set; }
 
 
     public User(string username, string passwordHash, int? employeeWarehouseId = null) {
