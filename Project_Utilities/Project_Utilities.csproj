@@ -7,8 +7,4 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\ExtraAdvancedMultiTier\ExtraAdvancedMultiTier.csproj" />
-  </ItemGroup>
-
 </Project>
