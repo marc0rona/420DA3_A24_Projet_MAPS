@@ -1,15 +1,14 @@
 ﻿using ExtraAdvancedMultiTier.Business.Abstractions;
 using ExtraAdvancedMultiTier.Business.Abstractions.Daos;
-using System.Runtime.Intrinsics.Arm;
 
 namespace ExtraAdvancedMultiTier.DataAccess.Abstractions;
 public abstract class AbstractDao<TEntity, TEntityKey> : IDao<TEntity, TEntityKey>
     where TEntity : class, IEntity<TEntityKey>
     where TEntityKey : struct, IEquatable<TEntityKey> {
 
-    protected readonly AbstractDataContext Context;
+    protected readonly IDataContext Context;
 
-    protected AbstractDao(AbstractDataContext context) {
+    protected AbstractDao(IDataContext context) {
         this.Context = context;
     }
 
