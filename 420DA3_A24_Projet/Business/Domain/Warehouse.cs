@@ -52,7 +52,7 @@ public class Warehouse
     //public virtual List<PurchaseOrder> RestockOrders { get; set; } = new List<PurchaseOrder>();
     public virtual List<User> WarehouseEmployees { get; set; } = new List<User>();
 
-    //Constructeurs
+    //Constructeurs 
     public Warehouse(int id,
         string warehouseName,
         int addressId,
