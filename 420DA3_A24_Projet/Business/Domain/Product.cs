@@ -13,13 +13,6 @@ public class Product
         public const Int32 MAX_LENGHT_DESC = 600;
         public const Int32 MAX_LENGHT_CODEUPC = 6;
 
-        //PRIVATE Fields - Champs
-        private string nomVerif = "";
-        private string prenomVerif = "";
-        private string codePermVerif = "";
-        //Initialisation de la Liste COURS  
-        private List<Cours> coursL = new List<Cours>();
-
         //Fields - Champs 
         public int Id { get; set; }
     }
