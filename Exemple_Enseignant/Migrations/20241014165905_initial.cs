@@ -2,7 +2,6 @@
 
 #nullable disable
 
-#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
 
 namespace _420DA3_A24_Exemple_Enseignant.Migrations {
     /// <inheritdoc />
