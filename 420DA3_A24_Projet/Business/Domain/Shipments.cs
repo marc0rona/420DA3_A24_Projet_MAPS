@@ -15,8 +15,8 @@ public class Shipments
     // backing fields
     private int id;
     private string deliveryService = null!;
-    private string trackingCode = null!;
-    private string destinationAddress = null!; // Ajouter Address en tant que datatype au lieu de string... apres la création de adresse
+    private string trackingCode = null!; // tracking code généré par la base de données???
+    private Address? destinationAddress = null!;
 
 
     public int Id
@@ -49,19 +49,14 @@ public class Shipments
         set { this.trackingCode = value; }
     }
 
-    public string? DestinationAddress { get; set; } // Address datatype
+    public Address? DestinationAddress { get; set; } // Address datatype
     public DateTime DateCreated { get; set; }
     public DateTime? DateModified { get; set; }
     public DateTime? DateDeleted { get; set; }
     public byte[] RowVersion { get; set; } = null!;
 
 
-    // Propriétés de navigation
-    // to-do...
-
-
-
-    public Shipments (string deliveryService, string trackingCode, string destinationAddress) // Address datatype
+    public Shipments (string deliveryService, string trackingCode, Address destinationAddress) // Address datatype
     {
         this.DeliveryService = deliveryService;
         this.TrackingCode = trackingCode;
@@ -71,7 +66,7 @@ public class Shipments
     protected Shipments (int id,
         string deliveryService, 
         string trackingCode, 
-        string? destinationAddress, 
+        Address? destinationAddress, 
         DateTime dateCreated, 
         DateTime? dateModified, 
         DateTime? dateDeleted,
