@@ -66,7 +66,7 @@ public class Shipments
         this.DeliveryService = deliveryService;
         this.TrackingCode = trackingCode;
         this.DestinationAddress = destinationAddress;
-    }
+    } 
 
     protected Shipments (int id,
         string deliveryService, 
@@ -91,7 +91,7 @@ public class Shipments
 
     public static bool ValidateId(int id)
     {
-        return id >= 0;
+        return id >= 0; 
     }
 
 
