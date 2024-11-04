@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace _420DA3_A24_Projet.Business.Domain;
+﻿namespace _420DA3_A24_Projet.Business.Domain;
 
 /// <summary>
 /// Classe représentant un rôle-utilisateur de l'application.
@@ -57,7 +51,7 @@ public class Role {
     public string Description {
         get { return this.description; }
         set {
-            if (!ValidateName(value)) {
+            if (!ValidateDescription(value)) {
                 throw new ArgumentOutOfRangeException("Description", $"Description length must be lower than or equal to {DESCRIPTION_MAX_LENGTH} characters.");
             }
             this.description = value;
