@@ -85,7 +85,26 @@ internal class AppDbContext : DbContext {
             .IsRowVersion();
 
 
-        // TODO @PROF Faire config User-Warehouse 
+        _ = modelBuilder.Entity<User>()
+            .HasOne(user => user.EmployeeWarehouse)
+            .WithMany(warehouse => warehouse.WarehouseEmployees)
+            .HasForeignKey(user => user.EmployeeWarehouseId)
+            .HasPrincipalKey(warehouse => warehouse.Id)
+            .OnDelete(DeleteBehavior.SetNull);
+
+        _ = modelBuilder.Entity<User>()
+            .HasMany(user => user.CreatedShippingOrders)
+            .WithOne(order => order.CreatorEmployee)
+            .HasForeignKey(order => order.CreatorEmployeeId)
+            .HasPrincipalKey(user => user.Id)
+            .IsRequired(true);
+
+        _ = modelBuilder.Entity<User>()
+            .HasMany(user => user.FulfilledShippingOrders)
+            .WithOne(order => order.FulfillerEmployee)
+            .HasForeignKey(order => order.FulfillerEmployeeId)
+            .HasPrincipalKey(user => user.Id)
+            .IsRequired(false);
 
         #endregion
 
