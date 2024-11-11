@@ -6,14 +6,25 @@ using System.Threading.Tasks;
 
 public class Product
 {
-	public Product()
-	{
-		//Strings LIMIT    
-        public const Int32 MAX_LENGHT_NAME = 64;
-        public const Int32 MAX_LENGHT_DESC = 600;
-        public const Int32 MAX_LENGHT_CODEUPC = 6;
+    ///Limites pour les variables strings
+    public const int UP_CODE_MAXLENGHT = 24;
+    public const int PROD_NAME_MAXLENGHT = 255;
+    public const int PROD_DESCRIPTION_MAXLENGHT = 1024;
+    public const int IMG_FILE_NAME_MAXLENGHT = 128;
+    public const int SUPPLIER_CODE_MAXLENGHT = 24; //Fournisseur associé au Produit
 
-        //Fields - Champs 
-        public int Id { get; set; }
+    ///Champs (Field) : privés qui servent pour vérifier/valider les Limites
+    private int id_Verif; //si id devient 'negatif'
+    private string ProdName_Verif = null!; //Non-nullable, nécessaire
+    private string ProdDesc_Verif;
+    private string IMG_FileName_Verif;
+    private string SuppCode_Verif = null!; //Non-nullable, nécessaire
+
+    #region 1 - Propriétés de données (FIELD - CHAMPS)
+    public int Id {
+        get; //{ return this.id_Verif; } //prend variable privé
+        set;
     }
+
+    #endregion 1 - Propriétés de données
 }
