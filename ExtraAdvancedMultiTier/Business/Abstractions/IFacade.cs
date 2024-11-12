@@ -7,6 +7,8 @@ public interface IFacade : IServiceContainer {
 
     public T? GetParent<T>() where T : class, IFacadeContainer;
 
+    public IView GetMainView();
+
     public T? GetMainView<T>() where T : class, IView;
 
 }

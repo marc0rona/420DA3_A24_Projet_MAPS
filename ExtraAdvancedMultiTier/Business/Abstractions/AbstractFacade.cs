@@ -27,7 +27,11 @@ public class AbstractFacade : AbstractServiceContainer, IFacade {
         throw new NotImplementedException();
     }
 
+    public IView GetMainView() {
+        return this.MainView;
+    }
+
     public T? GetMainView<T>() where T : class, IView {
-        return this.MainView as T;
+        return this.GetMainView() as T;
     }
 }
