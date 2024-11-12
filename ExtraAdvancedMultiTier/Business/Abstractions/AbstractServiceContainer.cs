@@ -63,7 +63,9 @@ public abstract class AbstractServiceContainer : AbstractDefaultExceptionHandler
     public virtual void Start() {
         this.TriggerStartingEvent();
         foreach (IService service in this.Services.Values) {
-            service.Start();
+            if (service.IsStopped()) {
+                service.Start();
+            }
         }
         this.Is_Started = true;
         this.TriggerStartedEvent();
@@ -72,7 +74,9 @@ public abstract class AbstractServiceContainer : AbstractDefaultExceptionHandler
     public virtual void Stop() {
         this.TriggerStoppingEvent();
         foreach (IService service in this.Services.Values) {
-            service.Stop();
+            if (service.IsStarted()) {
+                service.Stop();
+            }
         }
         this.Is_Started = false;
         this.TriggerStoppedEvent();

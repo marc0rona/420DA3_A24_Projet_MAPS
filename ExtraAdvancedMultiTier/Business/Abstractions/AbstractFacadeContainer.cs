@@ -33,4 +33,36 @@ public abstract class AbstractFacadeContainer : AbstractServiceContainer, IFacad
         this.Facades.Add(facade.GetType(), facade);
         this.FacadeRegistered?.Invoke(this, facade);
     }
+
+    public override void Start() {
+        this.TriggerStartingEvent();
+        foreach (IService service in this.Services.Values) {
+            if (service.IsStopped()) {
+                service.Start();
+            }
+        }
+        foreach (IFacade facade in this.Facades.Values) {
+            if (facade.IsStopped()) {
+                facade.Start();
+            }
+        }
+        this.Is_Started = true;
+        this.TriggerStartedEvent();
+    }
+
+    public override void Stop() {
+        this.TriggerStoppingEvent();
+        foreach (IFacade facade in this.Facades.Values) {
+            if (facade.IsStarted()) {
+                facade.Stop();
+            }
+        }
+        foreach (IService service in this.Services.Values) {
+            if (service.IsStarted()) {
+                service.Stop();
+            }
+        }
+        this.Is_Started = false;
+        this.TriggerStoppedEvent();
+    }
 }

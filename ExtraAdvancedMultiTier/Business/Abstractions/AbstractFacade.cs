@@ -1,7 +1,5 @@
-﻿using ExtraAdvancedMultiTier.Presentation;
-
-namespace ExtraAdvancedMultiTier.Business.Abstractions;
-public class AbstractFacade : AbstractDefaultExceptionHandler, IFacade {
+﻿namespace ExtraAdvancedMultiTier.Business.Abstractions;
+public class AbstractFacade : AbstractServiceContainer, IFacade {
 
     public event IStartable.StartableEventHandler? Starting;
     public event IStartable.StartableEventHandler? Started;
@@ -9,6 +7,7 @@ public class AbstractFacade : AbstractDefaultExceptionHandler, IFacade {
     public event IStoppable.StoppableEventHandler? Stopped;
 
     protected readonly IFacadeContainer Parent;
+    protected readonly IView MainView;
 
 
     public AbstractFacade(IFacadeContainer parent) : base() {
@@ -17,27 +16,7 @@ public class AbstractFacade : AbstractDefaultExceptionHandler, IFacade {
     }
 
     public IFacadeContainer? GetParent() {
-        throw new NotImplementedException();
-    }
-
-    public bool IsStarted() {
-        throw new NotImplementedException();
-    }
-
-    public bool IsStopped() {
-        throw new NotImplementedException();
-    }
-
-    public void RegisterService(IService service) {
-        throw new NotImplementedException();
-    }
-
-    public void Start() {
-        throw new NotImplementedException();
-    }
-
-    public void Stop() {
-        throw new NotImplementedException();
+        return this.Parent;
     }
 
     T? IFacade.GetParent<T>() where T : class {
@@ -46,5 +25,9 @@ public class AbstractFacade : AbstractDefaultExceptionHandler, IFacade {
 
     T IServiceContainer.GetService<T>() {
         throw new NotImplementedException();
+    }
+
+    public T? GetMainView<T>() where T : class, IView {
+        return this.MainView as T;
     }
 }

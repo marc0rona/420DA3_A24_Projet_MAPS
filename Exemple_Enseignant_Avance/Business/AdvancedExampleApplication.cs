@@ -20,7 +20,6 @@ internal class AdvancedExampleApplication : AbstractApplication {
         this.GetLoggingService().RegisterLogger(new DebugConsoleLogger());
         this.GetLoggingService().RegisterLogger(new ConsoleWindowLogger());
         _ = new DataProviderService(this, this.Configurations);
-        _ = new PatientService(this);
         this.mainMenu = new MainMenu(this);
     }
 
