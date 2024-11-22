@@ -9,13 +9,13 @@ namespace _420DA3_A24_Projet.DataAccess.DAOs;
 /// </summary>
 internal class RoleDAO {
 
-    private readonly WsysDbContext context;
+    private readonly AppDbContext context;
 
     /// <summary>
     /// TODO @PROF : documenter
     /// </summary>
     /// <param name="context"></param>
-    public RoleDAO(WsysDbContext context) {
+    public RoleDAO(AppDbContext context) {
         this.context = context;
     }
 

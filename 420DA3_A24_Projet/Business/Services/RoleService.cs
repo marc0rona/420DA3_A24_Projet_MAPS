@@ -1,4 +1,5 @@
 ﻿using _420DA3_A24_Projet.Business.Domain;
+using _420DA3_A24_Projet.DataAccess.Contexts;
 using _420DA3_A24_Projet.DataAccess.DAOs;
 using _420DA3_A24_Projet.Presentation.Views;
 
@@ -18,7 +19,7 @@ internal class RoleService {
     /// </summary>
     /// <param name="parentApp"></param>
     /// <param name="context"></param>
-    public RoleService(WsysApplication parentApp, WsysDbContext context) {
+    public RoleService(WsysApplication parentApp, AppDbContext context) {
         this.parentApp = parentApp;
         this.dao = new RoleDAO(context);
         this.view = new RoleView(parentApp);

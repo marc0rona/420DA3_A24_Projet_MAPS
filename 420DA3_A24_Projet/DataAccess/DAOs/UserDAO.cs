@@ -9,13 +9,13 @@ namespace _420DA3_A24_Projet.DataAccess.DAOs;
 /// </summary>
 internal class UserDAO {
 
-    private readonly WsysDbContext context;
+    private readonly AppDbContext context;
 
     /// <summary>
     /// TODO @PROF : documenter
     /// </summary>
     /// <param name="context"></param>
-    public UserDAO(WsysDbContext context) {
+    public UserDAO(AppDbContext context) {
         this.context = context;
     }
 
