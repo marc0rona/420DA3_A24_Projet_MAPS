@@ -6,4 +6,8 @@ using System.Threading.Tasks;
 
 namespace _420DA3_A24_Projet.DataAccess.DAOs;
 internal class AddressDAO {
+
+    private readonly AppContext context;
+
+    public AddressDAO
 }
