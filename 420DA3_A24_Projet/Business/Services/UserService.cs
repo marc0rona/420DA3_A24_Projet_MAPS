@@ -2,6 +2,7 @@
 using _420DA3_A24_Projet.DataAccess.Contexts;
 using _420DA3_A24_Projet.DataAccess.DAOs;
 using _420DA3_A24_Projet.Presentation.Views;
+using System.Runtime.Serialization;
 
 namespace _420DA3_A24_Projet.Business.Services;
 
@@ -27,6 +28,50 @@ internal class UserService {
 
 
     #region METHODS
+
+    /// <summary>
+    /// TODO @PROF : documenter
+    /// </summary>
+    /// <returns></returns>
+    public User? OpenUserManagementWindowForCreation() {
+        User newEmptyUser = (User) FormatterServices.GetUninitializedObject(typeof(User));
+        DialogResult result = this.userWindow.OpenForCreation(newEmptyUser);
+        return result == DialogResult.OK
+            ? this.userWindow.CurrentEntityInstance
+            : null;
+    }
+
+    /// <summary>
+    /// TODO @PROF : documenter
+    /// </summary>
+    /// <param name="userToEdit"></param>
+    /// <returns></returns>
+    public User OpenUserManagementWindowForEdition(User userToEdit) {
+        _ = this.userWindow.OpenForModification(userToEdit);
+        return userToEdit;
+    }
+
+    /// <summary>
+    /// TODO @PROF : documenter
+    /// </summary>
+    /// <param name="userToView"></param>
+    /// <returns></returns>
+    public User OpenUserManagementWindowForVisualization(User userToView) {
+        _ = this.userWindow.OpenForDetailsView(userToView);
+        return userToView;
+    }
+
+    /// <summary>
+    /// TODO @PROF : documenter
+    /// </summary>
+    /// <param name="userToDelete"></param>
+    /// <returns></returns>
+    public User OpenUserManagementWindowForDeletion(User userToDelete) {
+        _ = this.userWindow.OpenForDeletion(userToDelete);
+        return userToDelete;
+    }
+
+
 
     /// <summary>
     /// TODO @PROF : documenter

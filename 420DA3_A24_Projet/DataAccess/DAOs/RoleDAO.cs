@@ -22,6 +22,17 @@ internal class RoleDAO {
     /// <summary>
     /// TODO @PROF : documenter
     /// </summary>
+    /// <param name="includeDeleted"></param>
+    /// <returns></returns>
+    public List<Role> GetAll(bool includeDeleted = false) {
+        return this.context.Roles
+            .Where(role => includeDeleted || role.DateDeleted == null)
+            .ToList();
+    }
+
+    /// <summary>
+    /// TODO @PROF : documenter
+    /// </summary>
     /// <param name="id"></param>
     /// <param name="includeDeleted"></param>
     /// <returns></returns>
@@ -38,7 +49,7 @@ internal class RoleDAO {
     /// <param name="roleName"></param>
     /// <param name="includeDeleted"></param>
     /// <returns></returns>
-    public Role? GetByUsername(string roleName, bool includeDeleted = false) {
+    public Role? GetByRoleName(string roleName, bool includeDeleted = false) {
         return this.context.Roles
             .Where(role => role.Name == roleName && (includeDeleted || role.DateDeleted == null))
             .Include(role => role.Users)
