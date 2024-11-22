@@ -9,14 +9,25 @@ namespace _420DA3_A24_Projet.DataAccess.DAOs;
 /// </summary>
 internal class RoleDAO {
 
-    private readonly AppDbContext context;
+    private readonly WsysDbContext context;
 
     /// <summary>
     /// TODO @PROF : documenter
     /// </summary>
     /// <param name="context"></param>
-    public RoleDAO(AppDbContext context) {
+    public RoleDAO(WsysDbContext context) {
         this.context = context;
+    }
+
+    /// <summary>
+    /// TODO @PROF : documenter
+    /// </summary>
+    /// <param name="includeDeleted"></param>
+    /// <returns></returns>
+    public List<Role> GetAll(bool includeDeleted = false) {
+        return this.context.Roles
+            .Where(role => includeDeleted || role.DateDeleted == null)
+            .ToList();
     }
 
     /// <summary>
@@ -38,7 +49,7 @@ internal class RoleDAO {
     /// <param name="roleName"></param>
     /// <param name="includeDeleted"></param>
     /// <returns></returns>
-    public Role? GetByUsername(string roleName, bool includeDeleted = false) {
+    public Role? GetByRoleName(string roleName, bool includeDeleted = false) {
         return this.context.Roles
             .Where(role => role.Name == roleName && (includeDeleted || role.DateDeleted == null))
             .Include(role => role.Users)

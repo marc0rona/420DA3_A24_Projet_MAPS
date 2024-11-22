@@ -85,7 +85,7 @@ public class User {
     /// <summary>
     /// L'entrepôt de travail de l'employé d'entrepôt ou <see langword="null"/> pour les autres utilisateurs.
     /// </summary>
-    public virtual Warehouse? EmployeeWarehouse { get; set; }
+    public virtual Entrepot? EmployeeWarehouse { get; set; }
 
     #endregion
 
@@ -176,7 +176,7 @@ public class User {
     /// <returns><see langword="true"/> si l'utilisateur possède le rôle administrateur, <see langword="false"/> sinon.</returns>
     public bool IsAdministrator() {
         return this.Roles.Any(role => {
-            return role.Id == Role.ADMIN_ROLE_ID;
+            return role.IsAdministratorRole();
         });
     }
 
@@ -186,7 +186,7 @@ public class User {
     /// <returns><see langword="true"/> si l'utilisateur possède le rôle d'employé de bureau, <see langword="false"/> sinon.</returns>
     public bool IsOfficeEmployee() {
         return this.Roles.Any(role => {
-            return role.Id == Role.OFFICE_EMPLOYEE_ROLE_ID;
+            return role.IsOfficeEmployeeRole();
         });
     }
 
@@ -196,7 +196,7 @@ public class User {
     /// <returns><see langword="true"/> si l'utilisateur possède le rôle d'employé d'entrepôt, <see langword="false"/> sinon.</returns>
     public bool IsWarehouseEmployee() {
         return this.Roles.Any(role => {
-            return role.Id == Role.WAREHOUSE_EMPLOYEE_ROLE_ID;
+            return role.IsWarehouseEmployeeRole();
         });
     }
 

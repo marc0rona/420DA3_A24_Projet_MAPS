@@ -134,6 +134,34 @@ public class Role {
         return description.Length <= DESCRIPTION_MAX_LENGTH;
     }
 
+
+
+    /// <summary>
+    /// Retourne un booléen indiquant si le role est le rôle administrateur.
+    /// </summary>
+    /// <returns><see langword="true"/> si le rôle est le rôle administrateur, <see langword="false"/> sinon.</returns>
+    public bool IsAdministratorRole() {
+        return this.Id == ADMIN_ROLE_ID;
+    }
+
+    /// <summary>
+    /// Retourne un booléen indiquant si le role est le rôle d'employé de bureau.
+    /// </summary>
+    /// <returns><see langword="true"/> si le role est le rôle d'employé de bureau, <see langword="false"/> sinon.</returns>
+    public bool IsOfficeEmployeeRole() {
+        return this.Id == Role.OFFICE_EMPLOYEE_ROLE_ID;
+    }
+
+    /// <summary>
+    /// Retourne un booléen indiquant si le role est le rôle d'employé d'entrepot.
+    /// </summary>
+    /// <returns><see langword="true"/> si le role est le rôle d'employé d'entrepot, <see langword="false"/> sinon.</returns>
+    public bool IsWarehouseEmployeeRole() {
+        return this.Id == Role.WAREHOUSE_EMPLOYEE_ROLE_ID;
+    }
+
+
+
     /// <summary>
     /// Override de la méthode <see cref="object.ToString"/> pour affichage des rôles
     /// dans des ListBox ou ComboBox.
