@@ -7,6 +7,9 @@ internal class AppDbContext : DbContext {
     public DbSet<User> Users { get; set; }
     public DbSet<Role> Roles { get; set; }
 
+    public DbSet<Address> Addresses { get; set; }
+    public DbSet<Shipment> Shipments { get; set; }
+
 
     protected override void OnModelCreating(ModelBuilder modelBuilder) {
         base.OnModelCreating(modelBuilder);
@@ -178,9 +181,207 @@ internal class AppDbContext : DbContext {
 
         // TODO @TEAM: configurez vos entités ici
 
+        #region ADDRESS
+        _ = modelBuilder.Entity<Address>()
+            .ToTable(nameof(this.Addresses))
+            .HasKey(address => address.Id);
 
+        _ = modelBuilder.Entity<Address>()
+            .Property(address => address.Id)
+            .HasColumnName(nameof(Address.Id))
+            .HasColumnOrder(0)
+            .HasColumnType("int")
+            .UseIdentityColumn(1, 1);
 
+        _ = modelBuilder.Entity<Address>()
+            .Property(address => address.Addressee)
+            .HasColumnName(nameof(Address.Addressee))
+            .HasColumnOrder(1)
+            .HasColumnType($"nvarchar({Address.ADDRESSEE_MAX_LENGTH})")
+            .HasMaxLength(Address.ADDRESSEE_MAX_LENGTH)
+            .IsRequired(true);
 
+        _ = modelBuilder.Entity<Address>()
+            .Property(address => address.CivicNumber)
+            .HasColumnName(nameof(Address.CivicNumber))
+            .HasColumnOrder(2)
+            .HasColumnType($"nvarchar({Address.CIVIC_NUMBER_MAX_LENGTH})")
+            .HasMaxLength(Address.CIVIC_NUMBER_MAX_LENGTH)
+            .IsRequired(true);
+
+        _ = modelBuilder.Entity<Address>()
+            .Property(address => address.Street)
+            .HasColumnName(nameof(Address.Street))
+            .HasColumnOrder(3)
+            .HasColumnType($"nvarchar({Address.STREET_MAX_LENGTH})")
+            .HasMaxLength(Address.STREET_MAX_LENGTH)
+            .IsRequired(true);
+
+        _ = modelBuilder.Entity<Address>()
+            .Property(address => address.City)
+            .HasColumnName(nameof(Address.City))
+            .HasColumnOrder(4)
+            .HasColumnType($"nvarchar({Address.CITY_MAX_LENGTH})")
+            .HasMaxLength(Address.CITY_MAX_LENGTH)
+            .IsRequired(true);
+
+        _ = modelBuilder.Entity<Address>()
+            .Property(address => address.State)
+            .HasColumnName(nameof(Address.State))
+            .HasColumnOrder(5)
+            .HasColumnType($"nvarchar({Address.STATE_MAX_LENGTH})")
+            .HasMaxLength(Address.STATE_MAX_LENGTH)
+            .IsRequired(true);
+
+        _ = modelBuilder.Entity<Address>()
+            .Property(address => address.Country)
+            .HasColumnName(nameof(Address.Country))
+            .HasColumnOrder(6)
+            .HasColumnType($"nvarchar({Address.COUNTRY_MAX_LENGTH})")
+            .HasMaxLength(Address.COUNTRY_MAX_LENGTH)
+            .IsRequired(true);
+
+        _ = modelBuilder.Entity<Address>()
+            .Property(address => address.PostalCode)
+            .HasColumnName(nameof(Address.PostalCode))
+            .HasColumnOrder(7)
+            .HasColumnType($"nvarchar({Address.POSTAL_CODE_MAX_LENGTH})")
+            .HasMaxLength(Address.POSTAL_CODE_MAX_LENGTH)
+            .IsRequired(true);
+
+        _ = modelBuilder.Entity<Address>()
+            .Property(address => address.AddressType)
+            .HasColumnName(nameof(Address.AddressType))
+            .HasColumnOrder(8)
+            .HasColumnType("int")
+            .IsRequired(true);
+
+        _ = modelBuilder.Entity<Address>()
+            .Property(address => address.DateCreated)
+            .HasColumnName(nameof(Address.DateCreated))
+            .HasColumnOrder(9)
+            .HasColumnType("datetime2")
+            .HasPrecision(7)
+            .HasDefaultValueSql("GETDATE()")
+            .IsRequired(true);
+
+        _ = modelBuilder.Entity<Address>()
+            .Property(address => address.DateModified)
+            .HasColumnName(nameof(Address.DateModified))
+            .HasColumnOrder(10)
+            .HasColumnType("datetime2")
+            .HasPrecision(7)
+            .IsRequired(false);
+
+        _ = modelBuilder.Entity<Address>()
+            .Property(address => address.DateDeleted)
+            .HasColumnName(nameof(Address.DateDeleted))
+            .HasColumnOrder(11)
+            .HasColumnType("datetime2")
+            .HasPrecision(7)
+            .IsRequired(false);
+
+        _ = modelBuilder.Entity<Address>()
+            .Property(address => address.RowVersion)
+            .HasColumnName(nameof(Address.RowVersion))
+            .HasColumnOrder(12)
+            .IsRowVersion();
+
+        // Configuration des relation pour Address
+        _ = modelBuilder.Entity<Address>()
+            .HasOne(a => a.OwnerWarehouse)
+            .WithOne()
+            .HasForeignKey<Address>("WarehouseId")
+            .OnDelete(DeleteBehavior.Restrict);
+
+        _ = modelBuilder.Entity<Address>()
+            .HasOne(a => a.OwnerShipOrder)
+            .WithOne()
+            .HasForeignKey<Address>("ShipmentOrderId")
+            .OnDelete(DeleteBehavior.Restrict);
+
+        #endregion
+
+        #region SHIPMENT
+        _ = modelBuilder.Entity<Shipment>()
+            .ToTable(nameof(this.Shipments))
+            .HasKey(shipment => shipment.Id);
+
+        _ = modelBuilder.Entity<Shipment>()
+            .Property(shipment => shipment.Id)
+            .HasColumnName(nameof(Shipment.Id))
+            .HasColumnOrder(0)
+            .HasColumnType("int")
+            .UseIdentityColumn(1, 1);
+
+        _ = modelBuilder.Entity<Shipment>()
+            .Property(shipment => shipment.Status)
+            .HasColumnName(nameof(Shipment.Status))
+            .HasColumnOrder(1)
+            .HasColumnType("int")
+            .IsRequired(true);
+
+        _ = modelBuilder.Entity<Shipment>()
+            .Property(shipment => shipment.ShippingService)
+            .HasColumnName(nameof(Shipment.ShippingService))
+            .HasColumnOrder(2)
+            .HasColumnType("int")
+            .IsRequired(true);
+
+        _ = modelBuilder.Entity<Shipment>()
+            .Property(shipment => shipment.ShippingOrderId)
+            .HasColumnName(nameof(Shipment.ShippingOrderId))
+            .HasColumnOrder(3)
+            .HasColumnType("int")
+            .IsRequired(true);
+
+        _ = modelBuilder.Entity<Shipment>()
+            .Property(shipment => shipment.TrackingNumber)
+            .HasColumnName(nameof(Shipment.TrackingNumber))
+            .HasColumnOrder(4)
+            .HasColumnType($"nvarchar({Shipment.TRACKING_NUMBER_MAX_LENGTH})")
+            .HasMaxLength(Shipment.TRACKING_NUMBER_MAX_LENGTH)
+            .IsRequired(true);
+
+        _ = modelBuilder.Entity<Shipment>()
+            .Property(shipment => shipment.DateCreated)
+            .HasColumnName(nameof(Shipment.DateCreated))
+            .HasColumnOrder(5)
+            .HasColumnType("datetime2")
+            .HasPrecision(7)
+            .HasDefaultValueSql("GETDATE()")
+            .IsRequired(true);
+
+        _ = modelBuilder.Entity<Shipment>()
+            .Property(shipment => shipment.DateModified)
+            .HasColumnName(nameof(Shipment.DateModified))
+            .HasColumnOrder(6)
+            .HasColumnType("datetime2")
+            .HasPrecision(7)
+            .IsRequired(false);
+
+        _ = modelBuilder.Entity<Shipment>()
+            .Property(shipment => shipment.DateDeleted)
+            .HasColumnName(nameof(Shipment.DateDeleted))
+            .HasColumnOrder(7)
+            .HasColumnType("datetime2")
+            .HasPrecision(7)
+            .IsRequired(false);
+
+        _ = modelBuilder.Entity<Shipment>()
+            .Property(shipment => shipment.RowVersion)
+            .HasColumnName(nameof(Shipment.RowVersion))
+            .HasColumnOrder(8)
+            .IsRowVersion();
+
+        // Configuration des relations pour Shipments
+        _ = modelBuilder.Entity<Shipment>()
+            .HasOne(s => s.ShippingOrder)
+            .WithOne()
+            .HasForeignKey<Shipment>(s => s.ShippingOrderId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+        #endregion
 
 
         #region RELATIONS RE DONNÉES DE TEST
