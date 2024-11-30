@@ -1,6 +1,6 @@
 ﻿namespace _420DA3_A24_Projet.Presentation.Views;
 
-partial class ShipmentsView {
+partial class ShipmentView {
     /// <summary>
     /// Required designer variable.
     /// </summary>

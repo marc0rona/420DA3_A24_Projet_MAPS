@@ -13,17 +13,18 @@ using System.Windows.Forms;
 
 namespace _420DA3_A24_Projet.Presentation.Views;
 
-/* Auteur de la classe AddressView.cs : Pierre-Sylvestre Cypré */
+/* Auteur de la classe ShipmentsView.cs : Pierre-Sylvestre Cypré */
 
-internal partial class AddressView : Form {
+internal partial class ShipmentView : Form {
     private bool isInitalized = false;
     private WsysApplication app;
 
-    public ViewActionsEnum CurrentAction { get; private set; }
+    public ViewActionsEnum CurrentAction {  get; private set; }
 
-    public Address CurrentEntityInstance { get; private set; }
+    public Shipment CurrentEntityInstance { get; private set; }
 
-    public AddressView(WsysApplication application) {
+
+    public ShipmentView(WsysApplication application) {
         this.app = application;
         InitializeComponent();
     }
