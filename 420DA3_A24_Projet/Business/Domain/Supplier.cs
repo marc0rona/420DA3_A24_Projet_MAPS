@@ -31,7 +31,7 @@ public class Supplier {
             }
     }
     //1 : Validation SupplierName
-    public string SupplierName {
+    public string Name {
         get { return this.SuppName_Verif; }
         set { if (!ValidateSupplierName(value)) { throw new ArgumentOutOfRangeException("Id", $"Supplier Company Name is too long. Maximum number of characters allowed is {SUPPLIER_NAME_MAXLENGHT} chars."); }
               this.SuppName_Verif = value;
@@ -71,23 +71,22 @@ public class Supplier {
     //Variables Nullables
     public DateTime? DateModified { get; set; }
     public DateTime? DateDeleted { get; set; }
-    //9 : LISTE pour gérer multiples produits qui peuventêtre liés a un Fournisseur
-    public List<Product> Products_List { get; set; } = new List<Product>();
     public byte[] RowVersion { get; set; } = null!; //Non-nullable, nécessaire
 
     #endregion Propriétés de données
 
     #region Propriétés de navigation
-    //ToDo Later 
-
+    // LISTE pour gérer multiples produits qui peuventêtre liés a un Fournisseur
+    public List<Product> ProductList { get; set; } = new List<Product>();
     #endregion Propriétés de navigation
+
     ///Constructors
 
     // Const orienté Création Manuelle/UI par employé de bureau
     public Supplier(int ID, string nomFournisseur, string prenom, string nom, string? courriel, string? phone) 
     {
         this.Id = ID;
-        this.SupplierName = nomFournisseur;
+        this.Name = nomFournisseur;
         this.Contact_FirstName = prenom;
         this.Contact_LastName = nom;
         this.Contact_Email = courriel;

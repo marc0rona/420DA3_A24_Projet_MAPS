@@ -8,6 +8,7 @@ internal class AppDbContext : DbContext {
     public DbSet<Role> Roles { get; set; }
 
     public DbSet<Address> Addresses { get; set; }
+    public DbSet<Product> Products { get; set; }
     public DbSet<Shipment> Shipments { get; set; }
 
 
@@ -300,6 +301,190 @@ internal class AppDbContext : DbContext {
             .HasForeignKey<Address>("ShipmentOrderId")
             .OnDelete(DeleteBehavior.Restrict);
 
+        #endregion
+
+        #region PRODUCT
+        /* Ajoute des underlines "_" comme initialisation. Les fonctions modelBuilder retourner toujours qqchose, mais ici, c inutile (on return rien)
+           Donc on ajoute le underline pour le faire explicite (je sais que c vide) et éviter les Warning qui m'énervent des fois. */
+
+        ///Configur de Table 'PRODUCTS' situé dans la BD. On cherche par son nom + Configur sa Clé Primaire 
+        _ = modelBuilder.Entity<Product>()                   //Return Entity Product (en methode générique List<T> pour mieux compiler sil y a des Erreurs)
+            .ToTable("Products").HasKey(product => product.Id);    //Liée à table 'Products' + dont la Clé Primaire = propriété 'Id' du Entity
+
+        ///Configur que l'index soit toujours UNIQUE (en fonction du Nom du Produit)
+        _ = modelBuilder.Entity<Product>()
+            .HasIndex(product => product.Name).IsUnique(true);  //Cherche Name et vérifie si Unique
+
+        ///CONFIGURATION DU ENTITY 'PRODCUT' À TOUTES LES COLONNES DE LA TABLE 'Products' !!!
+        /* 0 - ID */
+        _ = modelBuilder.Entity<Product>()           // Entity Product
+            .Property(prod => prod.Id)               // Clé Primaire ('Id' Property in Domain)
+            .HasColumnName("Id").HasColumnOrder(0)   // Liée à colonne 'Id' dans table 'Product' et qui est index 0 (colonne 1) dans la table
+            .HasColumnType("int")                    // seed (ou 'default':pour user admin par exemple [number #1]. Utile si faut reset la Table) = 1
+            .UseIdentityColumn(1, 1);                // + incrementation de 1 a chaque création de nouvelle rangée (de donnée)
+
+        _ = modelBuilder.Entity<Product>()  /*1 - NAME */
+            .Property(prod => prod.Name)
+            .HasColumnName("Name").HasColumnOrder(1)
+            .HasColumnType($"nvarchar( {Product.PROD_NAME_MAXLENGHT} )") // type: NVARCHAR (PAS STRING!) + <taille spécifiée dans Constante/Domain 'Product'>                 
+            .IsRequired(true);  // colonne = null!    
+
+        _ = modelBuilder.Entity<Product>()  /*2 - DESCRIPTION */
+            .Property(prod => prod.Description)
+            .HasColumnName("Description").HasColumnOrder(2)
+            .HasColumnType($"nvarchar( {Product.PROD_DESCRIPTION_MAXLENGHT} )") // NVARCHAR                
+            .IsRequired(true);  //NOT NULL     
+
+        _ = modelBuilder.Entity<Product>()  /*3 - CODE UPC */
+            .Property(prod => prod.Code_UPC)
+            .HasColumnName("Code-UPC").HasColumnOrder(3)
+            .HasColumnType($"nvarchar({Product.UP_CODE_MAXLENGHT})")
+            .IsRequired(true);
+
+        _ = modelBuilder.Entity<Product>()  /*4 - CODE SUPPLIER */
+            .Property(product => product.Code_Supplier)
+            .HasColumnName("Code-Supplier").HasColumnOrder(4)
+            .HasColumnType($"nvarchar({Product.SUPPLIER_CODE_MAXLENGHT})")
+            .IsRequired(false); //?NULLABLE
+
+        _ = modelBuilder.Entity<Product>()  /*5 - IMAGE FILE */
+            .Property(product => product.Image_FileName)
+            .HasColumnName("IMG-File").HasColumnOrder(5)
+            .HasColumnType($"nvarchar({Product.IMG_FILE_NAME_MAXLENGHT})")
+            .IsRequired(false);
+
+        _ = modelBuilder.Entity<Product>()  /*6 - INSTOCK QUANTITY */
+            .Property(prod => prod.Qty_InStock)
+            .HasColumnName("QtyInStock").HasColumnOrder(6)
+            .HasColumnType("int")    // type est INT
+            .IsRequired(true);
+
+        _ = modelBuilder.Entity<Product>()  /*7 - DESIRED QUANTITY */
+            .Property(prod => prod.Qty_Desired)
+            .HasColumnName("QtyDesired").HasColumnOrder(7)
+            .HasColumnType("int")
+            .IsRequired(true);
+
+        _ = modelBuilder.Entity<Product>()  /*8 - WEIGHT */
+            .Property(prod => prod.Weight_inKg)
+            .HasColumnName("Weight").HasColumnOrder(8)
+            .HasColumnType("float") // type DOUBLE (float dans SQL)
+            .IsRequired(true);
+
+        ///Configuration des IDs reliés aux autres Tables (FOREIGN KEYS)
+        _ = modelBuilder.Entity<Product>()  /*9 - Table CLIENT */
+            .Property(product => product.OwnerClient_Id)
+            .HasColumnName("id-Client").HasColumnOrder(9)
+            .HasColumnType("int")
+            .IsRequired(true);
+
+        _ = modelBuilder.Entity<Product>()  /*10 - Table SUPPLIER */
+            .Property(product => product.Supplier_Id)
+            .HasColumnName("id-Supplier").HasColumnOrder(10)
+            .HasColumnType("int")
+            .IsRequired(true);
+
+        ///Configuration des DATES
+        _ = modelBuilder.Entity<Product>() /*11 - CREATED */
+            .Property(product => product.DateCreated)
+            .HasColumnName(nameof(Product.DateCreated)).HasColumnOrder(11)
+            .HasColumnType("datetime2").HasPrecision(7)  //Maximum de 7 digits (char pour numeros)
+            .HasDefaultValueSql("GETDATE()") //Se créer automatiquement (important à gérer dans le SQL)
+            .IsRequired(true);
+
+        _ = modelBuilder.Entity<Product>() /*12 - MODIFIED */
+            .Property(product => product.DateModified)
+            .HasColumnName(nameof(Product.DateModified)).HasColumnOrder(12)
+            .HasColumnType("datetime2").HasPrecision(7)
+            .IsRequired(false);
+
+        _ = modelBuilder.Entity<Product>() /*13 - DELETED */
+            .Property(product => product.DateDeleted)
+            .HasColumnName(nameof(Product.DateDeleted)).HasColumnOrder(13)
+            .HasColumnType("datetime2").HasPrecision(7)
+            .IsRequired(false);
+
+        _ = modelBuilder.Entity<Product>() /* RowVersion[FrameWork] */
+            .Property(product => product.RowVersion)
+            .HasColumnName(nameof(Product.RowVersion)).HasColumnOrder(14)
+            .IsRowVersion();
+
+        //ToDo : RELATIONS n-n
+        #endregion
+
+        #region SUPPLIER
+        ///Cherche par nom de Table + Configur sa Clé Primaire 
+        _ = modelBuilder.Entity<Supplier>()                   //Return Entity Supplier (en methode générique List<T>)
+            .ToTable("Suppliers").HasKey(supplier => supplier.Id);    //Liée à table 'Suppliers' + dont la Clé Primaire = propriété 'Id' du Entity
+
+        //index soit toujours UNIQUE (en fonction du Nom du Produit)
+        _ = modelBuilder.Entity<Supplier>()
+            .HasIndex(supplier => supplier.Name).IsUnique(true);  //Cherche Name et vérifie si Unique
+
+        ///LIASON DU ENTITY 'SUPPLIER' À TOUTES LES COLONNES DE LA TABLE 'Suppliers'
+        /* 0 - ID */
+        _ = modelBuilder.Entity<Supplier>()           // Entity 
+            .Property(supp => supp.Id)                // Clé Primaire
+            .HasColumnName("Id").HasColumnOrder(0)    // colonne 'Id' dans Table et qui est index 0 (colonne 1) 
+            .HasColumnType("int")                   
+            .UseIdentityColumn(1, 1);                // seed + incrementation de 1 a chaque création de nouvelle donnée
+
+        _ = modelBuilder.Entity<Supplier>()  /*1 - NAME */
+            .Property(supp => supp.Name)
+            .HasColumnName("Name").HasColumnOrder(1)
+            .HasColumnType($"nvarchar( {Supplier.SUPPLIER_NAME_MAXLENGHT} )") // type: NVARCHAR  + <taille spécifiée dans Constante>                 
+            .IsRequired(true);  // colonne = not null
+
+        _ = modelBuilder.Entity<Supplier>()  /*2 - CONTACT FIRSTNAME */
+            .Property(supplier => supplier.Contact_FirstName)
+            .HasColumnName("Name").HasColumnOrder(2)
+            .HasColumnType($"nvarchar( {Supplier.CONTACT_NAME_MAXLENGHT} )")                  
+            .IsRequired(true);  
+
+        _ = modelBuilder.Entity<Supplier>()  /*3 - CONTACT LASTNAME */
+            .Property(supplier => supplier.Contact_LastName)
+            .HasColumnName("Name").HasColumnOrder(3)
+            .HasColumnType($"nvarchar( {Supplier.CONTACT_NAME_MAXLENGHT} )")              
+            .IsRequired(true);  // colonne = not null
+
+        _ = modelBuilder.Entity<Supplier>()  /*4 - EMAIL */
+            .Property(supplier => supplier.Contact_Email)
+            .HasColumnName("Name").HasColumnOrder(4)
+            .HasColumnType($"nvarchar( {Supplier.CONTACT_EMAIL_MAXLENGHT} )")              
+            .IsRequired(false);  // colonne peut etre NULL
+
+        _ = modelBuilder.Entity<Supplier>()  /*5 - PHONE */
+            .Property(supplier => supplier.Contact_Phone)
+            .HasColumnName("Name").HasColumnOrder(5)
+            .HasColumnType($"nvarchar( {Supplier.CONTACT_PHONE_MAXLENGHT} )")                  
+            .IsRequired(false);  
+
+        ///Configuration des DATES
+        _ = modelBuilder.Entity<Supplier>() /*6 - CREATED */
+            .Property(supp => supp.DateCreated)
+            .HasColumnName(nameof(Supplier.DateCreated)).HasColumnOrder(6)
+            .HasColumnType("datetime2").HasPrecision(7)  //Maximum de 7 digits 
+            .HasDefaultValueSql("GETDATE()") //Se créer automatiquement (important à gérer dans le SQL)
+            .IsRequired(true);
+
+        _ = modelBuilder.Entity<Supplier>() /*7 - MODIFIED */
+            .Property(supp => supp.DateModified)
+            .HasColumnName(nameof(Supplier.DateModified)).HasColumnOrder(7)
+            .HasColumnType("datetime2").HasPrecision(7)
+            .IsRequired(false);
+
+        _ = modelBuilder.Entity<Supplier>() /*8 - DELETED */
+            .Property(supp => supp.DateDeleted)
+            .HasColumnName(nameof(Supplier.DateDeleted)).HasColumnOrder(8)
+            .HasColumnType("datetime2").HasPrecision(7)
+            .IsRequired(false);
+
+        _ = modelBuilder.Entity<Supplier>() /* RowVersion[FrameWork] */
+            .Property(supplier => supplier.RowVersion)
+            .HasColumnName(nameof(Supplier.RowVersion)).HasColumnOrder(9)
+            .IsRowVersion();
+
+        //ToDo : RELATIONS 1-n
         #endregion
 
         #region SHIPMENT

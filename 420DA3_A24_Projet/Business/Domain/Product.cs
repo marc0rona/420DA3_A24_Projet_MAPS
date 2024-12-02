@@ -38,7 +38,7 @@ public class Product
         }
     }
     //1 : Validation Name
-    public string ProductName {
+    public string Name {
         get { return this.ProdName_Verif; }
         set {
               if (!ValidateProductName(value)) { throw new ArgumentOutOfRangeException("Name", $"Name inputed is too long. Maximum number of characters allowed is {PROD_NAME_MAXLENGHT} chars.\nPlease respect the limit norms, thank you."); }
@@ -46,7 +46,7 @@ public class Product
             }
     }
     //2 : Validation Description
-    public string ProductDesc {
+    public string Description {
         get { return this.ProdDesc_Verif; }
         set {
               if (!ValidateProductDescription(value)) { throw new ArgumentOutOfRangeException("Description", $"Description length must be lower than or equal to {PROD_DESCRIPTION_MAXLENGHT} characters.\nPlease respect the limit norms, thank you."); }
@@ -54,14 +54,14 @@ public class Product
             }
     }
     //3 : Validation code UPC du Produit
-    public string Product_CodeUPC {
+    public string Code_UPC {
         get { return this.ProdCode_Verif; }
         set { if (!ValidateUpCode(value)) { throw new ArgumentOutOfRangeException("Code UPC", $"The Code is too long. Maximum number of characters allowed is {UP_CODE_MAXLENGHT} chars.\nPlease respect the limit norms, thank you."); }
               this.ProdCode_Verif = value;
             }
     } 
     //4 : Validation code du Fournisseur
-    public string? Supplier_Code {
+    public string? Code_Supplier {
         get { return this.SuppCode_Verif; }
         set { if (!ValidateSupplier(value)) { throw new ArgumentOutOfRangeException("Supplier", $"Code length must be lower than or equal to {SUPPLIER_CODE_MAXLENGHT} characters.\nPlease respect the limit norms, thank you."); }
               this.SuppCode_Verif = value;
@@ -97,46 +97,46 @@ public class Product
               this.weight_Verif = value; //< Sinon = valide le input 
             }
     }
-    //9 + 10 : Client du Produit - Infos
-    public int ProdOwnerClient_Id { get; set; }
-    public Client ProdOwnerClient { get; set; }
-    //11 + 12 : Fournisseur du Produit - Infos
-    public int ProdSupplier_Id { get; set; }
-    public Supplier ProdSupplier { get; set; } = null!; //doit avoir toujours un fournisseur
+    //9-10  : Client + Fournisseur du Produit (IDs) 
+    public int OwnerClient_Id { get; set; }
+    public int Supplier_Id { get; set; }
 
-    //13 - 15 : Variables Dates
+    //11 - 13 : Variables Dates
     public DateTime DateCreated { get; set; }
     //Variables Nullables
     public DateTime? DateModified { get; set; }
     public DateTime? DateDeleted { get; set; }
-    //16 + 17 : LISTES pour gérer les expéditions reliés au produit & client
-    public List<PurchaseOrders> OrderPurchases { get; set; } = new List<PurchaseOrders>(); //CHANGE THE INTERNAL TO PUBLIC CLASS, ABOUBACAR PLEASE. THANK YOU
-    public List<ShipmentOrders> OrderShipments { get; set; } = new List<ShipmentOrders>();
-    //ToDo : Gerer si les expeditions sont vide (aucunes valeurs dans colonne);]
     public byte[] RowVersion { get; set; } = null!; //Non-nullable, nécessaire
+
     #endregion 1 - Propriétés de données
 
     #region 2 - Propriétés de navigation
-    //ToDo Later 
+    // LISTES pour gérer les expéditions reliés au produit & client // virutal = override les classes dérivées
+    public Client OwnerClient { get; set; }
+    public Supplier Supplier { get; set; } = null!; //doit avoir toujours un fournisseur
+    public virtual List<PurchaseOrders> OrderPurchases { get; set; } = new List<PurchaseOrders>(); //CHANGE THE INTERNAL TO PUBLIC CLASS, ABOUBACAR PLEASE. THANK YOU
+    public virtual List<ShipmentOrders> OrderShipments { get; set; } = new List<ShipmentOrders>();
+    //ToDo : Gerer si les expeditions sont vide (aucunes valeurs dans colonne);]
     #endregion Propriétés de navigation
+
     /// Constructors
 
     //1er Const : Orienté Création Manuelle/UI par employé de bureau
-    public Product(int ID, string nom, string description, string codeUPC, string? IMG_nom, int client_ID, int supplier_ID, string? supplier_code)  //(7 Arguments, valeurs qui sont assignés manuellements)
+    public Product(int ID, string nom, string description, string codeUPC, string? supplier_code, string? IMG_nom, int client_ID, int supplier_ID)  //(7 Arguments, valeurs qui sont assignés manuellements)
     {
         this.Id = ID;
-        this.ProductName = nom;
-        this.ProductDesc = description;
-        this.Product_CodeUPC = codeUPC;
+        this.Name = nom;
+        this.Description = description;
+        this.Code_UPC = codeUPC;
         this.Image_FileName = IMG_nom;
 
-        this.ProdOwnerClient_Id = client_ID;
-        this.ProdSupplier_Id = supplier_ID;
-        this.Supplier_Code = supplier_code;
+        this.OwnerClient_Id = client_ID;
+        this.Supplier_Id = supplier_ID;
+        this.Code_Supplier = supplier_code;
     }
     //2me Const : avec 3 arguments de plus (5 + 3 Arguments pour Qntés & poids)
-    public Product(int ID, string nom, string description, string codeUPC, string? IMG_nom, int client_ID, int supplier_ID, string? supplier_code,
-                   Int32 Qty_1, Int32 Qty_2, Double weight) : this(ID, nom, description, codeUPC, IMG_nom, client_ID, supplier_ID, supplier_code) //Reprend valeurs du 1er Const
+    public Product(int ID, string nom, string description, string codeUPC, string? supplier_code, string? IMG_nom, int client_ID, int supplier_ID,
+                   Int32 Qty_1, Int32 Qty_2, Double weight) : this(ID, nom, description, codeUPC, supplier_code, IMG_nom, client_ID, supplier_ID) //Reprend valeurs du 1er Const
     {
         this.Qty_InStock = Qty_1;
         this.Qty_Desired = Qty_2;
@@ -148,10 +148,10 @@ public class Product
                       string nom,
                       string description, // 2
                       string codeUPC,
-                      string? IMG_nom, // 4
-                      int client_ID,
-                      int supplier_ID,// 6
-                      string? supplier_code,
+                      string? supplier_code,// 4
+                      string? IMG_nom, 
+                      int client_ID, //6
+                      int supplier_ID,
                       Int32 Qty_1, // 8
                       Int32 Qty_2,
                       Double weight, // 10      
@@ -159,7 +159,7 @@ public class Product
                         DateTime? dateModified,
                         DateTime? dateDeleted,
                         byte[] rowVersion)
-                        : this(ID, nom, description, codeUPC, IMG_nom, client_ID, supplier_ID, supplier_code, Qty_1, Qty_2, weight) //Reprend valeurs du 1er + 2me Consts
+                      : this(ID, nom, description, codeUPC, supplier_code, IMG_nom, client_ID, supplier_ID, Qty_1, Qty_2, weight) //Reprend valeurs du 1er + 2me Consts
     {
         this.DateCreated = dateCreated;
         this.DateModified = dateModified;
@@ -179,8 +179,8 @@ public class Product
         { return IMG.Length <= IMG_FILE_NAME_MAXLENGHT; }
     public static bool ValidateSupplier(string code) 
         { return code.Length <= SUPPLIER_CODE_MAXLENGHT; }
-    public static bool IsDueForRestocking(int quantity_inStock) 
-        { return (quantity_inStock == 0); } //seulement retourne TRUE si la condition est appliqué (sinon FALSE) 
+    public static bool IsDueForRestocking(int quantity_inStock, int quantity_desired) 
+        { return (quantity_inStock < quantity_desired); } //seulement retourne TRUE si la condition est appliqué (sinon FALSE) 
     #endregion
 }
 
