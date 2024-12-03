@@ -13,10 +13,16 @@ internal class ShippingOrderDAO {
 
     private readonly AppDbContext context;
 
-    public ShippingOrderDAO(AppDbContext context) { 
+    public ShippingOrderDAO(AppDbContext context) {
         this.context = context;
     }
 
-    public ShippingOrderDAO
+    public ShippingOrder? Create(ShippingOrder shippingOrder) {
+        _ =this.context.ShippingOrders.Add(shippingOrder);
+        _ = this.context.SaveChanges();
+        return shippingOrder;
+    }
 
 }
+
+

@@ -10,6 +10,10 @@ internal class AppDbContext : DbContext {
     public DbSet<Address> Addresses { get; set; }
     public DbSet<Product> Products { get; set; }
     public DbSet<Shipment> Shipments { get; set; }
+    public DbSet<ShippingOrder> ShippingOrders { get; set; }
+    public DbSet<PurchaseOrder> PurchaseOrders { get; set; }
+
+
 
 
     protected override void OnModelCreating(ModelBuilder modelBuilder) {
@@ -592,6 +596,92 @@ internal class AppDbContext : DbContext {
             .WithOne()
             .HasForeignKey<Shipment>(s => s.ShippingOrderId)
             .OnDelete(DeleteBehavior.Restrict);
+
+        #endregion
+
+        #region SHIPPINGORDER
+
+        _ = modelBuilder.Entity<ShippingOrder>()
+            .ToTable(nameof(this.ShippingOrders))
+            .HasKey(shippingOrder => shippingOrder.Id);
+
+        _ = modelBuilder.Entity<ShippingOrder>()
+            .Property(shippingOrder => shippingOrder.Id)
+            .HasColumnName(nameof(ShippingOrder.Id))
+            .HasColumnOrder(0)
+            .HasColumnType("int")
+            .UseIdentityColumn(1, 1);
+
+        _ = modelBuilder.Entity<ShippingOrder>()
+            .Property(shippingOrder => shippingOrder.Status)
+            .HasColumnName(nameof(ShippingOrder.Status))
+            .HasColumnOrder(1)
+            .HasColumnType($"nvarchar({ShippingOrder.STATUS_MAX_LENGTH})")
+            .HasMaxLength(ShippingOrder.STATUS_MAX_LENGTH)
+            .IsRequired(true);
+
+        _ = modelBuilder.Entity<ShippingOrder>()
+           .Property(shippingOrder => shippingOrder.Client_Id)
+           .HasColumnName(nameof(ShippingOrder.Client_Id))
+           .HasColumnOrder(2)
+           .HasColumnType("int")
+           .IsRequired(true);
+
+        _ = modelBuilder.Entity<ShippingOrder>()
+            .Property(shippingOrder => shippingOrder.Creator)
+            .HasColumnName(nameof(ShippingOrder.Creator))
+            .HasColumnOrder(3)
+            .HasColumnType("int")
+            .IsRequired(true);
+
+
+        _ = modelBuilder.Entity<ShippingOrder>()
+            .Property(shippingOrder => shippingOrder.Address_Id)
+            .HasColumnName(nameof(ShippingOrder.Address_Id))
+            .HasColumnOrder(4)
+            .HasColumnType("int")
+            .IsRequired(true);
+
+
+        _ = modelBuilder.Entity<ShippingOrder>()
+            .Property(shippingOrder => shippingOrder.Employee_Warehouse_Id)
+            .HasColumnName(nameof(ShippingOrder.Employee_Warehouse_Id))
+            .HasColumnOrder(5)
+            .HasColumnType("int")
+            .IsRequired(true);
+
+        _ = modelBuilder.Entity<ShippingOrder>()
+            .Property(shippingOrder => shippingOrder.Shipping_Id)
+            .HasColumnName(nameof(ShippingOrder.Shipping_Id))
+            .HasColumnOrder(6)
+            .HasColumnType("int")
+            .IsRequired(true);
+
+        _ = modelBuilder.Entity<ShippingOrder>()
+          .Property(shippingOrder => shippingOrder.DateDeleted)
+          .HasColumnName(nameof(ShippingOrder.DateDeleted))
+          .HasColumnOrder(7)
+          .HasColumnType("DateTime")
+          .IsRequired(true);
+
+        _ = modelBuilder.Entity<ShippingOrder>()
+          .Property(shippingOrder => shippingOrder.DateCreated)
+          .HasColumnName(nameof(ShippingOrder.DateCreated))
+          .HasColumnOrder(8)
+          .HasColumnType("DateTime")
+          .IsRequired(true);
+
+        _ = modelBuilder.Entity<ShippingOrder>()
+         .Property(shippingOrder => shippingOrder.DateModified)
+         .HasColumnName(nameof(ShippingOrder.DateModified))
+         .HasColumnOrder(9)
+         .HasColumnType("DateTime")
+         .IsRequired(true);
+
+
+        #endregion
+
+        #region PURCHASEORDER
 
         #endregion
 
