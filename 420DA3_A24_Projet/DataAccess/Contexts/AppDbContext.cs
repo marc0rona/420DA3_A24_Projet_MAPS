@@ -657,12 +657,6 @@ internal class AppDbContext : DbContext {
             .HasColumnType("int")
             .IsRequired(true);
 
-        _ = modelBuilder.Entity<ShippingOrder>()
-          .Property(shippingOrder => shippingOrder.DateDeleted)
-          .HasColumnName(nameof(ShippingOrder.DateDeleted))
-          .HasColumnOrder(7)
-          .HasColumnType("DateTime")
-          .IsRequired(true);
 
         _ = modelBuilder.Entity<ShippingOrder>()
           .Property(shippingOrder => shippingOrder.DateCreated)
@@ -679,9 +673,84 @@ internal class AppDbContext : DbContext {
          .IsRequired(true);
 
 
+        _ = modelBuilder.Entity<ShippingOrder>()
+          .Property(shippingOrder => shippingOrder.DateDeleted)
+          .HasColumnName(nameof(ShippingOrder.DateDeleted))
+          .HasColumnOrder(7)
+          .HasColumnType("DateTime")
+          .IsRequired(true);
+
+
         #endregion
 
         #region PURCHASEORDER
+
+        _ = modelBuilder.Entity<PurchaseOrder>()
+    .ToTable(nameof(this.PurchaseOrders))
+    .HasKey(PurchaseOrder => PurchaseOrder.Id);
+
+        _ = modelBuilder.Entity<PurchaseOrder>()
+            .Property(PurchaseOrder => PurchaseOrder.Id)
+            .HasColumnName(nameof(PurchaseOrder.Id))
+            .HasColumnOrder(0)
+            .HasColumnType("int")
+            .UseIdentityColumn(1, 1);
+
+        _ = modelBuilder.Entity<PurchaseOrder>()
+            .Property(PurchaseOrder => PurchaseOrder.Status)
+            .HasColumnName(nameof(PurchaseOrder.Status))
+            .HasColumnOrder(1)
+            .HasColumnType($"nvarchar({PurchaseOrder.STATUS_MAX_LENGTH})")
+            .HasMaxLength(PurchaseOrder.STATUS_MAX_LENGTH)
+            .IsRequired(true);
+
+        _ = modelBuilder.Entity<PurchaseOrder>()
+           .Property(PurchaseOrder => PurchaseOrder.ProductToRestock)
+           .HasColumnName(nameof(PurchaseOrder.ProductToRestock))
+           .HasColumnOrder(2)
+           .HasColumnType("int")
+           .IsRequired(true);
+
+        _ = modelBuilder.Entity<PurchaseOrder>()
+            .Property(PurchaseOrder => PurchaseOrder.Warehouse)
+            .HasColumnName(nameof(PurchaseOrder.Warehouse))
+            .HasColumnOrder(3)
+            .HasColumnType("int")
+            .IsRequired(true);
+
+
+        _ = modelBuilder.Entity<PurchaseOrder>()
+            .Property(PurchaseOrder => PurchaseOrder.QuantityToOrder)
+            .HasColumnName(nameof(PurchaseOrder.QuantityToOrder))
+            .HasColumnOrder(4)
+            .HasColumnType("int")
+            .IsRequired(true);
+
+
+        _ = modelBuilder.Entity<PurchaseOrder>()
+        .Property(PurchaseOrder => PurchaseOrder.DateCreated)
+        .HasColumnName(nameof(PurchaseOrder.DateCreated))
+        .HasColumnOrder(8)
+        .HasColumnType("DateTime")
+        .IsRequired(true);
+
+        _ = modelBuilder.Entity<PurchaseOrder>()
+        .Property(PurchaseOrder => PurchaseOrder.DateModified)
+        .HasColumnName(nameof(PurchaseOrder.DateModified))
+        .HasColumnOrder(9)
+        .HasColumnType("DateTime")
+        .IsRequired(true);
+
+
+        _ = modelBuilder.Entity<PurchaseOrder>()
+          .Property(PurchaseOrder => PurchaseOrder.DateDeleted)
+          .HasColumnName(nameof(PurchaseOrder.DateDeleted))
+          .HasColumnOrder(7)
+          .HasColumnType("DateTime")
+          .IsRequired(true);
+
+      
+
 
         #endregion
 
