@@ -859,14 +859,14 @@ internal class AppDbContext : DbContext {
         _ = modelBuilder.Entity<ShippingOrder>()
           .Property(shippingOrder => shippingOrder.DateCreated)
           .HasColumnName(nameof(ShippingOrder.DateCreated))
-          .HasColumnOrder(8)
+          .HasColumnOrder(7)
           .HasColumnType("DateTime")
           .IsRequired(true);
 
         _ = modelBuilder.Entity<ShippingOrder>()
          .Property(shippingOrder => shippingOrder.DateModified)
          .HasColumnName(nameof(ShippingOrder.DateModified))
-         .HasColumnOrder(9)
+         .HasColumnOrder(8)
          .HasColumnType("DateTime")
          .IsRequired(true);
 
@@ -874,7 +874,7 @@ internal class AppDbContext : DbContext {
         _ = modelBuilder.Entity<ShippingOrder>()
           .Property(shippingOrder => shippingOrder.DateDeleted)
           .HasColumnName(nameof(ShippingOrder.DateDeleted))
-          .HasColumnOrder(7)
+          .HasColumnOrder(9)
           .HasColumnType("DateTime")
           .IsRequired(true);
 
@@ -928,14 +928,14 @@ internal class AppDbContext : DbContext {
         _ = modelBuilder.Entity<PurchaseOrder>()
         .Property(PurchaseOrder => PurchaseOrder.DateCreated)
         .HasColumnName(nameof(PurchaseOrder.DateCreated))
-        .HasColumnOrder(8)
+        .HasColumnOrder(5)
         .HasColumnType("DateTime")
         .IsRequired(true);
 
         _ = modelBuilder.Entity<PurchaseOrder>()
         .Property(PurchaseOrder => PurchaseOrder.DateModified)
         .HasColumnName(nameof(PurchaseOrder.DateModified))
-        .HasColumnOrder(9)
+        .HasColumnOrder(6)
         .HasColumnType("DateTime")
         .IsRequired(true);
 
