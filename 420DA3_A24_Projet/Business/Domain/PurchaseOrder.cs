@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace _420DA3_A24_Projet.Business.Domain;
-internal class PurchaseOrders
+internal class PurchaseOrder
 {
     // Constantes
     public const int STATUS_MAX_LENGTH = 30;
@@ -60,7 +60,7 @@ internal class PurchaseOrders
     public byte[] RowVersion { get; set; } = null!;
 
     // Constructeur public
-    public PurchaseOrders(int id, string status, string productToRestock, string warehouse, int quantityToOrder) {
+    public PurchaseOrder(int id, string status, string productToRestock, string warehouse, int quantityToOrder) {
         this.id = id;
         this.Status = status;
         this.ProductToRestock = productToRestock;

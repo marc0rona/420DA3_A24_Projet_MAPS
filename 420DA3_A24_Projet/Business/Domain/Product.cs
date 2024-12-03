@@ -114,7 +114,7 @@ public class Product
     // LISTES pour gérer les expéditions reliés au produit & client // virutal = override les classes dérivées
     public Client OwnerClient { get; set; }
     public Supplier Supplier { get; set; } = null!; //doit avoir toujours un fournisseur
-    public virtual List<PurchaseOrders> OrderPurchases { get; set; } = new List<PurchaseOrders>(); //CHANGE THE INTERNAL TO PUBLIC CLASS, ABOUBACAR PLEASE. THANK YOU
+    public virtual List<PurchaseOrder> OrderPurchases { get; set; } = new List<PurchaseOrder>(); //CHANGE THE INTERNAL TO PUBLIC CLASS, ABOUBACAR PLEASE. THANK YOU
     public virtual List<ShipmentOrders> OrderShipments { get; set; } = new List<ShipmentOrders>();
     //ToDo : Gerer si les expeditions sont vide (aucunes valeurs dans colonne);]
     #endregion Propriétés de navigation
