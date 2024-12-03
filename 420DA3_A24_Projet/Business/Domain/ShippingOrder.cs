@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace _420DA3_A24_Projet.Business.Domain;
-public class ShipmentOrders {
+public class ShippingOrder {
   
     public const int STATUS_MAX_LENGTH = 30;
 
@@ -44,7 +44,7 @@ public class ShipmentOrders {
 
     // constructeur public
 
-    public ShipmentOrders(int id, string status, int client_id) {
+    public ShippingOrder(int id, string status, int client_id) {
 
         this.id = id;
         this.status = status;
@@ -55,7 +55,7 @@ public class ShipmentOrders {
     }
 
     // protected
-    protected ShipmentOrders(int id, string status, int client_id, int address_id, int employee_warehouse_id, int shipping_id) {
+    protected ShippingOrder(int id, string status, int client_id, int address_id, int employee_warehouse_id, int shipping_id) {
         this.id = id;
         this.status = status;
         this.client_id = client_id;
