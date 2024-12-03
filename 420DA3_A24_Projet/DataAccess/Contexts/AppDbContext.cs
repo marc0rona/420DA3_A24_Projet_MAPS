@@ -10,6 +10,8 @@ internal class AppDbContext : DbContext {
     public DbSet<Address> Addresses { get; set; }
     public DbSet<Product> Products { get; set; }
     public DbSet<Shipment> Shipments { get; set; }
+    public DbSet<Client> Clients { get; set; }
+    public DbSet<Warehouse> Warehouses { get; set; }
     public DbSet<ShippingOrder> ShippingOrders { get; set; }
     public DbSet<PurchaseOrder> PurchaseOrders { get; set; }
 
@@ -596,6 +598,202 @@ internal class AppDbContext : DbContext {
             .WithOne()
             .HasForeignKey<Shipment>(s => s.ShippingOrderId)
             .OnDelete(DeleteBehavior.Restrict);
+
+        #endregion
+
+        #region CLIENT
+        _ = modelBuilder.Entity<Client>()
+            .ToTable("Clients")
+            .HasKey(client => client.Id);
+
+        _ = modelBuilder.Entity<Client>()
+            .HasIndex(client => client.ClientName)
+            .IsUnique(true);
+
+        _ = modelBuilder.Entity<Client>()
+            .Property(client => client.Id)
+            .HasColumnName(nameof(Client.Id))
+            .HasColumnOrder(0)
+            .HasColumnType("int")
+            .UseIdentityColumn(1, 1);
+
+        _ = modelBuilder.Entity<Client>()
+            .Property(client => client.ClientName)
+            .HasColumnName(nameof(Client.ClientName))
+            .HasColumnOrder(1)
+            .HasColumnType($"nvarchar({Client.CLIENTNAME_MAX_LENGTH})")
+            .HasMaxLength(Client.CLIENTNAME_MAX_LENGTH)
+            .IsRequired(true);
+
+        _ = modelBuilder.Entity<Client>()
+            .Property(client => client.WarehouseId)
+            .HasColumnName(nameof(Client.WarehouseId))
+            .HasColumnOrder(2)
+            .HasColumnType("int")
+            .IsRequired(true);
+
+        _ = modelBuilder.Entity<Client>()
+            .Property(client => client.ContactFirstName)
+            .HasColumnName(nameof(Client.ContactFirstName))
+            .HasColumnOrder(3)
+            .HasColumnType($"nvarchar({Client.CLIENTNAME_MAX_LENGTH})")
+            .HasMaxLength(Client.CONTACTFIRSTNAME_MAX_LENGTH)
+            .IsRequired(true);
+
+        _ = modelBuilder.Entity<Client>()
+            .Property(client => client.ContactLastName)
+            .HasColumnName(nameof(Client.ContactLastName))
+            .HasColumnOrder(4)
+            .HasColumnType($"nvarchar({Client.CONTACTLASTNAME_MAX_LENGTH})")
+            .HasMaxLength(Client.CONTACTLASTNAME_MAX_LENGTH)
+            .IsRequired(true);
+
+        _ = modelBuilder.Entity<Client>()
+            .Property(client => client.ContactEmail)
+            .HasColumnName(nameof(Client.ContactEmail))
+            .HasColumnOrder(5)
+            .HasColumnType($"nvarchar({Client.CONTACTEMAIL_MAX_LENGTH})")
+            .HasMaxLength(Client.CONTACTEMAIL_MAX_LENGTH)
+            .IsRequired(false);
+
+        _ = modelBuilder.Entity<Client>()
+            .Property(client => client.ContactTelephone)
+            .HasColumnName(nameof(Client.ContactTelephone))
+            .HasColumnOrder(6)
+            .HasColumnType($"nvarchar({Client.CONTACTTELEPHONE_MAX_LENGTH})")
+            .HasMaxLength(Client.CONTACTTELEPHONE_MAX_LENGTH)
+            .IsRequired(false);
+
+
+        _ = modelBuilder.Entity<Client>()
+            .Property(client => client.DateCreated)
+            .HasColumnName(nameof(Client.DateCreated))
+            .HasColumnOrder(7)
+            .HasColumnType("datetime2")
+            .HasPrecision(7)
+            .HasDefaultValueSql("GETDATE()")
+            .IsRequired(true);
+
+        _ = modelBuilder.Entity<Client>()
+            .Property(client => client.DateModified)
+            .HasColumnName(nameof(Client.DateModified))
+            .HasColumnOrder(8)
+            .HasColumnType("datetime2")
+            .HasPrecision(7)
+            .IsRequired(false);
+
+        _ = modelBuilder.Entity<Client>()
+            .Property(client => client.DateDeleted)
+            .HasColumnName(nameof(Client.DateDeleted))
+            .HasColumnOrder(9)
+            .HasColumnType("datetime2")
+            .HasPrecision(7)
+            .IsRequired(false);
+
+        _ = modelBuilder.Entity<Client>()
+            .Property(client => client.RowVersion)
+            .HasColumnName(nameof(Client.RowVersion))
+            .HasColumnOrder(10)
+            .IsRowVersion();
+
+        _ = modelBuilder.Entity<Client>()
+            .HasOne(client => client.AssignedWarehouse)
+            .WithMany(warehouse => warehouse.Clients)
+            .HasForeignKey(client => client.WarehouseId)
+            .HasPrincipalKey(warehouse => warehouse.Id)
+            .OnDelete(DeleteBehavior.SetNull);
+
+        _ = modelBuilder.Entity<Client>()
+            .HasMany(client => client.ShippingOrders)
+            .WithOne(order => order.SourceClient)
+            .HasForeignKey(order => order.Id)
+            .HasPrincipalKey(client => client.Id)
+            .IsRequired(false);
+
+        _ = modelBuilder.Entity<Client>()
+            .HasMany(client => client.Products)
+            .WithOne(product => product.OwnerClient)
+            .HasForeignKey(product => product.OwnerClient_Id)
+            .HasPrincipalKey(client => client.Id)
+            .IsRequired(false);
+
+        #endregion
+
+        #region WAREHOUSE
+        _ = modelBuilder.Entity<Warehouse>()
+            .ToTable("Warehouses")
+            .HasKey(warehouse => warehouse.Id);
+
+        _ = modelBuilder.Entity<Warehouse>()
+            .HasIndex(warehouse => warehouse.WarehouseName)
+            .IsUnique(true);
+
+        _ = modelBuilder.Entity<Warehouse>()
+            .Property(warehouse => warehouse.Id)
+            .HasColumnName(nameof(Warehouse.Id))
+            .HasColumnOrder(0)
+            .HasColumnType("int")
+            .UseIdentityColumn(1, 1);
+
+        _ = modelBuilder.Entity<Warehouse>()
+            .Property(warehouse => warehouse.WarehouseName)
+            .HasColumnName(nameof(Warehouse.WarehouseName))
+            .HasColumnOrder(1)
+            .HasColumnType($"nvarchar({Warehouse.WAREHOUSENAME_MAX_LENGTH})")
+            .HasMaxLength(Warehouse.WAREHOUSENAME_MAX_LENGTH)
+            .IsRequired(true);
+
+        _ = modelBuilder.Entity<Warehouse>()
+            .Property(warehouse => warehouse)
+            .HasColumnName(nameof(Warehouse.AddressId))
+            .HasColumnOrder(2)
+            .HasColumnType("int")
+            .IsRequired(true);
+
+        _ = modelBuilder.Entity<Warehouse>()
+            .Property(warehouse => warehouse.DateCreated)
+            .HasColumnName(nameof(Warehouse.DateCreated))
+            .HasColumnOrder(3)
+            .HasColumnType("datetime2")
+            .HasPrecision(7)
+            .HasDefaultValueSql("GETDATE()")
+            .IsRequired(true);
+
+        _ = modelBuilder.Entity<Warehouse>()
+            .Property(warehouse => warehouse.DateModified)
+            .HasColumnName(nameof(Warehouse.DateModified))
+            .HasColumnOrder(4)
+            .HasColumnType("datetime2")
+            .HasPrecision(7)
+            .IsRequired(false);
+
+        _ = modelBuilder.Entity<Warehouse>()
+            .Property(warehouse => warehouse.DateDeleted)
+            .HasColumnName(nameof(Warehouse.DateDeleted))
+            .HasColumnOrder(5)
+            .HasColumnType("datetime2")
+            .HasPrecision(7)
+            .IsRequired(false);
+
+        _ = modelBuilder.Entity<Warehouse>()
+            .Property(warehouse => warehouse.RowVersion)
+            .HasColumnName(nameof(Warehouse.RowVersion))
+            .HasColumnOrder(6)
+            .IsRowVersion();
+
+        _ = modelBuilder.Entity<Warehouse>()
+            .HasMany(warehouse => warehouse.Clients)
+            .WithOne(clients => clients.AssignedWarehouse)
+            .HasForeignKey(client => client.WarehouseId)
+            .HasPrincipalKey(warehouse => warehouse.Id)
+            .OnDelete(DeleteBehavior.SetNull);
+
+        _ = modelBuilder.Entity<Warehouse>()
+            .HasOne(warehouse => warehouse.AssignedAddress)
+            .WithOne(address => address.OwnerWarehouse)
+            //.HasForeignKey()
+            //.HasPrincipalKey(warehouse => warehouse.AddressId)
+            .OnDelete(DeleteBehavior.SetNull);
 
         #endregion
 
