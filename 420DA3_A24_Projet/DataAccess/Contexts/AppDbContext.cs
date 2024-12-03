@@ -304,9 +304,6 @@ internal class AppDbContext : DbContext {
         #endregion
 
         #region PRODUCT
-        /* Ajoute des underlines "_" comme initialisation. Les fonctions modelBuilder retourner toujours qqchose, mais ici, c inutile (on return rien)
-           Donc on ajoute le underline pour le faire explicite (je sais que c vide) et éviter les Warning qui m'énervent des fois. */
-
         ///Configur de Table 'PRODUCTS' situé dans la BD. On cherche par son nom + Configur sa Clé Primaire 
         _ = modelBuilder.Entity<Product>()                   //Return Entity Product (en methode générique List<T> pour mieux compiler sil y a des Erreurs)
             .ToTable("Products").HasKey(product => product.Id);    //Liée à table 'Products' + dont la Clé Primaire = propriété 'Id' du Entity
@@ -315,13 +312,13 @@ internal class AppDbContext : DbContext {
         _ = modelBuilder.Entity<Product>()
             .HasIndex(product => product.Name).IsUnique(true);  //Cherche Name et vérifie si Unique
 
-        ///CONFIGURATION DU ENTITY 'PRODCUT' À TOUTES LES COLONNES DE LA TABLE 'Products' !!!
+        ///CONFIGURATION DU ENTITY 'PRODUCT' À TOUTES LES COLONNES DE LA TABLE 'Products' !!!
         /* 0 - ID */
         _ = modelBuilder.Entity<Product>()           // Entity Product
             .Property(prod => prod.Id)               // Clé Primaire ('Id' Property in Domain)
             .HasColumnName("Id").HasColumnOrder(0)   // Liée à colonne 'Id' dans table 'Product' et qui est index 0 (colonne 1) dans la table
-            .HasColumnType("int")                    // seed (ou 'default':pour user admin par exemple [number #1]. Utile si faut reset la Table) = 1
-            .UseIdentityColumn(1, 1);                // + incrementation de 1 a chaque création de nouvelle rangée (de donnée)
+            .HasColumnType("int")                    // seed  + incrementation de 1 a chaque création de nouvelle rangée (de donnée)
+            .UseIdentityColumn(1, 1);                
 
         _ = modelBuilder.Entity<Product>()  /*1 - NAME */
             .Property(prod => prod.Name)
@@ -409,7 +406,37 @@ internal class AppDbContext : DbContext {
             .HasColumnName(nameof(Product.RowVersion)).HasColumnOrder(14)
             .IsRowVersion();
 
-        //ToDo : RELATIONS n-n
+        /// CONFIGURATION DE RELATIONS AVEC ENTITY CLIENT(Table)   /* Relation 0,n -> 1 */
+        _ = modelBuilder.Entity<Product>()                  // (1 client possède plusieurs produits. Produit specifique a client) 
+            .HasOne(prod => prod.OwnerClient)               // Possède 1 Client ( dans class Product / region #2- Propriété Navigation )
+            .WithMany(client => client.Products)            // Supplier possède MANY produits ('List<Product>' dans class)
+            .HasForeignKey(prod => prod.OwnerClient_Id)     //relie à un FK qui va a la table en 1 relation ('Product' FK => PK 'Client' dans ce cas)
+            .IsRequired(true)   //obligatoire
+            .OnDelete(DeleteBehavior.Cascade);              //Cascade = si un Client est supprimé : Produits reliés à se Client vont être supprimés
+
+        /// CONFIGURATION DE RELATIONS AVEC ENTITY SUPPLIER  /* Relation 0,n -> 1 */
+        _ = modelBuilder.Entity<Product>()                  // (juste 1 supplier pour plusieurs produits) 
+            .HasOne(prod => prod.Supplier)                  // Possède 1 Supplier ( dans class Product )
+            .WithMany(supplier => supplier.ProductList)     // Supplier possède MANY produits
+            .HasForeignKey(prod => prod.Supplier_Id)        //relie à un FK qui va a la table en 1 relation ('Product' FK => PK 'Supplier' dans ce cas)
+            .IsRequired(true)  
+            .OnDelete(DeleteBehavior.Restrict);     //Restrict = si un Supplier est supprimé : restriction de supprimer sil y a des Produits. (1 produit doit toujours avoir un fournisseur [SupplierId NOT NULL] )
+
+
+        /// CONFIGURATION DE RELATIONS AUX ENTITIES  PURCHASE_ORDER + SHIPPING_ORDER
+        _ = modelBuilder.Entity<Product>()   /* PurchaseOrder : Relation 1 -> 0,n */
+            .HasMany(prod => prod.OrderPurchases)       
+            .WithOne(order => order.OrderedProduct)      //L'Ordre possède 1... ben,le Produit a vendre
+            .HasForeignKey(order => order.ProductId)     ///ABOUBACAR, MET LE ID POUR LE PRODUIT DANS TA CLASSE. THANK YOU
+            .IsRequired(true)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        _ = modelBuilder.Entity<Product>()  /* ShippingOrder : Relation 1 -> 0,n */
+            .HasMany(prod => prod.OrderShipments)
+            .WithOne(shipping => shipping.Product)       ///TODO: besoin d'une propriété Product pour association.
+            .HasForeignKey(shipping => shipping.ProductId)    
+            .IsRequired(true)
+            .OnDelete(DeleteBehavior.Cascade);
         #endregion
 
         #region SUPPLIER
