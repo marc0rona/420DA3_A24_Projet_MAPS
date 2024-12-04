@@ -27,4 +27,21 @@ internal partial class AddressView : Form {
         this.app = application;
         InitializeComponent();
     }
+
+    public DialogResult OpenForCreation(Address instance) {
+        this.PreOpenSetup(instance, ViewActionsEnum.Creation, "Création d'une addresse", "Créer");
+        return DialogResult.OK;
+    }
+
+    private void PreOpenSetup(Address instance, ViewActionsEnum action, string windowTitle, string actionButtonText) {
+        //@TODO
+    }
+
+    private void Initialize() { 
+        //@ TODO
+    }
+
+
+
+
 }

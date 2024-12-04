@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.Serialization;
 
 namespace _420DA3_A24_Projet.Business.Services;
 
@@ -14,19 +15,40 @@ namespace _420DA3_A24_Projet.Business.Services;
 
 internal class AddressService {
 
+    /// <summary>
+    /// TODO @Pierre : documenter
+    /// </summary>
     private WsysApplication parentApp;
     private AddressDAO addressDAO;
     private AddressView addressWindow;
+    private AppDbContext context;
 
+    /// <summary>
+    /// TODO @Pierre : documenter
+    /// </summary>
+    /// <param name="parentApp"></param>
+    /// <param name="context"></param>
     public AddressService(WsysApplication parentApp, AppDbContext context) {
         this.parentApp = parentApp;
+        this.context = context;
         this.addressDAO = new AddressDAO(context);
         this.addressWindow = new AddressView(parentApp);
+
     }
 
     #region METHODS
 
-    // Finir OpenViewFor....
+    public Address? OpenAddressManagementWindowForCreation() {
+        Address newEmptyAddress = (Address) FormatterServices.GetUninitializedObject(typeof(Address));
+        DialogResult result = this.addressWindow.OpenForCreation(newEmptyAddress); // finir view
+        return result == DialogResult.OK
+            ? this.addressWindow.CurrentEntityInstance
+            : null;
+    }
+
+
+
+
 
 
     public Address? CreateAddressInDatabase(Address address) {

@@ -13,6 +13,11 @@ internal class WsysApplication {
 
     // TODO @Équipe ajoutez des propriétés pour vos services ici
 
+    // @Pierre
+    public AddressService AddressService { get; private set; }
+    public ShipmentService ShipmentService { get; private set; }
+    public TrackingNumberFactory TrackingNumberFactory { get; private set; }
+
     public WsysApplication(AppDbContext context) {
         this.context = new AppDbContext();
         this.PasswordService = PasswordService.GetInstance();
@@ -20,8 +25,12 @@ internal class WsysApplication {
         this.RoleService = new RoleService(this, this.context);
         //finir le reste des services...
 
+        // @Pierre
+        this.AddressService = new AddressService(this, this.context);
+        this.ShipmentService = new ShipmentService(this, this.context);
+        this.TrackingNumberFactory = TrackingNumberFactory.GetInstance();
 
-
+        
         this.LoginService = new LoginService(this);
     }
 

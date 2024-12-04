@@ -18,6 +18,8 @@ public class Shipment {
 
     // Backing fields
     private int id;
+    private ShipmentStatusEnum status;
+    private ShippingOrderStatusEnum shippingService;
     private int shippingOrderId;
     private string trackingNumber = null!;
 
@@ -77,13 +79,15 @@ public class Shipment {
     /// </summary>
     /// <param name="shippingOrderId"></param>
     /// <param name="trackingNumber"></param>
-    public Shipment(int shippingOrderId, string trackingNumber)  {
+    public Shipment(ShipmentStatusEnum status, ShippingProvidersEnum shippingService, int shippingOrderId, string trackingNumber)  {
+        this.status = status;
+        this.shippingService = (ShippingOrderStatusEnum) shippingService;
         this.shippingOrderId = shippingOrderId;
         this.trackingNumber = trackingNumber;
     }
 
     /// <summary>
-    /// Constructeur protégé
+    /// Constructeur protégé EF CORE
     /// </summary>
     /// <param name="id"></param>
     /// <param name="shippingOrderId"></param>
@@ -93,15 +97,19 @@ public class Shipment {
     /// <param name="dateDeleted"></param>
     /// <param name="rowVersion"></param>
     protected Shipment(int id,
+        ShipmentStatusEnum status,
+        ShippingProvidersEnum shippingService,
         int shippingOrderId,
         string trackingNumber,
         DateTime dateCreated,
         DateTime? dateModified,
         DateTime? dateDeleted,
         byte[] rowVersion)
-        : this(shippingOrderId, trackingNumber) 
+        : this(status, shippingService, shippingOrderId, trackingNumber) 
     {
         this.Id = id;
+        this.status = status;
+        this.shippingService = (ShippingOrderStatusEnum) shippingService;
         this.ShippingOrderId = shippingOrderId;
         this.TrackingNumber = trackingNumber;
         this.DateCreated = dateCreated;

@@ -45,6 +45,7 @@ public class Address {
 
     // Backing fields
     private int id;
+    AddressTypesEnum addressType;
     private string addressee = null!;
     private string civicNumber = null!;
     private string street = null!;
@@ -163,6 +164,7 @@ public class Address {
     /// Constructeur public
     /// </summary>
     public Address(
+        AddressTypesEnum addressType,
         string addressee,
         string civicNumber,
         string street,
@@ -170,6 +172,7 @@ public class Address {
         string state,
         string country,
         string postalCode) {
+        this.AddressType = addressType;
         this.Addressee = addressee;
         this.CivicNumber = civicNumber;
         this.Street = street;
@@ -180,7 +183,7 @@ public class Address {
     }
 
     /// <summary>
-    /// Constructeur protégé
+    /// Constructeur protégé EF Core
     /// </summary>
     /// <param name="id"></param>
     /// <param name="addressee"></param>
@@ -196,6 +199,7 @@ public class Address {
     /// <param name="rowVersion"></param>
     protected Address(
         int id,
+        AddressTypesEnum addressType,
         string addressee,
         string civicNumber,
         string street,
@@ -207,7 +211,7 @@ public class Address {
         DateTime? dateModified,
         DateTime? dateDeleted,
         byte[] rowVersion)
-        : this(addressee, civicNumber, street, city, state, country, postalCode) {
+        : this(addressType, addressee, civicNumber, street, city, state, country, postalCode) {
         this.Id = id;
         this.DateCreated = dateCreated;
         this.DateModified = dateModified;
