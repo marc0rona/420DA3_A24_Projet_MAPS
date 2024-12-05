@@ -19,6 +19,11 @@ internal partial class WarehouseView : Form {
     /// <summary>
     /// TODO @PROF : documenter
     /// </summary>
+    public ViewActionsEnum CurrentAction { get; private set; }
+
+    /// <summary>
+    /// TODO @PROF : documenter
+    /// </summary>
     public Warehouse CurrentEntityInstance { get; private set; }
     public WarehouseView(WsysApplication application) {
         this.app = application;

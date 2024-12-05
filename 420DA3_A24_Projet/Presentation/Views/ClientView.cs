@@ -15,7 +15,11 @@ namespace _420DA3_A24_Projet.Presentation.Views;
 internal partial class ClientView : Form {
     private bool isInitialized = false;
     private WsysApplication app;
-
+    
+    /// <summary>
+    /// TODO @PROF : documenter
+    /// </summary>
+    public ViewActionsEnum CurrentAction { get; private set; }
 
     /// <summary>
     /// TODO @PROF : documenter
@@ -65,4 +69,5 @@ internal partial class ClientView : Form {
         this.PreOpenSetup(instance, ViewActionsEnum.Deletion, "Supprimer un client", "Supprimer");
         return this.ShowDialog();
     }
+
 }
