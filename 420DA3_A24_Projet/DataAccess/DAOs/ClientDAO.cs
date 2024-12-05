@@ -1,6 +1,10 @@
 ﻿using _420DA3_A24_Projet.Business.Domain;
 using _420DA3_A24_Projet.DataAccess.Contexts;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace _420DA3_A24_Projet.DataAccess.DAOs;
 
@@ -30,14 +34,14 @@ internal class ClientDAO {
     /// <summary>
     /// TODO @PROF : documenter
     /// </summary>
-    /// <param name="username"></param>
+    /// <param name="clientName"></param>
     /// <param name="includeDeleted"></param>
     /// <returns></returns>
-    public User? GetByUsername(string username, bool includeDeleted = false) {
-        return this.context.Users
-            .Where(user => user.Username == username && (includeDeleted || user.DateDeleted == null))
-            .Include(user => user.Roles)
-            .Include(user => user.EmployeeWarehouse)
+    public Client? GetByClientName(string clientName, bool includeDeleted = false) {
+        return this.context.Clients
+            .Where(client => client.ClientName == clientName && (includeDeleted || client.DateDeleted == null))
+            .Include(client => client.Products)
+            .Include(client => client.ShippingOrders)
             .SingleOrDefault();
     }
 
@@ -47,65 +51,57 @@ internal class ClientDAO {
     /// <param name="criterion"></param>
     /// <param name="includeDeleted"></param>
     /// <returns></returns>
-    public List<User> Search(string criterion, bool includeDeleted = false) {
-        return this.context.Users
-            .Where(user => (
-                user.Id.ToString().Contains(criterion)
-                || user.Username.ToLower().Contains(criterion.ToLower())
-            ) && (includeDeleted || user.DateDeleted == null))
-            .Include(user => user.Roles)
-            .Include(user => user.EmployeeWarehouse)
+    public List<Client> Search(string criterion, bool includeDeleted = false) {
+        return this.context.Clients
+            .Where(client => (
+                client.Id.ToString().Contains(criterion)
+                || client.ClientName.ToLower().Contains(criterion.ToLower())
+            ) && (includeDeleted || client.DateDeleted == null))
+            .Include(client => client.Products)
+            .Include(client => client.ShippingOrders)
             .ToList();
     }
 
     /// <summary>
     /// TODO @PROF : documenter
     /// </summary>
-    /// <param name="user"></param>
+    /// <param name="client"></param>
     /// <returns></returns>
-    public User Create(User user) {
-        _ = this.context.Users.Add(user);
+    public Client Create(Client client) {
+        _ = this.context.Clients.Add(client);
         _ = this.context.SaveChanges();
-        return user;
+        return client;
     }
 
     /// <summary>
     /// TODO @PROF : documenter
     /// </summary>
-    /// <param name="user"></param>
+    /// <param name="client"></param>
     /// <returns></returns>
-    public User Update(User user) {
-        user.DateModified = DateTime.Now;
-        _ = this.context.Users.Update(user);
+    public Client Update(Client client) {
+        client.DateModified = DateTime.Now;
+        _ = this.context.Clients.Update(client);
         _ = this.context.SaveChanges();
-        return user;
+        return client;
     }
 
     /// <summary>
     /// TODO @PROF : documenter
     /// </summary>
-    /// <param name="user"></param>
+    /// <param name="client"></param>
     /// <param name="softDeletes"></param>
     /// <returns></returns>
-    public User Delete(User user, bool softDeletes = true) {
+    public Client Delete(Client client, bool softDeletes = true) {
         if (softDeletes) {
-            user.DateDeleted = DateTime.Now;
-            _ = this.context.Users.Update(user);
+            client.DateDeleted = DateTime.Now;
+            _ = this.context.Clients.Update(client);
 
         } else {
-            _ = this.context.Users.Remove(user);
+            _ = this.context.Clients.Remove(client);
         }
         _ = this.context.SaveChanges();
-        return user;
+        return client;
     }
 
 
-}
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace _420DA3_A24_Projet.DataAccess.DAOs;
-internal class ClientDAO {
 }
