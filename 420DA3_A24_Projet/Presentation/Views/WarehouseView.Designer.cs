@@ -26,9 +26,11 @@ partial class WarehouseView {
     private void InitializeComponent() {
         this.centerBarTabLayPanel = new TableLayoutPanel();
         this.centerPanel = new Panel();
+        this.warehouseClientsListBox = new ListBox();
+        this.warehouseEmployeesListBox = new ListBox();
+        this.warehouseEmployeesLabel = new Label();
         this.warehouseNameValue = new TextBox();
         this.warehouseNameLabel = new Label();
-        this.warehouseClientsValues = new ListBox();
         this.warehouseClientsLabel = new Label();
         this.dateDeletedValue = new DateTimePicker();
         this.dateModifiedValue = new DateTimePicker();
@@ -41,6 +43,8 @@ partial class WarehouseView {
         this.idValue = new NumericUpDown();
         this.idLabel = new Label();
         this.bottomBarPanel = new Panel();
+        this.actButton = new Button();
+        this.canButton = new Button();
         this.actionButton = new Button();
         this.cancelButton = new Button();
         this.btnAction = new Button();
@@ -48,10 +52,6 @@ partial class WarehouseView {
         this.topBarPanel = new Panel();
         this.openendModeValue = new Label();
         this.openedModeLabel = new Label();
-        this.button1 = new Button();
-        this.button2 = new Button();
-        this.warehouseEmployeesValue = new ListBox();
-        this.warehouseEmployeesLabel = new Label();
         this.centerBarTabLayPanel.SuspendLayout();
         this.centerPanel.SuspendLayout();
         ((System.ComponentModel.ISupportInitialize) this.idValue).BeginInit();
@@ -77,11 +77,11 @@ partial class WarehouseView {
         // 
         // centerPanel
         // 
-        this.centerPanel.Controls.Add(this.warehouseEmployeesValue);
+        this.centerPanel.Controls.Add(this.warehouseClientsListBox);
+        this.centerPanel.Controls.Add(this.warehouseEmployeesListBox);
         this.centerPanel.Controls.Add(this.warehouseEmployeesLabel);
         this.centerPanel.Controls.Add(this.warehouseNameValue);
         this.centerPanel.Controls.Add(this.warehouseNameLabel);
-        this.centerPanel.Controls.Add(this.warehouseClientsValues);
         this.centerPanel.Controls.Add(this.warehouseClientsLabel);
         this.centerPanel.Controls.Add(this.dateDeletedValue);
         this.centerPanel.Controls.Add(this.dateModifiedValue);
@@ -99,6 +99,38 @@ partial class WarehouseView {
         this.centerPanel.Name = "centerPanel";
         this.centerPanel.Size = new Size(563, 759);
         this.centerPanel.TabIndex = 0;
+        // 
+        // warehouseClientsListBox
+        // 
+        this.warehouseClientsListBox.FormattingEnabled = true;
+        this.warehouseClientsListBox.ItemHeight = 25;
+        this.warehouseClientsListBox.Location = new Point(227, 309);
+        this.warehouseClientsListBox.Margin = new Padding(4, 5, 4, 5);
+        this.warehouseClientsListBox.Name = "warehouseClientsListBox";
+        this.warehouseClientsListBox.SelectionMode = SelectionMode.MultiSimple;
+        this.warehouseClientsListBox.Size = new Size(326, 204);
+        this.warehouseClientsListBox.TabIndex = 24;
+        // 
+        // warehouseEmployeesListBox
+        // 
+        this.warehouseEmployeesListBox.FormattingEnabled = true;
+        this.warehouseEmployeesListBox.ItemHeight = 25;
+        this.warehouseEmployeesListBox.Location = new Point(227, 536);
+        this.warehouseEmployeesListBox.Margin = new Padding(4, 5, 4, 5);
+        this.warehouseEmployeesListBox.Name = "warehouseEmployeesListBox";
+        this.warehouseEmployeesListBox.SelectionMode = SelectionMode.MultiSimple;
+        this.warehouseEmployeesListBox.Size = new Size(326, 204);
+        this.warehouseEmployeesListBox.TabIndex = 23;
+        // 
+        // warehouseEmployeesLabel
+        // 
+        this.warehouseEmployeesLabel.Location = new Point(3, 535);
+        this.warehouseEmployeesLabel.Margin = new Padding(7, 8, 7, 8);
+        this.warehouseEmployeesLabel.Name = "warehouseEmployeesLabel";
+        this.warehouseEmployeesLabel.Size = new Size(219, 38);
+        this.warehouseEmployeesLabel.TabIndex = 22;
+        this.warehouseEmployeesLabel.Text = "Employees de l'entrepôt :";
+        this.warehouseEmployeesLabel.TextAlign = ContentAlignment.MiddleRight;
         // 
         // warehouseNameValue
         // 
@@ -118,17 +150,6 @@ partial class WarehouseView {
         this.warehouseNameLabel.TabIndex = 20;
         this.warehouseNameLabel.Text = "Nom de l'entrepôt :";
         this.warehouseNameLabel.TextAlign = ContentAlignment.MiddleRight;
-        // 
-        // warehouseClientsValues
-        // 
-        this.warehouseClientsValues.FormattingEnabled = true;
-        this.warehouseClientsValues.ItemHeight = 25;
-        this.warehouseClientsValues.Location = new Point(227, 309);
-        this.warehouseClientsValues.Margin = new Padding(4, 5, 4, 5);
-        this.warehouseClientsValues.Name = "warehouseClientsValues";
-        this.warehouseClientsValues.SelectionMode = SelectionMode.MultiSimple;
-        this.warehouseClientsValues.Size = new Size(326, 204);
-        this.warehouseClientsValues.TabIndex = 17;
         // 
         // warehouseClientsLabel
         // 
@@ -237,8 +258,8 @@ partial class WarehouseView {
         // 
         // bottomBarPanel
         // 
-        this.bottomBarPanel.Controls.Add(this.button1);
-        this.bottomBarPanel.Controls.Add(this.button2);
+        this.bottomBarPanel.Controls.Add(this.actButton);
+        this.bottomBarPanel.Controls.Add(this.canButton);
         this.bottomBarPanel.Controls.Add(this.actionButton);
         this.bottomBarPanel.Controls.Add(this.cancelButton);
         this.bottomBarPanel.Controls.Add(this.btnAction);
@@ -249,6 +270,30 @@ partial class WarehouseView {
         this.bottomBarPanel.Name = "bottomBarPanel";
         this.bottomBarPanel.Size = new Size(1143, 83);
         this.bottomBarPanel.TabIndex = 7;
+        // 
+        // actButton
+        // 
+        this.actButton.Anchor =  AnchorStyles.Bottom | AnchorStyles.Right;
+        this.actButton.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+        this.actButton.Location = new Point(837, 21);
+        this.actButton.Margin = new Padding(4, 5, 4, 5);
+        this.actButton.Name = "actButton";
+        this.actButton.Size = new Size(163, 38);
+        this.actButton.TabIndex = 5;
+        this.actButton.Text = "ACTION";
+        this.actButton.UseVisualStyleBackColor = true;
+        this.actButton.Click += this.actButton_Click;
+        // 
+        // canButton
+        // 
+        this.canButton.Anchor =  AnchorStyles.Bottom | AnchorStyles.Right;
+        this.canButton.Location = new Point(1009, 21);
+        this.canButton.Margin = new Padding(4, 5, 4, 5);
+        this.canButton.Name = "canButton";
+        this.canButton.Size = new Size(107, 38);
+        this.canButton.TabIndex = 4;
+        this.canButton.Text = "Annuler";
+        this.canButton.UseVisualStyleBackColor = true;
         // 
         // actionButton
         // 
@@ -328,50 +373,6 @@ partial class WarehouseView {
         this.openedModeLabel.TabIndex = 0;
         this.openedModeLabel.Text = "Mode :";
         // 
-        // button1
-        // 
-        this.button1.Anchor =  AnchorStyles.Bottom | AnchorStyles.Right;
-        this.button1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-        this.button1.Location = new Point(837, 21);
-        this.button1.Margin = new Padding(4, 5, 4, 5);
-        this.button1.Name = "button1";
-        this.button1.Size = new Size(163, 38);
-        this.button1.TabIndex = 5;
-        this.button1.Text = "ACTION";
-        this.button1.UseVisualStyleBackColor = true;
-        // 
-        // button2
-        // 
-        this.button2.Anchor =  AnchorStyles.Bottom | AnchorStyles.Right;
-        this.button2.Location = new Point(1009, 21);
-        this.button2.Margin = new Padding(4, 5, 4, 5);
-        this.button2.Name = "button2";
-        this.button2.Size = new Size(107, 38);
-        this.button2.TabIndex = 4;
-        this.button2.Text = "Annuler";
-        this.button2.UseVisualStyleBackColor = true;
-        // 
-        // warehouseEmployeesValue
-        // 
-        this.warehouseEmployeesValue.FormattingEnabled = true;
-        this.warehouseEmployeesValue.ItemHeight = 25;
-        this.warehouseEmployeesValue.Location = new Point(227, 536);
-        this.warehouseEmployeesValue.Margin = new Padding(4, 5, 4, 5);
-        this.warehouseEmployeesValue.Name = "warehouseEmployeesValue";
-        this.warehouseEmployeesValue.SelectionMode = SelectionMode.MultiSimple;
-        this.warehouseEmployeesValue.Size = new Size(326, 204);
-        this.warehouseEmployeesValue.TabIndex = 23;
-        // 
-        // warehouseEmployeesLabel
-        // 
-        this.warehouseEmployeesLabel.Location = new Point(3, 535);
-        this.warehouseEmployeesLabel.Margin = new Padding(7, 8, 7, 8);
-        this.warehouseEmployeesLabel.Name = "warehouseEmployeesLabel";
-        this.warehouseEmployeesLabel.Size = new Size(219, 38);
-        this.warehouseEmployeesLabel.TabIndex = 22;
-        this.warehouseEmployeesLabel.Text = "Employees de l'entrepôt :";
-        this.warehouseEmployeesLabel.TextAlign = ContentAlignment.MiddleRight;
-        // 
         // WarehouseView
         // 
         this.AutoScaleDimensions = new SizeF(10F, 25F);
@@ -427,8 +428,9 @@ partial class WarehouseView {
     private Panel topBarPanel;
     private Label openendModeValue;
     private Label openedModeLabel;
-    private Button button1;
-    private Button button2;
-    private ListBox warehouseEmployeesValue;
+    private Button actButton;
+    private Button canButton;
+    private ListBox warehouseEmployeesListBox;
     private Label warehouseEmployeesLabel;
+    private ListBox warehouseClientsListBox;
 }

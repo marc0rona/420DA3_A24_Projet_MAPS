@@ -17,6 +17,8 @@ internal class WsysApplication {
     public AddressService AddressService { get; private set; }
     public ShipmentService ShipmentService { get; private set; }
     public TrackingNumberFactory TrackingNumberFactory { get; private set; }
+    public ClientService ClientService { get; private set; }
+    public WarehouseService WarehouseService { get; private set; }
 
     public WsysApplication(AppDbContext context) {
         this.context = new AppDbContext();
@@ -24,6 +26,11 @@ internal class WsysApplication {
         this.UserService = new UserService(this, this.context);
         this.RoleService = new RoleService(this, this.context);
         //finir le reste des services...
+
+        this.ClientService = new ClientService(this, this.context);
+        this.WarehouseService = new WarehouseService(this, this.context);
+
+
 
         // @Pierre
         this.AddressService = new AddressService(this, this.context);

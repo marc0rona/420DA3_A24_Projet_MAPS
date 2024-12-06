@@ -26,6 +26,10 @@ partial class ClientView {
     private void InitializeComponent() {
         this.centerBarTabLayPanel = new TableLayoutPanel();
         this.centerPanel = new Panel();
+        this.clientNameValue = new TextBox();
+        this.clientNameLabel = new Label();
+        this.contactLastNameValue = new TextBox();
+        this.contactLastNamelabel = new Label();
         this.clientProductsValues = new ListBox();
         this.clientProductsLabel = new Label();
         this.dateDeletedValue = new DateTimePicker();
@@ -45,17 +49,13 @@ partial class ClientView {
         this.idValue = new NumericUpDown();
         this.idLabel = new Label();
         this.bottomBarPanel = new Panel();
-        this.actionButton = new Button();
-        this.cancelButton = new Button();
+        this.ActionButton = new Button();
+        this.CancelButton = new Button();
         this.btnAction = new Button();
         this.btnCancel = new Button();
         this.topBarPanel = new Panel();
         this.openendModeValue = new Label();
         this.openedModeLabel = new Label();
-        this.contactLastNamelabel = new Label();
-        this.contactLastNameValue = new TextBox();
-        this.clientNameLabel = new Label();
-        this.clientNameValue = new TextBox();
         this.centerBarTabLayPanel.SuspendLayout();
         this.centerPanel.SuspendLayout();
         ((System.ComponentModel.ISupportInitialize) this.idValue).BeginInit();
@@ -109,6 +109,44 @@ partial class ClientView {
         this.centerPanel.Name = "centerPanel";
         this.centerPanel.Size = new Size(563, 759);
         this.centerPanel.TabIndex = 0;
+        // 
+        // clientNameValue
+        // 
+        this.clientNameValue.Location = new Point(224, 58);
+        this.clientNameValue.Margin = new Padding(4, 5, 4, 5);
+        this.clientNameValue.Name = "clientNameValue";
+        this.clientNameValue.PlaceholderText = "Nom du client";
+        this.clientNameValue.Size = new Size(333, 31);
+        this.clientNameValue.TabIndex = 21;
+        // 
+        // clientNameLabel
+        // 
+        this.clientNameLabel.Location = new Point(7, 58);
+        this.clientNameLabel.Margin = new Padding(7, 8, 7, 8);
+        this.clientNameLabel.Name = "clientNameLabel";
+        this.clientNameLabel.Size = new Size(206, 38);
+        this.clientNameLabel.TabIndex = 20;
+        this.clientNameLabel.Text = "Nom du Client :";
+        this.clientNameLabel.TextAlign = ContentAlignment.MiddleRight;
+        // 
+        // contactLastNameValue
+        // 
+        this.contactLastNameValue.Location = new Point(226, 152);
+        this.contactLastNameValue.Margin = new Padding(4, 5, 4, 5);
+        this.contactLastNameValue.Name = "contactLastNameValue";
+        this.contactLastNameValue.PlaceholderText = "Nom du contact";
+        this.contactLastNameValue.Size = new Size(333, 31);
+        this.contactLastNameValue.TabIndex = 19;
+        // 
+        // contactLastNamelabel
+        // 
+        this.contactLastNamelabel.Location = new Point(7, 145);
+        this.contactLastNamelabel.Margin = new Padding(7, 8, 7, 8);
+        this.contactLastNamelabel.Name = "contactLastNamelabel";
+        this.contactLastNamelabel.Size = new Size(206, 38);
+        this.contactLastNamelabel.TabIndex = 18;
+        this.contactLastNamelabel.Text = "Nom du Contact :";
+        this.contactLastNamelabel.TextAlign = ContentAlignment.MiddleRight;
         // 
         // clientProductsValues
         // 
@@ -287,8 +325,8 @@ partial class ClientView {
         // 
         // bottomBarPanel
         // 
-        this.bottomBarPanel.Controls.Add(this.actionButton);
-        this.bottomBarPanel.Controls.Add(this.cancelButton);
+        this.bottomBarPanel.Controls.Add(this.ActionButton);
+        this.bottomBarPanel.Controls.Add(this.CancelButton);
         this.bottomBarPanel.Controls.Add(this.btnAction);
         this.bottomBarPanel.Controls.Add(this.btnCancel);
         this.bottomBarPanel.Dock = DockStyle.Bottom;
@@ -298,28 +336,28 @@ partial class ClientView {
         this.bottomBarPanel.Size = new Size(1143, 83);
         this.bottomBarPanel.TabIndex = 4;
         // 
-        // actionButton
+        // ActionButton
         // 
-        this.actionButton.Anchor =  AnchorStyles.Bottom | AnchorStyles.Right;
-        this.actionButton.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-        this.actionButton.Location = new Point(851, 20);
-        this.actionButton.Margin = new Padding(4, 5, 4, 5);
-        this.actionButton.Name = "actionButton";
-        this.actionButton.Size = new Size(163, 38);
-        this.actionButton.TabIndex = 3;
-        this.actionButton.Text = "ACTION";
-        this.actionButton.UseVisualStyleBackColor = true;
+        this.ActionButton.Anchor =  AnchorStyles.Bottom | AnchorStyles.Right;
+        this.ActionButton.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+        this.ActionButton.Location = new Point(851, 20);
+        this.ActionButton.Margin = new Padding(4, 5, 4, 5);
+        this.ActionButton.Name = "ActionButton";
+        this.ActionButton.Size = new Size(163, 38);
+        this.ActionButton.TabIndex = 3;
+        this.ActionButton.Text = "ACTION";
+        this.ActionButton.UseVisualStyleBackColor = true;
         // 
-        // cancelButton
+        // CancelButton
         // 
-        this.cancelButton.Anchor =  AnchorStyles.Bottom | AnchorStyles.Right;
-        this.cancelButton.Location = new Point(1023, 20);
-        this.cancelButton.Margin = new Padding(4, 5, 4, 5);
-        this.cancelButton.Name = "cancelButton";
-        this.cancelButton.Size = new Size(107, 38);
-        this.cancelButton.TabIndex = 2;
-        this.cancelButton.Text = "Annuler";
-        this.cancelButton.UseVisualStyleBackColor = true;
+        this.CancelButton.Anchor =  AnchorStyles.Bottom | AnchorStyles.Right;
+        this.CancelButton.Location = new Point(1023, 20);
+        this.CancelButton.Margin = new Padding(4, 5, 4, 5);
+        this.CancelButton.Name = "CancelButton";
+        this.CancelButton.Size = new Size(107, 38);
+        this.CancelButton.TabIndex = 2;
+        this.CancelButton.Text = "Annuler";
+        this.CancelButton.UseVisualStyleBackColor = true;
         // 
         // btnAction
         // 
@@ -376,44 +414,6 @@ partial class ClientView {
         this.openedModeLabel.TabIndex = 0;
         this.openedModeLabel.Text = "Mode :";
         // 
-        // contactLastNamelabel
-        // 
-        this.contactLastNamelabel.Location = new Point(7, 145);
-        this.contactLastNamelabel.Margin = new Padding(7, 8, 7, 8);
-        this.contactLastNamelabel.Name = "contactLastNamelabel";
-        this.contactLastNamelabel.Size = new Size(206, 38);
-        this.contactLastNamelabel.TabIndex = 18;
-        this.contactLastNamelabel.Text = "Nom du Contact :";
-        this.contactLastNamelabel.TextAlign = ContentAlignment.MiddleRight;
-        // 
-        // contactLastNameValue
-        // 
-        this.contactLastNameValue.Location = new Point(226, 152);
-        this.contactLastNameValue.Margin = new Padding(4, 5, 4, 5);
-        this.contactLastNameValue.Name = "contactLastNameValue";
-        this.contactLastNameValue.PlaceholderText = "Nom du contact";
-        this.contactLastNameValue.Size = new Size(333, 31);
-        this.contactLastNameValue.TabIndex = 19;
-        // 
-        // clientNameLabel
-        // 
-        this.clientNameLabel.Location = new Point(7, 58);
-        this.clientNameLabel.Margin = new Padding(7, 8, 7, 8);
-        this.clientNameLabel.Name = "clientNameLabel";
-        this.clientNameLabel.Size = new Size(206, 38);
-        this.clientNameLabel.TabIndex = 20;
-        this.clientNameLabel.Text = "Nom du Client :";
-        this.clientNameLabel.TextAlign = ContentAlignment.MiddleRight;
-        // 
-        // clientNameValue
-        // 
-        this.clientNameValue.Location = new Point(224, 58);
-        this.clientNameValue.Margin = new Padding(4, 5, 4, 5);
-        this.clientNameValue.Name = "clientNameValue";
-        this.clientNameValue.PlaceholderText = "Nom du client";
-        this.clientNameValue.Size = new Size(333, 31);
-        this.clientNameValue.TabIndex = 21;
-        // 
         // ClientView
         // 
         this.AutoScaleDimensions = new SizeF(10F, 25F);
@@ -463,8 +463,8 @@ partial class ClientView {
     private Panel topBarPanel;
     private Label openendModeValue;
     private Label openedModeLabel;
-    private Button actionButton;
-    private Button cancelButton;
+    private Button ActionButton;
+    private Button CancelButton;
     private TextBox contactLastNameValue;
     private Label contactLastNamelabel;
     private TextBox clientNameValue;
