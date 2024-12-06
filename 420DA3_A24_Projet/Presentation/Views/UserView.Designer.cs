@@ -63,26 +63,29 @@ partial class UserView {
         this.topBarPanel.Controls.Add(this.openedModeLabel);
         this.topBarPanel.Dock = DockStyle.Top;
         this.topBarPanel.Location = new Point(0, 0);
+        this.topBarPanel.Margin = new Padding(4, 5, 4, 5);
         this.topBarPanel.Name = "topBarPanel";
-        this.topBarPanel.Size = new Size(800, 50);
+        this.topBarPanel.Size = new Size(1143, 83);
         this.topBarPanel.TabIndex = 0;
         // 
         // openendModeValue
         // 
         this.openendModeValue.AutoSize = true;
         this.openendModeValue.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-        this.openendModeValue.Location = new Point(53, 9);
+        this.openendModeValue.Location = new Point(76, 15);
+        this.openendModeValue.Margin = new Padding(4, 0, 4, 0);
         this.openendModeValue.Name = "openendModeValue";
-        this.openendModeValue.Size = new Size(72, 15);
+        this.openendModeValue.Size = new Size(112, 25);
         this.openendModeValue.TabIndex = 1;
         this.openendModeValue.Text = "Placeholder";
         // 
         // openedModeLabel
         // 
         this.openedModeLabel.AutoSize = true;
-        this.openedModeLabel.Location = new Point(3, 9);
+        this.openedModeLabel.Location = new Point(4, 15);
+        this.openedModeLabel.Margin = new Padding(4, 0, 4, 0);
         this.openedModeLabel.Name = "openedModeLabel";
-        this.openedModeLabel.Size = new Size(44, 15);
+        this.openedModeLabel.Size = new Size(68, 25);
         this.openedModeLabel.TabIndex = 0;
         this.openedModeLabel.Text = "Mode :";
         // 
@@ -91,18 +94,20 @@ partial class UserView {
         this.bottomBarPanel.Controls.Add(this.btnAction);
         this.bottomBarPanel.Controls.Add(this.btnCancel);
         this.bottomBarPanel.Dock = DockStyle.Bottom;
-        this.bottomBarPanel.Location = new Point(0, 511);
+        this.bottomBarPanel.Location = new Point(0, 852);
+        this.bottomBarPanel.Margin = new Padding(4, 5, 4, 5);
         this.bottomBarPanel.Name = "bottomBarPanel";
-        this.bottomBarPanel.Size = new Size(800, 50);
+        this.bottomBarPanel.Size = new Size(1143, 83);
         this.bottomBarPanel.TabIndex = 1;
         // 
         // btnAction
         // 
         this.btnAction.Anchor =  AnchorStyles.Bottom | AnchorStyles.Right;
         this.btnAction.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-        this.btnAction.Location = new Point(593, 15);
+        this.btnAction.Location = new Point(847, 25);
+        this.btnAction.Margin = new Padding(4, 5, 4, 5);
         this.btnAction.Name = "btnAction";
-        this.btnAction.Size = new Size(114, 23);
+        this.btnAction.Size = new Size(163, 38);
         this.btnAction.TabIndex = 1;
         this.btnAction.Text = "ACTION";
         this.btnAction.UseVisualStyleBackColor = true;
@@ -111,9 +116,10 @@ partial class UserView {
         // btnCancel
         // 
         this.btnCancel.Anchor =  AnchorStyles.Bottom | AnchorStyles.Right;
-        this.btnCancel.Location = new Point(713, 15);
+        this.btnCancel.Location = new Point(1019, 25);
+        this.btnCancel.Margin = new Padding(4, 5, 4, 5);
         this.btnCancel.Name = "btnCancel";
-        this.btnCancel.Size = new Size(75, 23);
+        this.btnCancel.Size = new Size(107, 38);
         this.btnCancel.TabIndex = 0;
         this.btnCancel.Text = "Annuler";
         this.btnCancel.UseVisualStyleBackColor = true;
@@ -123,15 +129,16 @@ partial class UserView {
         // 
         this.centerBarTabLayPanel.ColumnCount = 3;
         this.centerBarTabLayPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-        this.centerBarTabLayPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 400F));
+        this.centerBarTabLayPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 571F));
         this.centerBarTabLayPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
         this.centerBarTabLayPanel.Controls.Add(this.centerPanel, 1, 0);
         this.centerBarTabLayPanel.Dock = DockStyle.Fill;
-        this.centerBarTabLayPanel.Location = new Point(0, 50);
+        this.centerBarTabLayPanel.Location = new Point(0, 83);
+        this.centerBarTabLayPanel.Margin = new Padding(4, 5, 4, 5);
         this.centerBarTabLayPanel.Name = "centerBarTabLayPanel";
         this.centerBarTabLayPanel.RowCount = 1;
         this.centerBarTabLayPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-        this.centerBarTabLayPanel.Size = new Size(800, 461);
+        this.centerBarTabLayPanel.Size = new Size(1143, 769);
         this.centerBarTabLayPanel.TabIndex = 2;
         // 
         // centerPanel
@@ -155,27 +162,29 @@ partial class UserView {
         this.centerPanel.Controls.Add(this.idValue);
         this.centerPanel.Controls.Add(this.idLabel);
         this.centerPanel.Dock = DockStyle.Fill;
-        this.centerPanel.Location = new Point(203, 3);
+        this.centerPanel.Location = new Point(290, 5);
+        this.centerPanel.Margin = new Padding(4, 5, 4, 5);
         this.centerPanel.Name = "centerPanel";
-        this.centerPanel.Size = new Size(394, 455);
+        this.centerPanel.Size = new Size(563, 759);
         this.centerPanel.TabIndex = 0;
         // 
         // userRolesValues
         // 
         this.userRolesValues.FormattingEnabled = true;
-        this.userRolesValues.ItemHeight = 15;
-        this.userRolesValues.Location = new Point(157, 296);
+        this.userRolesValues.ItemHeight = 25;
+        this.userRolesValues.Location = new Point(224, 493);
+        this.userRolesValues.Margin = new Padding(4, 5, 4, 5);
         this.userRolesValues.Name = "userRolesValues";
         this.userRolesValues.SelectionMode = SelectionMode.MultiSimple;
-        this.userRolesValues.Size = new Size(234, 154);
+        this.userRolesValues.Size = new Size(333, 254);
         this.userRolesValues.TabIndex = 17;
         // 
         // userRolesLabel
         // 
-        this.userRolesLabel.Location = new Point(5, 296);
-        this.userRolesLabel.Margin = new Padding(5);
+        this.userRolesLabel.Location = new Point(7, 493);
+        this.userRolesLabel.Margin = new Padding(7, 8, 7, 8);
         this.userRolesLabel.Name = "userRolesLabel";
-        this.userRolesLabel.Size = new Size(144, 23);
+        this.userRolesLabel.Size = new Size(206, 38);
         this.userRolesLabel.TabIndex = 16;
         this.userRolesLabel.Text = "Rôles de l'utilisateur :";
         this.userRolesLabel.TextAlign = ContentAlignment.MiddleRight;
@@ -183,127 +192,134 @@ partial class UserView {
         // dateDeletedValue
         // 
         this.dateDeletedValue.Enabled = false;
-        this.dateDeletedValue.Location = new Point(157, 246);
+        this.dateDeletedValue.Location = new Point(224, 410);
+        this.dateDeletedValue.Margin = new Padding(4, 5, 4, 5);
         this.dateDeletedValue.Name = "dateDeletedValue";
-        this.dateDeletedValue.Size = new Size(234, 23);
+        this.dateDeletedValue.Size = new Size(333, 31);
         this.dateDeletedValue.TabIndex = 15;
         // 
         // dateModifiedValue
         // 
         this.dateModifiedValue.Enabled = false;
-        this.dateModifiedValue.Location = new Point(157, 213);
+        this.dateModifiedValue.Location = new Point(224, 355);
+        this.dateModifiedValue.Margin = new Padding(4, 5, 4, 5);
         this.dateModifiedValue.Name = "dateModifiedValue";
-        this.dateModifiedValue.Size = new Size(234, 23);
+        this.dateModifiedValue.Size = new Size(333, 31);
         this.dateModifiedValue.TabIndex = 14;
         // 
         // dateCreatedValue
         // 
         this.dateCreatedValue.Enabled = false;
-        this.dateCreatedValue.Location = new Point(157, 180);
+        this.dateCreatedValue.Location = new Point(224, 300);
+        this.dateCreatedValue.Margin = new Padding(4, 5, 4, 5);
         this.dateCreatedValue.Name = "dateCreatedValue";
-        this.dateCreatedValue.Size = new Size(234, 23);
+        this.dateCreatedValue.Size = new Size(333, 31);
         this.dateCreatedValue.TabIndex = 13;
         // 
         // whEmpWarehouseValue
         // 
         this.whEmpWarehouseValue.FormattingEnabled = true;
-        this.whEmpWarehouseValue.Location = new Point(157, 148);
+        this.whEmpWarehouseValue.Location = new Point(224, 247);
+        this.whEmpWarehouseValue.Margin = new Padding(4, 5, 4, 5);
         this.whEmpWarehouseValue.Name = "whEmpWarehouseValue";
-        this.whEmpWarehouseValue.Size = new Size(234, 23);
+        this.whEmpWarehouseValue.Size = new Size(333, 33);
         this.whEmpWarehouseValue.TabIndex = 12;
         // 
         // passwordHashValue
         // 
         this.passwordHashValue.Enabled = false;
-        this.passwordHashValue.Location = new Point(157, 115);
+        this.passwordHashValue.Location = new Point(224, 192);
+        this.passwordHashValue.Margin = new Padding(4, 5, 4, 5);
         this.passwordHashValue.Name = "passwordHashValue";
         this.passwordHashValue.PlaceholderText = "Hash du mot de passe";
-        this.passwordHashValue.Size = new Size(234, 23);
+        this.passwordHashValue.Size = new Size(333, 31);
         this.passwordHashValue.TabIndex = 11;
         // 
         // passwordValue
         // 
-        this.passwordValue.Location = new Point(157, 82);
+        this.passwordValue.Location = new Point(224, 137);
+        this.passwordValue.Margin = new Padding(4, 5, 4, 5);
         this.passwordValue.Name = "passwordValue";
         this.passwordValue.PlaceholderText = "Mot de passe";
-        this.passwordValue.Size = new Size(234, 23);
+        this.passwordValue.Size = new Size(333, 31);
         this.passwordValue.TabIndex = 10;
         this.passwordValue.UseSystemPasswordChar = true;
         // 
         // usernameValue
         // 
-        this.usernameValue.Location = new Point(157, 49);
+        this.usernameValue.Location = new Point(224, 82);
+        this.usernameValue.Margin = new Padding(4, 5, 4, 5);
         this.usernameValue.Name = "usernameValue";
         this.usernameValue.PlaceholderText = "Nom d'utilisateur";
-        this.usernameValue.Size = new Size(234, 23);
+        this.usernameValue.Size = new Size(333, 31);
         this.usernameValue.TabIndex = 9;
         // 
         // dateDeletedLabel
         // 
-        this.dateDeletedLabel.Location = new Point(5, 246);
-        this.dateDeletedLabel.Margin = new Padding(5);
+        this.dateDeletedLabel.Location = new Point(7, 410);
+        this.dateDeletedLabel.Margin = new Padding(7, 8, 7, 8);
         this.dateDeletedLabel.Name = "dateDeletedLabel";
-        this.dateDeletedLabel.Size = new Size(144, 23);
+        this.dateDeletedLabel.Size = new Size(206, 38);
         this.dateDeletedLabel.TabIndex = 8;
         this.dateDeletedLabel.Text = "Date de suppression :";
         this.dateDeletedLabel.TextAlign = ContentAlignment.MiddleRight;
         // 
         // dateModifiedLabel
         // 
-        this.dateModifiedLabel.Location = new Point(5, 213);
-        this.dateModifiedLabel.Margin = new Padding(5);
+        this.dateModifiedLabel.Location = new Point(7, 355);
+        this.dateModifiedLabel.Margin = new Padding(7, 8, 7, 8);
         this.dateModifiedLabel.Name = "dateModifiedLabel";
-        this.dateModifiedLabel.Size = new Size(144, 23);
+        this.dateModifiedLabel.Size = new Size(206, 38);
         this.dateModifiedLabel.TabIndex = 7;
         this.dateModifiedLabel.Text = "Date de modification :";
         this.dateModifiedLabel.TextAlign = ContentAlignment.MiddleRight;
         // 
         // dateCreatedLabel
         // 
-        this.dateCreatedLabel.Location = new Point(5, 180);
-        this.dateCreatedLabel.Margin = new Padding(5);
+        this.dateCreatedLabel.Location = new Point(7, 300);
+        this.dateCreatedLabel.Margin = new Padding(7, 8, 7, 8);
         this.dateCreatedLabel.Name = "dateCreatedLabel";
-        this.dateCreatedLabel.Size = new Size(144, 23);
+        this.dateCreatedLabel.Size = new Size(206, 38);
         this.dateCreatedLabel.TabIndex = 6;
         this.dateCreatedLabel.Text = "Date de création :";
         this.dateCreatedLabel.TextAlign = ContentAlignment.MiddleRight;
         // 
         // whEmpWarehouseLabel
         // 
-        this.whEmpWarehouseLabel.Location = new Point(5, 147);
-        this.whEmpWarehouseLabel.Margin = new Padding(5);
+        this.whEmpWarehouseLabel.Location = new Point(7, 245);
+        this.whEmpWarehouseLabel.Margin = new Padding(7, 8, 7, 8);
         this.whEmpWarehouseLabel.Name = "whEmpWarehouseLabel";
-        this.whEmpWarehouseLabel.Size = new Size(144, 23);
+        this.whEmpWarehouseLabel.Size = new Size(206, 38);
         this.whEmpWarehouseLabel.TabIndex = 5;
         this.whEmpWarehouseLabel.Text = "Entrepôt :";
         this.whEmpWarehouseLabel.TextAlign = ContentAlignment.MiddleRight;
         // 
         // passwordHashLabel
         // 
-        this.passwordHashLabel.Location = new Point(5, 114);
-        this.passwordHashLabel.Margin = new Padding(5);
+        this.passwordHashLabel.Location = new Point(7, 190);
+        this.passwordHashLabel.Margin = new Padding(7, 8, 7, 8);
         this.passwordHashLabel.Name = "passwordHashLabel";
-        this.passwordHashLabel.Size = new Size(144, 23);
+        this.passwordHashLabel.Size = new Size(206, 38);
         this.passwordHashLabel.TabIndex = 4;
         this.passwordHashLabel.Text = "Mot de passe encrypté :";
         this.passwordHashLabel.TextAlign = ContentAlignment.MiddleRight;
         // 
         // passwordLabel
         // 
-        this.passwordLabel.Location = new Point(5, 81);
-        this.passwordLabel.Margin = new Padding(5);
+        this.passwordLabel.Location = new Point(7, 135);
+        this.passwordLabel.Margin = new Padding(7, 8, 7, 8);
         this.passwordLabel.Name = "passwordLabel";
-        this.passwordLabel.Size = new Size(144, 23);
+        this.passwordLabel.Size = new Size(206, 38);
         this.passwordLabel.TabIndex = 3;
         this.passwordLabel.Text = "Mot de passe :";
         this.passwordLabel.TextAlign = ContentAlignment.MiddleRight;
         // 
         // usernameLabel
         // 
-        this.usernameLabel.Location = new Point(5, 48);
-        this.usernameLabel.Margin = new Padding(5);
+        this.usernameLabel.Location = new Point(7, 80);
+        this.usernameLabel.Margin = new Padding(7, 8, 7, 8);
         this.usernameLabel.Name = "usernameLabel";
-        this.usernameLabel.Size = new Size(144, 23);
+        this.usernameLabel.Size = new Size(206, 38);
         this.usernameLabel.TabIndex = 2;
         this.usernameLabel.Text = "Nom d'utilisateur :";
         this.usernameLabel.TextAlign = ContentAlignment.MiddleRight;
@@ -311,30 +327,32 @@ partial class UserView {
         // idValue
         // 
         this.idValue.Enabled = false;
-        this.idValue.Location = new Point(157, 17);
+        this.idValue.Location = new Point(224, 28);
+        this.idValue.Margin = new Padding(4, 5, 4, 5);
         this.idValue.Name = "idValue";
-        this.idValue.Size = new Size(234, 23);
+        this.idValue.Size = new Size(334, 31);
         this.idValue.TabIndex = 1;
         // 
         // idLabel
         // 
-        this.idLabel.Location = new Point(5, 15);
-        this.idLabel.Margin = new Padding(5);
+        this.idLabel.Location = new Point(7, 25);
+        this.idLabel.Margin = new Padding(7, 8, 7, 8);
         this.idLabel.Name = "idLabel";
-        this.idLabel.Size = new Size(144, 23);
+        this.idLabel.Size = new Size(206, 38);
         this.idLabel.TabIndex = 0;
         this.idLabel.Text = "Id :";
         this.idLabel.TextAlign = ContentAlignment.MiddleRight;
         // 
         // UserView
         // 
-        this.AutoScaleDimensions = new SizeF(7F, 15F);
+        this.AutoScaleDimensions = new SizeF(10F, 25F);
         this.AutoScaleMode = AutoScaleMode.Font;
-        this.ClientSize = new Size(800, 561);
+        this.ClientSize = new Size(1143, 935);
         this.Controls.Add(this.centerBarTabLayPanel);
         this.Controls.Add(this.bottomBarPanel);
         this.Controls.Add(this.topBarPanel);
-        this.MinimumSize = new Size(500, 400);
+        this.Margin = new Padding(4, 5, 4, 5);
+        this.MinimumSize = new Size(705, 629);
         this.Name = "UserView";
         this.Text = "Gestion d'un utilisateur";
         this.topBarPanel.ResumeLayout(false);
