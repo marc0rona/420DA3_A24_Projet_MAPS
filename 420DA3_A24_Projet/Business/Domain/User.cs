@@ -85,7 +85,7 @@ public class User {
     /// <summary>
     /// L'entrepôt de travail de l'employé d'entrepôt ou <see langword="null"/> pour les autres utilisateurs.
     /// </summary>
-    public virtual Entrepot? EmployeeWarehouse { get; set; }
+    public virtual Warehouse? EmployeeWarehouse { get; set; }
 
     #endregion
 
