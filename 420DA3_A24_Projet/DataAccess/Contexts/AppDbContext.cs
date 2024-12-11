@@ -9,6 +9,7 @@ internal class AppDbContext : DbContext {
 
     public DbSet<Address> Addresses { get; set; }
     public DbSet<Product> Products { get; set; }
+    public DbSet<Supplier> Suppliers { get; set; }
     public DbSet<Shipment> Shipments { get; set; }
     public DbSet<Client> Clients { get; set; }
     public DbSet<Warehouse> Warehouses { get; set; }
@@ -439,8 +440,8 @@ internal class AppDbContext : DbContext {
 
         _ = modelBuilder.Entity<Product>()  /* ShippingOrder : Relation 1 -> 0,n */
             .HasMany(prod => prod.OrderShipments)
-            .WithOne(shipping => shipping.Product)       ///TODO: besoin d'une propriété Product pour association.
-            .HasForeignKey(shipping => shipping.ProductId)    
+            .WithOne(ship => ship.Product)       ///TODO: besoin d'une propriété Product pour association.
+            .HasForeignKey(ship => ship.ProductId)    
             .IsRequired(true)
             .OnDelete(DeleteBehavior.Cascade);
         #endregion
@@ -517,7 +518,13 @@ internal class AppDbContext : DbContext {
             .HasColumnName(nameof(Supplier.RowVersion)).HasColumnOrder(9)
             .IsRowVersion();
 
-        //ToDo : RELATIONS 1-n
+        /// CONFIGURATION DE RELATIONS AVEC ENTITY PRODUCT
+        _ = modelBuilder.Entity<Supplier>() /* Product : Relation 1 -> 0,n  */
+            .HasMany(supp => supp.ProductList) //  (1 supplier pour plusieurs produits) 
+            .WithOne(prod => prod.Supplier)
+            .HasForeignKey(prod => prod.Supplier_Id) //FK = id du Supplier (dans 'Product' Table)
+            .IsRequired(true)
+            .OnDelete(DeleteBehavior.SetNull); //Si Supplier est supprimer = Produit relie vont avoir des valeurs NULl dans colones 'Suppliers'
         #endregion
 
         #region SHIPMENT
