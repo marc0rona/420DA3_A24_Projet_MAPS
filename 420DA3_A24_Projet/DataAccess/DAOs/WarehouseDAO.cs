@@ -17,6 +17,12 @@ internal class WarehouseDAO {
         this.context = context;
     }
 
+    public List<Warehouse> GetAll(bool includeDeleted = false) {
+        return this.context.Warehouses
+            .Where(warehouse => includeDeleted || warehouse.DateDeleted == null)
+            .ToList();
+    }
+
     /// <summary>
     /// TODO @PROF : documenter
     /// </summary>

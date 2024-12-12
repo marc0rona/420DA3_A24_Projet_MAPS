@@ -56,7 +56,7 @@ public class Client
     // Propriétés de navigation
     public virtual List<Product> Products { get; set; } = new List<Product>();
     public virtual List<ShippingOrder> ShippingOrders { get; set; } = new List<ShippingOrder>();
-    public virtual Warehouse AssignedWarehouse { get; set; }
+    public virtual Warehouse? AssignedWarehouse { get; set; }
 
     //Constructeurs
     public Client(int id,

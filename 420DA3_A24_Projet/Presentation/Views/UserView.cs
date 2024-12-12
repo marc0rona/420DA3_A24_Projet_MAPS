@@ -18,7 +18,7 @@ internal partial class UserView : Form {
     /// <summary>
     /// TODO @PROF : documenter
     /// </summary>
-    public User CurrentEntityInstance { get; private set; }
+    public User? CurrentEntityInstance { get; private set; }
 
     /// <summary>
     /// TODO @PROF : documenter
@@ -119,8 +119,8 @@ internal partial class UserView : Form {
         }
         this.whEmpWarehouseValue.Items.Clear();
         // TODO @PROF: fix this quand le service entrepot sera créé
-        foreach (Entrepot entrepot in this.app.EntrepotService.GetAllEntrepots()) {
-            _ = this.whEmpWarehouseValue.Items.Add(entrepot);
+        foreach (Warehouse warehouse in this.app.WarehouseService.GetAllWarehouses()) {
+            _ = this.whEmpWarehouseValue.Items.Add(warehouse);
         }
     }
 
@@ -154,7 +154,7 @@ internal partial class UserView : Form {
     private User GetDataFromControls(User user) {
         user.Username = this.usernameValue.Text;
         // TODO: get clear password, encrypt it, and set as user's passwordHash
-        user.EmployeeWarehouse = this.whEmpWarehouseValue.SelectedItem as Entrepot;
+        user.EmployeeWarehouse = this.whEmpWarehouseValue.SelectedItem as Warehouse;
         user.Roles = new List<Role>();
         foreach (Role role in this.userRolesValues.SelectedItems) {
             user.Roles.Add(role);

@@ -24,7 +24,7 @@ internal partial class ClientView : Form {
     /// <summary>
     /// TODO @PROF : documenter
     /// </summary>
-    public Client CurrentEntityInstance { get; private set; }
+    public Client? CurrentEntityInstance { get; private set; }
     public ClientView(WsysApplication application) {
         this.app = application;
         this.InitializeComponent();
@@ -119,7 +119,7 @@ internal partial class ClientView : Form {
             _ = this.clientProductsValues.Items.Add(product);
         }
         this.whEmpWarehouseValue.Items.Clear();
-        foreach (Warehouse warehouse in this.app.WarehouseService.GetAllWarehouses()) { //GetAllWarehouses n'existe encore
+        foreach (Warehouse warehouse in this.app.WarehouseService.GetAllWarehouses()) { 
             _ = this.whEmpWarehouseValue.Items.Add(warehouse);
         }
     }

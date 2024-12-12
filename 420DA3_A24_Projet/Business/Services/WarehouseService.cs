@@ -30,6 +30,10 @@ internal class WarehouseService {
 
     #region METHODS
 
+    public List<Warehouse> GetAllWarehouses(bool includeDeleted = false) {
+        return this.warehouseDAO.GetAll(includeDeleted);
+    }
+
     /// <summary>
     /// TODO @PROF : documenter
     /// </summary>
