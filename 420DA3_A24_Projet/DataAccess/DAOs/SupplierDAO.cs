@@ -26,8 +26,7 @@ internal class SupplierDAO
 
     //Pogne le ID + enities connecter en fonction du AppContext (peut etre nullable) [CRUD : Read]
     public Supplier? GetById(int id_input, bool includeDeleted = false /* default false */) 
-    {
-        return this.context.Suppliers
+    {   return this.context.Suppliers
                    .Where(supp => supp.Id == id_input && (includeDeleted || supp.DateDeleted == null))  //verification de la suppression, si faite
                    .Include(supp => supp.ProductList)      //lié a Produits
                    .SingleOrDefault();
@@ -40,14 +39,23 @@ internal class SupplierDAO
         return chosenSupp;
     }
     //Suppression [CRUD : Delete]
-    public Supplier Delete(Supplier chosenSupp, bool softDeletes = true /* default true */) 
-    {
-        if (softDeletes) /* is true */
+    public string Delete(Supplier chosenSupp, bool softDeletes = true /* default true */) 
+    {   if (softDeletes) /* is true */
         {   chosenSupp.DateDeleted = DateTime.Now;
             _ = this.context.Suppliers.Update(chosenSupp); //'Soft Delete' guarde les infos du produits supprimer
         } else 
-        {_ = this.context.Suppliers.Remove(chosenSupp); }
+          {_ = this.context.Suppliers.Remove(chosenSupp); }
         _ = this.context.SaveChanges();
-        return chosenSupp;
+        return chosenSupp.Name; //RETOURNE le nom pour CONFIRMATION
+    }
+
+    //Recherches (SearchBar)
+    public List<Supplier> Search(string searchBar, bool incDeleted = false) 
+    {   return this.context.Suppliers.Where(supp =>
+        (supp.Id.ToString()
+            .Contains(searchBar) || supp.Name.ToLower().Contains(searchBar.ToLower())
+        ) && (incDeleted || supp.DateDeleted == null)) //si le DateDeleted =! null (a été supprimer), peut rajouter un TRUE pour include le produit supprimer
+        .Include(supp => supp.ProductList)
+        .ToList();     
     }
 }
