@@ -18,12 +18,12 @@ internal partial class WarehouseView : Form {
     private WsysApplication app;
 
     /// <summary>
-    /// TODO @PROF : documenter
+    /// TODO @SERGIO : documenter
     /// </summary>
     public ViewActionsEnum CurrentAction { get; private set; }
 
     /// <summary>
-    /// TODO @PROF : documenter
+    /// TODO @SERGIO : documenter
     /// </summary>
     public Warehouse CurrentEntityInstance { get; private set; }
     public WarehouseView(WsysApplication application) {
@@ -32,7 +32,7 @@ internal partial class WarehouseView : Form {
     }
 
     /// <summary>
-    /// TODO @PROF : documenter
+    /// TODO @SERGIO : documenter
     /// </summary>
     /// <param name="instance"></param>
     /// <returns></returns>
@@ -42,7 +42,7 @@ internal partial class WarehouseView : Form {
     }
 
     /// <summary>
-    /// TODO @PROF : documenter
+    /// TODO @SERGIO : documenter
     /// </summary>
     /// <param name="instance"></param>
     /// <returns></returns>
@@ -52,7 +52,7 @@ internal partial class WarehouseView : Form {
     }
 
     /// <summary>
-    /// TODO @PROF : documenter
+    /// TODO @SERGIO : documenter
     /// </summary>
     /// <param name="instance"></param>
     /// <returns></returns>
@@ -62,7 +62,7 @@ internal partial class WarehouseView : Form {
     }
 
     /// <summary>
-    /// TODO @PROF : documenter
+    /// TODO @SERGIO : documenter
     /// </summary>
     /// <param name="instance"></param>
     /// <returns></returns>
@@ -95,7 +95,7 @@ internal partial class WarehouseView : Form {
     }
 
     /// <summary>
-    /// TODO @PROF : documenter
+    /// TODO @SERGIO : documenter
     /// </summary>
     private void Initialize() {
         if (!this.isInitialized) {
@@ -105,7 +105,7 @@ internal partial class WarehouseView : Form {
     }
 
     /// <summary>
-    /// TODO @PROF : documenter
+    /// TODO @SERGIO : documenter
     /// </summary>
     private void ReloadSelectors() {
         this.warehouseClientsListBox.Items.Clear();
@@ -119,7 +119,7 @@ internal partial class WarehouseView : Form {
     }
 
     /// <summary>
-    /// TODO @PROF : documenter
+    /// TODO @SERGIO : documenter
     /// </summary>
     /// <param name="warehouse"></param>
     /// <returns></returns>
@@ -141,7 +141,7 @@ internal partial class WarehouseView : Form {
     }
 
     /// <summary>
-    /// TODO @PROF : documenter
+    /// TODO @SERGIO : documenter
     /// </summary>
     /// <param name="warehouse"></param>
     /// <returns></returns>
@@ -175,16 +175,16 @@ internal partial class WarehouseView : Form {
     }
 
     /// <summary>
-    /// TODO @PROF : documenter
+    /// TODO @SERGIO : documenter
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void actButton_Click(object sender, EventArgs e) {
-        // TODO @PROF: implémenter processus des actions selon l'action courante
+        // TODO @SERGIO: implémenter processus des actions selon l'action courante
     }
 
     /// <summary>
-    /// TODO @PROF : documenter
+    /// TODO @SERGIO : documenter
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>

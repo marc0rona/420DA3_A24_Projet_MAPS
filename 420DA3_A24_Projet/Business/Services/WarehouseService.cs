@@ -17,7 +17,7 @@ internal class WarehouseService {
     private WarehouseView warehouseWindow;
 
     /// <summary>
-    /// TODO @PROF : documenter
+    /// TODO @SERGIO : documenter
     /// </summary>
     /// <param name="parentApp"></param>
     /// <param name="context"></param>
@@ -35,7 +35,7 @@ internal class WarehouseService {
     }
 
     /// <summary>
-    /// TODO @PROF : documenter
+    /// TODO @SERGIO : documenter
     /// </summary>
     /// <returns></returns>
     public Warehouse? OpenWarehouseManagementWindowForCreation() {
@@ -47,7 +47,7 @@ internal class WarehouseService {
     }
 
     /// <summary>
-    /// TODO @PROF : documenter
+    /// TODO @SERGIO : documenter
     /// </summary>
     /// <param name="warehouseToEdit"></param>
     /// <returns></returns>
@@ -57,7 +57,7 @@ internal class WarehouseService {
     }
 
     /// <summary>
-    /// TODO @PROF : documenter
+    /// TODO @SERGIO : documenter
     /// </summary>
     /// <param name="warehouseToView"></param>
     /// <returns></returns>
@@ -67,7 +67,7 @@ internal class WarehouseService {
     }
 
     /// <summary>
-    /// TODO @PROF : documenter
+    /// TODO @SERGIO : documenter
     /// </summary>
     /// <param name="warehouseToDelete"></param>
     /// <returns></returns>
@@ -78,7 +78,7 @@ internal class WarehouseService {
 
 
     /// <summary>
-    /// TODO @PROF : documenter
+    /// TODO @SERGIO : documenter
     /// </summary>
     /// <param name="id"></param>
     /// <returns></returns>
@@ -87,7 +87,7 @@ internal class WarehouseService {
     }
 
     /// <summary>
-    /// TODO @PROF : documenter
+    /// TODO @SERGIO : documenter
     /// </summary>
     /// <param name="warehouseName"></param>
     /// <returns></returns>
@@ -96,7 +96,7 @@ internal class WarehouseService {
     }
 
     /// <summary>
-    /// TODO @PROF : documenter
+    /// TODO @SERGIO : documenter
     /// </summary>
     /// <param name="criterion"></param>
     /// <returns></returns>
@@ -105,7 +105,7 @@ internal class WarehouseService {
     }
 
     /// <summary>
-    /// TODO @PROF : documenter
+    /// TODO @SERGIO : documenter
     /// </summary>
     /// <param name="warehouse"></param>
     /// <returns></returns>
@@ -114,7 +114,7 @@ internal class WarehouseService {
     }
 
     /// <summary>
-    /// TODO @PROF : documenter
+    /// TODO @SERGIO : documenter
     /// </summary>
     /// <param name="warehouse"></param>
     /// <returns></returns>
@@ -123,7 +123,7 @@ internal class WarehouseService {
     }
 
     /// <summary>
-    /// TODO @PROF : documenter
+    /// TODO @SERGIO : documenter
     /// </summary>
     /// <param name="warehouse"></param>
     /// <returns></returns>

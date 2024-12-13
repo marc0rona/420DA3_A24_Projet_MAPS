@@ -105,15 +105,15 @@ internal class AppDbContext : DbContext {
 
         _ = modelBuilder.Entity<User>()
             .HasMany(user => user.CreatedShippingOrders)
-            .WithOne(order => order.CreatorEmployee)
-            .HasForeignKey(order => order.CreatorEmployeeId)
+            .WithOne(order => order.Creator)
+            .HasForeignKey(order => order.Creator_Id)
             .HasPrincipalKey(user => user.Id)
             .IsRequired(true);
 
         _ = modelBuilder.Entity<User>()
             .HasMany(user => user.FulfilledShippingOrders)
-            .WithOne(order => order.FulfillerEmployee)
-            .HasForeignKey(order => order.FulfillerEmployeeId)
+            .WithOne(order => order.Employee_Warehouse)
+            .HasForeignKey(order => order.Employee_Warehouse_Id)
             .HasPrincipalKey(user => user.Id)
             .IsRequired(false);
 
