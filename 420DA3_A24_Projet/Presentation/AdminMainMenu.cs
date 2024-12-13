@@ -350,7 +350,7 @@ internal partial class AdminMainMenu : Form {
     }
 
     private void ClientSearchResults_SelectedIndexChanged(object sender, EventArgs e) {
-        User? selectedClient = this.clientSearchResults.SelectedItem as User;
+        Client? selectedClient = this.clientSearchResults.SelectedItem as User;
         if (selectedClient != null) {
             this.ActivateClientActionButtons();
         } else {
@@ -395,6 +395,126 @@ internal partial class AdminMainMenu : Form {
                 this.clientSearchResults.SelectedItem = null;
                 this.clientSearchResults.SelectedIndex = -1;
                 this.clientSearchResults.Items.Remove(selectedClient);
+            }
+
+        } catch (Exception ex) {
+            this.parentApp.HandleException(ex);
+        }
+
+    }
+
+    #endregion
+
+    #region GESTION DES ENTREPÔTS
+
+    /// <summary>
+    /// Empties the <see cref="Warehouse"/> search results <see cref="ListBox"/> then fills it with the given
+    /// <paramref name="searchResults"/>.
+    /// </summary>
+    /// <param name="searchResults"></param>
+    private void ReloadWarehouseSearchResults(List<Warehouse> searchResults) {
+        try {
+            this.warehouseSearchResults.SelectedItem = null;
+            this.warehouseSearchResults.SelectedIndex = -1;
+            this.warehouseSearchResults.Items.Clear();
+            _ = this.warehouseSearchResults.Items.Add(listNoneSelectedValue);
+            foreach (Warehouse warehouse in searchResults) {
+                _ = this.warehouseSearchResults.Items.Add(warehouse);
+            }
+
+        } catch (Exception ex) {
+            this.parentApp.HandleException(ex);
+        }
+    }
+
+    /// <summary>
+    /// Enables the role action buttons.
+    /// </summary>
+    private void ActivateWarehouseActionButtons() {
+        this.buttonDeleteWarehouse.Enabled = true;
+        this.buttonEditWarehouse.Enabled = true;
+        this.buttonViewWarehouse.Enabled = true;
+    }
+
+    /// <summary>
+    /// Disables the user action buttons.
+    /// </summary>
+    private void DeactivateWarehouseActionButtons() {
+        this.buttonDeleteWarehouse.Enabled = false;
+        this.buttonEditWarehouse.Enabled = false;
+        this.buttonViewWarehouse.Enabled = false;
+    }
+
+    private void ButtonCreateWarehouse_Click(object sender, EventArgs e) {
+        try {
+            Warehouse? warehouseCree = this.parentApp.WarehouseService.OpenManagementWindowForCreation();
+            if (warehouseCree != null) {
+                _ = this.warehouseSearchResults.Items.Add(warehouseCree);
+                this.warehouseSearchResults.SelectedItem = warehouseCree;
+            }
+
+        } catch (Exception ex) {
+            this.parentApp.HandleException(ex);
+        }
+    }
+
+    private void WarehouseSearchTextBox_TextChanged(object sender, EventArgs e) {
+        try {
+            string searchCriterion = this.warehouseSearchTextBox.Text.Trim();
+            List<Warehouse> results = this.parentApp.WarehouseService.SearchWarehouses(searchCriterion);
+            this.ReloadWarehouseSearchResults(results);
+
+        } catch (Exception ex) {
+            this.parentApp.HandleException(ex);
+        }
+    }
+
+    private void WarehouseSearchResults_SelectedIndexChanged(object sender, EventArgs e) {
+        Warehouse? selectedWarehouse = this.warehouseSearchResults.SelectedItem as Warehouse;
+        if (selectedWarehouse != null) {
+            this.ActivateWarehouseActionButtons();
+        } else {
+            this.DeactivateWarehouseActionButtons();
+        }
+    }
+
+    private void ButtonViewWarehouse_Click(object sender, EventArgs e) {
+        try {
+            Warehouse selectedWarehouse = (Warehouse) this.warehouseSearchResults.SelectedItem;
+            Warehouse? createdWarehouse = this.parentApp.WarehouseService.OpenManagementWindowForVisualization(selectedWarehouse);
+            if (createdWarehouse != null) {
+                _ = this.warehouseSearchResults.Items.Add(createdWarehouse);
+                this.warehouseSearchResults.SelectedItem = createdWarehouse;
+            }
+
+        } catch (Exception ex) {
+            this.parentApp.HandleException(ex);
+        }
+    }
+
+    private void ButtonEditWarehouse_Click(object sender, EventArgs e) {
+        try {
+            Warehouse selectedWarehouse = (Warehouse) this.warehouseSearchResults.SelectedItem;
+            bool wasUpdated = this.parentApp.WarehouseService.OpenManagementWindowForEdition(selectedWarehouse);
+            if (wasUpdated) {
+                this.warehouseSearchResults.RefreshDisplay();
+            }
+
+        } catch (Exception ex) {
+            this.parentApp.HandleException(ex);
+        }
+
+    }
+
+    private void ButtonDeleteWarehouse_Click(object sender, EventArgs e) {
+        try {
+            Warehouse selectedWarehouse = (Warehouse) this.warehouseSearchResults.SelectedItem;
+            bool wasDeleted = this.parentApp.WarehouseService.OpenManagementWindowForDeletion(selectedWarehouse);
+
+            if (wasDeleted) {
+                this.warehouseSearchResults.SelectedItem = null;
+                this.warehouseSearchResults.SelectedIndex = -1;
+                this.warehouseSearchResults.Items.Remove(selectedWarehouse);
             }
 
         } catch (Exception ex) {
