@@ -15,7 +15,7 @@ internal class AddressDAO {
 
     private readonly AppDbContext context;
 
-    public AddressDAO(AppDbContext context) { 
+    public AddressDAO(AppDbContext context) {
         this.context = context;
     }
 

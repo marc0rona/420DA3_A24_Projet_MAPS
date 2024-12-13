@@ -156,7 +156,7 @@ public class Address {
     /// <summary>
     /// The shipping order that uses this address (optional relationship).
     /// </summary>
-    public virtual ShipmentOrders? OwnerShipOrder { get; set; }
+    public virtual ShippingOrder? OwnerShipOrder { get; set; }
 
     #endregion
 
