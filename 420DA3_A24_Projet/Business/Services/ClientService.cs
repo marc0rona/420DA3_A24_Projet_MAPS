@@ -30,6 +30,10 @@ internal class ClientService {
 
     #region METHODS
 
+    public List<Client> GetAllClients(bool includeDeleted = false) {
+        return this.clientDAO.GetAll(includeDeleted);
+    }
+
     /// <summary>
     /// TODO @PROF : documenter
     /// </summary>

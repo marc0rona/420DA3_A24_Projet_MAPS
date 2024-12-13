@@ -1,6 +1,7 @@
 ﻿using _420DA3_A24_Projet.Business;
 using _420DA3_A24_Projet.Business.Domain;
 using Project_Utilities.Enums;
+using Project_Utilities.Presentation;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -125,7 +126,7 @@ internal partial class WarehouseView : Form {
     private Warehouse LoadDataInControls(Warehouse warehouse) {
         this.idValue.Value = warehouse.Id;
         this.warehouseNameValue.Text = warehouse.WarehouseName;
-        this.addressValue.Text = warehouse.AssignedAddress;
+        this.addressValue.Text = warehouse.AssignedAddress.Addressee;
         this.dateCreatedValue.Value = warehouse.DateCreated;
         this.dateModifiedValue.Value = warehouse.DateModified ?? DateTime.Now;
         this.dateDeletedValue.Value = warehouse.DateDeleted ?? DateTime.Now;

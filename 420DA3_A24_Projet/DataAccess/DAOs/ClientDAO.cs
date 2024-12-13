@@ -17,6 +17,12 @@ internal class ClientDAO {
         this.context = context;
     }
 
+    public List<Client> GetAll(bool includeDeleted = false) {
+        return this.context.Clients
+            .Where(client => includeDeleted || client.DateDeleted == null)
+            .ToList();
+    }
+
     /// <summary>
     /// TODO @PROF : documenter
     /// </summary>
