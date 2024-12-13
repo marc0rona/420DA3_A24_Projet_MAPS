@@ -66,7 +66,7 @@ internal class PurchaseOrder
         this.ProductToRestock = productToRestock;
         this.Warehouse = warehouse;
         this.QuantityToOrder = quantityToOrder;
-        this.DateCreated = DateTime.Now;
+        
     }
 
    

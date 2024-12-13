@@ -34,11 +34,11 @@ public class ShippingOrder {
 
         }
     }
-    public int Client_Id { get; set; }
-    public int Creator_Id { get; set; }
-    public int Address_Id { get; set; }
-    public int Employee_Warehouse_Id { get; set; }
-    public int Shipping_Id { get; set; }
+    public int ClientId { get; set; }
+    public int CreatorId { get; set; }
+    public int AddressId { get; set; }
+    public int EmployeeWarehouseId { get; set; }
+    public int ShippingId { get; set; }
     public DateTime DateCreated { get; set; }
     public DateTime? DateModified { get; set; }
     public DateTime? DateDeleted { get; set; }
@@ -58,11 +58,11 @@ public class ShippingOrder {
 
         this.Id = id;
         this.Status = status;
-        this.Client_Id = client_id;
-        this.Creator_Id = creator_id;
-        this.Address_Id = address_id;
-        this.Employee_Warehouse_Id = employee_warehouse_id;
-        this.Shipping_Id = shipping_id;
+        this.ClientId = client_id;
+        this.CreatorId = creator_id;
+        this.AddressId = address_id;
+        this.EmployeeWarehouseId = employee_warehouse_id;
+        this.ShippingId = shipping_id;
 
     }
 
@@ -90,7 +90,7 @@ public class ShippingOrder {
     public ShippingOrder(string status, int client_id, int creator_id, int address_id, int employee_warehouse_id, int shipping_id) {
         this.status = status;
         this.client_id = client_id;
-        this.Creator_Id = creator_id;
+        this.CreatorId = creator_id;
         this.address_id = address_id;
         this.employee_warehouse_id = employee_warehouse_id;
         this.shipping_id = shipping_id;
@@ -115,7 +115,7 @@ public class ShippingOrder {
     public static bool ValidateStatus( string status) {  return status.Length <= STATUS_MAX_LENGTH; }
 
     public override string ToString() {
-        return $"ShipmentOrder [ID={id}, Status={status}, ClientID={client_id}, AddressID={address_id}, EmployeeWarehouseID={employee_warehouse_id}, ShippingID={shipping_id}]";
+        return $"ShipmentOrder [ID={id}, Status={status}, ClientId={client_id}, AddressID={address_id}, EmployeeWarehouseID={employee_warehouse_id}, ShippingID={shipping_id}]";
     }
 
     internal static object Creator_id() {

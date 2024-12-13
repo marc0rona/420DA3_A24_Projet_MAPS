@@ -819,8 +819,8 @@ internal class AppDbContext : DbContext {
             .IsRequired(true);
 
         _ = modelBuilder.Entity<ShippingOrder>()
-           .Property(shippingOrder => shippingOrder.Client_Id)
-           .HasColumnName(nameof(ShippingOrder.Client_Id))
+           .Property(shippingOrder => shippingOrder.ClientId)
+           .HasColumnName(nameof(ShippingOrder.ClientId))
            .HasColumnOrder(2)
            .HasColumnType("int")
            .IsRequired(true);
@@ -834,23 +834,23 @@ internal class AppDbContext : DbContext {
 
 
         _ = modelBuilder.Entity<ShippingOrder>()
-            .Property(shippingOrder => shippingOrder.Address_Id)
-            .HasColumnName(nameof(ShippingOrder.Address_Id))
+            .Property(shippingOrder => shippingOrder.AddressId)
+            .HasColumnName(nameof(ShippingOrder.AddressId))
             .HasColumnOrder(4)
             .HasColumnType("int")
             .IsRequired(true);
 
 
         _ = modelBuilder.Entity<ShippingOrder>()
-            .Property(shippingOrder => shippingOrder.Employee_Warehouse_Id)
-            .HasColumnName(nameof(ShippingOrder.Employee_Warehouse_Id))
+            .Property(shippingOrder => shippingOrder.EmployeeWarehouseId)
+            .HasColumnName(nameof(ShippingOrder.EmployeeWarehouseId))
             .HasColumnOrder(5)
             .HasColumnType("int")
             .IsRequired(true);
 
         _ = modelBuilder.Entity<ShippingOrder>()
-            .Property(shippingOrder => shippingOrder.Shipping_Id)
-            .HasColumnName(nameof(ShippingOrder.Shipping_Id))
+            .Property(shippingOrder => shippingOrder.ShippingId)
+            .HasColumnName(nameof(ShippingOrder.ShippingId))
             .HasColumnOrder(6)
             .HasColumnType("int")
             .IsRequired(true);
