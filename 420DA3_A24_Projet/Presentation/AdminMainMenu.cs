@@ -285,5 +285,124 @@ internal partial class AdminMainMenu : Form {
 
     #endregion
 
+    #region GESTION DES CLIENTS
+
+    /// <summary>
+    /// Empties the <see cref="Client"/> search results <see cref="ListBox"/> then fills it with the given
+    /// <paramref name="searchResults"/>.
+    /// </summary>
+    /// <param name="searchResults"></param>
+    private void ReloadClientSearchResults(List<Client> searchResults) {
+        try {
+            this.clientSearchResults.SelectedItem = null;
+            this.clientSearchResults.SelectedIndex = -1;
+            this.clientSearchResults.Items.Clear();
+            _ = this.clientSearchResults.Items.Add(listNoneSelectedValue);
+            foreach (Client client in searchResults) {
+                _ = this.clientSearchResults.Items.Add(client);
+            }
+
+        } catch (Exception ex) {
+            this.parentApp.HandleException(ex);
+        }
+    }
+
+    /// <summary>
+    /// Enables the role action buttons.
+    /// </summary>
+    private void ActivateClientActionButtons() {
+        this.buttonDeleteClient.Enabled = true;
+        this.buttonEditClient.Enabled = true;
+        this.buttonViewClient.Enabled = true;
+    }
+
+    /// <summary>
+    /// Disables the user action buttons.
+    /// </summary>
+    private void DeactivateClientActionButtons() {
+        this.buttonDeleteClient.Enabled = false;
+        this.buttonEditClient.Enabled = false;
+        this.buttonViewClient.Enabled = false;
+    }
+
+    private void ButtonCreateClient_Click(object sender, EventArgs e) {
+        try {
+            Client? clientCree = this.parentApp.ClientService.OpenManagementWindowForCreation();
+            if (clientCree != null) {
+                _ = this.clientSearchResults.Items.Add(clientCree);
+                this.clientSearchResults.SelectedItem = clientCree;
+            }
+
+        } catch (Exception ex) {
+            this.parentApp.HandleException(ex);
+        }
+    }
+
+    private void ClientSearchTextBox_TextChanged(object sender, EventArgs e) {
+        try {
+            string searchCriterion = this.clientSearchTextBox.Text.Trim();
+            List<Client> results = this.parentApp.ClientService.SearchClients(searchCriterion);
+            this.ReloadClientSearchResults(results);
+
+        } catch (Exception ex) {
+            this.parentApp.HandleException(ex);
+        }
+    }
+
+    private void ClientSearchResults_SelectedIndexChanged(object sender, EventArgs e) {
+        User? selectedClient = this.clientSearchResults.SelectedItem as User;
+        if (selectedClient != null) {
+            this.ActivateClientActionButtons();
+        } else {
+            this.DeactivateClientActionButtons();
+        }
+    }
+
+    private void ButtonViewClient_Click(object sender, EventArgs e) {
+        try {
+            Client selectedClient = (Client) this.clientSearchResults.SelectedItem;
+            Client? createdClient = this.parentApp.ClientService.OpenManagementWindowForVisualization(selectedClient);
+            if (createdClient != null) {
+                _ = this.clientSearchResults.Items.Add(createdClient);
+                this.clientSearchResults.SelectedItem = createdClient;
+            }
+
+        } catch (Exception ex) {
+            this.parentApp.HandleException(ex);
+        }
+    }
+
+    private void ButtonEditClient_Click(object sender, EventArgs e) {
+        try {
+            Client selectedClient = (Client) this.clientSearchResults.SelectedItem;
+            bool wasUpdated = this.parentApp.ClientService.OpenManagementWindowForEdition(selectedClient);
+            if (wasUpdated) {
+                this.clientSearchResults.RefreshDisplay();
+            }
+
+        } catch (Exception ex) {
+            this.parentApp.HandleException(ex);
+        }
+
+    }
+
+    private void ButtonDeleteClient_Click(object sender, EventArgs e) {
+        try {
+            Client selectedClient = (Client)this.clientSearchResults.SelectedItem;
+            bool wasDeleted = this.parentApp.ClientService.OpenManagementWindowForDeletion(selectedClient);
+
+            if (wasDeleted) {
+                this.clientSearchResults.SelectedItem = null;
+                this.clientSearchResults.SelectedIndex = -1;
+                this.clientSearchResults.Items.Remove(selectedClient);
+            }
+
+        } catch (Exception ex) {
+            this.parentApp.HandleException(ex);
+        }
+
+    }
+
+    #endregion
 
 }

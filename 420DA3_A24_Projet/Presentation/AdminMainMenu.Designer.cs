@@ -985,7 +985,7 @@ partial class AdminMainMenu {
         this.buttonCreateWarehouse.Name = "buttonCreateWarehouse";
         this.buttonCreateWarehouse.Size = new Size(163, 38);
         this.buttonCreateWarehouse.TabIndex = 0;
-        this.buttonCreateWarehouse.Text = "Créer Client";
+        this.buttonCreateWarehouse.Text = "Créer Entrepôt";
         this.buttonCreateWarehouse.UseVisualStyleBackColor = true;
         // 
         // AdminMainMenu
