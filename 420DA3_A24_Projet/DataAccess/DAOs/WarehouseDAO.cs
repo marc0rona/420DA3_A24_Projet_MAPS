@@ -17,8 +17,14 @@ internal class WarehouseDAO {
         this.context = context;
     }
 
+    public List<Warehouse> GetAll(bool includeDeleted = false) {
+        return this.context.Warehouses
+            .Where(warehouse => includeDeleted || warehouse.DateDeleted == null)
+            .ToList();
+    }
+
     /// <summary>
-    /// TODO @PROF : documenter
+    /// TODO @SERGIO : documenter
     /// </summary>
     /// <param name="id"></param>
     /// <param name="includeDeleted"></param>
@@ -35,7 +41,7 @@ internal class WarehouseDAO {
     }
 
     /// <summary>
-    /// TODO @PROF : documenter
+    /// TODO @SERGIO : documenter
     /// </summary>
     /// <param name="clientName"></param>
     /// <param name="includeDeleted"></param>
@@ -51,7 +57,7 @@ internal class WarehouseDAO {
     }
 
     /// <summary>
-    /// TODO @PROF : documenter
+    /// TODO @SERGIO : documenter
     /// </summary>
     /// <param name="criterion"></param>
     /// <param name="includeDeleted"></param>
@@ -70,7 +76,7 @@ internal class WarehouseDAO {
     }
 
     /// <summary>
-    /// TODO @PROF : documenter
+    /// TODO @SERGIO : documenter
     /// </summary>
     /// <param name="warehouse"></param>
     /// <returns></returns>
@@ -81,7 +87,7 @@ internal class WarehouseDAO {
     }
 
     /// <summary>
-    /// TODO @PROF : documenter
+    /// TODO @SERGIO : documenter
     /// </summary>
     /// <param name="warehouse"></param>
     /// <returns></returns>
@@ -93,7 +99,7 @@ internal class WarehouseDAO {
     }
 
     /// <summary>
-    /// TODO @PROF : documenter
+    /// TODO @SERGIO : documenter
     /// </summary>
     /// <param name="warehouse"></param>
     /// <param name="softDeletes"></param>

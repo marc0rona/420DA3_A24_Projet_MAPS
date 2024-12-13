@@ -17,8 +17,14 @@ internal class ClientDAO {
         this.context = context;
     }
 
+    public List<Client> GetAll(bool includeDeleted = false) {
+        return this.context.Clients
+            .Where(client => includeDeleted || client.DateDeleted == null)
+            .ToList();
+    }
+
     /// <summary>
-    /// TODO @PROF : documenter
+    /// TODO @SERGIO : documenter
     /// </summary>
     /// <param name="id"></param>
     /// <param name="includeDeleted"></param>
@@ -32,7 +38,7 @@ internal class ClientDAO {
     }
 
     /// <summary>
-    /// TODO @PROF : documenter
+    /// TODO @SERGIO : documenter
     /// </summary>
     /// <param name="clientName"></param>
     /// <param name="includeDeleted"></param>
@@ -46,7 +52,7 @@ internal class ClientDAO {
     }
 
     /// <summary>
-    /// TODO @PROF : documenter
+    /// TODO @SERGIO : documenter
     /// </summary>
     /// <param name="criterion"></param>
     /// <param name="includeDeleted"></param>
@@ -63,7 +69,7 @@ internal class ClientDAO {
     }
 
     /// <summary>
-    /// TODO @PROF : documenter
+    /// TODO @SERGIO : documenter
     /// </summary>
     /// <param name="client"></param>
     /// <returns></returns>
@@ -74,7 +80,7 @@ internal class ClientDAO {
     }
 
     /// <summary>
-    /// TODO @PROF : documenter
+    /// TODO @SERGIO : documenter
     /// </summary>
     /// <param name="client"></param>
     /// <returns></returns>
@@ -86,7 +92,7 @@ internal class ClientDAO {
     }
 
     /// <summary>
-    /// TODO @PROF : documenter
+    /// TODO @SERGIO : documenter
     /// </summary>
     /// <param name="client"></param>
     /// <param name="softDeletes"></param>

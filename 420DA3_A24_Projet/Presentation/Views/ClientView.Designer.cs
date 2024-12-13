@@ -26,32 +26,36 @@ partial class ClientView {
     private void InitializeComponent() {
         this.centerBarTabLayPanel = new TableLayoutPanel();
         this.centerPanel = new Panel();
-        this.userRolesValues = new ListBox();
-        this.userRolesLabel = new Label();
+        this.clientNameValue = new TextBox();
+        this.clientNameLabel = new Label();
+        this.contactLastNameValue = new TextBox();
+        this.contactLastNamelabel = new Label();
+        this.clientProductsValues = new ListBox();
+        this.clientProductsLabel = new Label();
         this.dateDeletedValue = new DateTimePicker();
         this.dateModifiedValue = new DateTimePicker();
         this.dateCreatedValue = new DateTimePicker();
         this.whEmpWarehouseValue = new ComboBox();
-        this.passwordHashValue = new TextBox();
-        this.passwordValue = new TextBox();
-        this.usernameValue = new TextBox();
+        this.telephoneValue = new TextBox();
+        this.emailValue = new TextBox();
+        this.contactFirstNameValue = new TextBox();
         this.dateDeletedLabel = new Label();
         this.dateModifiedLabel = new Label();
         this.dateCreatedLabel = new Label();
         this.whEmpWarehouseLabel = new Label();
-        this.passwordHashLabel = new Label();
-        this.passwordLabel = new Label();
-        this.usernameLabel = new Label();
+        this.telephoneLabel = new Label();
+        this.emailLabel = new Label();
+        this.contactFirstNameLabel = new Label();
         this.idValue = new NumericUpDown();
         this.idLabel = new Label();
         this.bottomBarPanel = new Panel();
+        this.ActionButton = new Button();
+        this.CancelButton = new Button();
         this.btnAction = new Button();
         this.btnCancel = new Button();
         this.topBarPanel = new Panel();
         this.openendModeValue = new Label();
         this.openedModeLabel = new Label();
-        this.button1 = new Button();
-        this.button2 = new Button();
         this.centerBarTabLayPanel.SuspendLayout();
         this.centerPanel.SuspendLayout();
         ((System.ComponentModel.ISupportInitialize) this.idValue).BeginInit();
@@ -72,61 +76,103 @@ partial class ClientView {
         this.centerBarTabLayPanel.Name = "centerBarTabLayPanel";
         this.centerBarTabLayPanel.RowCount = 1;
         this.centerBarTabLayPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-        this.centerBarTabLayPanel.Size = new Size(1159, 797);
+        this.centerBarTabLayPanel.Size = new Size(1143, 769);
         this.centerBarTabLayPanel.TabIndex = 5;
         // 
         // centerPanel
         // 
-        this.centerPanel.Controls.Add(this.userRolesValues);
-        this.centerPanel.Controls.Add(this.userRolesLabel);
+        this.centerPanel.Controls.Add(this.clientNameValue);
+        this.centerPanel.Controls.Add(this.clientNameLabel);
+        this.centerPanel.Controls.Add(this.contactLastNameValue);
+        this.centerPanel.Controls.Add(this.contactLastNamelabel);
+        this.centerPanel.Controls.Add(this.clientProductsValues);
+        this.centerPanel.Controls.Add(this.clientProductsLabel);
         this.centerPanel.Controls.Add(this.dateDeletedValue);
         this.centerPanel.Controls.Add(this.dateModifiedValue);
         this.centerPanel.Controls.Add(this.dateCreatedValue);
         this.centerPanel.Controls.Add(this.whEmpWarehouseValue);
-        this.centerPanel.Controls.Add(this.passwordHashValue);
-        this.centerPanel.Controls.Add(this.passwordValue);
-        this.centerPanel.Controls.Add(this.usernameValue);
+        this.centerPanel.Controls.Add(this.telephoneValue);
+        this.centerPanel.Controls.Add(this.emailValue);
+        this.centerPanel.Controls.Add(this.contactFirstNameValue);
         this.centerPanel.Controls.Add(this.dateDeletedLabel);
         this.centerPanel.Controls.Add(this.dateModifiedLabel);
         this.centerPanel.Controls.Add(this.dateCreatedLabel);
         this.centerPanel.Controls.Add(this.whEmpWarehouseLabel);
-        this.centerPanel.Controls.Add(this.passwordHashLabel);
-        this.centerPanel.Controls.Add(this.passwordLabel);
-        this.centerPanel.Controls.Add(this.usernameLabel);
+        this.centerPanel.Controls.Add(this.telephoneLabel);
+        this.centerPanel.Controls.Add(this.emailLabel);
+        this.centerPanel.Controls.Add(this.contactFirstNameLabel);
         this.centerPanel.Controls.Add(this.idValue);
         this.centerPanel.Controls.Add(this.idLabel);
         this.centerPanel.Dock = DockStyle.Fill;
-        this.centerPanel.Location = new Point(298, 5);
+        this.centerPanel.Location = new Point(290, 5);
         this.centerPanel.Margin = new Padding(4, 5, 4, 5);
         this.centerPanel.Name = "centerPanel";
-        this.centerPanel.Size = new Size(563, 787);
+        this.centerPanel.Size = new Size(563, 759);
         this.centerPanel.TabIndex = 0;
         // 
-        // userRolesValues
+        // clientNameValue
         // 
-        this.userRolesValues.FormattingEnabled = true;
-        this.userRolesValues.ItemHeight = 25;
-        this.userRolesValues.Location = new Point(224, 493);
-        this.userRolesValues.Margin = new Padding(4, 5, 4, 5);
-        this.userRolesValues.Name = "userRolesValues";
-        this.userRolesValues.SelectionMode = SelectionMode.MultiSimple;
-        this.userRolesValues.Size = new Size(333, 254);
-        this.userRolesValues.TabIndex = 17;
+        this.clientNameValue.Location = new Point(224, 58);
+        this.clientNameValue.Margin = new Padding(4, 5, 4, 5);
+        this.clientNameValue.Name = "clientNameValue";
+        this.clientNameValue.PlaceholderText = "Nom du client";
+        this.clientNameValue.Size = new Size(333, 31);
+        this.clientNameValue.TabIndex = 21;
         // 
-        // userRolesLabel
+        // clientNameLabel
         // 
-        this.userRolesLabel.Location = new Point(7, 493);
-        this.userRolesLabel.Margin = new Padding(7, 8, 7, 8);
-        this.userRolesLabel.Name = "userRolesLabel";
-        this.userRolesLabel.Size = new Size(206, 38);
-        this.userRolesLabel.TabIndex = 16;
-        this.userRolesLabel.Text = "Rôles de l'utilisateur :";
-        this.userRolesLabel.TextAlign = ContentAlignment.MiddleRight;
+        this.clientNameLabel.Location = new Point(7, 58);
+        this.clientNameLabel.Margin = new Padding(7, 8, 7, 8);
+        this.clientNameLabel.Name = "clientNameLabel";
+        this.clientNameLabel.Size = new Size(206, 38);
+        this.clientNameLabel.TabIndex = 20;
+        this.clientNameLabel.Text = "Nom du Client :";
+        this.clientNameLabel.TextAlign = ContentAlignment.MiddleRight;
+        // 
+        // contactLastNameValue
+        // 
+        this.contactLastNameValue.Location = new Point(226, 152);
+        this.contactLastNameValue.Margin = new Padding(4, 5, 4, 5);
+        this.contactLastNameValue.Name = "contactLastNameValue";
+        this.contactLastNameValue.PlaceholderText = "Nom du contact";
+        this.contactLastNameValue.Size = new Size(333, 31);
+        this.contactLastNameValue.TabIndex = 19;
+        // 
+        // contactLastNamelabel
+        // 
+        this.contactLastNamelabel.Location = new Point(7, 145);
+        this.contactLastNamelabel.Margin = new Padding(7, 8, 7, 8);
+        this.contactLastNamelabel.Name = "contactLastNamelabel";
+        this.contactLastNamelabel.Size = new Size(206, 38);
+        this.contactLastNamelabel.TabIndex = 18;
+        this.contactLastNamelabel.Text = "Nom du Contact :";
+        this.contactLastNamelabel.TextAlign = ContentAlignment.MiddleRight;
+        // 
+        // clientProductsValues
+        // 
+        this.clientProductsValues.FormattingEnabled = true;
+        this.clientProductsValues.ItemHeight = 25;
+        this.clientProductsValues.Location = new Point(224, 493);
+        this.clientProductsValues.Margin = new Padding(4, 5, 4, 5);
+        this.clientProductsValues.Name = "clientProductsValues";
+        this.clientProductsValues.SelectionMode = SelectionMode.MultiSimple;
+        this.clientProductsValues.Size = new Size(333, 254);
+        this.clientProductsValues.TabIndex = 17;
+        // 
+        // clientProductsLabel
+        // 
+        this.clientProductsLabel.Location = new Point(7, 493);
+        this.clientProductsLabel.Margin = new Padding(7, 8, 7, 8);
+        this.clientProductsLabel.Name = "clientProductsLabel";
+        this.clientProductsLabel.Size = new Size(206, 38);
+        this.clientProductsLabel.TabIndex = 16;
+        this.clientProductsLabel.Text = "Products du client :";
+        this.clientProductsLabel.TextAlign = ContentAlignment.MiddleRight;
         // 
         // dateDeletedValue
         // 
         this.dateDeletedValue.Enabled = false;
-        this.dateDeletedValue.Location = new Point(224, 410);
+        this.dateDeletedValue.Location = new Point(224, 450);
         this.dateDeletedValue.Margin = new Padding(4, 5, 4, 5);
         this.dateDeletedValue.Name = "dateDeletedValue";
         this.dateDeletedValue.Size = new Size(333, 31);
@@ -135,7 +181,7 @@ partial class ClientView {
         // dateModifiedValue
         // 
         this.dateModifiedValue.Enabled = false;
-        this.dateModifiedValue.Location = new Point(224, 355);
+        this.dateModifiedValue.Location = new Point(224, 395);
         this.dateModifiedValue.Margin = new Padding(4, 5, 4, 5);
         this.dateModifiedValue.Name = "dateModifiedValue";
         this.dateModifiedValue.Size = new Size(333, 31);
@@ -144,7 +190,7 @@ partial class ClientView {
         // dateCreatedValue
         // 
         this.dateCreatedValue.Enabled = false;
-        this.dateCreatedValue.Location = new Point(224, 300);
+        this.dateCreatedValue.Location = new Point(224, 340);
         this.dateCreatedValue.Margin = new Padding(4, 5, 4, 5);
         this.dateCreatedValue.Name = "dateCreatedValue";
         this.dateCreatedValue.Size = new Size(333, 31);
@@ -153,44 +199,44 @@ partial class ClientView {
         // whEmpWarehouseValue
         // 
         this.whEmpWarehouseValue.FormattingEnabled = true;
-        this.whEmpWarehouseValue.Location = new Point(224, 247);
+        this.whEmpWarehouseValue.Location = new Point(224, 287);
         this.whEmpWarehouseValue.Margin = new Padding(4, 5, 4, 5);
         this.whEmpWarehouseValue.Name = "whEmpWarehouseValue";
         this.whEmpWarehouseValue.Size = new Size(333, 33);
         this.whEmpWarehouseValue.TabIndex = 12;
         // 
-        // passwordHashValue
+        // telephoneValue
         // 
-        this.passwordHashValue.Enabled = false;
-        this.passwordHashValue.Location = new Point(224, 192);
-        this.passwordHashValue.Margin = new Padding(4, 5, 4, 5);
-        this.passwordHashValue.Name = "passwordHashValue";
-        this.passwordHashValue.PlaceholderText = "Hash du mot de passe";
-        this.passwordHashValue.Size = new Size(333, 31);
-        this.passwordHashValue.TabIndex = 11;
+        this.telephoneValue.Enabled = false;
+        this.telephoneValue.Location = new Point(224, 240);
+        this.telephoneValue.Margin = new Padding(4, 5, 4, 5);
+        this.telephoneValue.Name = "telephoneValue";
+        this.telephoneValue.PlaceholderText = "Telephone du contact";
+        this.telephoneValue.Size = new Size(333, 31);
+        this.telephoneValue.TabIndex = 11;
         // 
-        // passwordValue
+        // emailValue
         // 
-        this.passwordValue.Location = new Point(224, 137);
-        this.passwordValue.Margin = new Padding(4, 5, 4, 5);
-        this.passwordValue.Name = "passwordValue";
-        this.passwordValue.PlaceholderText = "Mot de passe";
-        this.passwordValue.Size = new Size(333, 31);
-        this.passwordValue.TabIndex = 10;
-        this.passwordValue.UseSystemPasswordChar = true;
+        this.emailValue.Location = new Point(224, 196);
+        this.emailValue.Margin = new Padding(4, 5, 4, 5);
+        this.emailValue.Name = "emailValue";
+        this.emailValue.PlaceholderText = "Email du Contact";
+        this.emailValue.Size = new Size(333, 31);
+        this.emailValue.TabIndex = 10;
+        this.emailValue.UseSystemPasswordChar = true;
         // 
-        // usernameValue
+        // contactFirstNameValue
         // 
-        this.usernameValue.Location = new Point(224, 82);
-        this.usernameValue.Margin = new Padding(4, 5, 4, 5);
-        this.usernameValue.Name = "usernameValue";
-        this.usernameValue.PlaceholderText = "Nom d'utilisateur";
-        this.usernameValue.Size = new Size(333, 31);
-        this.usernameValue.TabIndex = 9;
+        this.contactFirstNameValue.Location = new Point(224, 103);
+        this.contactFirstNameValue.Margin = new Padding(4, 5, 4, 5);
+        this.contactFirstNameValue.Name = "contactFirstNameValue";
+        this.contactFirstNameValue.PlaceholderText = "Prenom du contact";
+        this.contactFirstNameValue.Size = new Size(333, 31);
+        this.contactFirstNameValue.TabIndex = 9;
         // 
         // dateDeletedLabel
         // 
-        this.dateDeletedLabel.Location = new Point(7, 410);
+        this.dateDeletedLabel.Location = new Point(7, 450);
         this.dateDeletedLabel.Margin = new Padding(7, 8, 7, 8);
         this.dateDeletedLabel.Name = "dateDeletedLabel";
         this.dateDeletedLabel.Size = new Size(206, 38);
@@ -200,7 +246,7 @@ partial class ClientView {
         // 
         // dateModifiedLabel
         // 
-        this.dateModifiedLabel.Location = new Point(7, 355);
+        this.dateModifiedLabel.Location = new Point(7, 395);
         this.dateModifiedLabel.Margin = new Padding(7, 8, 7, 8);
         this.dateModifiedLabel.Name = "dateModifiedLabel";
         this.dateModifiedLabel.Size = new Size(206, 38);
@@ -210,7 +256,7 @@ partial class ClientView {
         // 
         // dateCreatedLabel
         // 
-        this.dateCreatedLabel.Location = new Point(7, 300);
+        this.dateCreatedLabel.Location = new Point(7, 340);
         this.dateCreatedLabel.Margin = new Padding(7, 8, 7, 8);
         this.dateCreatedLabel.Name = "dateCreatedLabel";
         this.dateCreatedLabel.Size = new Size(206, 38);
@@ -220,7 +266,7 @@ partial class ClientView {
         // 
         // whEmpWarehouseLabel
         // 
-        this.whEmpWarehouseLabel.Location = new Point(7, 245);
+        this.whEmpWarehouseLabel.Location = new Point(7, 285);
         this.whEmpWarehouseLabel.Margin = new Padding(7, 8, 7, 8);
         this.whEmpWarehouseLabel.Name = "whEmpWarehouseLabel";
         this.whEmpWarehouseLabel.Size = new Size(206, 38);
@@ -228,40 +274,40 @@ partial class ClientView {
         this.whEmpWarehouseLabel.Text = "Entrepôt :";
         this.whEmpWarehouseLabel.TextAlign = ContentAlignment.MiddleRight;
         // 
-        // passwordHashLabel
+        // telephoneLabel
         // 
-        this.passwordHashLabel.Location = new Point(7, 190);
-        this.passwordHashLabel.Margin = new Padding(7, 8, 7, 8);
-        this.passwordHashLabel.Name = "passwordHashLabel";
-        this.passwordHashLabel.Size = new Size(206, 38);
-        this.passwordHashLabel.TabIndex = 4;
-        this.passwordHashLabel.Text = "Mot de passe encrypté :";
-        this.passwordHashLabel.TextAlign = ContentAlignment.MiddleRight;
+        this.telephoneLabel.Location = new Point(7, 238);
+        this.telephoneLabel.Margin = new Padding(7, 8, 7, 8);
+        this.telephoneLabel.Name = "telephoneLabel";
+        this.telephoneLabel.Size = new Size(206, 38);
+        this.telephoneLabel.TabIndex = 4;
+        this.telephoneLabel.Text = "Telephone du contact :";
+        this.telephoneLabel.TextAlign = ContentAlignment.MiddleRight;
         // 
-        // passwordLabel
+        // emailLabel
         // 
-        this.passwordLabel.Location = new Point(7, 135);
-        this.passwordLabel.Margin = new Padding(7, 8, 7, 8);
-        this.passwordLabel.Name = "passwordLabel";
-        this.passwordLabel.Size = new Size(206, 38);
-        this.passwordLabel.TabIndex = 3;
-        this.passwordLabel.Text = "Mot de passe :";
-        this.passwordLabel.TextAlign = ContentAlignment.MiddleRight;
+        this.emailLabel.Location = new Point(7, 194);
+        this.emailLabel.Margin = new Padding(7, 8, 7, 8);
+        this.emailLabel.Name = "emailLabel";
+        this.emailLabel.Size = new Size(206, 38);
+        this.emailLabel.TabIndex = 3;
+        this.emailLabel.Text = "Email du Contact :";
+        this.emailLabel.TextAlign = ContentAlignment.MiddleRight;
         // 
-        // usernameLabel
+        // contactFirstNameLabel
         // 
-        this.usernameLabel.Location = new Point(7, 80);
-        this.usernameLabel.Margin = new Padding(7, 8, 7, 8);
-        this.usernameLabel.Name = "usernameLabel";
-        this.usernameLabel.Size = new Size(206, 38);
-        this.usernameLabel.TabIndex = 2;
-        this.usernameLabel.Text = "Nom d'utilisateur :";
-        this.usernameLabel.TextAlign = ContentAlignment.MiddleRight;
+        this.contactFirstNameLabel.Location = new Point(7, 101);
+        this.contactFirstNameLabel.Margin = new Padding(7, 8, 7, 8);
+        this.contactFirstNameLabel.Name = "contactFirstNameLabel";
+        this.contactFirstNameLabel.Size = new Size(206, 38);
+        this.contactFirstNameLabel.TabIndex = 2;
+        this.contactFirstNameLabel.Text = "Prenom du Contact :";
+        this.contactFirstNameLabel.TextAlign = ContentAlignment.MiddleRight;
         // 
         // idValue
         // 
         this.idValue.Enabled = false;
-        this.idValue.Location = new Point(224, 28);
+        this.idValue.Location = new Point(224, 12);
         this.idValue.Margin = new Padding(4, 5, 4, 5);
         this.idValue.Name = "idValue";
         this.idValue.Size = new Size(334, 31);
@@ -269,7 +315,7 @@ partial class ClientView {
         // 
         // idLabel
         // 
-        this.idLabel.Location = new Point(7, 25);
+        this.idLabel.Location = new Point(7, 9);
         this.idLabel.Margin = new Padding(7, 8, 7, 8);
         this.idLabel.Name = "idLabel";
         this.idLabel.Size = new Size(206, 38);
@@ -279,22 +325,45 @@ partial class ClientView {
         // 
         // bottomBarPanel
         // 
-        this.bottomBarPanel.Controls.Add(this.button1);
-        this.bottomBarPanel.Controls.Add(this.button2);
+        this.bottomBarPanel.Controls.Add(this.ActionButton);
+        this.bottomBarPanel.Controls.Add(this.CancelButton);
         this.bottomBarPanel.Controls.Add(this.btnAction);
         this.bottomBarPanel.Controls.Add(this.btnCancel);
         this.bottomBarPanel.Dock = DockStyle.Bottom;
-        this.bottomBarPanel.Location = new Point(0, 880);
+        this.bottomBarPanel.Location = new Point(0, 852);
         this.bottomBarPanel.Margin = new Padding(4, 5, 4, 5);
         this.bottomBarPanel.Name = "bottomBarPanel";
-        this.bottomBarPanel.Size = new Size(1159, 83);
+        this.bottomBarPanel.Size = new Size(1143, 83);
         this.bottomBarPanel.TabIndex = 4;
+        // 
+        // ActionButton
+        // 
+        this.ActionButton.Anchor =  AnchorStyles.Bottom | AnchorStyles.Right;
+        this.ActionButton.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+        this.ActionButton.Location = new Point(851, 20);
+        this.ActionButton.Margin = new Padding(4, 5, 4, 5);
+        this.ActionButton.Name = "ActionButton";
+        this.ActionButton.Size = new Size(163, 38);
+        this.ActionButton.TabIndex = 3;
+        this.ActionButton.Text = "ACTION";
+        this.ActionButton.UseVisualStyleBackColor = true;
+        // 
+        // CancelButton
+        // 
+        this.CancelButton.Anchor =  AnchorStyles.Bottom | AnchorStyles.Right;
+        this.CancelButton.Location = new Point(1023, 20);
+        this.CancelButton.Margin = new Padding(4, 5, 4, 5);
+        this.CancelButton.Name = "CancelButton";
+        this.CancelButton.Size = new Size(107, 38);
+        this.CancelButton.TabIndex = 2;
+        this.CancelButton.Text = "Annuler";
+        this.CancelButton.UseVisualStyleBackColor = true;
         // 
         // btnAction
         // 
         this.btnAction.Anchor =  AnchorStyles.Bottom | AnchorStyles.Right;
         this.btnAction.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-        this.btnAction.Location = new Point(1806, 8);
+        this.btnAction.Location = new Point(1790, 8);
         this.btnAction.Margin = new Padding(4, 5, 4, 5);
         this.btnAction.Name = "btnAction";
         this.btnAction.Size = new Size(163, 38);
@@ -305,7 +374,7 @@ partial class ClientView {
         // btnCancel
         // 
         this.btnCancel.Anchor =  AnchorStyles.Bottom | AnchorStyles.Right;
-        this.btnCancel.Location = new Point(1978, 8);
+        this.btnCancel.Location = new Point(1962, 8);
         this.btnCancel.Margin = new Padding(4, 5, 4, 5);
         this.btnCancel.Name = "btnCancel";
         this.btnCancel.Size = new Size(107, 38);
@@ -321,7 +390,7 @@ partial class ClientView {
         this.topBarPanel.Location = new Point(0, 0);
         this.topBarPanel.Margin = new Padding(4, 5, 4, 5);
         this.topBarPanel.Name = "topBarPanel";
-        this.topBarPanel.Size = new Size(1159, 83);
+        this.topBarPanel.Size = new Size(1143, 83);
         this.topBarPanel.TabIndex = 3;
         // 
         // openendModeValue
@@ -345,34 +414,11 @@ partial class ClientView {
         this.openedModeLabel.TabIndex = 0;
         this.openedModeLabel.Text = "Mode :";
         // 
-        // button1
-        // 
-        this.button1.Anchor =  AnchorStyles.Bottom | AnchorStyles.Right;
-        this.button1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-        this.button1.Location = new Point(440, 22);
-        this.button1.Margin = new Padding(4, 5, 4, 5);
-        this.button1.Name = "button1";
-        this.button1.Size = new Size(163, 38);
-        this.button1.TabIndex = 3;
-        this.button1.Text = "ACTION";
-        this.button1.UseVisualStyleBackColor = true;
-        // 
-        // button2
-        // 
-        this.button2.Anchor =  AnchorStyles.Bottom | AnchorStyles.Right;
-        this.button2.Location = new Point(612, 22);
-        this.button2.Margin = new Padding(4, 5, 4, 5);
-        this.button2.Name = "button2";
-        this.button2.Size = new Size(107, 38);
-        this.button2.TabIndex = 2;
-        this.button2.Text = "Annuler";
-        this.button2.UseVisualStyleBackColor = true;
-        // 
         // ClientView
         // 
         this.AutoScaleDimensions = new SizeF(10F, 25F);
         this.AutoScaleMode = AutoScaleMode.Font;
-        this.ClientSize = new Size(1159, 963);
+        this.ClientSize = new Size(1143, 935);
         this.Controls.Add(this.centerBarTabLayPanel);
         this.Controls.Add(this.bottomBarPanel);
         this.Controls.Add(this.topBarPanel);
@@ -393,22 +439,22 @@ partial class ClientView {
 
     private TableLayoutPanel centerBarTabLayPanel;
     private Panel centerPanel;
-    private ListBox userRolesValues;
-    private Label userRolesLabel;
+    private ListBox clientProductsValues;
+    private Label clientProductsLabel;
     private DateTimePicker dateDeletedValue;
     private DateTimePicker dateModifiedValue;
     private DateTimePicker dateCreatedValue;
     private ComboBox whEmpWarehouseValue;
-    private TextBox passwordHashValue;
-    private TextBox passwordValue;
-    private TextBox usernameValue;
+    private TextBox telephoneValue;
+    private TextBox emailValue;
+    private TextBox contactFirstNameValue;
     private Label dateDeletedLabel;
     private Label dateModifiedLabel;
     private Label dateCreatedLabel;
     private Label whEmpWarehouseLabel;
-    private Label passwordHashLabel;
-    private Label passwordLabel;
-    private Label usernameLabel;
+    private Label telephoneLabel;
+    private Label emailLabel;
+    private Label contactFirstNameLabel;
     private NumericUpDown idValue;
     private Label idLabel;
     private Panel bottomBarPanel;
@@ -417,6 +463,10 @@ partial class ClientView {
     private Panel topBarPanel;
     private Label openendModeValue;
     private Label openedModeLabel;
-    private Button button1;
-    private Button button2;
+    private Button ActionButton;
+    private Button CancelButton;
+    private TextBox contactLastNameValue;
+    private Label contactLastNamelabel;
+    private TextBox clientNameValue;
+    private Label clientNameLabel;
 }

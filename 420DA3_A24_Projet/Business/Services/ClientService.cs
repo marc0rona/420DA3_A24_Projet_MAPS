@@ -17,7 +17,7 @@ internal class ClientService {
     private ClientView clientWindow;
 
     /// <summary>
-    /// TODO @PROF : documenter
+    /// TODO @SERGIO : documenter
     /// </summary>
     /// <param name="parentApp"></param>
     /// <param name="context"></param>
@@ -30,8 +30,12 @@ internal class ClientService {
 
     #region METHODS
 
+    public List<Client> GetAllClients(bool includeDeleted = false) {
+        return this.clientDAO.GetAll(includeDeleted);
+    }
+
     /// <summary>
-    /// TODO @PROF : documenter
+    /// TODO @SERGIO : documenter
     /// </summary>
     /// <returns></returns>
     public Client? OpenClientManagementWindowForCreation() {
@@ -43,7 +47,7 @@ internal class ClientService {
     }
 
     /// <summary>
-    /// TODO @PROF : documenter
+    /// TODO @SERGIO : documenter
     /// </summary>
     /// <param name="clientToEdit"></param>
     /// <returns></returns>
@@ -53,7 +57,7 @@ internal class ClientService {
     }
 
     /// <summary>
-    /// TODO @PROF : documenter
+    /// TODO @SERGIO : documenter
     /// </summary>
     /// <param name="clientToView"></param>
     /// <returns></returns>
@@ -63,7 +67,7 @@ internal class ClientService {
     }
 
     /// <summary>
-    /// TODO @PROF : documenter
+    /// TODO @SERGIO : documenter
     /// </summary>
     /// <param name="clientToDelete"></param>
     /// <returns></returns>
@@ -74,7 +78,7 @@ internal class ClientService {
 
 
     /// <summary>
-    /// TODO @PROF : documenter
+    /// TODO @SERGIO : documenter
     /// </summary>
     /// <param name="id"></param>
     /// <returns></returns>
@@ -83,7 +87,7 @@ internal class ClientService {
     }
 
     /// <summary>
-    /// TODO @PROF : documenter
+    /// TODO @SERGIO : documenter
     /// </summary>
     /// <param name="clientName"></param>
     /// <returns></returns>
@@ -92,7 +96,7 @@ internal class ClientService {
     }
 
     /// <summary>
-    /// TODO @PROF : documenter
+    /// TODO @SERGIO : documenter
     /// </summary>
     /// <param name="criterion"></param>
     /// <returns></returns>
@@ -101,7 +105,7 @@ internal class ClientService {
     }
 
     /// <summary>
-    /// TODO @PROF : documenter
+    /// TODO @SERGIO : documenter
     /// </summary>
     /// <param name="client"></param>
     /// <returns></returns>
@@ -110,7 +114,7 @@ internal class ClientService {
     }
 
     /// <summary>
-    /// TODO @PROF : documenter
+    /// TODO @SERGIO : documenter
     /// </summary>
     /// <param name="client"></param>
     /// <returns></returns>
@@ -119,7 +123,7 @@ internal class ClientService {
     }
 
     /// <summary>
-    /// TODO @PROF : documenter
+    /// TODO @SERGIO : documenter
     /// </summary>
     /// <param name="client"></param>
     /// <returns></returns>
