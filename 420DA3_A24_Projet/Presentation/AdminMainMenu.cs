@@ -350,7 +350,7 @@ internal partial class AdminMainMenu : Form {
     }
 
     private void ClientSearchResults_SelectedIndexChanged(object sender, EventArgs e) {
-        Client? selectedClient = this.clientSearchResults.SelectedItem as User;
+        Client? selectedClient = this.clientSearchResults.SelectedItem as Client;
         if (selectedClient != null) {
             this.ActivateClientActionButtons();
         } else {

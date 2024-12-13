@@ -2,6 +2,7 @@
 using _420DA3_A24_Projet.DataAccess.Contexts;
 using _420DA3_A24_Projet.DataAccess.DAOs;
 using _420DA3_A24_Projet.Presentation.Views;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,6 +30,71 @@ internal class ClientService {
 
 
     #region METHODS
+
+    /// <summary>
+    /// Opens the <see cref="ClientView">user management window</see> in creation mode.
+    /// </summary>
+    /// <returns></returns>
+    public Client? OpenManagementWindowForCreation() {
+        try {
+            Client newClient = (Client) FormatterServices.GetUninitializedObject(typeof(Client));
+            DialogResult result = this.clientWindow.OpenForCreation(newClient);
+            return result == DialogResult.OK
+                ? newClient
+                : null;
+
+        } catch (Exception ex) {
+            throw new Exception($"{this.GetType().ShortDisplayName}: Failed to open the client management window in client creation mode.", ex);
+        }
+    }
+
+    /// <summary>
+    /// Opens the <see cref="ClientView">user management window</see> in edition mode
+    /// for the given <paramref name="client"/>.
+    /// </summary>
+    /// <param name="client"></param>
+    /// <returns></returns>
+    public bool OpenManagementWindowForEdition(Client client) {
+        try {
+            DialogResult result = this.clientWindow.OpenForModification(client);
+            return result == DialogResult.OK;
+
+        } catch (Exception ex) {
+            throw new Exception($"{this.GetType().ShortDisplayName}: Failed to open the client management window in client edition mode.", ex);
+        }
+    }
+
+    /// <summary>
+    /// Opens the <see cref="ClientView">user management window</see> in visualization mode
+    /// for the given <paramref name="client"/>.
+    /// </summary>
+    /// <param name="client"></param>
+    /// <returns></returns>
+    public Client OpenManagementWindowForVisualization(Client client) {
+        try {
+            _ = this.clientWindow.OpenForDetailsView(client);
+            return client;
+
+        } catch (Exception ex) {
+            throw new Exception($"{this.GetType().ShortDisplayName}: Failed to open the client management window in client visualization mode.", ex);
+        }
+    }
+
+    /// <summary>
+    /// Opens the <see cref="ClientView">user management window</see> in deletion mode
+    /// for the given <paramref name="client"/>.
+    /// </summary>
+    /// <param name="client"></param>
+    /// <returns></returns>
+    public bool OpenManagementWindowForDeletion(Client client) {
+        try {
+            DialogResult result = this.clientWindow.OpenForDeletion(client);
+            return result == DialogResult.OK;
+
+        } catch (Exception ex) {
+            throw new Exception($"{this.GetType().ShortDisplayName}: Failed to open the client management window in client deletion mode.", ex);
+        }
+    }
 
     public List<Client> GetAllClients(bool includeDeleted = false) {
         return this.clientDAO.GetAll(includeDeleted);
