@@ -2,6 +2,7 @@
 using _420DA3_A24_Projet.DataAccess.Contexts;
 using _420DA3_A24_Projet.DataAccess.DAOs;
 using _420DA3_A24_Projet.Presentation.Views;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,6 +30,76 @@ internal class WarehouseService {
 
 
     #region METHODS
+
+    /// <summary>
+    /// Opens the <see cref="WarehouseView">user management window</see> in creation mode.
+    /// </summary>
+    /// <returns></returns>
+    public Warehouse? OpenManagementWindowForCreation() {
+        try {
+            Warehouse newWarehouse = (Warehouse) FormatterServices.GetUninitializedObject(typeof(Warehouse));
+            DialogResult result = this.warehouseWindow.OpenForCreation(newWarehouse);
+            return result == DialogResult.OK
+                ? newWarehouse
+                : null;
+
+        } catch (Exception ex) {
+            throw new Exception($"{this.GetType().ShortDisplayName}: Failed to open the Warehouse management window in Warehouse creation mode.", ex);
+        }
+    }
+
+    /// <summary>
+    /// Opens the <see cref="WarehouseView">user management window</see> in edition mode
+    /// for the given <paramref name="warehouse"/>.
+    /// </summary>
+    /// <param name="warehouse"></param>
+    /// <returns></returns>
+    public bool OpenManagementWindowForEdition(Warehouse warehouse) {
+        try {
+            DialogResult result = this.warehouseWindow.OpenForModification(warehouse);
+            return result == DialogResult.OK;
+
+        } catch (Exception ex) {
+            throw new Exception($"{this.GetType().ShortDisplayName}: Failed to open the Warehouse management window in Warehouse edition mode.", ex);
+        }
+    }
+
+    /// <summary>
+    /// Opens the <see cref="WarehouseView">user management window</see> in visualization mode
+    /// for the given <paramref name="warehouse"/>.
+    /// </summary>
+    /// <param name="warehouse"></param>
+    /// <returns></returns>
+    public Warehouse OpenManagementWindowForVisualization(Warehouse warehouse) {
+        try {
+            _ = this.warehouseWindow.OpenForDetailsView(warehouse);
+            return warehouse;
+
+        } catch (Exception ex) {
+            throw new Exception($"{this.GetType().ShortDisplayName}: Failed to open the Warehouse management window in Warehouse visualization mode.", ex);
+        }
+    }
+
+    /// <summary>
+    /// Opens the <see cref="WarehouseView">user management window</see> in deletion mode
+    /// for the given <paramref name="warehouse"/>.
+    /// </summary>
+    /// <param name="warehouse"></param>
+    /// <returns></returns>
+    public bool OpenManagementWindowForDeletion(Warehouse warehouse) {
+        try {
+            DialogResult result = this.warehouseWindow.OpenForDeletion(warehouse);
+            return result == DialogResult.OK;
+
+        } catch (Exception ex) {
+            throw new Exception($"{this.GetType().ShortDisplayName}: Failed to open the Warehouse management window in Warehouse deletion mode.", ex);
+        }
+    }
+
+    public List<Client> GetAllClients(bool includeDeleted = false) {
+        return this.clientDAO.GetAll(includeDeleted);
+    }
+
 
     public List<Warehouse> GetAllWarehouses(bool includeDeleted = false) {
         return this.warehouseDAO.GetAll(includeDeleted);
