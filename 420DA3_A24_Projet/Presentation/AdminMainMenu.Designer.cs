@@ -337,6 +337,7 @@ partial class AdminMainMenu {
         this.buttonCreateShipment.TabIndex = 0;
         this.buttonCreateShipment.Text = "Créer Adresse";
         this.buttonCreateShipment.UseVisualStyleBackColor = true;
+        this.buttonCreateShipment.Click += this.ButtonCreateShipment_Click;
         // 
         // shipmentManagementLabel
         // 

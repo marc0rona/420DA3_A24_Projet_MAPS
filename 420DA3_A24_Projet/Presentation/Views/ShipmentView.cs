@@ -17,7 +17,7 @@ namespace _420DA3_A24_Projet.Presentation.Views;
 
 internal partial class ShipmentView : Form {
     private bool isInitalized = false;
-    private WsysApplication app;
+    private readonly WsysApplication parentApp;
 
     public ViewActionsEnum CurrentAction {  get; private set; }
 
@@ -25,7 +25,12 @@ internal partial class ShipmentView : Form {
 
 
     public ShipmentView(WsysApplication application) {
-        this.app = application;
-        InitializeComponent();
+        this.parentApp = application;
+        this.InitializeComponent();
+    }
+
+    public DialogResult OpenForCreation(Shipment instance) {
+        this.PreOpenSetup(instance, ViewActionsEnum.Creation, "Création d'une expédition", "Créer");
+        return this.ShowDialog();
     }
 }
