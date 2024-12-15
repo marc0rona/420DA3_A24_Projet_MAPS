@@ -58,4 +58,28 @@ internal class SupplierDAO
         .Include(supp => supp.ProductList)
         .ToList();     
     }
+
+    internal ShippingOrder Create(ShippingOrder order) {
+        throw new NotImplementedException();
+    }
+
+    internal List<ShippingOrder> GetUnassignedInWarehouse(Warehouse warehouse) {
+        throw new NotImplementedException();
+    }
+
+    internal List<ShippingOrder> GetProcessingOrdersForEmployee(User employee) {
+        throw new NotImplementedException();
+    }
+
+    internal List<ShippingOrder> GetPackagedInWarehouse(Warehouse warehouse) {
+        throw new NotImplementedException();
+    }
+
+    internal void Delete(ShippingOrder order, bool softDelete) {
+        throw new NotImplementedException();
+    }
+
+    internal ShippingOrder Update(ShippingOrder order) {
+        throw new NotImplementedException();
+    }
 }

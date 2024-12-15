@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Project_Utilities.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace _420DA3_A24_Projet.Business.Domain;
-internal class PurchaseOrder
+public class PurchaseOrder
 {
     // Constantes
     public const int STATUS_MAX_LENGTH = 30;
@@ -16,69 +17,89 @@ internal class PurchaseOrder
 
     // Backing fields (private)
     private int id;
-    private string status;
-    private string productToRestock;
-    private string warehouse;
-    private int quantityToOrder;
+    private PurchaseOrderStatusEnum status;
+    private int productId;
+    private int warehouseId;
+    private int quantity;
     private DateTime? completionDate;
 
     // Propriétés publiques
     public int Id { get { return id; } set { id = value; } }
-    public string Status {
+
+    public PurchaseOrderStatusEnum Status {
         get { return status; }
-        set {
-            if (!ValidateStatus(value)) {
-                throw new ArgumentException($"Status must be either '{STATUS_NEW}' or '{STATUS_COMPLETED}', and cannot exceed {STATUS_MAX_LENGTH} characters.");
-            }
-            status = value;
-        }
+        set { status = value; }
     }
-    public string ProductToRestock {
-        get { return productToRestock; }
-        set {
-            if (!ValidateProductToRestock(value)) {
-                throw new ArgumentException($"Product to restock cannot exceed {PRODUCT_TO_RESTOCK_MAX_LENGTH} characters.");
-            }
-            productToRestock = value;
-        }
+
+    public int ProductId {
+        get { return productId; }
+        set { productId = value; }
     }
-    public string Warehouse {
-        get { return warehouse; }
-        set {
-            if (!ValidateWarehouse(value)) {
-                throw new ArgumentException($"war cannot exceed {WAREHOUSE_MAX_LENGTH} characters.");
-            }
-            warehouse = value;
-        }
+
+    public int WarehouseId {
+        get { return warehouseId; }
+        set { warehouseId = value; }
     }
-    
-    public int QuantityToOrder { get { return quantityToOrder; } set { quantityToOrder = value; } }
-    public DateTime? CompletionDate { get { return completionDate; } set { completionDate = value; } }
+
+    public int Quantity {
+        get { return quantity; }
+        set { quantity = value; }
+    }
+
+    public DateTime? CompletionDate {
+        get { return completionDate; }
+        set { completionDate = value; }
+    }
+
     public DateTime DateCreated { get; private set; }
     public DateTime? DateModified { get; private set; }
     public DateTime? DateDeleted { get; private set; }
     public byte[] RowVersion { get; set; } = null!;
 
+    // Propriétés de navigation
+    public Product OrderedProduct { get; set; }
+    public Warehouse Warehouse { get; set; }
+
     // Constructeur public
-    public PurchaseOrder(int id, string status, string productToRestock, string warehouse, int quantityToOrder) {
+    public PurchaseOrder(
+        int id,
+        PurchaseOrderStatusEnum status,
+        int productId,
+        int warehouseId,
+        int quantity) {
         this.id = id;
-        this.Status = status;
-        this.ProductToRestock = productToRestock;
-        this.Warehouse = warehouse;
-        this.QuantityToOrder = quantityToOrder;
-        
+        this.status = status;
+        this.productId = productId;
+        this.warehouseId = warehouseId;
+        this.quantity = quantity;
+        this.DateCreated = DateTime.Now;
     }
 
-   
-    // Validation du statut
-    public static bool ValidateStatus(string status) {
-        return (status == STATUS_NEW || status == STATUS_COMPLETED) && status.Length <= STATUS_MAX_LENGTH;
+    // Constructeur protégé pour l'ORM
+    protected PurchaseOrder(
+        int id,
+        PurchaseOrderStatusEnum status,
+        int productId,
+        int warehouseId,
+        int quantity,
+        DateTime? completionDate,
+        DateTime dateCreated,
+        DateTime? dateModified,
+        DateTime? dateDeleted,
+        byte[] rowVersion)
+        : this(id, status, productId, warehouseId, quantity) {
+        this.completionDate = completionDate;
+        this.DateCreated = dateCreated;
+        this.DateModified = dateModified;
+        this.DateDeleted = dateDeleted;
+        this.RowVersion = rowVersion;
     }
-    public static bool ValidateProductToRestock(string productToRestock) {
-        return productToRestock.Length <= PRODUCT_TO_RESTOCK_MAX_LENGTH;  
-    }
-    public static bool ValidateWarehouse(string warehouse) {
-        return warehouse.Length <= WAREHOUSE_MAX_LENGTH;
+
+    // Méthode pour compléter la commande
+    public void Complete() {
+        this.status = PurchaseOrderStatusEnum.Completed;
+        this.completionDate = DateTime.Now;
+        UpdateModificationDate();
     }
 
     // Mise à jour de la date de modification
@@ -88,9 +109,9 @@ internal class PurchaseOrder
 
     // Représentation de l'objet
     public override string ToString() {
-        return $"PurchaseOrder [ID={id}, Status={status}, ProductToRestock={productToRestock}, Warehouse={warehouse}, " +
-               $"QuantityToOrder={quantityToOrder}, CompletionDate={completionDate}, DateCreated={this.DateCreated}, " +
-               $"DateModified={this.DateModified}, DateDeleted={this.DateDeleted}]";
+        return $"PurchaseOrder [ID={id}, Status={status}, ProductId={productId}, WarehouseId={warehouseId}, " +
+               $"Quantity={quantity}, CompletionDate={completionDate}, DateCreated={DateCreated}, " +
+               $"DateModified={DateModified}, DateDeleted={DateDeleted}]";
     }
 }
 

@@ -26,4 +26,8 @@
     <ProjectReference Include="..\Project_Utilities\Project_Utilities.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="System\" />
+  </ItemGroup>
+
 </Project>

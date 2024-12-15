@@ -16,6 +16,7 @@ public class Client
     // backing fields
     private int id;
     private string clientName = null!;
+    internal object FullName;
 
     // propriétés de données
     public int Id
@@ -57,6 +58,7 @@ public class Client
     public virtual List<Product> Products { get; set; } = new List<Product>();
     public virtual List<ShippingOrder> ShippingOrders { get; set; } = new List<ShippingOrder>();
     public virtual Warehouse? AssignedWarehouse { get; set; }
+    public object Name { get; internal set; }
 
     //Constructeurs
     public Client(int id,

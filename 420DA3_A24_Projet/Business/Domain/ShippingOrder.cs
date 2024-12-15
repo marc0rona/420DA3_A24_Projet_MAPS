@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Project_Utilities.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,115 +11,79 @@ public class ShippingOrder {
     public const int STATUS_MAX_LENGTH = 30;
 
 
-    // backing fields (private)
+    // Backing fields
     private int id;
-    private string status;
-    private int client_id;
-    private int creator_id;
-    private int address_id;
-    private int employee_warehouse_id;
-    private int shipping_id;
-    
+    private System.Enum status;
+    private int sourceClientId;
+    private int creatorEmployeeId;
+    private int destinationAddressId;
+    private int? fulfillerEmployeeId;
+    private DateTime? shippingDate;
 
-
-    // propiétés (public)
-    public int Id { get { return id; } set { id = value; } }
-    public string Status {
-        get { return status; }
-        set {
-            if (!ValidateStatus (value)) {
-
-                throw new ArgumentException($"Status cannot exceed {STATUS_MAX_LENGTH} characters.");
-            }
-           this.status = value;
-
-        }
-    }
-    public int ClientId { get; set; }
-    public int CreatorId { get; set; }
-    public int AddressId { get; set; }
-    public int EmployeeWarehouseId { get; set; }
-    public int ShippingId { get; set; }
+    // Propriétés
+    public int Id { get; set; }
+    public ShippingOrderStatusEnum Status;
+    public int? ShipmentId { get; set; }
+    public int SourceClientId { get; set; }
+    public int CreatorEmployeeId { get; set; } 
+    public int DestinationAddressId { get; set; }
+    public int? FulfillerEmployeeId { get; set; }
+    public DateTime? ShippingDate { get; set; }
     public DateTime DateCreated { get; set; }
     public DateTime? DateModified { get; set; }
     public DateTime? DateDeleted { get; set; }
-    public byte[] RowVersion { get; set; } = null!;
-    public object Creator { get; internal set; }
 
+    // Propriétés de navigation
+    public Client SourceClient { get; set; } = null!;
+    public Shipment? Shipment { get; set; }
+    public User CreatorEmployee { get; set; } = null!;
+    public User? FulfillerEmployee { get; set; }
+    public Address DestinationAddress { get; set; } = null!;
+    public List<ShippingOrderProduct> ShippingOrderProduct { get; set; } = new();
 
-    // constructeur public
-
-    public ShippingOrder(int id, 
-        string status, 
-        int client_id, 
-        int creator_id, 
-        int address_id, 
-        int employee_warehouse_id, 
-        int shipping_id) {
-
-        this.Id = id;
-        this.Status = status;
-        this.ClientId = client_id;
-        this.CreatorId = creator_id;
-        this.AddressId = address_id;
-        this.EmployeeWarehouseId = employee_warehouse_id;
-        this.ShippingId = shipping_id;
-
+    // Constructeur
+    public ShippingOrder(
+        int sourceClientId,
+        int creatorEmployeeId,
+        int destinationAddressId) {
+        SourceClientId = sourceClientId;
+        CreatorEmployeeId = creatorEmployeeId;
+        DestinationAddressId = destinationAddressId;
+        Status = ShippingOrderStatusEnum.New;
+        DateCreated = DateTime.Now;
     }
 
-    // protected
-    protected ShippingOrder(
-        int id,
-        string status,
-        int client_id,
-        int creator_id,
-        int address_id,
-        int employee_warehouse_id,
-        int shipping_id,
-        DateTime dateCreated,
-        DateTime? dateModified,
-        DateTime? dateDeleted,
-        byte[] rowVersion)
-        : this(status, client_id, address_id, employee_warehouse_id, shipping_id) {
-        this.Id = id;
-        this.DateCreated = dateCreated;
-        this.DateModified = dateModified;
-        this.DateDeleted = dateDeleted;
-        this.RowVersion = rowVersion;
+    // Méthodes
+    public void AssignToWhEmployee(User employee) {
+        if (Status != ShippingOrderStatusEnum.New)
+            throw new InvalidOperationException("Cannot assign employee unless order is in Created status");
+
+        FulfillerEmployee = employee;
+        FulfillerEmployeeId = employee.Id;
+        Status = ShippingOrderStatusEnum.Processing;
+        DateModified = DateTime.Now;
     }
 
-    public ShippingOrder(string status, int client_id, int creator_id, int address_id, int employee_warehouse_id, int shipping_id) {
-        this.status = status;
-        this.client_id = client_id;
-        this.CreatorId = creator_id;
-        this.address_id = address_id;
-        this.employee_warehouse_id = employee_warehouse_id;
-        this.shipping_id = shipping_id;
+    public void MarkPackaged() {
+        if (Status != ShippingOrderStatusEnum.Unassigned)
+            throw new InvalidOperationException("Cannot mark as packaged unless order is Assigned");
+
+        Status = ShippingOrderStatusEnum.Packaged;
+        DateModified = DateTime.Now;
     }
 
-    public ShippingOrder(string status, int client_id, int address_id, int employee_warehouse_id, int shipping_id) {
-        this.status = status;
-        this.client_id = client_id;
-        this.address_id = address_id;
-        this.employee_warehouse_id = employee_warehouse_id;
-        this.shipping_id = shipping_id;
-    }
+    public void MarkShipped() {
+        if (Status != ShippingOrderStatusEnum.Packaged)
+            throw new InvalidOperationException("Cannot mark as shipped unless order is Packaged");
 
-    // fonctions et méthodes
-    public void UpdateStatus(string newStatus) {
-        if (newStatus.Length <= STATUS_MAX_LENGTH) {
-            status = newStatus;
-        } else {
-            throw new ArgumentException($"Status cannot exceed {STATUS_MAX_LENGTH} characters.");
-        }
+        Status = ShippingOrderStatusEnum.Shipped;
+        ShippingDate = DateTime.Now;
+        DateModified = DateTime.Now;
     }
-    public static bool ValidateStatus( string status) {  return status.Length <= STATUS_MAX_LENGTH; }
 
     public override string ToString() {
-        return $"ShipmentOrder [ID={id}, Status={status}, ClientId={client_id}, AddressID={address_id}, EmployeeWarehouseID={employee_warehouse_id}, ShippingID={shipping_id}]";
-    }
-
-    internal static object Creator_id() {
-        throw new NotImplementedException();
+        return $"ShippingOrder [ID={Id}, Status={Status}, SourceClientId={SourceClientId}, " +
+               $"CreatorEmployeeId={CreatorEmployeeId}, DestinationAddressId={DestinationAddressId}, " +
+               $"FulfillerEmployeeId={FulfillerEmployeeId}, ShippingDate={ShippingDate}]";
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace _420DA3_A24_Projet.Presentation.Views;
 
-partial class ShipmentView {
+partial class ShippingOrderView {
     /// <summary>
     /// Required designer variable.
     /// </summary>
@@ -26,13 +26,13 @@ partial class ShipmentView {
     private void InitializeComponent() {
         this.SuspendLayout();
         // 
-        // ShipmentView
+        // ShippingOrderView
         // 
         this.AutoScaleDimensions = new SizeF(13F, 32F);
         this.AutoScaleMode = AutoScaleMode.Font;
-        this.ClientSize = new Size(958, 751);
-        this.Name = "ShipmentView";
-        this.Text = "ShipmentsView";
+        this.ClientSize = new Size(917, 598);
+        this.Name = "ShippingOrderView";
+        this.Text = "ShippingOrderView";
         this.ResumeLayout(false);
     }
 
