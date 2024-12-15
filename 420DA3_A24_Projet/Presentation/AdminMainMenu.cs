@@ -589,4 +589,7 @@ internal partial class AdminMainMenu : Form {
     #endregion
 
 
+    private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e) {
+
+    }
 }
