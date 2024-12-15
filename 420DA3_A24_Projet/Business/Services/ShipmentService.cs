@@ -7,6 +7,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using System.Runtime.Serialization;
 
 namespace _420DA3_A24_Projet.Business.Services;
 
@@ -27,6 +29,19 @@ internal class ShipmentService {
     #region METHODS
 
     // Finir OpenViewFor....
+
+    public Shipment? OpenManagementWindowForCreation() {
+        try {
+            Shipment newShipment = (Shipment) FormatterServices.GetUninitializedObject(typeof(User));
+            DialogResult result = this.shipmentWindow.OpenForCreation(newShipment);
+            return result == DialogResult.OK
+                ? newShipment
+                : null;
+
+        } catch (Exception ex) {
+            throw new Exception($"{this.GetType().ShortDisplayName}: Failed to open the shipment management window in shipment creation mode.", ex);
+        }
+    }
 
 
     public Shipment? CreateShipmentInDatabase(Shipment shipment) {

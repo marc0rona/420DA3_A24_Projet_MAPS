@@ -388,7 +388,7 @@ internal partial class AdminMainMenu : Form {
 
     private void ButtonDeleteClient_Click(object sender, EventArgs e) {
         try {
-            Client selectedClient = (Client)this.clientSearchResults.SelectedItem;
+            Client selectedClient = (Client) this.clientSearchResults.SelectedItem;
             bool wasDeleted = this.parentApp.ClientService.OpenManagementWindowForDeletion(selectedClient);
 
             if (wasDeleted) {
@@ -524,5 +524,69 @@ internal partial class AdminMainMenu : Form {
     }
 
     #endregion
+
+    #region GESTION DES ADDRESSES
+
+    private void ReloadAddressSearchResults(List<User> searchResults) {
+        try {
+            this.userSearchResults.SelectedItem = null;
+            this.userSearchResults.SelectedIndex = -1;
+            this.userSearchResults.Items.Clear();
+            _ = this.userSearchResults.Items.Add(listNoneSelectedValue);
+            foreach (User user in searchResults) {
+                _ = this.userSearchResults.Items.Add(user);
+            }
+
+        } catch (Exception ex) {
+            this.parentApp.HandleException(ex);
+        }
+    }
+
+    #endregion
+
+    #region GESTION DES EXPÉDITIONS
+
+    private void ReloadShipmentSearchResults(List<Shipment> searchResults) {
+        try {
+            this.shipmentSearchResults.SelectedItem = null;
+            this.shipmentSearchResults.SelectedIndex = -1;
+            this.shipmentSearchResults.Items.Clear();
+            _ = this.shipmentSearchResults.Items.Add(listNoneSelectedValue);
+            foreach (Shipment shipment in searchResults) {
+                _ = this.userSearchResults.Items.Add(shipment);
+            }
+
+        } catch (Exception ex) {
+            this.parentApp.HandleException(ex);
+        }
+    }
+    private void ActivateAddressActionButtons() {
+        this.buttonDeleteShipment.Enabled = true;
+        this.buttonEditShipment.Enabled = true;
+        this.buttonViewShipment.Enabled = true;
+    }
+
+    private void DeactivateShipmentActionButtons() {
+        this.buttonDeleteShipment.Enabled = false;
+        this.buttonEditShipment.Enabled = false;
+        this.buttonViewShipment.Enabled = false;
+    }
+
+    private void ButtonCreateShipment_Click(object sender, EventArgs e) {
+        try {
+            Shipment? shipmentCree = this.parentApp.ShipmentService.OpenManagementWindowForCreation();
+            if (shipmentCree != null) {
+                _ = this.userSearchResults.Items.Add(shipmentCree);
+                this.userSearchResults.SelectedItem = shipmentCree;
+            }
+
+        } catch (Exception ex) {
+            this.parentApp.HandleException(ex);
+        }
+    }
+
+
+    #endregion
+
 
 }
