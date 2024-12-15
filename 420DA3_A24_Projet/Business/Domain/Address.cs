@@ -7,11 +7,11 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Project_Utilities.Enums;
 
-
-
 namespace _420DA3_A24_Projet.Business.Domain;
 
-/* Auteur de la classe Address.cs : Pierre-Sylvestre Cypré */
+/// <summary>
+/// Classe représentant une adresse enregistrée dans le système.
+/// </summary>
 
 public class Address {
     /// <summary>
@@ -72,7 +72,7 @@ public class Address {
         get { return this.addressee; }
         set {
             if (!ValidateRecipient(value)) {
-                throw new ArgumentException($"Recipient must not be empty and must be {ADDRESSEE_MAX_LENGTH} characters or less.");
+                throw new ArgumentException($"Addressee must not be empty and must be {ADDRESSEE_MAX_LENGTH} characters or less.");
             }
             this.addressee = value;
         }
@@ -147,22 +147,29 @@ public class Address {
 
     #region Propriétés de navigation
 
-    // Navigation properties to represent relationships
     /// <summary>
-    /// The warehouse that owns this address (1-to-1 relationship).
+    /// L'entrepôt a qui appartient cette adresse (Relation 1 à 1)
     /// </summary>
     public virtual Warehouse? OwnerWarehouse { get; set; }
 
     /// <summary>
-    /// The shipping order that uses this address (optional relationship).
+    /// L'ordre d'expédition qui utilise cette adresse
     /// </summary>
     public virtual ShippingOrder? OwnerShipOrder { get; set; }
 
     #endregion
 
     /// <summary>
-    /// Constructeur public
+    /// Constructeur orienté création d'adresse
     /// </summary>
+    /// <param name="addressType">Type d'adresse (Warehouse ou Shipping Destination)</param>
+    /// <param name="addressee">Le receveur</param>
+    /// <param name="civicNumber">Numéro civique de l'adresse</param>
+    /// <param name="street">La rue de l'adresse</param>
+    /// <param name="city">La ville de l'adresse</param>
+    /// <param name="state">La province ou l'état de l'adresse</param>
+    /// <param name="country">Le pays de l'adresse</param>
+    /// <param name="postalCode">Le code postal de l'adresse</param>
     public Address(
         AddressTypesEnum addressType,
         string addressee,
@@ -183,20 +190,21 @@ public class Address {
     }
 
     /// <summary>
-    /// Constructeur protégé EF Core
+    /// Constructeur oritenté EF Core
     /// </summary>
-    /// <param name="id"></param>
-    /// <param name="addressee"></param>
-    /// <param name="civicNumber"></param>
-    /// <param name="street"></param>
-    /// <param name="city"></param>
-    /// <param name="state"></param>
-    /// <param name="country"></param>
-    /// <param name="postalCode"></param>
-    /// <param name="dateCreated"></param>
-    /// <param name="dateModified"></param>
-    /// <param name="dateDeleted"></param>
-    /// <param name="rowVersion"></param>
+    /// <param name="id">L'identifiant de l'adresse</param>
+    /// <param name="addressType"></param>
+    /// <param name="addressee">Le receveur de l'addresse</param>
+    /// <param name="civicNumber">Le numéro civique de l'adresse</param>
+    /// <param name="street">La rue de l'adresse</param>
+    /// <param name="city">La ville de l'adresse</param>
+    /// <param name="state">La province ou l'état de l'adresse</param>
+    /// <param name="country">Le pays de l'adresse</param>
+    /// <param name="postalCode">Le code postal de l'adresse</param>
+    /// <param name="dateCreated">La date de création de l'adresse dans la base de données.</param>
+    /// <param name="dateModified">La date de modification de l'adresse dans la base de données.</param>
+    /// <param name="dateDeleted">La date de suppression de l'adresse dans la base de données.</param>
+    /// <param name="rowVersion">Le numéro de version anti-concurrence de l'entrée dans la base de donnéees.</param>
     protected Address(
         int id,
         AddressTypesEnum addressType,
