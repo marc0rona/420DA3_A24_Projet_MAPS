@@ -105,15 +105,15 @@ internal class AppDbContext : DbContext {
 
         _ = modelBuilder.Entity<User>()
             .HasMany(user => user.CreatedShippingOrders)
-            .WithOne(order => order.Creator)
-            .HasForeignKey(order => order.Creator_Id)
+            .WithOne(order => order.CreatorEmployee)
+            .HasForeignKey(order => order.CreatorEmployeeId)
             .HasPrincipalKey(user => user.Id)
             .IsRequired(true);
 
         _ = modelBuilder.Entity<User>()
             .HasMany(user => user.FulfilledShippingOrders)
-            .WithOne(order => order.Employee_Warehouse)
-            .HasForeignKey(order => order.Employee_Warehouse_Id)
+            .WithOne(order => order.FulfillerEmployee)
+            .HasForeignKey(order => order.FulfillerEmployeeId)
             .HasPrincipalKey(user => user.Id)
             .IsRequired(false);
 
@@ -439,7 +439,7 @@ internal class AppDbContext : DbContext {
             .OnDelete(DeleteBehavior.Cascade);
 
         _ = modelBuilder.Entity<Product>()  /* ShippingOrder : Relation 1 -> 0,n */
-            .HasMany(prod => prod.OrderShipments)
+            .HasMany(prod => prod.ShippingOrderProducts)
             .WithOne(ship => ship.Product)       ///TODO: besoin d'une propriété Product pour association.
             .HasForeignKey(ship => ship.ProductId)    
             .IsRequired(true)
@@ -826,41 +826,41 @@ internal class AppDbContext : DbContext {
             .IsRequired(true);
 
         _ = modelBuilder.Entity<ShippingOrder>()
-           .Property(shippingOrder => shippingOrder.ClientId)
-           .HasColumnName(nameof(ShippingOrder.ClientId))
+           .Property(shippingOrder => shippingOrder.SourceClientId)
+           .HasColumnName(nameof(ShippingOrder.SourceClientId))
            .HasColumnOrder(2)
            .HasColumnType("int")
            .IsRequired(true);
 
         _ = modelBuilder.Entity<ShippingOrder>()
-            .Property(shippingOrder => shippingOrder.Creator)
-            .HasColumnName(nameof(ShippingOrder.Creator))
+            .Property(shippingOrder => shippingOrder.CreatorEmployeeId)
+            .HasColumnName(nameof(ShippingOrder.CreatorEmployeeId))
             .HasColumnOrder(3)
             .HasColumnType("int")
             .IsRequired(true);
 
 
         _ = modelBuilder.Entity<ShippingOrder>()
-            .Property(shippingOrder => shippingOrder.AddressId)
-            .HasColumnName(nameof(ShippingOrder.AddressId))
+            .Property(shippingOrder => shippingOrder.DestinationAddressId)
+            .HasColumnName(nameof(ShippingOrder.DestinationAddressId))
             .HasColumnOrder(4)
             .HasColumnType("int")
             .IsRequired(true);
 
 
         _ = modelBuilder.Entity<ShippingOrder>()
-            .Property(shippingOrder => shippingOrder.EmployeeWarehouseId)
-            .HasColumnName(nameof(ShippingOrder.EmployeeWarehouseId))
+            .Property(shippingOrder => shippingOrder.FulfillerEmployeeId)
+            .HasColumnName(nameof(ShippingOrder.FulfillerEmployeeId))
             .HasColumnOrder(5)
             .HasColumnType("int")
-            .IsRequired(true);
+            .IsRequired(false);
 
         _ = modelBuilder.Entity<ShippingOrder>()
-            .Property(shippingOrder => shippingOrder.ShippingId)
-            .HasColumnName(nameof(ShippingOrder.ShippingId))
+            .Property(shippingOrder => shippingOrder.ShipmentId)
+            .HasColumnName(nameof(ShippingOrder.ShipmentId))
             .HasColumnOrder(6)
             .HasColumnType("int")
-            .IsRequired(true);
+            .IsRequired(false);
 
 
         _ = modelBuilder.Entity<ShippingOrder>()
@@ -868,6 +868,7 @@ internal class AppDbContext : DbContext {
           .HasColumnName(nameof(ShippingOrder.DateCreated))
           .HasColumnOrder(7)
           .HasColumnType("DateTime")
+          .HasDefaultValueSql("GETDATE()")
           .IsRequired(true);
 
         _ = modelBuilder.Entity<ShippingOrder>()
@@ -875,7 +876,7 @@ internal class AppDbContext : DbContext {
          .HasColumnName(nameof(ShippingOrder.DateModified))
          .HasColumnOrder(8)
          .HasColumnType("DateTime")
-         .IsRequired(true);
+         .IsRequired(false);
 
 
         _ = modelBuilder.Entity<ShippingOrder>()
@@ -883,7 +884,7 @@ internal class AppDbContext : DbContext {
           .HasColumnName(nameof(ShippingOrder.DateDeleted))
           .HasColumnOrder(9)
           .HasColumnType("DateTime")
-          .IsRequired(true);
+          .IsRequired(false);
 
 
         #endregion
@@ -910,8 +911,8 @@ internal class AppDbContext : DbContext {
             .IsRequired(true);
 
         _ = modelBuilder.Entity<PurchaseOrder>()
-           .Property(PurchaseOrder => PurchaseOrder.ProductToRestock)
-           .HasColumnName(nameof(PurchaseOrder.ProductToRestock))
+           .Property(PurchaseOrder => PurchaseOrder.ProductId)
+           .HasColumnName(nameof(PurchaseOrder.ProductId))
            .HasColumnOrder(2)
            .HasColumnType("int")
            .IsRequired(true);
@@ -925,8 +926,8 @@ internal class AppDbContext : DbContext {
 
 
         _ = modelBuilder.Entity<PurchaseOrder>()
-            .Property(PurchaseOrder => PurchaseOrder.QuantityToOrder)
-            .HasColumnName(nameof(PurchaseOrder.QuantityToOrder))
+            .Property(PurchaseOrder => PurchaseOrder.Quantity)
+            .HasColumnName(nameof(PurchaseOrder.Quantity))
             .HasColumnOrder(4)
             .HasColumnType("int")
             .IsRequired(true);

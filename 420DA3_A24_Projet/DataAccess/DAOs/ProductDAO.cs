@@ -31,7 +31,7 @@ internal class ProductDAO
             .Include(prod => prod.OwnerClient)      //lié a Client
             .Include(prod => prod.Supplier)         //lié au Supplier
             .Include(prod => prod.OrderPurchases)
-            .Include(prod => prod.OrderShipments)
+            .Include(prod => prod.ShippingOrderProducts)
             .SingleOrDefault(); //Retourne 1 seul element 
     }
     //Mis-a-jour d'une donnée de l'Entity [CRUD : Update]

@@ -115,7 +115,7 @@ public class Product
     public Client OwnerClient { get; set; }
     public Supplier Supplier { get; set; } = null!; //doit avoir toujours un fournisseur
     public virtual List<PurchaseOrder> OrderPurchases { get; set; } = new List<PurchaseOrder>(); //CHANGE THE INTERNAL TO PUBLIC CLASS, ABOUBACAR PLEASE. THANK YOU
-    public virtual List<ShippingOrder> OrderShipments { get; set; } = new List<ShippingOrder>();
+    public virtual List<ShippingOrderProduct> ShippingOrderProducts { get; set; } = new List<ShippingOrderProduct>();
     //ToDo : Gerer si les expeditions sont vide (aucunes valeurs dans colonne);]
     #endregion Propriétés de navigation
 
