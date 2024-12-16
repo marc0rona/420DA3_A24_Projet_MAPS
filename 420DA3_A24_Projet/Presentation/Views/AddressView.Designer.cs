@@ -29,16 +29,27 @@ partial class AddressView {
         this.openedModeLabel = new Label();
         this.bottomBarPanel = new Panel();
         this.button2 = new Button();
-        this.button1 = new Button();
+        this.actionButton = new Button();
         this.btnAction = new Button();
         this.btnCancel = new Button();
         this.centerBarTabLayPanel = new TableLayoutPanel();
         this.centerPanel = new Panel();
+        this.addressTypeValue = new ComboBox();
+        this.postalCodeValue = new TextBox();
+        this.countryValue = new TextBox();
+        this.postalCodeLabel = new Label();
+        this.countryLabel = new Label();
+        this.stateValue = new TextBox();
+        this.cityValue = new TextBox();
+        this.streetValue = new TextBox();
+        this.stateLabel = new Label();
+        this.cityLabel = new Label();
+        this.streetLabel = new Label();
         this.dateDeletedValue = new DateTimePicker();
         this.dateModifiedValue = new DateTimePicker();
         this.dateCreatedValue = new DateTimePicker();
         this.civicNumberValue = new TextBox();
-        this.adresseeValue = new TextBox();
+        this.addresseeValue = new TextBox();
         this.dateDeletedLabel = new Label();
         this.dateModifiedLabel = new Label();
         this.dateCreatedLabel = new Label();
@@ -47,17 +58,6 @@ partial class AddressView {
         this.addressTypeLabel = new Label();
         this.idValue = new NumericUpDown();
         this.idLabel = new Label();
-        this.stateValue = new TextBox();
-        this.cityValue = new TextBox();
-        this.streetValue = new TextBox();
-        this.stateLabel = new Label();
-        this.cityLabel = new Label();
-        this.streetLabel = new Label();
-        this.postalCodeValue = new TextBox();
-        this.countryValue = new TextBox();
-        this.postalCodeLabel = new Label();
-        this.countryLabel = new Label();
-        this.addressTypeValue = new ComboBox();
         this.topBarPanel.SuspendLayout();
         this.bottomBarPanel.SuspendLayout();
         this.centerBarTabLayPanel.SuspendLayout();
@@ -97,7 +97,7 @@ partial class AddressView {
         // bottomBarPanel
         // 
         this.bottomBarPanel.Controls.Add(this.button2);
-        this.bottomBarPanel.Controls.Add(this.button1);
+        this.bottomBarPanel.Controls.Add(this.actionButton);
         this.bottomBarPanel.Controls.Add(this.btnAction);
         this.bottomBarPanel.Controls.Add(this.btnCancel);
         this.bottomBarPanel.Dock = DockStyle.Bottom;
@@ -116,16 +116,17 @@ partial class AddressView {
         this.button2.Text = "Annuler";
         this.button2.UseVisualStyleBackColor = true;
         // 
-        // button1
+        // actionButton
         // 
-        this.button1.Anchor =  AnchorStyles.Bottom | AnchorStyles.Right;
-        this.button1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-        this.button1.Location = new Point(602, 15);
-        this.button1.Name = "button1";
-        this.button1.Size = new Size(114, 23);
-        this.button1.TabIndex = 2;
-        this.button1.Text = "ACTION";
-        this.button1.UseVisualStyleBackColor = true;
+        this.actionButton.Anchor =  AnchorStyles.Bottom | AnchorStyles.Right;
+        this.actionButton.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+        this.actionButton.Location = new Point(602, 15);
+        this.actionButton.Name = "actionButton";
+        this.actionButton.Size = new Size(114, 23);
+        this.actionButton.TabIndex = 2;
+        this.actionButton.Text = "ACTION";
+        this.actionButton.UseVisualStyleBackColor = true;
+        this.actionButton.Click += this.actionButton_Click;
         // 
         // btnAction
         // 
@@ -180,7 +181,7 @@ partial class AddressView {
         this.centerPanel.Controls.Add(this.dateModifiedValue);
         this.centerPanel.Controls.Add(this.dateCreatedValue);
         this.centerPanel.Controls.Add(this.civicNumberValue);
-        this.centerPanel.Controls.Add(this.adresseeValue);
+        this.centerPanel.Controls.Add(this.addresseeValue);
         this.centerPanel.Controls.Add(this.dateDeletedLabel);
         this.centerPanel.Controls.Add(this.dateModifiedLabel);
         this.centerPanel.Controls.Add(this.dateCreatedLabel);
@@ -194,6 +195,108 @@ partial class AddressView {
         this.centerPanel.Name = "centerPanel";
         this.centerPanel.Size = new Size(394, 423);
         this.centerPanel.TabIndex = 0;
+        // 
+        // addressTypeValue
+        // 
+        this.addressTypeValue.FormattingEnabled = true;
+        this.addressTypeValue.Location = new Point(157, 53);
+        this.addressTypeValue.Name = "addressTypeValue";
+        this.addressTypeValue.Size = new Size(234, 23);
+        this.addressTypeValue.TabIndex = 28;
+        // 
+        // postalCodeValue
+        // 
+        this.postalCodeValue.Enabled = false;
+        this.postalCodeValue.Location = new Point(157, 277);
+        this.postalCodeValue.Name = "postalCodeValue";
+        this.postalCodeValue.PlaceholderText = "Entrez un code postal";
+        this.postalCodeValue.Size = new Size(234, 23);
+        this.postalCodeValue.TabIndex = 27;
+        // 
+        // countryValue
+        // 
+        this.countryValue.Location = new Point(157, 244);
+        this.countryValue.Name = "countryValue";
+        this.countryValue.PlaceholderText = "Entrez un pays";
+        this.countryValue.Size = new Size(234, 23);
+        this.countryValue.TabIndex = 26;
+        this.countryValue.UseSystemPasswordChar = true;
+        // 
+        // postalCodeLabel
+        // 
+        this.postalCodeLabel.Location = new Point(5, 276);
+        this.postalCodeLabel.Margin = new Padding(5);
+        this.postalCodeLabel.Name = "postalCodeLabel";
+        this.postalCodeLabel.Size = new Size(144, 23);
+        this.postalCodeLabel.TabIndex = 25;
+        this.postalCodeLabel.Text = "Code Postal";
+        this.postalCodeLabel.TextAlign = ContentAlignment.MiddleRight;
+        // 
+        // countryLabel
+        // 
+        this.countryLabel.Location = new Point(5, 243);
+        this.countryLabel.Margin = new Padding(5);
+        this.countryLabel.Name = "countryLabel";
+        this.countryLabel.Size = new Size(144, 23);
+        this.countryLabel.TabIndex = 24;
+        this.countryLabel.Text = "Pays";
+        this.countryLabel.TextAlign = ContentAlignment.MiddleRight;
+        // 
+        // stateValue
+        // 
+        this.stateValue.Enabled = false;
+        this.stateValue.Location = new Point(157, 214);
+        this.stateValue.Name = "stateValue";
+        this.stateValue.PlaceholderText = "Entrez un état/province/territoire";
+        this.stateValue.Size = new Size(234, 23);
+        this.stateValue.TabIndex = 23;
+        // 
+        // cityValue
+        // 
+        this.cityValue.Location = new Point(157, 181);
+        this.cityValue.Name = "cityValue";
+        this.cityValue.PlaceholderText = "Entrez une ville";
+        this.cityValue.Size = new Size(234, 23);
+        this.cityValue.TabIndex = 22;
+        this.cityValue.UseSystemPasswordChar = true;
+        // 
+        // streetValue
+        // 
+        this.streetValue.Location = new Point(157, 148);
+        this.streetValue.Name = "streetValue";
+        this.streetValue.PlaceholderText = "Entrez une rue";
+        this.streetValue.Size = new Size(234, 23);
+        this.streetValue.TabIndex = 21;
+        // 
+        // stateLabel
+        // 
+        this.stateLabel.Location = new Point(5, 213);
+        this.stateLabel.Margin = new Padding(5);
+        this.stateLabel.Name = "stateLabel";
+        this.stateLabel.Size = new Size(144, 23);
+        this.stateLabel.TabIndex = 20;
+        this.stateLabel.Text = "État/Province";
+        this.stateLabel.TextAlign = ContentAlignment.MiddleRight;
+        // 
+        // cityLabel
+        // 
+        this.cityLabel.Location = new Point(5, 180);
+        this.cityLabel.Margin = new Padding(5);
+        this.cityLabel.Name = "cityLabel";
+        this.cityLabel.Size = new Size(144, 23);
+        this.cityLabel.TabIndex = 19;
+        this.cityLabel.Text = "Ville";
+        this.cityLabel.TextAlign = ContentAlignment.MiddleRight;
+        // 
+        // streetLabel
+        // 
+        this.streetLabel.Location = new Point(5, 147);
+        this.streetLabel.Margin = new Padding(5);
+        this.streetLabel.Name = "streetLabel";
+        this.streetLabel.Size = new Size(144, 23);
+        this.streetLabel.TabIndex = 18;
+        this.streetLabel.Text = "Rue";
+        this.streetLabel.TextAlign = ContentAlignment.MiddleRight;
         // 
         // dateDeletedValue
         // 
@@ -228,14 +331,14 @@ partial class AddressView {
         this.civicNumberValue.Size = new Size(234, 23);
         this.civicNumberValue.TabIndex = 11;
         // 
-        // adresseeValue
+        // addresseeValue
         // 
-        this.adresseeValue.Location = new Point(157, 82);
-        this.adresseeValue.Name = "adresseeValue";
-        this.adresseeValue.PlaceholderText = "Entrez un destinataire";
-        this.adresseeValue.Size = new Size(234, 23);
-        this.adresseeValue.TabIndex = 10;
-        this.adresseeValue.UseSystemPasswordChar = true;
+        this.addresseeValue.Location = new Point(157, 82);
+        this.addresseeValue.Name = "addresseeValue";
+        this.addresseeValue.PlaceholderText = "Entrez un destinataire";
+        this.addresseeValue.Size = new Size(234, 23);
+        this.addresseeValue.TabIndex = 10;
+        this.addresseeValue.UseSystemPasswordChar = true;
         // 
         // dateDeletedLabel
         // 
@@ -315,108 +418,6 @@ partial class AddressView {
         this.idLabel.Text = "Id :";
         this.idLabel.TextAlign = ContentAlignment.MiddleRight;
         // 
-        // stateValue
-        // 
-        this.stateValue.Enabled = false;
-        this.stateValue.Location = new Point(157, 214);
-        this.stateValue.Name = "stateValue";
-        this.stateValue.PlaceholderText = "Entrez un état/province/territoire";
-        this.stateValue.Size = new Size(234, 23);
-        this.stateValue.TabIndex = 23;
-        // 
-        // cityValue
-        // 
-        this.cityValue.Location = new Point(157, 181);
-        this.cityValue.Name = "cityValue";
-        this.cityValue.PlaceholderText = "Entrez une ville";
-        this.cityValue.Size = new Size(234, 23);
-        this.cityValue.TabIndex = 22;
-        this.cityValue.UseSystemPasswordChar = true;
-        // 
-        // streetValue
-        // 
-        this.streetValue.Location = new Point(157, 148);
-        this.streetValue.Name = "streetValue";
-        this.streetValue.PlaceholderText = "Entrez une rue";
-        this.streetValue.Size = new Size(234, 23);
-        this.streetValue.TabIndex = 21;
-        // 
-        // stateLabel
-        // 
-        this.stateLabel.Location = new Point(5, 213);
-        this.stateLabel.Margin = new Padding(5);
-        this.stateLabel.Name = "stateLabel";
-        this.stateLabel.Size = new Size(144, 23);
-        this.stateLabel.TabIndex = 20;
-        this.stateLabel.Text = "État/Province";
-        this.stateLabel.TextAlign = ContentAlignment.MiddleRight;
-        // 
-        // cityLabel
-        // 
-        this.cityLabel.Location = new Point(5, 180);
-        this.cityLabel.Margin = new Padding(5);
-        this.cityLabel.Name = "cityLabel";
-        this.cityLabel.Size = new Size(144, 23);
-        this.cityLabel.TabIndex = 19;
-        this.cityLabel.Text = "Ville";
-        this.cityLabel.TextAlign = ContentAlignment.MiddleRight;
-        // 
-        // streetLabel
-        // 
-        this.streetLabel.Location = new Point(5, 147);
-        this.streetLabel.Margin = new Padding(5);
-        this.streetLabel.Name = "streetLabel";
-        this.streetLabel.Size = new Size(144, 23);
-        this.streetLabel.TabIndex = 18;
-        this.streetLabel.Text = "Rue";
-        this.streetLabel.TextAlign = ContentAlignment.MiddleRight;
-        // 
-        // postalCodeValue
-        // 
-        this.postalCodeValue.Enabled = false;
-        this.postalCodeValue.Location = new Point(157, 277);
-        this.postalCodeValue.Name = "postalCodeValue";
-        this.postalCodeValue.PlaceholderText = "Entrez un code postal";
-        this.postalCodeValue.Size = new Size(234, 23);
-        this.postalCodeValue.TabIndex = 27;
-        // 
-        // countryValue
-        // 
-        this.countryValue.Location = new Point(157, 244);
-        this.countryValue.Name = "countryValue";
-        this.countryValue.PlaceholderText = "Entrez un pays";
-        this.countryValue.Size = new Size(234, 23);
-        this.countryValue.TabIndex = 26;
-        this.countryValue.UseSystemPasswordChar = true;
-        // 
-        // postalCodeLabel
-        // 
-        this.postalCodeLabel.Location = new Point(5, 276);
-        this.postalCodeLabel.Margin = new Padding(5);
-        this.postalCodeLabel.Name = "postalCodeLabel";
-        this.postalCodeLabel.Size = new Size(144, 23);
-        this.postalCodeLabel.TabIndex = 25;
-        this.postalCodeLabel.Text = "Code Postal";
-        this.postalCodeLabel.TextAlign = ContentAlignment.MiddleRight;
-        // 
-        // countryLabel
-        // 
-        this.countryLabel.Location = new Point(5, 243);
-        this.countryLabel.Margin = new Padding(5);
-        this.countryLabel.Name = "countryLabel";
-        this.countryLabel.Size = new Size(144, 23);
-        this.countryLabel.TabIndex = 24;
-        this.countryLabel.Text = "Pays";
-        this.countryLabel.TextAlign = ContentAlignment.MiddleRight;
-        // 
-        // addressTypeValue
-        // 
-        this.addressTypeValue.FormattingEnabled = true;
-        this.addressTypeValue.Location = new Point(157, 53);
-        this.addressTypeValue.Name = "addressTypeValue";
-        this.addressTypeValue.Size = new Size(234, 23);
-        this.addressTypeValue.TabIndex = 28;
-        // 
         // AddressView
         // 
         this.AutoScaleDimensions = new SizeF(7F, 15F);
@@ -447,7 +448,7 @@ partial class AddressView {
     private Panel bottomBarPanel;
     private Button btnAction;
     private Button btnCancel;
-    private Button button1;
+    private Button actionButton;
     private Button button2;
     private TableLayoutPanel centerBarTabLayPanel;
     private Panel centerPanel;
@@ -455,7 +456,7 @@ partial class AddressView {
     private DateTimePicker dateModifiedValue;
     private DateTimePicker dateCreatedValue;
     private TextBox civicNumberValue;
-    private TextBox adresseeValue;
+    private TextBox addresseeValue;
     private Label dateDeletedLabel;
     private Label dateModifiedLabel;
     private Label dateCreatedLabel;
