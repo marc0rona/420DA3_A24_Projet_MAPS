@@ -38,6 +38,9 @@ internal class ProductService
 
     public List<Product> Search(string userInput) 
         {  return this.productDAO.Search(userInput);  }
+
+    public List<Product> GetAllProducts(bool includedDeleted = false) 
+        { return this.productDAO.GetAll(includedDeleted); }
     public List<Product> GetBySupplier(Supplier supplier) 
         {  return this.productDAO.GetBySupplier(supplier);  } //retourne une LISTE 
 

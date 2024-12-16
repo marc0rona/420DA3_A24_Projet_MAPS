@@ -33,7 +33,8 @@ internal class SupplierService
         {  return this.supplierDAO.Delete(supplier);  }
     public List<Supplier> Search(string userInput) 
         {  return this.supplierDAO.Search(userInput); } //retourne une LISTE 
-
+    public List<Supplier> GetAllSuppliers(bool includedDeleted = false) 
+        { return this.supplierDAO.GetAll(includedDeleted); }
     //public void OpenViewFor(ViewActionsEnum, Supplier? = null)
     #endregion
 }
