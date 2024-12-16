@@ -25,6 +25,12 @@ internal class AddressDAO {
         this.context = context;
     }
 
+    /// <summary>
+    /// Retourne toutes les adresses
+    /// </summary>
+    /// <param name="includeDeleted"></param>
+    /// <returns></returns>
+    /// <exception cref="Exception"></exception>
     public List<Address> GetAll(bool includeDeleted = false) {
         try {
             return this.context.Addresses
@@ -67,9 +73,6 @@ internal class AddressDAO {
         }
     }
 
-
-
-
     /// <summary>
     /// Met à jour l'adresse avec les informations fournies dans <param name="address"></param>
     /// </summary>
@@ -88,7 +91,6 @@ internal class AddressDAO {
             throw new Exception($"{this.GetType().ShortDisplayName}: Failed to update address in database.", ex);
         }
     }
-
 
     /// <summary>
     /// Supprime en douceur (soft delete) si <param name="softDeletes"></param> est vrai, sinon efface de manière permanente l'addresse et sauvegarde les changements.
