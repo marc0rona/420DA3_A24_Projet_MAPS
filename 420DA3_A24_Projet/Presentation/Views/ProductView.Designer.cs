@@ -324,6 +324,7 @@ partial class ProductView {
         this.Btn_Action.TabIndex = 1;
         this.Btn_Action.Text = "ACTION";
         this.Btn_Action.UseVisualStyleBackColor = true;
+        this.Btn_Action.Click += this.Btn_Action_Click;
         // 
         // grpBox_Details
         // 

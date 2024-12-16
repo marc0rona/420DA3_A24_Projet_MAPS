@@ -12,14 +12,14 @@ internal class SupplierService
 {
     private WsysApplication WApp;
     private SupplierDAO supplierDAO;
-    //private SupplierView Window
+    private SupplierView WinView;
 
     //Constructeur
     public SupplierService(WsysApplication parentApp, AppDbContext context) 
     {
         this.WApp = parentApp;
         this.supplierDAO = new SupplierDAO(context);
-        //this.view = new RoleView(parentApp);
+        this.WinView = new SupplierView(parentApp);
     }
     #region METHODES
     ///Method qui appellent au DAO directement
