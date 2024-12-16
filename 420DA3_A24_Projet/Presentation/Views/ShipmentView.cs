@@ -146,7 +146,7 @@ internal partial class ShipmentView : Form {
     }
 
 
-    private void ActionButton_Click(object sender, EventArgs e) {
+    private void actionButton_Click(object sender, EventArgs e) {
         try {
 
             switch (this.CurrentAction) {
