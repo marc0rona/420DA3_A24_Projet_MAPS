@@ -8,69 +8,179 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.Serialization;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 
 namespace _420DA3_A24_Projet.Business.Services;
 
-/* Auteur de la classe AddressService.cs : Pierre-Sylvestre Cypré */
+/// <summary>
+/// Class de service pour gérer l'entité <see cref="Address"/>
+/// </summary>
 
 internal class AddressService {
 
-    /// <summary>
-    /// TODO @Pierre : documenter
-    /// </summary>
     private WsysApplication parentApp;
-    private AddressDAO addressDAO;
-    private AddressView addressWindow;
-    private AppDbContext context;
+    private AddressDAO dao;
+    private AddressView view;
 
     /// <summary>
-    /// TODO @Pierre : documenter
+    /// <see cref="RoleService"/> constructeur
     /// </summary>
     /// <param name="parentApp"></param>
     /// <param name="context"></param>
     public AddressService(WsysApplication parentApp, AppDbContext context) {
         this.parentApp = parentApp;
-        this.context = context;
-        this.addressDAO = new AddressDAO(context);
-        this.addressWindow = new AddressView(parentApp);
-
+        this.dao = new AddressDAO(context);
+        this.view = new AddressView(parentApp);
     }
 
     #region METHODS
 
+    /// <summary>
+    /// Opens the <see cref="AddressView">address management window</see> in creation mode.
+    /// </summary>
+    /// <returns></returns>
     public Address? OpenAddressManagementWindowForCreation() {
-        Address newEmptyAddress = (Address) FormatterServices.GetUninitializedObject(typeof(Address));
-        DialogResult result = this.addressWindow.OpenForCreation(newEmptyAddress); // finir view
+        Address newAddress = (Address) FormatterServices.GetUninitializedObject(typeof(Address));
+        DialogResult result = this.view.OpenForCreation(newAddress); // finir view
         return result == DialogResult.OK
-            ? this.addressWindow.CurrentEntityInstance
+            ? this.view.CurrentEntityInstance
             : null;
     }
 
+    /// <summary>
+    /// Opens the <see cref="AddressView">address management window</see> in edition mode
+    /// </summary>
+    /// <param name="address"></param>
+    /// <returns></returns>
+    /// <exception cref="Exception"></exception>
+    public bool OpenManagementWindowForEdition(Address address) {
+        try {
+            DialogResult result = this.view.OpenForModification(address);
+            return result == DialogResult.OK;
 
-
-
-
-
-    public Address? CreateAddressInDatabase(Address address) {
-        return this.addressDAO.Create(address);
+        } catch (Exception ex) {
+            throw new Exception($"{this.GetType().ShortDisplayName}: Failed to open the address management window in address edition mode.", ex);
+        }
     }
 
-    public Address? GetAddressById(int id) {
-        return this.addressDAO.GetById(id);
+    /// <summary>
+    /// Opens the <see cref="AddressView">address management window</see> in visualization mode
+    /// </summary>
+    /// <param name="address"></param>
+    /// <returns></returns>
+    /// <exception cref="Exception"></exception>
+    public Address OpenManagementWindowForVisualization(Address address) {
+        try {
+            _ = this.view.OpenForDetailsView(address);
+            return address;
+
+        } catch (Exception ex) {
+            throw new Exception($"{this.GetType().ShortDisplayName}: Failed to open the address management window in address visualization mode.", ex);
+        }
     }
 
-    public List<Address> SearchAddresses(string criterion) {
-        return this.addressDAO.Search(criterion);
+    /// <summary>
+    /// Opens the <see cref="AddressView">role management window</see> in deletion mode
+    /// </summary>
+    /// <param name="address"></param>
+    /// <returns></returns>
+    /// <exception cref="Exception"></exception>
+    public bool OpenManagementWindowForDeletion(Role address) {
+        try {
+            DialogResult result = this.view.OpenForDeletion(address);
+            return result == DialogResult.OK;
+
+        } catch (Exception ex) {
+            throw new Exception($"{this.GetType().ShortDisplayName}: Failed to open the address management window in address deletion mode.", ex);
+        }
     }
 
-    public Address? UpdateAddressInDatabase(Address address) {
-        return this.addressDAO.Update(address);
+    /// <summary>
+    /// Returns the list of every <see cref="Address"/> that exist in the data source.
+    /// </summary>
+    /// <param name="includeDeleted"></param>
+    /// <returns></returns>
+    /// <exception cref="Exception"></exception>
+    public List<Address> GetAllAddresses(bool includeDeleted = false) {
+        try {
+            return this.dao.GetAll(includeDeleted);
+
+        } catch (Exception ex) {
+            throw new Exception($"{this.GetType().ShortDisplayName}: Failed to retrieve the list of all existing addresses.", ex);
+        }
     }
 
-    public Address? DeleteAddressFromDatabase(Address address) {
-        return addressDAO.Delete(address);
+    public Address? GetById(int id, bool includeDeleted = false) {
+        try {
+            return this.dao.GetById(id, includeDeleted);
+
+        } catch (Exception ex) {
+            throw new Exception($"{this.GetType().ShortDisplayName}: Failed to retrieve an address by its Id.", ex);
+        }
     }
-    
+
+    /// <summary>
+    /// Renvoie la liste de tous les <see cref="Address"/> qui correspondent au <paramref name="criterion"/> donné dans la source de données.
+    /// </summary>
+    /// <param name="criterion"></param>
+    /// <param name="includeDeleted"></param>
+    /// <returns></returns>
+    /// <exception cref="Exception"></exception>
+    public List<Address> SearchAddress(string criterion, bool includeDeleted = false) {
+        try {
+            return this.dao.Search(criterion, includeDeleted);
+
+        } catch (Exception ex) {
+            throw new Exception($"{this.GetType().ShortDisplayName}: Failed to search existing addresses.", ex);
+        }
+    }
+
+    /// <summary>
+    /// Insère un <see cref="Role"/> dans la source de données.
+    /// </summary>
+    /// <param name="address"></param>
+    /// <returns></returns>
+    /// <exception cref="Exception"></exception>
+    public Address? CreateAddress(Address address) {
+        try {
+            return this.dao.Create(address);
+
+        } catch (Exception ex) {
+            throw new Exception($"{this.GetType().ShortDisplayName}: Failed to insert a new address in the database.", ex);
+        }
+    }
+
+    /// <summary>
+    /// Updates a <see cref="Role"/> dans la source de données.
+    /// </summary>
+    /// <param name="address"></param>
+    /// <returns></returns>
+    /// <exception cref="Exception"></exception>
+    public Address UpdateAddress(Address address) {
+        try {
+            return this.dao.Update(address);
+
+        } catch (Exception ex) {
+            throw new Exception($"{this.GetType().ShortDisplayName}: Failed to update an address in the database.", ex);
+        }
+    }
+
+    /// <summary>
+    /// Deletes a <see cref="Address"/> in the data source.
+    /// </summary>
+    /// <param name="address"></param>
+    /// <param name="softDeletes"></param>
+    /// <returns></returns>
+    /// <exception cref="Exception"></exception>
+    public Address DeleteAddress(Address address, bool softDeletes = true) {
+        try {
+            return this.dao.Delete(address, softDeletes);
+
+        } catch (Exception ex) {
+            throw new Exception($"{this.GetType().ShortDisplayName}: Failed to delete an address from the database.", ex);
+        }
+    }
+
 
     #endregion
 }

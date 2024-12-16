@@ -19,7 +19,7 @@ internal partial class ShipmentView : Form {
     private bool isInitalized = false;
     private readonly WsysApplication parentApp;
 
-    public ViewActionsEnum CurrentAction {  get; private set; }
+    public ViewActionsEnum CurrentAction { get; private set; }
 
     public Shipment CurrentEntityInstance { get; private set; }
 
@@ -32,5 +32,13 @@ internal partial class ShipmentView : Form {
     public DialogResult OpenForCreation(Shipment instance) {
         this.PreOpenSetup(instance, ViewActionsEnum.Creation, "Création d'une expédition", "Créer");
         return this.ShowDialog();
+    }
+
+    private void ShipmentView_Load(object sender, EventArgs e) {
+
+    }
+
+    private void centerPanel_Paint(object sender, PaintEventArgs e) {
+
     }
 }
