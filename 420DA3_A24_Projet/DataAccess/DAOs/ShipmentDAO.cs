@@ -118,7 +118,7 @@ internal class ShipmentDAO {
     }
 
     /// <summary>
-    /// *À finir....
+    /// Recherche une expédition dont le id, tracking ou status correspond
     /// </summary>
     /// <param name="criterion"></param>
     /// <param name="includeDeleted"></param>
