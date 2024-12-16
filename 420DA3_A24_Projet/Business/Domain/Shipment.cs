@@ -5,11 +5,10 @@ using Project_Utilities.Services.APIs;
 
 namespace _420DA3_A24_Projet.Business.Domain;
 
-/* Auteur de la classe Address.cs : Pierre-Sylvestre Cypré */
-
 /// <summary>
 /// Classe représentant les expéditions générées par les employés d'entrepôt
 /// </summary>
+
 public class Shipment {
     /// <summary>
     /// Longeur maximale du code de suivi
@@ -19,7 +18,7 @@ public class Shipment {
     // Backing fields
     private int id;
     private ShipmentStatusEnum status;
-    private ShippingOrderStatusEnum shippingService;
+    private ShippingProvidersEnum shippingService;
     private int shippingOrderId;
     private string trackingNumber = null!;
 
@@ -68,34 +67,38 @@ public class Shipment {
 
     #region Propriétés de navigation
     /// <summary>
-    /// Propriété de navigation pour ShippingOrder
+    /// La l'expédition de commande de l'expédition
     /// </summary>
-    public virtual ShipmentOrders ShippingOrder { get; set; }
+    public virtual ShippingOrder ShippingOrder { get; set; }
 
     #endregion
 
     /// <summary>
     /// Constructeur public pour Shipment
     /// </summary>
-    /// <param name="shippingOrderId"></param>
-    /// <param name="trackingNumber"></param>
-    public Shipment(ShipmentStatusEnum status, ShippingProvidersEnum shippingService, int shippingOrderId, string trackingNumber)  {
+    /// <param name="shippingOrderId">Id de la commande de l'expédition</param>
+    /// <param name="trackingNumber">Numéro de suivi de l'expédition</param>
+    public Shipment(
+        ShipmentStatusEnum status, 
+        ShippingProvidersEnum shippingService, 
+        int shippingOrderId, 
+        string trackingNumber) {
         this.status = status;
-        this.shippingService = (ShippingOrderStatusEnum) shippingService;
+        this.shippingService = shippingService;
         this.shippingOrderId = shippingOrderId;
         this.trackingNumber = trackingNumber;
     }
 
     /// <summary>
-    /// Constructeur protégé EF CORE
+    /// Constructeur orienté EF CORE
     /// </summary>
-    /// <param name="id"></param>
-    /// <param name="shippingOrderId"></param>
-    /// <param name="trackingNumber"></param>
-    /// <param name="dateCreated"></param>
-    /// <param name="dateModified"></param>
-    /// <param name="dateDeleted"></param>
-    /// <param name="rowVersion"></param>
+    /// <param name="id">L'identifiant de l'expédition</param>
+    /// <param name="shippingOrderId">Id de la commande</param>
+    /// <param name="trackingNumber">Numéro de suivi</param>
+    /// <param name="dateCreated">La date de création de l'expédition dans la base de données</param>
+    /// <param name="dateModified">La date de modification de l'expédition dans la base de données</param>
+    /// <param name="dateDeleted">La date de suppression de l'expédition dans la base de données</param>
+    /// <param name="rowVersion">Le numéro de version anti-concurrence de l'entrée dans la base de donnéees.</param>
     protected Shipment(int id,
         ShipmentStatusEnum status,
         ShippingProvidersEnum shippingService,
@@ -109,7 +112,7 @@ public class Shipment {
     {
         this.Id = id;
         this.status = status;
-        this.shippingService = (ShippingOrderStatusEnum) shippingService;
+        this.shippingService = shippingService;
         this.ShippingOrderId = shippingOrderId;
         this.TrackingNumber = trackingNumber;
         this.DateCreated = dateCreated;
