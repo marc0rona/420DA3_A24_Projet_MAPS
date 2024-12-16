@@ -17,4 +17,8 @@ public partial class ShippingOrderView : Form {
     private void shippingOrderProductLabel_Click(object sender, EventArgs e) {
 
     }
+
+    private void idValue_ValueChanged(object sender, EventArgs e) {
+
+    }
 }

@@ -39,7 +39,7 @@ internal class AddressService {
     /// Opens the <see cref="AddressView">address management window</see> in creation mode.
     /// </summary>
     /// <returns></returns>
-    public Address? OpenAddressManagementWindowForCreation() {
+    public Address? OpenManagementWindowForCreation() {
         Address newAddress = (Address) FormatterServices.GetUninitializedObject(typeof(Address));
         DialogResult result = this.view.OpenForCreation(newAddress); // finir view
         return result == DialogResult.OK
