@@ -58,4 +58,44 @@ internal class PurchaseOrderService
         this.dao.Delete(purchaseOrder);
     }
 
+    internal static void UpdatePurchaseOrder(PurchaseOrder selectedOrder) {
+        throw new NotImplementedException();
+    }
+
+    public class purchaseOrderService {
+        private readonly List<PurchaseOrder> _purchaseOrders;
+
+        public purchaseOrderService() {
+            _purchaseOrders = new List<PurchaseOrder>();
+        }
+
+        public List<PurchaseOrder> GetAllPurchaseOrders() {
+            return _purchaseOrders;
+        }
+
+        public void AddPurchaseOrder(PurchaseOrder order) {
+            order.Id = _purchaseOrders.Count + 1;
+            _purchaseOrders.Add(order);
+        }
+
+        public void UpdatePurchaseOrder(PurchaseOrder order) {
+            PurchaseOrder? existingOrder = _purchaseOrders.FirstOrDefault(o => o.Id == order.Id);
+            if (existingOrder != null)
+                NewMethod(order, existingOrder);
+        }
+
+        private static void NewMethod(PurchaseOrder order, PurchaseOrder? existingOrder) {
+            existingOrder.ProductId = order.ProductId;
+            existingOrder.Quantity = order.Quantity;
+            existingOrder.Status = order.Status;
+        }
+
+        public void DeletePurchaseOrder(int orderId) {
+            PurchaseOrder? order = _purchaseOrders.FirstOrDefault(o => o.Id == orderId);
+            if (order != null) {
+                _purchaseOrders.Remove(order);
+            }
+        }
+    }
+
 }
