@@ -527,16 +527,109 @@ internal partial class AdminMainMenu : Form {
 
     #region GESTION DES ADDRESSES
 
-    private void ReloadAddressSearchResults(List<User> searchResults) {
+    /// <summary>
+    /// Empties the <see cref="Address"/> search results <see cref="ListBox"/> then fills it with the given
+    /// <paramref name="searchResults"/>.
+    /// </summary>
+    /// <param name="searchResults"></param>
+    private void ReloadAddressSearchResults(List<Address> searchResults) {
         try {
-            this.userSearchResults.SelectedItem = null;
-            this.userSearchResults.SelectedIndex = -1;
-            this.userSearchResults.Items.Clear();
-            _ = this.userSearchResults.Items.Add(listNoneSelectedValue);
-            foreach (User user in searchResults) {
-                _ = this.userSearchResults.Items.Add(user);
+            this.addressSearchResults.SelectedItem = null;
+            this.addressSearchResults.SelectedIndex = -1;
+            this.addressSearchResults.Items.Clear();
+            _ = this.addressSearchResults.Items.Add(listNoneSelectedValue);
+            foreach (Address address in searchResults) {
+                _ = this.addressSearchResults.Items.Add(address);
             }
+        } catch (Exception ex) {
+            this.parentApp.HandleException(ex);
+        }
+    }
 
+    /// <summary>
+    /// Enables the address action buttons.
+    /// </summary>
+    private void ActivateAddressActionButtons() {
+        this.buttonDeleteAddress.Enabled = true;
+        this.buttonEditAddress.Enabled = true;
+        this.buttonViewAddress.Enabled = true;
+    }
+
+    /// <summary>
+    /// Disables the address action buttons.
+    /// </summary>
+    private void DeactivateAddressActionButtons() {
+        this.buttonDeleteAddress.Enabled = false;
+        this.buttonEditAddress.Enabled = false;
+        this.buttonViewAddress.Enabled = false;
+    }
+
+    private void ButtonCreateAddress_Click(object sender, EventArgs e) {
+        try {
+            Address? addressCreated = this.parentApp.AddressService.OpenManagementWindowForCreation();
+            if (addressCreated != null) {
+                _ = this.addressSearchResults.Items.Add(addressCreated);
+                this.addressSearchResults.SelectedItem = addressCreated;
+            }
+        } catch (Exception ex) {
+            this.parentApp.HandleException(ex);
+        }
+    }
+
+    private void AddressSearchTextBox_TextChanged(object sender, EventArgs e) {
+        try {
+            string searchCriterion = this.addressSearchTextBox.Text.Trim();
+            List<Address> results = this.parentApp.AddressService.SearchAddress(searchCriterion);
+            this.ReloadAddressSearchResults(results);
+        } catch (Exception ex) {
+            this.parentApp.HandleException(ex);
+        }
+    }
+
+    private void AddressSearchResults_SelectedIndexChanged(object sender, EventArgs e) {
+        Address? selectedAddress = this.addressSearchResults.SelectedItem as Address;
+        if (selectedAddress != null) {
+            this.ActivateAddressActionButtons();
+        } else {
+            this.DeactivateAddressActionButtons();
+        }
+    }
+
+    private void ButtonViewAddress_Click(object sender, EventArgs e) {
+        try {
+            Address selectedAddress = (Address) this.addressSearchResults.SelectedItem;
+            Address? createdAddress = this.parentApp.AddressService.OpenManagementWindowForVisualization(selectedAddress);
+            if (createdAddress != null) {
+                _ = this.addressSearchResults.Items.Add(createdAddress);
+                this.addressSearchResults.SelectedItem = createdAddress;
+            }
+        } catch (Exception ex) {
+            this.parentApp.HandleException(ex);
+        }
+    }
+
+    private void ButtonEditAddress_Click(object sender, EventArgs e) {
+        try {
+            Address selectedAddress = (Address) this.addressSearchResults.SelectedItem;
+            bool wasUpdated = this.parentApp.AddressService.OpenManagementWindowForEdition(selectedAddress);
+            if (wasUpdated) {
+                this.addressSearchResults.RefreshDisplay();
+            }
+        } catch (Exception ex) {
+            this.parentApp.HandleException(ex);
+        }
+    }
+
+    private void ButtonDeleteAddress_Click(object sender, EventArgs e) {
+        try {
+            Address selectedAddress = (Address) this.addressSearchResults.SelectedItem;
+            bool wasDeleted = this.parentApp.AddressService.OpenManagementWindowForDeletion(selectedAddress);
+
+            if (wasDeleted) {
+                this.addressSearchResults.SelectedItem = null;
+                this.addressSearchResults.SelectedIndex = -1;
+                this.addressSearchResults.Items.Remove(selectedAddress);
+            }
         } catch (Exception ex) {
             this.parentApp.HandleException(ex);
         }
@@ -546,6 +639,11 @@ internal partial class AdminMainMenu : Form {
 
     #region GESTION DES EXPÉDITIONS
 
+    /// <summary>
+    /// Empties the <see cref="Shipment"/> search results <see cref="ListBox"/> then fills it with the given
+    /// <paramref name="searchResults"/>.
+    /// </summary>
+    /// <param name="searchResults"></param>
     private void ReloadShipmentSearchResults(List<Shipment> searchResults) {
         try {
             this.shipmentSearchResults.SelectedItem = null;
@@ -553,19 +651,25 @@ internal partial class AdminMainMenu : Form {
             this.shipmentSearchResults.Items.Clear();
             _ = this.shipmentSearchResults.Items.Add(listNoneSelectedValue);
             foreach (Shipment shipment in searchResults) {
-                _ = this.userSearchResults.Items.Add(shipment);
+                _ = this.shipmentSearchResults.Items.Add(shipment);
             }
-
         } catch (Exception ex) {
             this.parentApp.HandleException(ex);
         }
     }
-    private void ActivateAddressActionButtons() {
+
+    /// <summary>
+    /// Enables the shipment action buttons.
+    /// </summary>
+    private void ActivateShipmentActionButtons() {
         this.buttonDeleteShipment.Enabled = true;
         this.buttonEditShipment.Enabled = true;
         this.buttonViewShipment.Enabled = true;
     }
 
+    /// <summary>
+    /// Disables the shipment action buttons.
+    /// </summary>
     private void DeactivateShipmentActionButtons() {
         this.buttonDeleteShipment.Enabled = false;
         this.buttonEditShipment.Enabled = false;
@@ -574,16 +678,76 @@ internal partial class AdminMainMenu : Form {
 
     private void ButtonCreateShipment_Click(object sender, EventArgs e) {
         try {
-            Shipment? shipmentCree = this.parentApp.ShipmentService.OpenManagementWindowForCreation();
-            if (shipmentCree != null) {
-                _ = this.userSearchResults.Items.Add(shipmentCree);
-                this.userSearchResults.SelectedItem = shipmentCree;
+            Shipment? shipmentCreated = this.parentApp.ShipmentService.OpenManagementWindowForCreation();
+            if (shipmentCreated != null) {
+                _ = this.shipmentSearchResults.Items.Add(shipmentCreated);
+                this.shipmentSearchResults.SelectedItem = shipmentCreated;
             }
-
         } catch (Exception ex) {
             this.parentApp.HandleException(ex);
         }
     }
+
+    private void ShipmentSearchTextBox_TextChanged(object sender, EventArgs e) {
+        try {
+            string searchCriterion = this.shipmentSearchTextBox.Text.Trim();
+            List<Shipment> results = this.parentApp.ShipmentService.SearchShipment(searchCriterion);
+            this.ReloadShipmentSearchResults(results);
+        } catch (Exception ex) {
+            this.parentApp.HandleException(ex);
+        }
+    }
+
+    private void ShipmentSearchResults_SelectedIndexChanged(object sender, EventArgs e) {
+        Shipment? selectedShipment = this.shipmentSearchResults.SelectedItem as Shipment;
+        if (selectedShipment != null) {
+            this.ActivateShipmentActionButtons();
+        } else {
+            this.DeactivateShipmentActionButtons();
+        }
+    }
+
+    private void ButtonViewShipment_Click(object sender, EventArgs e) {
+        try {
+            Shipment selectedShipment = (Shipment) this.shipmentSearchResults.SelectedItem;
+            Shipment? createdShipment = this.parentApp.ShipmentService.OpenManagementWindowForVisualization(selectedShipment);
+            if (createdShipment != null) {
+                _ = this.shipmentSearchResults.Items.Add(createdShipment);
+                this.shipmentSearchResults.SelectedItem = createdShipment;
+            }
+        } catch (Exception ex) {
+            this.parentApp.HandleException(ex);
+        }
+    }
+
+    private void ButtonEditShipment_Click(object sender, EventArgs e) {
+        try {
+            Shipment selectedShipment = (Shipment) this.shipmentSearchResults.SelectedItem;
+            bool wasUpdated = this.parentApp.ShipmentService.OpenManagementWindowForEdition(selectedShipment);
+            if (wasUpdated) {
+                this.shipmentSearchResults.RefreshDisplay();
+            }
+        } catch (Exception ex) {
+            this.parentApp.HandleException(ex);
+        }
+    }
+
+    private void ButtonDeleteShipment_Click(object sender, EventArgs e) {
+        try {
+            Shipment selectedShipment = (Shipment) this.shipmentSearchResults.SelectedItem;
+            bool wasDeleted = this.parentApp.ShipmentService.OpenManagementWindowForDeletion(selectedShipment);
+
+            if (wasDeleted) {
+                this.shipmentSearchResults.SelectedItem = null;
+                this.shipmentSearchResults.SelectedIndex = -1;
+                this.shipmentSearchResults.Items.Remove(selectedShipment);
+            }
+        } catch (Exception ex) {
+            this.parentApp.HandleException(ex);
+        }
+    }
+
+
 
 
     #endregion
