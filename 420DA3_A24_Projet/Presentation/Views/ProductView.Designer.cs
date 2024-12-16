@@ -50,6 +50,38 @@ partial class ProductView {
         this.btn_Delete = new Button();
         this.btn_Update = new Button();
         this.btn_Quit = new Button();
+        this.lbl_Name = new Label();
+        this.lbl_Description = new Label();
+        this.lbl_Id = new Label();
+        this.lbl_codeSupplier = new Label();
+        this.lbl_codeUPC = new Label();
+        this.txt_Id = new Label();
+        this.txt_Name = new Label();
+        this.txt_Description = new Label();
+        this.txt_codeUPC = new Label();
+        this.txt_codeSupplier = new Label();
+        this.checkBox_IMG = new CheckBox();
+        this.txt_Supplier = new Label();
+        this.txt_Client = new Label();
+        this.lbl_Qty_InStock = new Label();
+        this.lbl_Client = new Label();
+        this.lbl_Supplier = new Label();
+        this.lbl_Qty_Desired = new Label();
+        this.txtl_Qty_Desired = new Label();
+        this.txt_Qty_InStock = new Label();
+        this.lbl_Weight = new Label();
+        this.txt_Weight = new Label();
+        this.dateDeletedValue = new DateTimePicker();
+        this.dateModifiedValue = new DateTimePicker();
+        this.dateCreatedValue = new DateTimePicker();
+        this.lbl_dateDeleted = new Label();
+        this.lbl_dateModified = new Label();
+        this.lbl_dateCreated = new Label();
+        this.picBox_Product = new PictureBox();
+        this.lbl_Expeditions = new Label();
+        this.lbl_Restocks = new Label();
+        this.listBox_Restocks = new ListBox();
+        this.listBox_Expeditions = new ListBox();
         this.Bottom_bar.SuspendLayout();
         this.tblPanel_Main.SuspendLayout();
         this.pnl_Main_Search.SuspendLayout();
@@ -61,10 +93,12 @@ partial class ProductView {
         this.pnl_Search_Titles.SuspendLayout();
         this.pnl_Main_Details.SuspendLayout();
         this.tblPanel_Modify.SuspendLayout();
+        this.grpBox_Details.SuspendLayout();
         this.pnl_Details_Titles.SuspendLayout();
         this.pnl_ConfirmSearch.SuspendLayout();
         this.pnl_SearchList.SuspendLayout();
         this.pnl_Modify.SuspendLayout();
+        ((System.ComponentModel.ISupportInitialize) this.picBox_Product).BeginInit();
         this.SuspendLayout();
         // 
         // Top_bar
@@ -118,18 +152,18 @@ partial class ProductView {
         // 
         this.pnl_Delete.Controls.Add(this.btn_Delete);
         this.pnl_Delete.Dock = DockStyle.Right;
-        this.pnl_Delete.Location = new Point(298, 882);
+        this.pnl_Delete.Location = new Point(298, 901);
         this.pnl_Delete.Name = "pnl_Delete";
-        this.pnl_Delete.Size = new Size(318, 105);
+        this.pnl_Delete.Size = new Size(318, 86);
         this.pnl_Delete.TabIndex = 5;
         // 
         // panel1
         // 
         this.panel1.Controls.Add(this.pnl_Create);
         this.panel1.Dock = DockStyle.Left;
-        this.panel1.Location = new Point(0, 882);
+        this.panel1.Location = new Point(0, 901);
         this.panel1.Name = "panel1";
-        this.panel1.Size = new Size(292, 105);
+        this.panel1.Size = new Size(292, 86);
         this.panel1.TabIndex = 3;
         // 
         // pnl_Create
@@ -138,7 +172,7 @@ partial class ProductView {
         this.pnl_Create.Dock = DockStyle.Left;
         this.pnl_Create.Location = new Point(0, 0);
         this.pnl_Create.Name = "pnl_Create";
-        this.pnl_Create.Size = new Size(297, 105);
+        this.pnl_Create.Size = new Size(297, 86);
         this.pnl_Create.TabIndex = 4;
         // 
         // tblPanel_SearchList
@@ -153,7 +187,7 @@ partial class ProductView {
         this.tblPanel_SearchList.Name = "tblPanel_SearchList";
         this.tblPanel_SearchList.RowCount = 1;
         this.tblPanel_SearchList.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-        this.tblPanel_SearchList.Size = new Size(616, 657);
+        this.tblPanel_SearchList.Size = new Size(616, 676);
         this.tblPanel_SearchList.TabIndex = 2;
         // 
         // tblPanel_ConfirmSearch
@@ -199,18 +233,50 @@ partial class ProductView {
         this.tblPanel_Modify.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
         this.tblPanel_Modify.Controls.Add(this.pnl_Modify, 1, 0);
         this.tblPanel_Modify.Dock = DockStyle.Bottom;
-        this.tblPanel_Modify.Location = new Point(0, 882);
+        this.tblPanel_Modify.Location = new Point(0, 901);
         this.tblPanel_Modify.Name = "tblPanel_Modify";
         this.tblPanel_Modify.RowCount = 1;
         this.tblPanel_Modify.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-        this.tblPanel_Modify.Size = new Size(616, 105);
+        this.tblPanel_Modify.Size = new Size(616, 86);
         this.tblPanel_Modify.TabIndex = 4;
         // 
         // grpBox_Details
         // 
-        this.grpBox_Details.Location = new Point(15, 131);
+        this.grpBox_Details.Controls.Add(this.listBox_Expeditions);
+        this.grpBox_Details.Controls.Add(this.listBox_Restocks);
+        this.grpBox_Details.Controls.Add(this.lbl_Restocks);
+        this.grpBox_Details.Controls.Add(this.lbl_Expeditions);
+        this.grpBox_Details.Controls.Add(this.picBox_Product);
+        this.grpBox_Details.Controls.Add(this.dateDeletedValue);
+        this.grpBox_Details.Controls.Add(this.dateModifiedValue);
+        this.grpBox_Details.Controls.Add(this.dateCreatedValue);
+        this.grpBox_Details.Controls.Add(this.lbl_dateDeleted);
+        this.grpBox_Details.Controls.Add(this.lbl_dateModified);
+        this.grpBox_Details.Controls.Add(this.lbl_dateCreated);
+        this.grpBox_Details.Controls.Add(this.lbl_Weight);
+        this.grpBox_Details.Controls.Add(this.txt_Weight);
+        this.grpBox_Details.Controls.Add(this.lbl_Supplier);
+        this.grpBox_Details.Controls.Add(this.lbl_Qty_Desired);
+        this.grpBox_Details.Controls.Add(this.txtl_Qty_Desired);
+        this.grpBox_Details.Controls.Add(this.txt_Qty_InStock);
+        this.grpBox_Details.Controls.Add(this.lbl_Qty_InStock);
+        this.grpBox_Details.Controls.Add(this.lbl_Client);
+        this.grpBox_Details.Controls.Add(this.txt_Supplier);
+        this.grpBox_Details.Controls.Add(this.txt_Client);
+        this.grpBox_Details.Controls.Add(this.checkBox_IMG);
+        this.grpBox_Details.Controls.Add(this.txt_codeSupplier);
+        this.grpBox_Details.Controls.Add(this.txt_codeUPC);
+        this.grpBox_Details.Controls.Add(this.txt_Description);
+        this.grpBox_Details.Controls.Add(this.txt_Name);
+        this.grpBox_Details.Controls.Add(this.txt_Id);
+        this.grpBox_Details.Controls.Add(this.lbl_codeSupplier);
+        this.grpBox_Details.Controls.Add(this.lbl_codeUPC);
+        this.grpBox_Details.Controls.Add(this.lbl_Name);
+        this.grpBox_Details.Controls.Add(this.lbl_Description);
+        this.grpBox_Details.Controls.Add(this.lbl_Id);
+        this.grpBox_Details.Location = new Point(15, 125);
         this.grpBox_Details.Name = "grpBox_Details";
-        this.grpBox_Details.Size = new Size(585, 745);
+        this.grpBox_Details.Size = new Size(585, 770);
         this.grpBox_Details.TabIndex = 1;
         this.grpBox_Details.TabStop = false;
         this.grpBox_Details.Text = "Details";
@@ -259,7 +325,7 @@ partial class ProductView {
         this.pnl_SearchList.Dock = DockStyle.Fill;
         this.pnl_SearchList.Location = new Point(81, 3);
         this.pnl_SearchList.Name = "pnl_SearchList";
-        this.pnl_SearchList.Size = new Size(454, 651);
+        this.pnl_SearchList.Size = new Size(454, 670);
         this.pnl_SearchList.TabIndex = 0;
         // 
         // pnl_Modify
@@ -267,7 +333,7 @@ partial class ProductView {
         this.pnl_Modify.Controls.Add(this.btn_Update);
         this.pnl_Modify.Location = new Point(186, 3);
         this.pnl_Modify.Name = "pnl_Modify";
-        this.pnl_Modify.Size = new Size(244, 99);
+        this.pnl_Modify.Size = new Size(244, 80);
         this.pnl_Modify.TabIndex = 0;
         // 
         // txt_Search
@@ -305,7 +371,7 @@ partial class ProductView {
         // 
         this.btn_Create.Anchor =  AnchorStyles.Left | AnchorStyles.Right;
         this.btn_Create.Font = new Font("Arial", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-        this.btn_Create.Location = new Point(19, 14);
+        this.btn_Create.Location = new Point(19, 5);
         this.btn_Create.Name = "btn_Create";
         this.btn_Create.Size = new Size(252, 77);
         this.btn_Create.TabIndex = 1;
@@ -316,7 +382,7 @@ partial class ProductView {
         // 
         this.btn_Delete.Anchor =  AnchorStyles.Left | AnchorStyles.Right;
         this.btn_Delete.Font = new Font("Arial", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-        this.btn_Delete.Location = new Point(33, 25);
+        this.btn_Delete.Location = new Point(33, 16);
         this.btn_Delete.Name = "btn_Delete";
         this.btn_Delete.Size = new Size(252, 55);
         this.btn_Delete.TabIndex = 1;
@@ -327,7 +393,7 @@ partial class ProductView {
         // 
         this.btn_Update.Anchor =  AnchorStyles.Left | AnchorStyles.Right;
         this.btn_Update.Font = new Font("Arial", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-        this.btn_Update.Location = new Point(3, 22);
+        this.btn_Update.Location = new Point(3, 13);
         this.btn_Update.Name = "btn_Update";
         this.btn_Update.Size = new Size(238, 55);
         this.btn_Update.TabIndex = 1;
@@ -344,6 +410,332 @@ partial class ProductView {
         this.btn_Quit.TabIndex = 1;
         this.btn_Quit.Text = "Quitter";
         this.btn_Quit.UseVisualStyleBackColor = true;
+        // 
+        // lbl_Name
+        // 
+        this.lbl_Name.Location = new Point(278, 22);
+        this.lbl_Name.Margin = new Padding(6);
+        this.lbl_Name.Name = "lbl_Name";
+        this.lbl_Name.Size = new Size(73, 30);
+        this.lbl_Name.TabIndex = 26;
+        this.lbl_Name.Text = "Nom  :";
+        this.lbl_Name.TextAlign = ContentAlignment.MiddleRight;
+        // 
+        // lbl_Description
+        // 
+        this.lbl_Description.Location = new Point(29, 59);
+        this.lbl_Description.Margin = new Padding(6);
+        this.lbl_Description.Name = "lbl_Description";
+        this.lbl_Description.Size = new Size(103, 30);
+        this.lbl_Description.TabIndex = 22;
+        this.lbl_Description.Text = "Description :";
+        this.lbl_Description.TextAlign = ContentAlignment.MiddleRight;
+        // 
+        // lbl_Id
+        // 
+        this.lbl_Id.Location = new Point(72, 22);
+        this.lbl_Id.Margin = new Padding(6);
+        this.lbl_Id.Name = "lbl_Id";
+        this.lbl_Id.Size = new Size(61, 30);
+        this.lbl_Id.TabIndex = 21;
+        this.lbl_Id.Text = "Id :";
+        this.lbl_Id.TextAlign = ContentAlignment.MiddleRight;
+        // 
+        // lbl_codeSupplier
+        // 
+        this.lbl_codeSupplier.Location = new Point(260, 164);
+        this.lbl_codeSupplier.Margin = new Padding(6);
+        this.lbl_codeSupplier.Name = "lbl_codeSupplier";
+        this.lbl_codeSupplier.Size = new Size(141, 30);
+        this.lbl_codeSupplier.TabIndex = 28;
+        this.lbl_codeSupplier.Text = "code Fournisseur  :";
+        this.lbl_codeSupplier.TextAlign = ContentAlignment.MiddleRight;
+        // 
+        // lbl_codeUPC
+        // 
+        this.lbl_codeUPC.Location = new Point(9, 164);
+        this.lbl_codeUPC.Margin = new Padding(6);
+        this.lbl_codeUPC.Name = "lbl_codeUPC";
+        this.lbl_codeUPC.Size = new Size(123, 30);
+        this.lbl_codeUPC.TabIndex = 27;
+        this.lbl_codeUPC.Text = "code UPC :";
+        this.lbl_codeUPC.TextAlign = ContentAlignment.MiddleRight;
+        // 
+        // txt_Id
+        // 
+        this.txt_Id.BackColor = SystemColors.Window;
+        this.txt_Id.BorderStyle = BorderStyle.FixedSingle;
+        this.txt_Id.Location = new Point(141, 22);
+        this.txt_Id.Margin = new Padding(6);
+        this.txt_Id.Name = "txt_Id";
+        this.txt_Id.Size = new Size(130, 30);
+        this.txt_Id.TabIndex = 29;
+        this.txt_Id.TextAlign = ContentAlignment.MiddleLeft;
+        // 
+        // txt_Name
+        // 
+        this.txt_Name.BackColor = SystemColors.Window;
+        this.txt_Name.BorderStyle = BorderStyle.FixedSingle;
+        this.txt_Name.Location = new Point(353, 22);
+        this.txt_Name.Margin = new Padding(6);
+        this.txt_Name.Name = "txt_Name";
+        this.txt_Name.Size = new Size(212, 30);
+        this.txt_Name.TabIndex = 30;
+        this.txt_Name.TextAlign = ContentAlignment.MiddleLeft;
+        // 
+        // txt_Description
+        // 
+        this.txt_Description.BackColor = SystemColors.Window;
+        this.txt_Description.BorderStyle = BorderStyle.FixedSingle;
+        this.txt_Description.Location = new Point(141, 65);
+        this.txt_Description.Margin = new Padding(6);
+        this.txt_Description.Name = "txt_Description";
+        this.txt_Description.Size = new Size(424, 84);
+        this.txt_Description.TabIndex = 31;
+        this.txt_Description.TextAlign = ContentAlignment.MiddleLeft;
+        // 
+        // txt_codeUPC
+        // 
+        this.txt_codeUPC.BackColor = SystemColors.Window;
+        this.txt_codeUPC.BorderStyle = BorderStyle.FixedSingle;
+        this.txt_codeUPC.Location = new Point(141, 164);
+        this.txt_codeUPC.Margin = new Padding(6);
+        this.txt_codeUPC.Name = "txt_codeUPC";
+        this.txt_codeUPC.Size = new Size(120, 30);
+        this.txt_codeUPC.TabIndex = 32;
+        this.txt_codeUPC.Text = "C-";
+        this.txt_codeUPC.TextAlign = ContentAlignment.MiddleLeft;
+        // 
+        // txt_codeSupplier
+        // 
+        this.txt_codeSupplier.BackColor = SystemColors.Window;
+        this.txt_codeSupplier.BorderStyle = BorderStyle.FixedSingle;
+        this.txt_codeSupplier.Location = new Point(407, 164);
+        this.txt_codeSupplier.Margin = new Padding(6);
+        this.txt_codeSupplier.Name = "txt_codeSupplier";
+        this.txt_codeSupplier.Size = new Size(158, 30);
+        this.txt_codeSupplier.TabIndex = 33;
+        this.txt_codeSupplier.TextAlign = ContentAlignment.MiddleLeft;
+        // 
+        // checkBox_IMG
+        // 
+        this.checkBox_IMG.AutoSize = true;
+        this.checkBox_IMG.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
+        this.checkBox_IMG.Location = new Point(471, 203);
+        this.checkBox_IMG.Name = "checkBox_IMG";
+        this.checkBox_IMG.RightToLeft = RightToLeft.No;
+        this.checkBox_IMG.Size = new Size(114, 29);
+        this.checkBox_IMG.TabIndex = 34;
+        this.checkBox_IMG.Text = "show IMG";
+        this.checkBox_IMG.UseVisualStyleBackColor = true;
+        // 
+        // txt_Supplier
+        // 
+        this.txt_Supplier.BackColor = SystemColors.Window;
+        this.txt_Supplier.BorderStyle = BorderStyle.FixedSingle;
+        this.txt_Supplier.Location = new Point(145, 282);
+        this.txt_Supplier.Margin = new Padding(6);
+        this.txt_Supplier.Name = "txt_Supplier";
+        this.txt_Supplier.Size = new Size(217, 30);
+        this.txt_Supplier.TabIndex = 38;
+        this.txt_Supplier.TextAlign = ContentAlignment.MiddleLeft;
+        // 
+        // txt_Client
+        // 
+        this.txt_Client.BackColor = SystemColors.Window;
+        this.txt_Client.BorderStyle = BorderStyle.FixedSingle;
+        this.txt_Client.Location = new Point(144, 240);
+        this.txt_Client.Margin = new Padding(6);
+        this.txt_Client.Name = "txt_Client";
+        this.txt_Client.Size = new Size(217, 30);
+        this.txt_Client.TabIndex = 37;
+        this.txt_Client.TextAlign = ContentAlignment.MiddleLeft;
+        // 
+        // lbl_Qty_InStock
+        // 
+        this.lbl_Qty_InStock.Location = new Point(3, 319);
+        this.lbl_Qty_InStock.Margin = new Padding(6);
+        this.lbl_Qty_InStock.Name = "lbl_Qty_InStock";
+        this.lbl_Qty_InStock.Size = new Size(141, 41);
+        this.lbl_Qty_InStock.TabIndex = 40;
+        this.lbl_Qty_InStock.Text = "Quantité en Stock  :";
+        this.lbl_Qty_InStock.TextAlign = ContentAlignment.MiddleRight;
+        // 
+        // lbl_Client
+        // 
+        this.lbl_Client.Location = new Point(9, 238);
+        this.lbl_Client.Margin = new Padding(6);
+        this.lbl_Client.Name = "lbl_Client";
+        this.lbl_Client.Size = new Size(124, 30);
+        this.lbl_Client.TabIndex = 39;
+        this.lbl_Client.Text = "Client Name : ";
+        this.lbl_Client.TextAlign = ContentAlignment.MiddleRight;
+        // 
+        // lbl_Supplier
+        // 
+        this.lbl_Supplier.Location = new Point(4, 280);
+        this.lbl_Supplier.Margin = new Padding(6);
+        this.lbl_Supplier.Name = "lbl_Supplier";
+        this.lbl_Supplier.Size = new Size(123, 30);
+        this.lbl_Supplier.TabIndex = 44;
+        this.lbl_Supplier.Text = "Supplier Name  :";
+        this.lbl_Supplier.TextAlign = ContentAlignment.MiddleRight;
+        // 
+        // lbl_Qty_Desired
+        // 
+        this.lbl_Qty_Desired.Location = new Point(20, 366);
+        this.lbl_Qty_Desired.Margin = new Padding(6);
+        this.lbl_Qty_Desired.Name = "lbl_Qty_Desired";
+        this.lbl_Qty_Desired.Size = new Size(124, 30);
+        this.lbl_Qty_Desired.TabIndex = 43;
+        this.lbl_Qty_Desired.Text = "Quantité Désiré : ";
+        this.lbl_Qty_Desired.TextAlign = ContentAlignment.MiddleRight;
+        // 
+        // txtl_Qty_Desired
+        // 
+        this.txtl_Qty_Desired.BackColor = SystemColors.Menu;
+        this.txtl_Qty_Desired.Location = new Point(155, 366);
+        this.txtl_Qty_Desired.Margin = new Padding(6);
+        this.txtl_Qty_Desired.Name = "txtl_Qty_Desired";
+        this.txtl_Qty_Desired.Size = new Size(207, 30);
+        this.txtl_Qty_Desired.TabIndex = 42;
+        this.txtl_Qty_Desired.Text = "0";
+        this.txtl_Qty_Desired.TextAlign = ContentAlignment.MiddleLeft;
+        // 
+        // txt_Qty_InStock
+        // 
+        this.txt_Qty_InStock.BackColor = SystemColors.Menu;
+        this.txt_Qty_InStock.Location = new Point(155, 324);
+        this.txt_Qty_InStock.Margin = new Padding(6);
+        this.txt_Qty_InStock.Name = "txt_Qty_InStock";
+        this.txt_Qty_InStock.Size = new Size(206, 30);
+        this.txt_Qty_InStock.TabIndex = 41;
+        this.txt_Qty_InStock.Text = "0";
+        this.txt_Qty_InStock.TextAlign = ContentAlignment.MiddleLeft;
+        // 
+        // lbl_Weight
+        // 
+        this.lbl_Weight.Location = new Point(20, 408);
+        this.lbl_Weight.Margin = new Padding(6);
+        this.lbl_Weight.Name = "lbl_Weight";
+        this.lbl_Weight.Size = new Size(124, 30);
+        this.lbl_Weight.TabIndex = 47;
+        this.lbl_Weight.Text = "Poids (kg) : ";
+        this.lbl_Weight.TextAlign = ContentAlignment.MiddleRight;
+        // 
+        // txt_Weight
+        // 
+        this.txt_Weight.BackColor = SystemColors.Menu;
+        this.txt_Weight.Location = new Point(155, 408);
+        this.txt_Weight.Margin = new Padding(6);
+        this.txt_Weight.Name = "txt_Weight";
+        this.txt_Weight.Size = new Size(207, 30);
+        this.txt_Weight.TabIndex = 45;
+        this.txt_Weight.Text = "0";
+        this.txt_Weight.TextAlign = ContentAlignment.MiddleLeft;
+        // 
+        // dateDeletedValue
+        // 
+        this.dateDeletedValue.Enabled = false;
+        this.dateDeletedValue.Location = new Point(244, 531);
+        this.dateDeletedValue.Margin = new Padding(3, 4, 3, 4);
+        this.dateDeletedValue.Name = "dateDeletedValue";
+        this.dateDeletedValue.Size = new Size(267, 27);
+        this.dateDeletedValue.TabIndex = 53;
+        // 
+        // dateModifiedValue
+        // 
+        this.dateModifiedValue.Enabled = false;
+        this.dateModifiedValue.Location = new Point(244, 490);
+        this.dateModifiedValue.Margin = new Padding(3, 4, 3, 4);
+        this.dateModifiedValue.Name = "dateModifiedValue";
+        this.dateModifiedValue.Size = new Size(267, 27);
+        this.dateModifiedValue.TabIndex = 52;
+        // 
+        // dateCreatedValue
+        // 
+        this.dateCreatedValue.Enabled = false;
+        this.dateCreatedValue.Location = new Point(244, 450);
+        this.dateCreatedValue.Margin = new Padding(3, 4, 3, 4);
+        this.dateCreatedValue.Name = "dateCreatedValue";
+        this.dateCreatedValue.Size = new Size(267, 27);
+        this.dateCreatedValue.TabIndex = 51;
+        // 
+        // lbl_dateDeleted
+        // 
+        this.lbl_dateDeleted.Location = new Point(71, 531);
+        this.lbl_dateDeleted.Margin = new Padding(6);
+        this.lbl_dateDeleted.Name = "lbl_dateDeleted";
+        this.lbl_dateDeleted.Size = new Size(165, 30);
+        this.lbl_dateDeleted.TabIndex = 50;
+        this.lbl_dateDeleted.Text = "Date de suppression :";
+        this.lbl_dateDeleted.TextAlign = ContentAlignment.MiddleRight;
+        // 
+        // lbl_dateModified
+        // 
+        this.lbl_dateModified.Location = new Point(71, 490);
+        this.lbl_dateModified.Margin = new Padding(6);
+        this.lbl_dateModified.Name = "lbl_dateModified";
+        this.lbl_dateModified.Size = new Size(165, 30);
+        this.lbl_dateModified.TabIndex = 49;
+        this.lbl_dateModified.Text = "Date de modification :";
+        this.lbl_dateModified.TextAlign = ContentAlignment.MiddleRight;
+        // 
+        // lbl_dateCreated
+        // 
+        this.lbl_dateCreated.Location = new Point(71, 450);
+        this.lbl_dateCreated.Margin = new Padding(6);
+        this.lbl_dateCreated.Name = "lbl_dateCreated";
+        this.lbl_dateCreated.Size = new Size(165, 30);
+        this.lbl_dateCreated.TabIndex = 48;
+        this.lbl_dateCreated.Text = "Date de création :";
+        this.lbl_dateCreated.TextAlign = ContentAlignment.MiddleRight;
+        // 
+        // picBox_Product
+        // 
+        this.picBox_Product.Location = new Point(379, 238);
+        this.picBox_Product.Name = "picBox_Product";
+        this.picBox_Product.Size = new Size(200, 200);
+        this.picBox_Product.TabIndex = 54;
+        this.picBox_Product.TabStop = false;
+        // 
+        // lbl_Expeditions
+        // 
+        this.lbl_Expeditions.Location = new Point(319, 582);
+        this.lbl_Expeditions.Margin = new Padding(6);
+        this.lbl_Expeditions.Name = "lbl_Expeditions";
+        this.lbl_Expeditions.Size = new Size(160, 30);
+        this.lbl_Expeditions.TabIndex = 55;
+        this.lbl_Expeditions.Text = "Ordres d’expédition :";
+        this.lbl_Expeditions.TextAlign = ContentAlignment.MiddleLeft;
+        // 
+        // lbl_Restocks
+        // 
+        this.lbl_Restocks.Location = new Point(32, 582);
+        this.lbl_Restocks.Margin = new Padding(6);
+        this.lbl_Restocks.Name = "lbl_Restocks";
+        this.lbl_Restocks.Size = new Size(153, 30);
+        this.lbl_Restocks.TabIndex = 56;
+        this.lbl_Restocks.Text = "Ordre de restockage :";
+        this.lbl_Restocks.TextAlign = ContentAlignment.MiddleLeft;
+        // 
+        // listBox_Restocks
+        // 
+        this.listBox_Restocks.FormattingEnabled = true;
+        this.listBox_Restocks.ItemHeight = 20;
+        this.listBox_Restocks.Location = new Point(32, 615);
+        this.listBox_Restocks.Name = "listBox_Restocks";
+        this.listBox_Restocks.Size = new Size(253, 144);
+        this.listBox_Restocks.TabIndex = 57;
+        // 
+        // listBox_Expeditions
+        // 
+        this.listBox_Expeditions.FormattingEnabled = true;
+        this.listBox_Expeditions.ItemHeight = 20;
+        this.listBox_Expeditions.Location = new Point(319, 615);
+        this.listBox_Expeditions.Name = "listBox_Expeditions";
+        this.listBox_Expeditions.Size = new Size(253, 144);
+        this.listBox_Expeditions.TabIndex = 58;
         // 
         // ProductView
         // 
@@ -368,11 +760,14 @@ partial class ProductView {
         this.pnl_Search_Titles.ResumeLayout(false);
         this.pnl_Main_Details.ResumeLayout(false);
         this.tblPanel_Modify.ResumeLayout(false);
+        this.grpBox_Details.ResumeLayout(false);
+        this.grpBox_Details.PerformLayout();
         this.pnl_Details_Titles.ResumeLayout(false);
         this.pnl_ConfirmSearch.ResumeLayout(false);
         this.pnl_SearchList.ResumeLayout(false);
         this.pnl_SearchList.PerformLayout();
         this.pnl_Modify.ResumeLayout(false);
+        ((System.ComponentModel.ISupportInitialize) this.picBox_Product).EndInit();
         this.ResumeLayout(false);
     }
 
@@ -404,4 +799,36 @@ partial class ProductView {
     private Button btn_Delete;
     private Button btn_Create;
     private Button btn_Update;
+    private Label lbl_Name;
+    private Label lbl_Description;
+    private Label lbl_Id;
+    private Label lbl_codeSupplier;
+    private Label lbl_codeUPC;
+    private Label txt_codeSupplier;
+    private Label txt_codeUPC;
+    private Label txt_Description;
+    private Label txt_Name;
+    private Label txt_Id;
+    private CheckBox checkBox_IMG;
+    private Label lbl_Qty_InStock;
+    private Label lbl_Client;
+    private Label txt_Supplier;
+    private Label txt_Client;
+    private Label lbl_Weight;
+    private Label txt_Weight;
+    private Label lbl_Supplier;
+    private Label lbl_Qty_Desired;
+    private Label txtl_Qty_Desired;
+    private Label txt_Qty_InStock;
+    private DateTimePicker dateDeletedValue;
+    private DateTimePicker dateModifiedValue;
+    private DateTimePicker dateCreatedValue;
+    private Label lbl_dateDeleted;
+    private Label lbl_dateModified;
+    private Label lbl_dateCreated;
+    private PictureBox picBox_Product;
+    private Label lbl_Restocks;
+    private Label lbl_Expeditions;
+    private ListBox listBox_Expeditions;
+    private ListBox listBox_Restocks;
 }

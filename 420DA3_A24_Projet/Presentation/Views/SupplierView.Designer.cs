@@ -49,6 +49,26 @@ partial class SupplierView {
         this.btn_Delete = new Button();
         this.btn_Update = new Button();
         this.btn_Quit = new Button();
+        this.lbl_Id = new Label();
+        this.lbl_Company = new Label();
+        this.txt_Id = new Label();
+        this.txt_Company = new Label();
+        this.txt_Email = new Label();
+        this.txt_Nom = new Label();
+        this.lbl_Email = new Label();
+        this.lbl_Nom = new Label();
+        this.txt_Phone = new Label();
+        this.lbl_Phone = new Label();
+        this.dateDeletedValue = new DateTimePicker();
+        this.dateModifiedValue = new DateTimePicker();
+        this.dateCreatedValue = new DateTimePicker();
+        this.lbl_dateDeleted = new Label();
+        this.lbl_dateModified = new Label();
+        this.lbl_dateCreated = new Label();
+        this.lbl_Products = new Label();
+        this.listBox_Products = new ListBox();
+        this.lbl_Prenom = new Label();
+        this.txt_Prenom = new Label();
         this.Bottom_Bar.SuspendLayout();
         this.tblPanel_Main.SuspendLayout();
         this.pnl_Main_Search.SuspendLayout();
@@ -59,6 +79,7 @@ partial class SupplierView {
         this.pnl_Search_Titles.SuspendLayout();
         this.pnl_Main_Details.SuspendLayout();
         this.tblPanel_Modify.SuspendLayout();
+        this.grpBox_Details.SuspendLayout();
         this.pnl_Details_Titles.SuspendLayout();
         this.pnl_ConfirmSearch.SuspendLayout();
         this.pnl_SearchList.SuspendLayout();
@@ -77,7 +98,7 @@ partial class SupplierView {
         // 
         this.Bottom_Bar.Controls.Add(this.btn_Quit);
         this.Bottom_Bar.Dock = DockStyle.Bottom;
-        this.Bottom_Bar.Location = new Point(0, 873);
+        this.Bottom_Bar.Location = new Point(0, 923);
         this.Bottom_Bar.Name = "Bottom_Bar";
         this.Bottom_Bar.Size = new Size(1182, 80);
         this.Bottom_Bar.TabIndex = 1;
@@ -96,7 +117,7 @@ partial class SupplierView {
         this.tblPanel_Main.Name = "tblPanel_Main";
         this.tblPanel_Main.RowCount = 1;
         this.tblPanel_Main.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-        this.tblPanel_Main.Size = new Size(1182, 793);
+        this.tblPanel_Main.Size = new Size(1182, 843);
         this.tblPanel_Main.TabIndex = 2;
         // 
         // pnl_Main_Search
@@ -109,25 +130,25 @@ partial class SupplierView {
         this.pnl_Main_Search.Dock = DockStyle.Fill;
         this.pnl_Main_Search.Location = new Point(97, 3);
         this.pnl_Main_Search.Name = "pnl_Main_Search";
-        this.pnl_Main_Search.Size = new Size(490, 787);
+        this.pnl_Main_Search.Size = new Size(490, 837);
         this.pnl_Main_Search.TabIndex = 0;
         // 
         // pnl_Delete
         // 
         this.pnl_Delete.Controls.Add(this.btn_Delete);
         this.pnl_Delete.Dock = DockStyle.Right;
-        this.pnl_Delete.Location = new Point(253, 698);
+        this.pnl_Delete.Location = new Point(253, 749);
         this.pnl_Delete.Name = "pnl_Delete";
-        this.pnl_Delete.Size = new Size(237, 89);
+        this.pnl_Delete.Size = new Size(237, 88);
         this.pnl_Delete.TabIndex = 7;
         // 
         // pnl_Create
         // 
         this.pnl_Create.Controls.Add(this.btn_Add);
         this.pnl_Create.Dock = DockStyle.Left;
-        this.pnl_Create.Location = new Point(0, 698);
+        this.pnl_Create.Location = new Point(0, 749);
         this.pnl_Create.Name = "pnl_Create";
-        this.pnl_Create.Size = new Size(254, 89);
+        this.pnl_Create.Size = new Size(254, 88);
         this.pnl_Create.TabIndex = 6;
         // 
         // tblPanel_SearchList
@@ -142,7 +163,7 @@ partial class SupplierView {
         this.tblPanel_SearchList.Name = "tblPanel_SearchList";
         this.tblPanel_SearchList.RowCount = 1;
         this.tblPanel_SearchList.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-        this.tblPanel_SearchList.Size = new Size(490, 490);
+        this.tblPanel_SearchList.Size = new Size(490, 541);
         this.tblPanel_SearchList.TabIndex = 2;
         // 
         // tblPanel_ConfirmSearch
@@ -177,7 +198,7 @@ partial class SupplierView {
         this.pnl_Main_Details.Dock = DockStyle.Fill;
         this.pnl_Main_Details.Location = new Point(593, 3);
         this.pnl_Main_Details.Name = "pnl_Main_Details";
-        this.pnl_Main_Details.Size = new Size(490, 787);
+        this.pnl_Main_Details.Size = new Size(490, 837);
         this.pnl_Main_Details.TabIndex = 1;
         // 
         // tblPanel_Modify
@@ -188,7 +209,7 @@ partial class SupplierView {
         this.tblPanel_Modify.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
         this.tblPanel_Modify.Controls.Add(this.pnl_Modify, 1, 0);
         this.tblPanel_Modify.Dock = DockStyle.Bottom;
-        this.tblPanel_Modify.Location = new Point(0, 698);
+        this.tblPanel_Modify.Location = new Point(0, 748);
         this.tblPanel_Modify.Name = "tblPanel_Modify";
         this.tblPanel_Modify.RowCount = 1;
         this.tblPanel_Modify.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
@@ -197,9 +218,29 @@ partial class SupplierView {
         // 
         // grpBox_Details
         // 
+        this.grpBox_Details.Controls.Add(this.txt_Prenom);
+        this.grpBox_Details.Controls.Add(this.lbl_Prenom);
+        this.grpBox_Details.Controls.Add(this.listBox_Products);
+        this.grpBox_Details.Controls.Add(this.lbl_Products);
+        this.grpBox_Details.Controls.Add(this.dateDeletedValue);
+        this.grpBox_Details.Controls.Add(this.dateModifiedValue);
+        this.grpBox_Details.Controls.Add(this.dateCreatedValue);
+        this.grpBox_Details.Controls.Add(this.lbl_dateDeleted);
+        this.grpBox_Details.Controls.Add(this.lbl_dateModified);
+        this.grpBox_Details.Controls.Add(this.lbl_dateCreated);
+        this.grpBox_Details.Controls.Add(this.txt_Phone);
+        this.grpBox_Details.Controls.Add(this.lbl_Phone);
+        this.grpBox_Details.Controls.Add(this.txt_Email);
+        this.grpBox_Details.Controls.Add(this.txt_Nom);
+        this.grpBox_Details.Controls.Add(this.lbl_Email);
+        this.grpBox_Details.Controls.Add(this.lbl_Nom);
+        this.grpBox_Details.Controls.Add(this.txt_Company);
+        this.grpBox_Details.Controls.Add(this.txt_Id);
+        this.grpBox_Details.Controls.Add(this.lbl_Company);
+        this.grpBox_Details.Controls.Add(this.lbl_Id);
         this.grpBox_Details.Location = new Point(15, 127);
         this.grpBox_Details.Name = "grpBox_Details";
-        this.grpBox_Details.Size = new Size(456, 547);
+        this.grpBox_Details.Size = new Size(456, 615);
         this.grpBox_Details.TabIndex = 2;
         this.grpBox_Details.TabStop = false;
         this.grpBox_Details.Text = "Details";
@@ -248,7 +289,7 @@ partial class SupplierView {
         this.pnl_SearchList.Dock = DockStyle.Fill;
         this.pnl_SearchList.Location = new Point(73, 3);
         this.pnl_SearchList.Name = "pnl_SearchList";
-        this.pnl_SearchList.Size = new Size(344, 484);
+        this.pnl_SearchList.Size = new Size(344, 535);
         this.pnl_SearchList.TabIndex = 0;
         // 
         // pnl_Modify
@@ -276,7 +317,7 @@ partial class SupplierView {
         this.listBox_Suppliers.ItemHeight = 22;
         this.listBox_Suppliers.Location = new Point(9, 65);
         this.listBox_Suppliers.Name = "listBox_Suppliers";
-        this.listBox_Suppliers.Size = new Size(327, 400);
+        this.listBox_Suppliers.Size = new Size(327, 444);
         this.listBox_Suppliers.TabIndex = 2;
         // 
         // btn_Details
@@ -334,15 +375,217 @@ partial class SupplierView {
         this.btn_Quit.Text = "Quitter";
         this.btn_Quit.UseVisualStyleBackColor = true;
         // 
+        // lbl_Id
+        // 
+        this.lbl_Id.Location = new Point(9, 29);
+        this.lbl_Id.Margin = new Padding(6);
+        this.lbl_Id.Name = "lbl_Id";
+        this.lbl_Id.Size = new Size(57, 30);
+        this.lbl_Id.TabIndex = 22;
+        this.lbl_Id.Text = "Id :";
+        this.lbl_Id.TextAlign = ContentAlignment.MiddleRight;
+        // 
+        // lbl_Company
+        // 
+        this.lbl_Company.Location = new Point(168, 31);
+        this.lbl_Company.Margin = new Padding(6);
+        this.lbl_Company.Name = "lbl_Company";
+        this.lbl_Company.Size = new Size(105, 30);
+        this.lbl_Company.TabIndex = 24;
+        this.lbl_Company.Text = "Compagnie :";
+        this.lbl_Company.TextAlign = ContentAlignment.MiddleRight;
+        // 
+        // txt_Id
+        // 
+        this.txt_Id.BackColor = SystemColors.Window;
+        this.txt_Id.BorderStyle = BorderStyle.Fixed3D;
+        this.txt_Id.Location = new Point(78, 32);
+        this.txt_Id.Margin = new Padding(6);
+        this.txt_Id.Name = "txt_Id";
+        this.txt_Id.Size = new Size(87, 30);
+        this.txt_Id.TabIndex = 30;
+        this.txt_Id.TextAlign = ContentAlignment.MiddleLeft;
+        // 
+        // txt_Company
+        // 
+        this.txt_Company.BackColor = SystemColors.Window;
+        this.txt_Company.BorderStyle = BorderStyle.Fixed3D;
+        this.txt_Company.Location = new Point(276, 32);
+        this.txt_Company.Margin = new Padding(6);
+        this.txt_Company.Name = "txt_Company";
+        this.txt_Company.Size = new Size(155, 30);
+        this.txt_Company.TabIndex = 31;
+        this.txt_Company.TextAlign = ContentAlignment.MiddleLeft;
+        // 
+        // txt_Email
+        // 
+        this.txt_Email.BackColor = SystemColors.Window;
+        this.txt_Email.BorderStyle = BorderStyle.Fixed3D;
+        this.txt_Email.Location = new Point(177, 191);
+        this.txt_Email.Margin = new Padding(6);
+        this.txt_Email.Name = "txt_Email";
+        this.txt_Email.Size = new Size(254, 30);
+        this.txt_Email.TabIndex = 35;
+        this.txt_Email.TextAlign = ContentAlignment.MiddleLeft;
+        // 
+        // txt_Nom
+        // 
+        this.txt_Nom.BackColor = SystemColors.Window;
+        this.txt_Nom.BorderStyle = BorderStyle.Fixed3D;
+        this.txt_Nom.Location = new Point(177, 139);
+        this.txt_Nom.Margin = new Padding(6);
+        this.txt_Nom.Name = "txt_Nom";
+        this.txt_Nom.Size = new Size(254, 30);
+        this.txt_Nom.TabIndex = 34;
+        this.txt_Nom.TextAlign = ContentAlignment.MiddleLeft;
+        // 
+        // lbl_Email
+        // 
+        this.lbl_Email.Location = new Point(57, 191);
+        this.lbl_Email.Margin = new Padding(6);
+        this.lbl_Email.Name = "lbl_Email";
+        this.lbl_Email.Size = new Size(108, 30);
+        this.lbl_Email.TabIndex = 33;
+        this.lbl_Email.Text = "Courriel Elect :";
+        this.lbl_Email.TextAlign = ContentAlignment.MiddleRight;
+        // 
+        // lbl_Nom
+        // 
+        this.lbl_Nom.Location = new Point(41, 139);
+        this.lbl_Nom.Margin = new Padding(6);
+        this.lbl_Nom.Name = "lbl_Nom";
+        this.lbl_Nom.Size = new Size(124, 30);
+        this.lbl_Nom.TabIndex = 32;
+        this.lbl_Nom.Text = "Nom :";
+        this.lbl_Nom.TextAlign = ContentAlignment.MiddleRight;
+        // 
+        // txt_Phone
+        // 
+        this.txt_Phone.BackColor = SystemColors.Window;
+        this.txt_Phone.BorderStyle = BorderStyle.Fixed3D;
+        this.txt_Phone.Location = new Point(177, 242);
+        this.txt_Phone.Margin = new Padding(6);
+        this.txt_Phone.Name = "txt_Phone";
+        this.txt_Phone.Size = new Size(254, 30);
+        this.txt_Phone.TabIndex = 37;
+        this.txt_Phone.TextAlign = ContentAlignment.MiddleLeft;
+        // 
+        // lbl_Phone
+        // 
+        this.lbl_Phone.Location = new Point(25, 242);
+        this.lbl_Phone.Margin = new Padding(6);
+        this.lbl_Phone.Name = "lbl_Phone";
+        this.lbl_Phone.Size = new Size(140, 30);
+        this.lbl_Phone.TabIndex = 36;
+        this.lbl_Phone.Text = "Phone :";
+        this.lbl_Phone.TextAlign = ContentAlignment.MiddleRight;
+        // 
+        // dateDeletedValue
+        // 
+        this.dateDeletedValue.Enabled = false;
+        this.dateDeletedValue.Location = new Point(174, 379);
+        this.dateDeletedValue.Margin = new Padding(3, 4, 3, 4);
+        this.dateDeletedValue.Name = "dateDeletedValue";
+        this.dateDeletedValue.Size = new Size(267, 27);
+        this.dateDeletedValue.TabIndex = 59;
+        // 
+        // dateModifiedValue
+        // 
+        this.dateModifiedValue.Enabled = false;
+        this.dateModifiedValue.Location = new Point(177, 338);
+        this.dateModifiedValue.Margin = new Padding(3, 4, 3, 4);
+        this.dateModifiedValue.Name = "dateModifiedValue";
+        this.dateModifiedValue.Size = new Size(264, 27);
+        this.dateModifiedValue.TabIndex = 58;
+        // 
+        // dateCreatedValue
+        // 
+        this.dateCreatedValue.Enabled = false;
+        this.dateCreatedValue.Location = new Point(177, 298);
+        this.dateCreatedValue.Margin = new Padding(3, 4, 3, 4);
+        this.dateCreatedValue.Name = "dateCreatedValue";
+        this.dateCreatedValue.Size = new Size(264, 27);
+        this.dateCreatedValue.TabIndex = 57;
+        // 
+        // lbl_dateDeleted
+        // 
+        this.lbl_dateDeleted.Location = new Point(9, 379);
+        this.lbl_dateDeleted.Margin = new Padding(6);
+        this.lbl_dateDeleted.Name = "lbl_dateDeleted";
+        this.lbl_dateDeleted.Size = new Size(156, 30);
+        this.lbl_dateDeleted.TabIndex = 56;
+        this.lbl_dateDeleted.Text = "Date de suppression :";
+        this.lbl_dateDeleted.TextAlign = ContentAlignment.MiddleRight;
+        // 
+        // lbl_dateModified
+        // 
+        this.lbl_dateModified.Location = new Point(0, 337);
+        this.lbl_dateModified.Margin = new Padding(6);
+        this.lbl_dateModified.Name = "lbl_dateModified";
+        this.lbl_dateModified.Size = new Size(165, 30);
+        this.lbl_dateModified.TabIndex = 55;
+        this.lbl_dateModified.Text = "Date de modification :";
+        this.lbl_dateModified.TextAlign = ContentAlignment.MiddleRight;
+        // 
+        // lbl_dateCreated
+        // 
+        this.lbl_dateCreated.Location = new Point(25, 298);
+        this.lbl_dateCreated.Margin = new Padding(6);
+        this.lbl_dateCreated.Name = "lbl_dateCreated";
+        this.lbl_dateCreated.Size = new Size(140, 30);
+        this.lbl_dateCreated.TabIndex = 54;
+        this.lbl_dateCreated.Text = "Date de création :";
+        this.lbl_dateCreated.TextAlign = ContentAlignment.MiddleRight;
+        // 
+        // lbl_Products
+        // 
+        this.lbl_Products.Location = new Point(25, 431);
+        this.lbl_Products.Margin = new Padding(6);
+        this.lbl_Products.Name = "lbl_Products";
+        this.lbl_Products.Size = new Size(140, 30);
+        this.lbl_Products.TabIndex = 60;
+        this.lbl_Products.Text = "Liste de Produits :";
+        this.lbl_Products.TextAlign = ContentAlignment.MiddleRight;
+        // 
+        // listBox_Products
+        // 
+        this.listBox_Products.FormattingEnabled = true;
+        this.listBox_Products.ItemHeight = 20;
+        this.listBox_Products.Location = new Point(174, 431);
+        this.listBox_Products.Name = "listBox_Products";
+        this.listBox_Products.Size = new Size(267, 164);
+        this.listBox_Products.TabIndex = 61;
+        // 
+        // lbl_Prenom
+        // 
+        this.lbl_Prenom.Location = new Point(25, 84);
+        this.lbl_Prenom.Margin = new Padding(6);
+        this.lbl_Prenom.Name = "lbl_Prenom";
+        this.lbl_Prenom.Size = new Size(140, 30);
+        this.lbl_Prenom.TabIndex = 62;
+        this.lbl_Prenom.Text = "Prénom :";
+        this.lbl_Prenom.TextAlign = ContentAlignment.MiddleRight;
+        // 
+        // txt_Prenom
+        // 
+        this.txt_Prenom.BackColor = SystemColors.Window;
+        this.txt_Prenom.BorderStyle = BorderStyle.Fixed3D;
+        this.txt_Prenom.Location = new Point(177, 84);
+        this.txt_Prenom.Margin = new Padding(6);
+        this.txt_Prenom.Name = "txt_Prenom";
+        this.txt_Prenom.Size = new Size(254, 30);
+        this.txt_Prenom.TabIndex = 63;
+        this.txt_Prenom.TextAlign = ContentAlignment.MiddleLeft;
+        // 
         // SupplierView
         // 
         this.AutoScaleDimensions = new SizeF(8F, 20F);
         this.AutoScaleMode = AutoScaleMode.Font;
-        this.ClientSize = new Size(1182, 953);
+        this.ClientSize = new Size(1182, 1003);
         this.Controls.Add(this.tblPanel_Main);
         this.Controls.Add(this.Bottom_Bar);
         this.Controls.Add(this.Top_Bar);
-        this.MinimumSize = new Size(1200, 1000);
+        this.MinimumSize = new Size(1200, 1018);
         this.Name = "SupplierView";
         this.StartPosition = FormStartPosition.CenterScreen;
         this.Text = "Suppliers";
@@ -356,6 +599,7 @@ partial class SupplierView {
         this.pnl_Search_Titles.ResumeLayout(false);
         this.pnl_Main_Details.ResumeLayout(false);
         this.tblPanel_Modify.ResumeLayout(false);
+        this.grpBox_Details.ResumeLayout(false);
         this.pnl_Details_Titles.ResumeLayout(false);
         this.pnl_ConfirmSearch.ResumeLayout(false);
         this.pnl_SearchList.ResumeLayout(false);
@@ -391,4 +635,24 @@ partial class SupplierView {
     private Button btn_Delete;
     private Button btn_Update;
     private Button btn_Quit;
+    private Label lbl_Company;
+    private Label lbl_Id;
+    private Label txt_Id;
+    private Label txt_Phone;
+    private Label lbl_Phone;
+    private Label txt_Email;
+    private Label txt_Nom;
+    private Label lbl_Email;
+    private Label lbl_Nom;
+    private Label txt_Company;
+    private DateTimePicker dateDeletedValue;
+    private DateTimePicker dateModifiedValue;
+    private DateTimePicker dateCreatedValue;
+    private Label lbl_dateDeleted;
+    private Label lbl_dateModified;
+    private Label lbl_dateCreated;
+    private Label lbl_Products;
+    private ListBox listBox_Products;
+    private Label txt_Prenom;
+    private Label lbl_Prenom;
 }
