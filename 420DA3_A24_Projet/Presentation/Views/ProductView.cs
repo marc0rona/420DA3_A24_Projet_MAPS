@@ -29,7 +29,7 @@ internal partial class ProductView : Form {
     }
 
     private void btn_Quit_Click(object sender, EventArgs e) {
-        this.Close();
+        this.DialogResult = DialogResult.Cancel;
     }
 
     //Void methodes
@@ -105,13 +105,72 @@ internal partial class ProductView : Form {
             if (select_ProdId is not null && product.Id == select_ProdId) { this.listBox_Products.SelectedItem = product; }
         }
     }
+    private Product SaveDataFromControls(Product product) {
+        try 
+        {
+            product.Name = this.txt_Name.Text.Trim();
+            product.Description = this.txt_Description.Text.Trim();
+            product.Code_UPC = this.txt_codeUPC.Text.Trim();
+            product.Code_Supplier = this.txt_codeSupplier.Text.Trim();
+            product.OwnerClient_Id = Convert.ToInt32(this.txt_Client.Text.Trim());
+            product.Supplier_Id = Convert.ToInt32(this.txt_Description.Text.Trim());
+            product.Qty_InStock = Convert.ToInt32(this.txt_Qty_InStock.Text.Trim());
+            product.Qty_Desired = Convert.ToInt32(this.txt_Qty_Desired.Text.Trim());
+            product.Weight_inKg = Convert.ToInt32(this.txt_Weight.Text.Trim());
 
+            return product;
+        } 
+        catch (Exception ex) 
+        {
+            // Show a message box with the error details
+            MessageBox.Show($"Une erreur est survenue : {ex.Message}","Erreur",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            return product;
+        }
+    }
     private void Btn_Action_Click(object sender, EventArgs e) {
+        try {
 
+            switch (this.UserAction) {
+                case ViewActionsEnum.Creation:
+                    _ = this.SaveDataFromControls(this.CurrentEntityInstance);
+                    this.CurrentEntityInstance = this.wsys.ProductService.Create(this.CurrentEntityInstance);
+                    break;
+                case ViewActionsEnum.Edition:
+                    _ = this.SaveDataFromControls(this.CurrentEntityInstance);
+                    this.CurrentEntityInstance = this.wsys.ProductService.Update(this.CurrentEntityInstance);
+                    break;
+                case ViewActionsEnum.Deletion:
+                    string msg = this.wsys.ProductService.Delete(this.CurrentEntityInstance);
+                    MessageBox.Show($"product {msg} supprimé", "Confirmation");
+                    break;
+                case ViewActionsEnum.Visualization:
+                    // nothing to do
+                    break;
+                default:
+                    throw new NotImplementedException($"The view action [{Enum.GetName(this.UserAction)}] is not implemented in [{this.GetType().ShortDisplayName}].");
+            }
+            this.DialogResult = DialogResult.OK;
+
+        } catch (Exception ex) {
+            this.wsys.HandleException(ex);
+        }
     }
     //Dialoge Results
     public DialogResult OpenForCreation(Product instance) {
-        this.PreOpenSetup(instance, ViewActionsEnum.Creation, "Création d'un utilisateur", "Créer");
+        this.PreOpenSetup(instance, ViewActionsEnum.Creation, "Création d'un Produit", "Créer");
         return this.ShowDialog();
     }
+    public DialogResult OpenForDetailsView(Product instance) {
+        this.PreOpenSetup(instance, ViewActionsEnum.Visualization, "Détails d'un Produit", "OK");
+        return this.ShowDialog();
+    }
+    public DialogResult OpenForModification(Product instance) {
+        this.PreOpenSetup(instance, ViewActionsEnum.Edition, "Modifier un Produit", "Enregistrer");
+        return this.ShowDialog();
+    }
+    public DialogResult OpenForDeletion(Product instance) {
+        this.PreOpenSetup(instance, ViewActionsEnum.Deletion, "Supprimer un Produit", "Supprimer");
+        return this.ShowDialog();
+    }
+
 }

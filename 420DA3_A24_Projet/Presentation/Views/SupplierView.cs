@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.VisualBasic.ApplicationServices;
 
 namespace _420DA3_A24_Projet.Presentation.Views;
 internal partial class SupplierView : Form {
@@ -30,7 +31,7 @@ internal partial class SupplierView : Form {
     }
 
     private void BtnQuit_Click(object sender, EventArgs e) {
-        this.Close();
+        this.DialogResult = DialogResult.Cancel;
     }
     //Void methodes
     private void ReloadSelectors() {
@@ -80,16 +81,71 @@ internal partial class SupplierView : Form {
     public Supplier? GetCurrentInstance() {
         return this.CurrentEntityInstance;
     }
-
+    private Supplier SaveDataFromControls(Supplier supplier) {
+        try {
+            supplier.Name = this.txt_Company.Text.Trim();
+            supplier.Contact_FirstName = this.txt_Prenom.Text.Trim();
+            supplier.Contact_LastName = this.txt_Nom.Text.Trim();
+            supplier.Contact_Email = this.txt_Email.Text.Trim();
+            supplier.Contact_Phone = this.txt_Phone.Text.Trim();
+            foreach (Product prod in this.listBox_Products.Items) {
+                supplier.ProductList.Add(prod);
+            }
+            return supplier;
+        } catch (Exception ex) {
+            // Show a message box with the error details
+            MessageBox.Show($"Une erreur est survenue : {ex.Message}", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return supplier;
+        }
+    }
     private void Btn_Action_Click(object sender, EventArgs e) {
+        try {
 
+            switch (this.UserAction) {
+                case ViewActionsEnum.Creation:
+                    _ = this.SaveDataFromControls(this.CurrentEntityInstance);
+                    this.CurrentEntityInstance = this.wsys.SupplierService.Create(this.CurrentEntityInstance);
+                    break;
+                case ViewActionsEnum.Edition:
+                    _ = this.SaveDataFromControls(this.CurrentEntityInstance);
+                    this.CurrentEntityInstance = this.wsys.SupplierService.Update(this.CurrentEntityInstance);
+                    break;
+                case ViewActionsEnum.Deletion:
+                    string msg = this.wsys.SupplierService.Delete(this.CurrentEntityInstance);
+                    MessageBox.Show($"supplier {msg} supprimé", "Confirmation");
+                    break;
+                case ViewActionsEnum.Visualization:
+                    // nothing to do
+                    break;
+                default:
+                    throw new NotImplementedException($"The view action [{Enum.GetName(this.UserAction)}] is not implemented in [{this.GetType().ShortDisplayName}].");
+            }
+            this.DialogResult = DialogResult.OK;
+
+        } catch (Exception ex) {
+            this.wsys.HandleException(ex);
+        }
     }
     //Dialoge Results
     public DialogResult OpenForCreation(Supplier instance) 
     {
-        this.PreOpenSetup(instance, ViewActionsEnum.Creation, "Création d'un utilisateur", "Créer");
+        this.PreOpenSetup(instance, ViewActionsEnum.Creation, "Création d'un Fournisseur", "Créer");
         return this.ShowDialog();
     }
+
+    public DialogResult OpenForDetailsView(Supplier instance) {
+        this.PreOpenSetup(instance, ViewActionsEnum.Visualization, "Détails d'un Fournisseur", "OK");
+        return this.ShowDialog();
+    }
+    public DialogResult OpenForModification(Supplier instance) {
+        this.PreOpenSetup(instance, ViewActionsEnum.Edition, "Modifier un Fournisseur", "Enregistrer");
+        return this.ShowDialog();
+    }
+    public DialogResult OpenForDeletion(Supplier instance) {
+        this.PreOpenSetup(instance, ViewActionsEnum.Deletion, "Supprimer un Fournisseur", "Supprimer");
+        return this.ShowDialog();
+    }
+
     private void listBox_Suppliers_SelectedIndexChanged(object sender, EventArgs e) 
     {
         string searched = this.txt_Search.Text;
