@@ -31,31 +31,31 @@ partial class ShipmentView {
         this.btnCancel = new Button();
         this.bottomBarPanel = new Panel();
         this.button2 = new Button();
-        this.button1 = new Button();
+        this.actionButton = new Button();
         this.centerBarTabLayPanel = new TableLayoutPanel();
         this.centerPanel = new Panel();
-        this.idValue = new NumericUpDown();
-        this.idLabel = new Label();
-        this.statusValue = new ComboBox();
-        this.statusLabel = new Label();
-        this.shippingServiceValue = new ComboBox();
-        this.shippingServiceLabel = new Label();
-        this.shippingOrderIdValue = new NumericUpDown();
-        this.shippingOrderIdLabel = new Label();
-        this.trackingNumberValue = new TextBox();
-        this.trackingNumberLabel = new Label();
         this.dateDeletedValue = new DateTimePicker();
         this.dateModifiedValue = new DateTimePicker();
         this.dateCreatedValue = new DateTimePicker();
         this.dateDeletedLabel = new Label();
         this.dateModifiedLabel = new Label();
         this.dateCreatedLabel = new Label();
+        this.trackingNumberValue = new TextBox();
+        this.trackingNumberLabel = new Label();
+        this.shippingOrderIdValue = new NumericUpDown();
+        this.shippingOrderIdLabel = new Label();
+        this.shippingServiceValue = new ComboBox();
+        this.shippingServiceLabel = new Label();
+        this.statusValue = new ComboBox();
+        this.statusLabel = new Label();
+        this.idValue = new NumericUpDown();
+        this.idLabel = new Label();
         this.topBarPanel.SuspendLayout();
         this.bottomBarPanel.SuspendLayout();
         this.centerBarTabLayPanel.SuspendLayout();
         this.centerPanel.SuspendLayout();
-        ((System.ComponentModel.ISupportInitialize) this.idValue).BeginInit();
         ((System.ComponentModel.ISupportInitialize) this.shippingOrderIdValue).BeginInit();
+        ((System.ComponentModel.ISupportInitialize) this.idValue).BeginInit();
         this.SuspendLayout();
         // 
         // topBarPanel
@@ -111,7 +111,7 @@ partial class ShipmentView {
         // bottomBarPanel
         // 
         this.bottomBarPanel.Controls.Add(this.button2);
-        this.bottomBarPanel.Controls.Add(this.button1);
+        this.bottomBarPanel.Controls.Add(this.actionButton);
         this.bottomBarPanel.Controls.Add(this.btnAction);
         this.bottomBarPanel.Controls.Add(this.btnCancel);
         this.bottomBarPanel.Dock = DockStyle.Bottom;
@@ -130,16 +130,17 @@ partial class ShipmentView {
         this.button2.Text = "Annuler";
         this.button2.UseVisualStyleBackColor = true;
         // 
-        // button1
+        // actionButton
         // 
-        this.button1.Anchor =  AnchorStyles.Bottom | AnchorStyles.Right;
-        this.button1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-        this.button1.Location = new Point(593, 15);
-        this.button1.Name = "button1";
-        this.button1.Size = new Size(114, 23);
-        this.button1.TabIndex = 2;
-        this.button1.Text = "ACTION";
-        this.button1.UseVisualStyleBackColor = true;
+        this.actionButton.Anchor =  AnchorStyles.Bottom | AnchorStyles.Right;
+        this.actionButton.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+        this.actionButton.Location = new Point(593, 15);
+        this.actionButton.Name = "actionButton";
+        this.actionButton.Size = new Size(114, 23);
+        this.actionButton.TabIndex = 2;
+        this.actionButton.Text = "ACTION";
+        this.actionButton.UseVisualStyleBackColor = true;
+        this.actionButton.Click += this.actionButton_Click;
         // 
         // centerBarTabLayPanel
         // 
@@ -179,98 +180,6 @@ partial class ShipmentView {
         this.centerPanel.Name = "centerPanel";
         this.centerPanel.Size = new Size(394, 285);
         this.centerPanel.TabIndex = 0;
-        this.centerPanel.Paint += this.centerPanel_Paint;
-        // 
-        // idValue
-        // 
-        this.idValue.Enabled = false;
-        this.idValue.Location = new Point(157, 17);
-        this.idValue.Name = "idValue";
-        this.idValue.Size = new Size(234, 23);
-        this.idValue.TabIndex = 1;
-        // 
-        // idLabel
-        // 
-        this.idLabel.Location = new Point(5, 15);
-        this.idLabel.Margin = new Padding(5);
-        this.idLabel.Name = "idLabel";
-        this.idLabel.Size = new Size(144, 23);
-        this.idLabel.TabIndex = 0;
-        this.idLabel.Text = "Id :";
-        this.idLabel.TextAlign = ContentAlignment.MiddleRight;
-        // 
-        // statusValue
-        // 
-        this.statusValue.FormattingEnabled = true;
-        this.statusValue.Location = new Point(157, 46);
-        this.statusValue.Name = "statusValue";
-        this.statusValue.Size = new Size(234, 23);
-        this.statusValue.TabIndex = 14;
-        // 
-        // statusLabel
-        // 
-        this.statusLabel.Location = new Point(5, 45);
-        this.statusLabel.Margin = new Padding(5);
-        this.statusLabel.Name = "statusLabel";
-        this.statusLabel.Size = new Size(144, 23);
-        this.statusLabel.TabIndex = 13;
-        this.statusLabel.Text = "Status : ";
-        this.statusLabel.TextAlign = ContentAlignment.MiddleRight;
-        // 
-        // shippingServiceValue
-        // 
-        this.shippingServiceValue.FormattingEnabled = true;
-        this.shippingServiceValue.Location = new Point(157, 75);
-        this.shippingServiceValue.Name = "shippingServiceValue";
-        this.shippingServiceValue.Size = new Size(234, 23);
-        this.shippingServiceValue.TabIndex = 16;
-        // 
-        // shippingServiceLabel
-        // 
-        this.shippingServiceLabel.Location = new Point(5, 74);
-        this.shippingServiceLabel.Margin = new Padding(5);
-        this.shippingServiceLabel.Name = "shippingServiceLabel";
-        this.shippingServiceLabel.Size = new Size(144, 23);
-        this.shippingServiceLabel.TabIndex = 15;
-        this.shippingServiceLabel.Text = "Service d'expédition :";
-        this.shippingServiceLabel.TextAlign = ContentAlignment.MiddleRight;
-        // 
-        // shippingOrderIdValue
-        // 
-        this.shippingOrderIdValue.Enabled = false;
-        this.shippingOrderIdValue.Location = new Point(157, 110);
-        this.shippingOrderIdValue.Name = "shippingOrderIdValue";
-        this.shippingOrderIdValue.Size = new Size(234, 23);
-        this.shippingOrderIdValue.TabIndex = 18;
-        // 
-        // shippingOrderIdLabel
-        // 
-        this.shippingOrderIdLabel.Location = new Point(5, 107);
-        this.shippingOrderIdLabel.Margin = new Padding(5);
-        this.shippingOrderIdLabel.Name = "shippingOrderIdLabel";
-        this.shippingOrderIdLabel.Size = new Size(144, 35);
-        this.shippingOrderIdLabel.TabIndex = 17;
-        this.shippingOrderIdLabel.Text = "Id de la commande d'expédition : ";
-        this.shippingOrderIdLabel.TextAlign = ContentAlignment.MiddleRight;
-        // 
-        // trackingNumberValue
-        // 
-        this.trackingNumberValue.Location = new Point(157, 149);
-        this.trackingNumberValue.Name = "trackingNumberValue";
-        this.trackingNumberValue.PlaceholderText = "Numéro de suivi";
-        this.trackingNumberValue.Size = new Size(234, 23);
-        this.trackingNumberValue.TabIndex = 20;
-        this.trackingNumberValue.UseSystemPasswordChar = true;
-        // 
-        // trackingNumberLabel
-        // 
-        this.trackingNumberLabel.Location = new Point(5, 148);
-        this.trackingNumberLabel.Margin = new Padding(5);
-        this.trackingNumberLabel.Name = "trackingNumberLabel";
-        this.trackingNumberLabel.Size = new Size(144, 23);
-        this.trackingNumberLabel.TabIndex = 19;
-        this.trackingNumberLabel.Text = "Numéro de suivi :";
-        this.trackingNumberLabel.TextAlign = ContentAlignment.MiddleRight;
         // 
         // dateDeletedValue
         // 
@@ -326,6 +235,97 @@ partial class ShipmentView {
         this.dateCreatedLabel.Text = "Date de création :";
         this.dateCreatedLabel.TextAlign = ContentAlignment.MiddleRight;
         // 
+        // trackingNumberValue
+        // 
+        this.trackingNumberValue.Location = new Point(157, 149);
+        this.trackingNumberValue.Name = "trackingNumberValue";
+        this.trackingNumberValue.PlaceholderText = "Numéro de suivi";
+        this.trackingNumberValue.Size = new Size(234, 23);
+        this.trackingNumberValue.TabIndex = 20;
+        this.trackingNumberValue.UseSystemPasswordChar = true;
+        // 
+        // trackingNumberLabel
+        // 
+        this.trackingNumberLabel.Location = new Point(5, 148);
+        this.trackingNumberLabel.Margin = new Padding(5);
+        this.trackingNumberLabel.Name = "trackingNumberLabel";
+        this.trackingNumberLabel.Size = new Size(144, 23);
+        this.trackingNumberLabel.TabIndex = 19;
+        this.trackingNumberLabel.Text = "Numéro de suivi :";
+        this.trackingNumberLabel.TextAlign = ContentAlignment.MiddleRight;
+        // 
+        // shippingOrderIdValue
+        // 
+        this.shippingOrderIdValue.Enabled = false;
+        this.shippingOrderIdValue.Location = new Point(157, 110);
+        this.shippingOrderIdValue.Name = "shippingOrderIdValue";
+        this.shippingOrderIdValue.Size = new Size(234, 23);
+        this.shippingOrderIdValue.TabIndex = 18;
+        // 
+        // shippingOrderIdLabel
+        // 
+        this.shippingOrderIdLabel.Location = new Point(5, 107);
+        this.shippingOrderIdLabel.Margin = new Padding(5);
+        this.shippingOrderIdLabel.Name = "shippingOrderIdLabel";
+        this.shippingOrderIdLabel.Size = new Size(144, 35);
+        this.shippingOrderIdLabel.TabIndex = 17;
+        this.shippingOrderIdLabel.Text = "Id de la commande d'expédition : ";
+        this.shippingOrderIdLabel.TextAlign = ContentAlignment.MiddleRight;
+        // 
+        // shippingServiceValue
+        // 
+        this.shippingServiceValue.FormattingEnabled = true;
+        this.shippingServiceValue.Location = new Point(157, 75);
+        this.shippingServiceValue.Name = "shippingServiceValue";
+        this.shippingServiceValue.Size = new Size(234, 23);
+        this.shippingServiceValue.TabIndex = 16;
+        // 
+        // shippingServiceLabel
+        // 
+        this.shippingServiceLabel.Location = new Point(5, 74);
+        this.shippingServiceLabel.Margin = new Padding(5);
+        this.shippingServiceLabel.Name = "shippingServiceLabel";
+        this.shippingServiceLabel.Size = new Size(144, 23);
+        this.shippingServiceLabel.TabIndex = 15;
+        this.shippingServiceLabel.Text = "Service d'expédition :";
+        this.shippingServiceLabel.TextAlign = ContentAlignment.MiddleRight;
+        // 
+        // statusValue
+        // 
+        this.statusValue.FormattingEnabled = true;
+        this.statusValue.Location = new Point(157, 46);
+        this.statusValue.Name = "statusValue";
+        this.statusValue.Size = new Size(234, 23);
+        this.statusValue.TabIndex = 14;
+        // 
+        // statusLabel
+        // 
+        this.statusLabel.Location = new Point(5, 45);
+        this.statusLabel.Margin = new Padding(5);
+        this.statusLabel.Name = "statusLabel";
+        this.statusLabel.Size = new Size(144, 23);
+        this.statusLabel.TabIndex = 13;
+        this.statusLabel.Text = "Status : ";
+        this.statusLabel.TextAlign = ContentAlignment.MiddleRight;
+        // 
+        // idValue
+        // 
+        this.idValue.Enabled = false;
+        this.idValue.Location = new Point(157, 17);
+        this.idValue.Name = "idValue";
+        this.idValue.Size = new Size(234, 23);
+        this.idValue.TabIndex = 1;
+        // 
+        // idLabel
+        // 
+        this.idLabel.Location = new Point(5, 15);
+        this.idLabel.Margin = new Padding(5);
+        this.idLabel.Name = "idLabel";
+        this.idLabel.Size = new Size(144, 23);
+        this.idLabel.TabIndex = 0;
+        this.idLabel.Text = "Id :";
+        this.idLabel.TextAlign = ContentAlignment.MiddleRight;
+        // 
         // ShipmentView
         // 
         this.AutoScaleDimensions = new SizeF(7F, 15F);
@@ -338,15 +338,14 @@ partial class ShipmentView {
         this.MinimumSize = new Size(500, 400);
         this.Name = "ShipmentView";
         this.Text = "Gestion des expéditions";
-        this.Load += this.ShipmentView_Load;
         this.topBarPanel.ResumeLayout(false);
         this.topBarPanel.PerformLayout();
         this.bottomBarPanel.ResumeLayout(false);
         this.centerBarTabLayPanel.ResumeLayout(false);
         this.centerPanel.ResumeLayout(false);
         this.centerPanel.PerformLayout();
-        ((System.ComponentModel.ISupportInitialize) this.idValue).EndInit();
         ((System.ComponentModel.ISupportInitialize) this.shippingOrderIdValue).EndInit();
+        ((System.ComponentModel.ISupportInitialize) this.idValue).EndInit();
         this.ResumeLayout(false);
     }
 
@@ -358,7 +357,7 @@ partial class ShipmentView {
     private Button btnAction;
     private Button btnCancel;
     private Panel bottomBarPanel;
-    private Button button1;
+    private Button actionButton;
     private Button button2;
     private TableLayoutPanel centerBarTabLayPanel;
     private Panel centerPanel;

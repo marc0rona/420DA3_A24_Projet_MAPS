@@ -39,7 +39,7 @@ internal class AddressService {
     /// Opens the <see cref="AddressView">address management window</see> in creation mode.
     /// </summary>
     /// <returns></returns>
-    public Address? OpenAddressManagementWindowForCreation() {
+    public Address? OpenManagementWindowForCreation() {
         Address newAddress = (Address) FormatterServices.GetUninitializedObject(typeof(Address));
         DialogResult result = this.view.OpenForCreation(newAddress); // finir view
         return result == DialogResult.OK
@@ -85,7 +85,7 @@ internal class AddressService {
     /// <param name="address"></param>
     /// <returns></returns>
     /// <exception cref="Exception"></exception>
-    public bool OpenManagementWindowForDeletion(Role address) {
+    public bool OpenManagementWindowForDeletion(Address address) {
         try {
             DialogResult result = this.view.OpenForDeletion(address);
             return result == DialogResult.OK;
@@ -110,7 +110,7 @@ internal class AddressService {
         }
     }
 
-    public Address? GetById(int id, bool includeDeleted = false) {
+    public Address? GetAddressById(int id, bool includeDeleted = false) {
         try {
             return this.dao.GetById(id, includeDeleted);
 
