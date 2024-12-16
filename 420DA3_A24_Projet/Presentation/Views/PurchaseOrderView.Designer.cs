@@ -242,6 +242,7 @@ partial class PurchaseOrderView {
         this.dateDeletedValue.Name = "dateDeletedValue";
         this.dateDeletedValue.Size = new Size(432, 39);
         this.dateDeletedValue.TabIndex = 15;
+        this.dateDeletedValue.ValueChanged += this.dateDeletedValue_ValueChanged;
         // 
         // dateModifiedValue
         // 
@@ -251,6 +252,7 @@ partial class PurchaseOrderView {
         this.dateModifiedValue.Name = "dateModifiedValue";
         this.dateModifiedValue.Size = new Size(432, 39);
         this.dateModifiedValue.TabIndex = 14;
+        this.dateModifiedValue.ValueChanged += this.dateModifiedValue_ValueChanged;
         // 
         // dateCreatedValue
         // 
@@ -260,6 +262,7 @@ partial class PurchaseOrderView {
         this.dateCreatedValue.Name = "dateCreatedValue";
         this.dateCreatedValue.Size = new Size(432, 39);
         this.dateCreatedValue.TabIndex = 13;
+        this.dateCreatedValue.ValueChanged += this.dateCreatedValue_ValueChanged;
         // 
         // dateDeletedLabel
         // 
@@ -270,6 +273,7 @@ partial class PurchaseOrderView {
         this.dateDeletedLabel.TabIndex = 8;
         this.dateDeletedLabel.Text = "Date de suppression :";
         this.dateDeletedLabel.TextAlign = ContentAlignment.MiddleRight;
+        this.dateDeletedLabel.Click += this.dateDeletedLabel_Click;
         // 
         // dateModifiedLabel
         // 
@@ -280,6 +284,7 @@ partial class PurchaseOrderView {
         this.dateModifiedLabel.TabIndex = 7;
         this.dateModifiedLabel.Text = "Date de modification :";
         this.dateModifiedLabel.TextAlign = ContentAlignment.MiddleRight;
+        this.dateModifiedLabel.Click += this.dateModifiedLabel_Click;
         // 
         // dateCreatedLabel
         // 
@@ -290,6 +295,7 @@ partial class PurchaseOrderView {
         this.dateCreatedLabel.TabIndex = 6;
         this.dateCreatedLabel.Text = "Date de création :";
         this.dateCreatedLabel.TextAlign = ContentAlignment.MiddleRight;
+        this.dateCreatedLabel.Click += this.dateCreatedLabel_Click;
         // 
         // productLabel
         // 
@@ -300,6 +306,7 @@ partial class PurchaseOrderView {
         this.productLabel.TabIndex = 2;
         this.productLabel.Text = "Pruduit :";
         this.productLabel.TextAlign = ContentAlignment.MiddleRight;
+        this.productLabel.Click += this.productLabel_Click;
         // 
         // idValue
         // 
@@ -309,6 +316,7 @@ partial class PurchaseOrderView {
         this.idValue.Name = "idValue";
         this.idValue.Size = new Size(434, 39);
         this.idValue.TabIndex = 1;
+        this.idValue.ValueChanged += this.idValue_ValueChanged;
         // 
         // idLabel
         // 
@@ -319,6 +327,7 @@ partial class PurchaseOrderView {
         this.idLabel.TabIndex = 0;
         this.idLabel.Text = "Id :";
         this.idLabel.TextAlign = ContentAlignment.MiddleRight;
+        this.idLabel.Click += this.idLabel_Click;
         // 
         // produitNumericUpDown
         // 
@@ -328,6 +337,7 @@ partial class PurchaseOrderView {
         this.produitNumericUpDown.Name = "produitNumericUpDown";
         this.produitNumericUpDown.Size = new Size(434, 39);
         this.produitNumericUpDown.TabIndex = 26;
+        this.produitNumericUpDown.ValueChanged += this.produitNumericUpDown_ValueChanged;
         // 
         // quantiteNumericUpDown
         // 
@@ -337,6 +347,7 @@ partial class PurchaseOrderView {
         this.quantiteNumericUpDown.Name = "quantiteNumericUpDown";
         this.quantiteNumericUpDown.Size = new Size(434, 39);
         this.quantiteNumericUpDown.TabIndex = 27;
+        this.quantiteNumericUpDown.ValueChanged += this.quantiteNumericUpDown_ValueChanged;
         // 
         // quantityLabel
         // 
@@ -347,6 +358,7 @@ partial class PurchaseOrderView {
         this.quantityLabel.TabIndex = 28;
         this.quantityLabel.Text = "Quantite :";
         this.quantityLabel.TextAlign = ContentAlignment.MiddleRight;
+        this.quantityLabel.Click += this.quantityLabel_Click;
         // 
         // purchaseOrderListBox
         // 
@@ -358,6 +370,7 @@ partial class PurchaseOrderView {
         this.purchaseOrderListBox.SelectionMode = SelectionMode.MultiSimple;
         this.purchaseOrderListBox.Size = new Size(430, 228);
         this.purchaseOrderListBox.TabIndex = 29;
+        this.purchaseOrderListBox.SelectedIndexChanged += this.purchaseOrderListBox_SelectedIndexChanged;
         // 
         // purchaseOrderLabel
         // 
@@ -380,6 +393,7 @@ partial class PurchaseOrderView {
         this.warehouseListBox.SelectionMode = SelectionMode.MultiSimple;
         this.warehouseListBox.Size = new Size(430, 228);
         this.warehouseListBox.TabIndex = 31;
+        this.warehouseListBox.SelectedIndexChanged += this.warehouseListBox_SelectedIndexChanged;
         // 
         // warehouseLabel
         // 
@@ -390,6 +404,7 @@ partial class PurchaseOrderView {
         this.warehouseLabel.TabIndex = 32;
         this.warehouseLabel.Text = "Entrepot :";
         this.warehouseLabel.TextAlign = ContentAlignment.MiddleRight;
+        this.warehouseLabel.Click += this.warehouseLabel_Click;
         // 
         // statusComboBox
         // 
@@ -398,6 +413,7 @@ partial class PurchaseOrderView {
         this.statusComboBox.Name = "statusComboBox";
         this.statusComboBox.Size = new Size(430, 40);
         this.statusComboBox.TabIndex = 33;
+        this.statusComboBox.SelectedIndexChanged += this.statusComboBox_SelectedIndexChanged;
         // 
         // PurchaseOrderView
         // 

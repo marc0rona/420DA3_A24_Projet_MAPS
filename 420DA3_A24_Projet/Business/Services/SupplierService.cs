@@ -12,14 +12,14 @@ internal class SupplierService
 {
     private WsysApplication WApp;
     private SupplierDAO supplierDAO;
-    //private SupplierView Window
+    private SupplierView WinView;
 
     //Constructeur
     public SupplierService(WsysApplication parentApp, AppDbContext context) 
     {
         this.WApp = parentApp;
         this.supplierDAO = new SupplierDAO(context);
-        //this.view = new RoleView(parentApp);
+        this.WinView = new SupplierView(parentApp);
     }
     #region METHODES
     ///Method qui appellent au DAO directement
@@ -33,7 +33,8 @@ internal class SupplierService
         {  return this.supplierDAO.Delete(supplier);  }
     public List<Supplier> Search(string userInput) 
         {  return this.supplierDAO.Search(userInput); } //retourne une LISTE 
-
+    public List<Supplier> GetAllSuppliers(bool includedDeleted = false) 
+        { return this.supplierDAO.GetAll(includedDeleted); }
     //public void OpenViewFor(ViewActionsEnum, Supplier? = null)
     #endregion
 }

@@ -61,6 +61,12 @@ internal class ProductDAO
         .Include(prod => prod.Supplier)
         .ToList();
     }
+    public List<Product> GetAll(bool includeDeleted = false) 
+    {
+        return this.context.Products
+            .Where(prod => includeDeleted || prod.DateDeleted == null)
+            .ToList();
+    }
     //GetBy - Relations a autres Tables
     public List<Product> GetBySupplier(Supplier supplier, bool incDeleted = false) 
     {   return this.context.Products

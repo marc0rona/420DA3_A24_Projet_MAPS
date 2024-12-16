@@ -62,4 +62,8 @@ internal class PurchaseOrderDAO
 
         return query.ToList();
     }
+
+    internal List<PurchaseOrder> Search(string searchTerm) {
+        throw new NotImplementedException();
+    }
 }

@@ -48,7 +48,12 @@ internal class SupplierDAO
         _ = this.context.SaveChanges();
         return chosenSupp.Name; //RETOURNE le nom pour CONFIRMATION
     }
-
+    public List<Supplier> GetAll(bool includeDeleted = false) 
+    {
+        return this.context.Suppliers
+            .Where(supp => includeDeleted || supp.DateDeleted == null)
+            .ToList();
+    }
     //Recherches (SearchBar)
     public List<Supplier> Search(string searchBar, bool incDeleted = false) 
     {   return this.context.Suppliers.Where(supp =>
