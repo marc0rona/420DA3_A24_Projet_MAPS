@@ -365,6 +365,7 @@ partial class ShippingOrderView {
         this.idValue.Name = "idValue";
         this.idValue.Size = new Size(434, 39);
         this.idValue.TabIndex = 1;
+        this.idValue.ValueChanged += this.idValue_ValueChanged;
         // 
         // idLabel
         // 
