@@ -55,33 +55,33 @@ partial class ProductView {
         this.lbl_Id = new Label();
         this.lbl_codeSupplier = new Label();
         this.lbl_codeUPC = new Label();
-        this.label3 = new Label();
-        this.label4 = new Label();
-        this.label5 = new Label();
-        this.label6 = new Label();
-        this.label7 = new Label();
-        this.checkBox1 = new CheckBox();
-        this.label8 = new Label();
-        this.label9 = new Label();
+        this.txt_Id = new Label();
+        this.txt_Name = new Label();
+        this.txt_Description = new Label();
+        this.txt_codeUPC = new Label();
+        this.txt_codeSupplier = new Label();
+        this.checkBox_IMG = new CheckBox();
+        this.txt_Supplier = new Label();
+        this.txt_Client = new Label();
         this.lbl_Qty_InStock = new Label();
         this.lbl_Client = new Label();
         this.lbl_Supplier = new Label();
         this.lbl_Qty_Desired = new Label();
-        this.label14 = new Label();
-        this.label15 = new Label();
+        this.txtl_Qty_Desired = new Label();
+        this.txt_Qty_InStock = new Label();
         this.lbl_Weight = new Label();
-        this.label19 = new Label();
+        this.txt_Weight = new Label();
         this.dateDeletedValue = new DateTimePicker();
         this.dateModifiedValue = new DateTimePicker();
         this.dateCreatedValue = new DateTimePicker();
         this.lbl_dateDeleted = new Label();
         this.lbl_dateModified = new Label();
         this.lbl_dateCreated = new Label();
-        this.pictureBox1 = new PictureBox();
+        this.picBox_Product = new PictureBox();
         this.lbl_Expeditions = new Label();
         this.lbl_Restocks = new Label();
-        this.listBox1 = new ListBox();
-        this.listBox2 = new ListBox();
+        this.listBox_Restocks = new ListBox();
+        this.listBox_Expeditions = new ListBox();
         this.Bottom_bar.SuspendLayout();
         this.tblPanel_Main.SuspendLayout();
         this.pnl_Main_Search.SuspendLayout();
@@ -98,7 +98,7 @@ partial class ProductView {
         this.pnl_ConfirmSearch.SuspendLayout();
         this.pnl_SearchList.SuspendLayout();
         this.pnl_Modify.SuspendLayout();
-        ((System.ComponentModel.ISupportInitialize) this.pictureBox1).BeginInit();
+        ((System.ComponentModel.ISupportInitialize) this.picBox_Product).BeginInit();
         this.SuspendLayout();
         // 
         // Top_bar
@@ -242,11 +242,11 @@ partial class ProductView {
         // 
         // grpBox_Details
         // 
-        this.grpBox_Details.Controls.Add(this.listBox2);
-        this.grpBox_Details.Controls.Add(this.listBox1);
+        this.grpBox_Details.Controls.Add(this.listBox_Expeditions);
+        this.grpBox_Details.Controls.Add(this.listBox_Restocks);
         this.grpBox_Details.Controls.Add(this.lbl_Restocks);
         this.grpBox_Details.Controls.Add(this.lbl_Expeditions);
-        this.grpBox_Details.Controls.Add(this.pictureBox1);
+        this.grpBox_Details.Controls.Add(this.picBox_Product);
         this.grpBox_Details.Controls.Add(this.dateDeletedValue);
         this.grpBox_Details.Controls.Add(this.dateModifiedValue);
         this.grpBox_Details.Controls.Add(this.dateCreatedValue);
@@ -254,21 +254,21 @@ partial class ProductView {
         this.grpBox_Details.Controls.Add(this.lbl_dateModified);
         this.grpBox_Details.Controls.Add(this.lbl_dateCreated);
         this.grpBox_Details.Controls.Add(this.lbl_Weight);
-        this.grpBox_Details.Controls.Add(this.label19);
+        this.grpBox_Details.Controls.Add(this.txt_Weight);
         this.grpBox_Details.Controls.Add(this.lbl_Supplier);
         this.grpBox_Details.Controls.Add(this.lbl_Qty_Desired);
-        this.grpBox_Details.Controls.Add(this.label14);
-        this.grpBox_Details.Controls.Add(this.label15);
+        this.grpBox_Details.Controls.Add(this.txtl_Qty_Desired);
+        this.grpBox_Details.Controls.Add(this.txt_Qty_InStock);
         this.grpBox_Details.Controls.Add(this.lbl_Qty_InStock);
         this.grpBox_Details.Controls.Add(this.lbl_Client);
-        this.grpBox_Details.Controls.Add(this.label8);
-        this.grpBox_Details.Controls.Add(this.label9);
-        this.grpBox_Details.Controls.Add(this.checkBox1);
-        this.grpBox_Details.Controls.Add(this.label7);
-        this.grpBox_Details.Controls.Add(this.label6);
-        this.grpBox_Details.Controls.Add(this.label5);
-        this.grpBox_Details.Controls.Add(this.label4);
-        this.grpBox_Details.Controls.Add(this.label3);
+        this.grpBox_Details.Controls.Add(this.txt_Supplier);
+        this.grpBox_Details.Controls.Add(this.txt_Client);
+        this.grpBox_Details.Controls.Add(this.checkBox_IMG);
+        this.grpBox_Details.Controls.Add(this.txt_codeSupplier);
+        this.grpBox_Details.Controls.Add(this.txt_codeUPC);
+        this.grpBox_Details.Controls.Add(this.txt_Description);
+        this.grpBox_Details.Controls.Add(this.txt_Name);
+        this.grpBox_Details.Controls.Add(this.txt_Id);
         this.grpBox_Details.Controls.Add(this.lbl_codeSupplier);
         this.grpBox_Details.Controls.Add(this.lbl_codeUPC);
         this.grpBox_Details.Controls.Add(this.lbl_Name);
@@ -461,95 +461,95 @@ partial class ProductView {
         this.lbl_codeUPC.Text = "code UPC :";
         this.lbl_codeUPC.TextAlign = ContentAlignment.MiddleRight;
         // 
-        // label3
+        // txt_Id
         // 
-        this.label3.BackColor = SystemColors.Window;
-        this.label3.BorderStyle = BorderStyle.FixedSingle;
-        this.label3.Location = new Point(141, 22);
-        this.label3.Margin = new Padding(6);
-        this.label3.Name = "label3";
-        this.label3.Size = new Size(130, 30);
-        this.label3.TabIndex = 29;
-        this.label3.TextAlign = ContentAlignment.MiddleLeft;
+        this.txt_Id.BackColor = SystemColors.Window;
+        this.txt_Id.BorderStyle = BorderStyle.FixedSingle;
+        this.txt_Id.Location = new Point(141, 22);
+        this.txt_Id.Margin = new Padding(6);
+        this.txt_Id.Name = "txt_Id";
+        this.txt_Id.Size = new Size(130, 30);
+        this.txt_Id.TabIndex = 29;
+        this.txt_Id.TextAlign = ContentAlignment.MiddleLeft;
         // 
-        // label4
+        // txt_Name
         // 
-        this.label4.BackColor = SystemColors.Window;
-        this.label4.BorderStyle = BorderStyle.FixedSingle;
-        this.label4.Location = new Point(353, 22);
-        this.label4.Margin = new Padding(6);
-        this.label4.Name = "label4";
-        this.label4.Size = new Size(212, 30);
-        this.label4.TabIndex = 30;
-        this.label4.TextAlign = ContentAlignment.MiddleLeft;
+        this.txt_Name.BackColor = SystemColors.Window;
+        this.txt_Name.BorderStyle = BorderStyle.FixedSingle;
+        this.txt_Name.Location = new Point(353, 22);
+        this.txt_Name.Margin = new Padding(6);
+        this.txt_Name.Name = "txt_Name";
+        this.txt_Name.Size = new Size(212, 30);
+        this.txt_Name.TabIndex = 30;
+        this.txt_Name.TextAlign = ContentAlignment.MiddleLeft;
         // 
-        // label5
+        // txt_Description
         // 
-        this.label5.BackColor = SystemColors.Window;
-        this.label5.BorderStyle = BorderStyle.FixedSingle;
-        this.label5.Location = new Point(141, 65);
-        this.label5.Margin = new Padding(6);
-        this.label5.Name = "label5";
-        this.label5.Size = new Size(424, 84);
-        this.label5.TabIndex = 31;
-        this.label5.TextAlign = ContentAlignment.MiddleLeft;
+        this.txt_Description.BackColor = SystemColors.Window;
+        this.txt_Description.BorderStyle = BorderStyle.FixedSingle;
+        this.txt_Description.Location = new Point(141, 65);
+        this.txt_Description.Margin = new Padding(6);
+        this.txt_Description.Name = "txt_Description";
+        this.txt_Description.Size = new Size(424, 84);
+        this.txt_Description.TabIndex = 31;
+        this.txt_Description.TextAlign = ContentAlignment.MiddleLeft;
         // 
-        // label6
+        // txt_codeUPC
         // 
-        this.label6.BackColor = SystemColors.Window;
-        this.label6.BorderStyle = BorderStyle.FixedSingle;
-        this.label6.Location = new Point(141, 164);
-        this.label6.Margin = new Padding(6);
-        this.label6.Name = "label6";
-        this.label6.Size = new Size(120, 30);
-        this.label6.TabIndex = 32;
-        this.label6.Text = "C-";
-        this.label6.TextAlign = ContentAlignment.MiddleLeft;
+        this.txt_codeUPC.BackColor = SystemColors.Window;
+        this.txt_codeUPC.BorderStyle = BorderStyle.FixedSingle;
+        this.txt_codeUPC.Location = new Point(141, 164);
+        this.txt_codeUPC.Margin = new Padding(6);
+        this.txt_codeUPC.Name = "txt_codeUPC";
+        this.txt_codeUPC.Size = new Size(120, 30);
+        this.txt_codeUPC.TabIndex = 32;
+        this.txt_codeUPC.Text = "C-";
+        this.txt_codeUPC.TextAlign = ContentAlignment.MiddleLeft;
         // 
-        // label7
+        // txt_codeSupplier
         // 
-        this.label7.BackColor = SystemColors.Window;
-        this.label7.BorderStyle = BorderStyle.FixedSingle;
-        this.label7.Location = new Point(407, 164);
-        this.label7.Margin = new Padding(6);
-        this.label7.Name = "label7";
-        this.label7.Size = new Size(158, 30);
-        this.label7.TabIndex = 33;
-        this.label7.TextAlign = ContentAlignment.MiddleLeft;
+        this.txt_codeSupplier.BackColor = SystemColors.Window;
+        this.txt_codeSupplier.BorderStyle = BorderStyle.FixedSingle;
+        this.txt_codeSupplier.Location = new Point(407, 164);
+        this.txt_codeSupplier.Margin = new Padding(6);
+        this.txt_codeSupplier.Name = "txt_codeSupplier";
+        this.txt_codeSupplier.Size = new Size(158, 30);
+        this.txt_codeSupplier.TabIndex = 33;
+        this.txt_codeSupplier.TextAlign = ContentAlignment.MiddleLeft;
         // 
-        // checkBox1
+        // checkBox_IMG
         // 
-        this.checkBox1.AutoSize = true;
-        this.checkBox1.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
-        this.checkBox1.Location = new Point(471, 203);
-        this.checkBox1.Name = "checkBox1";
-        this.checkBox1.RightToLeft = RightToLeft.No;
-        this.checkBox1.Size = new Size(114, 29);
-        this.checkBox1.TabIndex = 34;
-        this.checkBox1.Text = "show IMG";
-        this.checkBox1.UseVisualStyleBackColor = true;
+        this.checkBox_IMG.AutoSize = true;
+        this.checkBox_IMG.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
+        this.checkBox_IMG.Location = new Point(471, 203);
+        this.checkBox_IMG.Name = "checkBox_IMG";
+        this.checkBox_IMG.RightToLeft = RightToLeft.No;
+        this.checkBox_IMG.Size = new Size(114, 29);
+        this.checkBox_IMG.TabIndex = 34;
+        this.checkBox_IMG.Text = "show IMG";
+        this.checkBox_IMG.UseVisualStyleBackColor = true;
         // 
-        // label8
+        // txt_Supplier
         // 
-        this.label8.BackColor = SystemColors.Window;
-        this.label8.BorderStyle = BorderStyle.FixedSingle;
-        this.label8.Location = new Point(145, 282);
-        this.label8.Margin = new Padding(6);
-        this.label8.Name = "label8";
-        this.label8.Size = new Size(217, 30);
-        this.label8.TabIndex = 38;
-        this.label8.TextAlign = ContentAlignment.MiddleLeft;
+        this.txt_Supplier.BackColor = SystemColors.Window;
+        this.txt_Supplier.BorderStyle = BorderStyle.FixedSingle;
+        this.txt_Supplier.Location = new Point(145, 282);
+        this.txt_Supplier.Margin = new Padding(6);
+        this.txt_Supplier.Name = "txt_Supplier";
+        this.txt_Supplier.Size = new Size(217, 30);
+        this.txt_Supplier.TabIndex = 38;
+        this.txt_Supplier.TextAlign = ContentAlignment.MiddleLeft;
         // 
-        // label9
+        // txt_Client
         // 
-        this.label9.BackColor = SystemColors.Window;
-        this.label9.BorderStyle = BorderStyle.FixedSingle;
-        this.label9.Location = new Point(144, 240);
-        this.label9.Margin = new Padding(6);
-        this.label9.Name = "label9";
-        this.label9.Size = new Size(217, 30);
-        this.label9.TabIndex = 37;
-        this.label9.TextAlign = ContentAlignment.MiddleLeft;
+        this.txt_Client.BackColor = SystemColors.Window;
+        this.txt_Client.BorderStyle = BorderStyle.FixedSingle;
+        this.txt_Client.Location = new Point(144, 240);
+        this.txt_Client.Margin = new Padding(6);
+        this.txt_Client.Name = "txt_Client";
+        this.txt_Client.Size = new Size(217, 30);
+        this.txt_Client.TabIndex = 37;
+        this.txt_Client.TextAlign = ContentAlignment.MiddleLeft;
         // 
         // lbl_Qty_InStock
         // 
@@ -591,27 +591,27 @@ partial class ProductView {
         this.lbl_Qty_Desired.Text = "Quantité Désiré : ";
         this.lbl_Qty_Desired.TextAlign = ContentAlignment.MiddleRight;
         // 
-        // label14
+        // txtl_Qty_Desired
         // 
-        this.label14.BackColor = SystemColors.Menu;
-        this.label14.Location = new Point(155, 366);
-        this.label14.Margin = new Padding(6);
-        this.label14.Name = "label14";
-        this.label14.Size = new Size(207, 30);
-        this.label14.TabIndex = 42;
-        this.label14.Text = "0";
-        this.label14.TextAlign = ContentAlignment.MiddleLeft;
+        this.txtl_Qty_Desired.BackColor = SystemColors.Menu;
+        this.txtl_Qty_Desired.Location = new Point(155, 366);
+        this.txtl_Qty_Desired.Margin = new Padding(6);
+        this.txtl_Qty_Desired.Name = "txtl_Qty_Desired";
+        this.txtl_Qty_Desired.Size = new Size(207, 30);
+        this.txtl_Qty_Desired.TabIndex = 42;
+        this.txtl_Qty_Desired.Text = "0";
+        this.txtl_Qty_Desired.TextAlign = ContentAlignment.MiddleLeft;
         // 
-        // label15
+        // txt_Qty_InStock
         // 
-        this.label15.BackColor = SystemColors.Menu;
-        this.label15.Location = new Point(155, 324);
-        this.label15.Margin = new Padding(6);
-        this.label15.Name = "label15";
-        this.label15.Size = new Size(206, 30);
-        this.label15.TabIndex = 41;
-        this.label15.Text = "0";
-        this.label15.TextAlign = ContentAlignment.MiddleLeft;
+        this.txt_Qty_InStock.BackColor = SystemColors.Menu;
+        this.txt_Qty_InStock.Location = new Point(155, 324);
+        this.txt_Qty_InStock.Margin = new Padding(6);
+        this.txt_Qty_InStock.Name = "txt_Qty_InStock";
+        this.txt_Qty_InStock.Size = new Size(206, 30);
+        this.txt_Qty_InStock.TabIndex = 41;
+        this.txt_Qty_InStock.Text = "0";
+        this.txt_Qty_InStock.TextAlign = ContentAlignment.MiddleLeft;
         // 
         // lbl_Weight
         // 
@@ -623,16 +623,16 @@ partial class ProductView {
         this.lbl_Weight.Text = "Poids (kg) : ";
         this.lbl_Weight.TextAlign = ContentAlignment.MiddleRight;
         // 
-        // label19
+        // txt_Weight
         // 
-        this.label19.BackColor = SystemColors.Menu;
-        this.label19.Location = new Point(155, 408);
-        this.label19.Margin = new Padding(6);
-        this.label19.Name = "label19";
-        this.label19.Size = new Size(207, 30);
-        this.label19.TabIndex = 45;
-        this.label19.Text = "0";
-        this.label19.TextAlign = ContentAlignment.MiddleLeft;
+        this.txt_Weight.BackColor = SystemColors.Menu;
+        this.txt_Weight.Location = new Point(155, 408);
+        this.txt_Weight.Margin = new Padding(6);
+        this.txt_Weight.Name = "txt_Weight";
+        this.txt_Weight.Size = new Size(207, 30);
+        this.txt_Weight.TabIndex = 45;
+        this.txt_Weight.Text = "0";
+        this.txt_Weight.TextAlign = ContentAlignment.MiddleLeft;
         // 
         // dateDeletedValue
         // 
@@ -691,13 +691,13 @@ partial class ProductView {
         this.lbl_dateCreated.Text = "Date de création :";
         this.lbl_dateCreated.TextAlign = ContentAlignment.MiddleRight;
         // 
-        // pictureBox1
+        // picBox_Product
         // 
-        this.pictureBox1.Location = new Point(379, 238);
-        this.pictureBox1.Name = "pictureBox1";
-        this.pictureBox1.Size = new Size(200, 200);
-        this.pictureBox1.TabIndex = 54;
-        this.pictureBox1.TabStop = false;
+        this.picBox_Product.Location = new Point(379, 238);
+        this.picBox_Product.Name = "picBox_Product";
+        this.picBox_Product.Size = new Size(200, 200);
+        this.picBox_Product.TabIndex = 54;
+        this.picBox_Product.TabStop = false;
         // 
         // lbl_Expeditions
         // 
@@ -719,23 +719,23 @@ partial class ProductView {
         this.lbl_Restocks.Text = "Ordre de restockage :";
         this.lbl_Restocks.TextAlign = ContentAlignment.MiddleLeft;
         // 
-        // listBox1
+        // listBox_Restocks
         // 
-        this.listBox1.FormattingEnabled = true;
-        this.listBox1.ItemHeight = 20;
-        this.listBox1.Location = new Point(32, 612);
-        this.listBox1.Name = "listBox1";
-        this.listBox1.Size = new Size(253, 144);
-        this.listBox1.TabIndex = 57;
+        this.listBox_Restocks.FormattingEnabled = true;
+        this.listBox_Restocks.ItemHeight = 20;
+        this.listBox_Restocks.Location = new Point(32, 615);
+        this.listBox_Restocks.Name = "listBox_Restocks";
+        this.listBox_Restocks.Size = new Size(253, 144);
+        this.listBox_Restocks.TabIndex = 57;
         // 
-        // listBox2
+        // listBox_Expeditions
         // 
-        this.listBox2.FormattingEnabled = true;
-        this.listBox2.ItemHeight = 20;
-        this.listBox2.Location = new Point(319, 612);
-        this.listBox2.Name = "listBox2";
-        this.listBox2.Size = new Size(253, 144);
-        this.listBox2.TabIndex = 58;
+        this.listBox_Expeditions.FormattingEnabled = true;
+        this.listBox_Expeditions.ItemHeight = 20;
+        this.listBox_Expeditions.Location = new Point(319, 615);
+        this.listBox_Expeditions.Name = "listBox_Expeditions";
+        this.listBox_Expeditions.Size = new Size(253, 144);
+        this.listBox_Expeditions.TabIndex = 58;
         // 
         // ProductView
         // 
@@ -767,7 +767,7 @@ partial class ProductView {
         this.pnl_SearchList.ResumeLayout(false);
         this.pnl_SearchList.PerformLayout();
         this.pnl_Modify.ResumeLayout(false);
-        ((System.ComponentModel.ISupportInitialize) this.pictureBox1).EndInit();
+        ((System.ComponentModel.ISupportInitialize) this.picBox_Product).EndInit();
         this.ResumeLayout(false);
     }
 
@@ -804,31 +804,31 @@ partial class ProductView {
     private Label lbl_Id;
     private Label lbl_codeSupplier;
     private Label lbl_codeUPC;
-    private Label label7;
-    private Label label6;
-    private Label label5;
-    private Label label4;
-    private Label label3;
-    private CheckBox checkBox1;
+    private Label txt_codeSupplier;
+    private Label txt_codeUPC;
+    private Label txt_Description;
+    private Label txt_Name;
+    private Label txt_Id;
+    private CheckBox checkBox_IMG;
     private Label lbl_Qty_InStock;
     private Label lbl_Client;
-    private Label label8;
-    private Label label9;
+    private Label txt_Supplier;
+    private Label txt_Client;
     private Label lbl_Weight;
-    private Label label19;
+    private Label txt_Weight;
     private Label lbl_Supplier;
     private Label lbl_Qty_Desired;
-    private Label label14;
-    private Label label15;
+    private Label txtl_Qty_Desired;
+    private Label txt_Qty_InStock;
     private DateTimePicker dateDeletedValue;
     private DateTimePicker dateModifiedValue;
     private DateTimePicker dateCreatedValue;
     private Label lbl_dateDeleted;
     private Label lbl_dateModified;
     private Label lbl_dateCreated;
-    private PictureBox pictureBox1;
+    private PictureBox picBox_Product;
     private Label lbl_Restocks;
     private Label lbl_Expeditions;
-    private ListBox listBox2;
-    private ListBox listBox1;
+    private ListBox listBox_Expeditions;
+    private ListBox listBox_Restocks;
 }

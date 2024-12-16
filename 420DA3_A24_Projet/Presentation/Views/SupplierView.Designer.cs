@@ -51,13 +51,13 @@ partial class SupplierView {
         this.btn_Quit = new Button();
         this.lbl_Id = new Label();
         this.lbl_Company = new Label();
-        this.label3 = new Label();
-        this.label2 = new Label();
-        this.label4 = new Label();
-        this.label5 = new Label();
+        this.txt_Id = new Label();
+        this.txt_Company = new Label();
+        this.txt_Email = new Label();
+        this.txt_Nom = new Label();
         this.lbl_Email = new Label();
         this.lbl_Nom = new Label();
-        this.label8 = new Label();
+        this.txt_Phone = new Label();
         this.lbl_Phone = new Label();
         this.dateDeletedValue = new DateTimePicker();
         this.dateModifiedValue = new DateTimePicker();
@@ -66,9 +66,9 @@ partial class SupplierView {
         this.lbl_dateModified = new Label();
         this.lbl_dateCreated = new Label();
         this.lbl_Products = new Label();
-        this.listBox1 = new ListBox();
+        this.listBox_Products = new ListBox();
         this.lbl_Prenom = new Label();
-        this.label12 = new Label();
+        this.txt_Prenom = new Label();
         this.Bottom_Bar.SuspendLayout();
         this.tblPanel_Main.SuspendLayout();
         this.pnl_Main_Search.SuspendLayout();
@@ -218,9 +218,9 @@ partial class SupplierView {
         // 
         // grpBox_Details
         // 
-        this.grpBox_Details.Controls.Add(this.label12);
+        this.grpBox_Details.Controls.Add(this.txt_Prenom);
         this.grpBox_Details.Controls.Add(this.lbl_Prenom);
-        this.grpBox_Details.Controls.Add(this.listBox1);
+        this.grpBox_Details.Controls.Add(this.listBox_Products);
         this.grpBox_Details.Controls.Add(this.lbl_Products);
         this.grpBox_Details.Controls.Add(this.dateDeletedValue);
         this.grpBox_Details.Controls.Add(this.dateModifiedValue);
@@ -228,14 +228,14 @@ partial class SupplierView {
         this.grpBox_Details.Controls.Add(this.lbl_dateDeleted);
         this.grpBox_Details.Controls.Add(this.lbl_dateModified);
         this.grpBox_Details.Controls.Add(this.lbl_dateCreated);
-        this.grpBox_Details.Controls.Add(this.label8);
+        this.grpBox_Details.Controls.Add(this.txt_Phone);
         this.grpBox_Details.Controls.Add(this.lbl_Phone);
-        this.grpBox_Details.Controls.Add(this.label4);
-        this.grpBox_Details.Controls.Add(this.label5);
+        this.grpBox_Details.Controls.Add(this.txt_Email);
+        this.grpBox_Details.Controls.Add(this.txt_Nom);
         this.grpBox_Details.Controls.Add(this.lbl_Email);
         this.grpBox_Details.Controls.Add(this.lbl_Nom);
-        this.grpBox_Details.Controls.Add(this.label2);
-        this.grpBox_Details.Controls.Add(this.label3);
+        this.grpBox_Details.Controls.Add(this.txt_Company);
+        this.grpBox_Details.Controls.Add(this.txt_Id);
         this.grpBox_Details.Controls.Add(this.lbl_Company);
         this.grpBox_Details.Controls.Add(this.lbl_Id);
         this.grpBox_Details.Location = new Point(15, 127);
@@ -395,49 +395,49 @@ partial class SupplierView {
         this.lbl_Company.Text = "Compagnie :";
         this.lbl_Company.TextAlign = ContentAlignment.MiddleRight;
         // 
-        // label3
+        // txt_Id
         // 
-        this.label3.BackColor = SystemColors.Window;
-        this.label3.BorderStyle = BorderStyle.Fixed3D;
-        this.label3.Location = new Point(78, 32);
-        this.label3.Margin = new Padding(6);
-        this.label3.Name = "label3";
-        this.label3.Size = new Size(87, 30);
-        this.label3.TabIndex = 30;
-        this.label3.TextAlign = ContentAlignment.MiddleLeft;
+        this.txt_Id.BackColor = SystemColors.Window;
+        this.txt_Id.BorderStyle = BorderStyle.Fixed3D;
+        this.txt_Id.Location = new Point(78, 32);
+        this.txt_Id.Margin = new Padding(6);
+        this.txt_Id.Name = "txt_Id";
+        this.txt_Id.Size = new Size(87, 30);
+        this.txt_Id.TabIndex = 30;
+        this.txt_Id.TextAlign = ContentAlignment.MiddleLeft;
         // 
-        // label2
+        // txt_Company
         // 
-        this.label2.BackColor = SystemColors.Window;
-        this.label2.BorderStyle = BorderStyle.Fixed3D;
-        this.label2.Location = new Point(276, 32);
-        this.label2.Margin = new Padding(6);
-        this.label2.Name = "label2";
-        this.label2.Size = new Size(155, 30);
-        this.label2.TabIndex = 31;
-        this.label2.TextAlign = ContentAlignment.MiddleLeft;
+        this.txt_Company.BackColor = SystemColors.Window;
+        this.txt_Company.BorderStyle = BorderStyle.Fixed3D;
+        this.txt_Company.Location = new Point(276, 32);
+        this.txt_Company.Margin = new Padding(6);
+        this.txt_Company.Name = "txt_Company";
+        this.txt_Company.Size = new Size(155, 30);
+        this.txt_Company.TabIndex = 31;
+        this.txt_Company.TextAlign = ContentAlignment.MiddleLeft;
         // 
-        // label4
+        // txt_Email
         // 
-        this.label4.BackColor = SystemColors.Window;
-        this.label4.BorderStyle = BorderStyle.Fixed3D;
-        this.label4.Location = new Point(177, 191);
-        this.label4.Margin = new Padding(6);
-        this.label4.Name = "label4";
-        this.label4.Size = new Size(254, 30);
-        this.label4.TabIndex = 35;
-        this.label4.TextAlign = ContentAlignment.MiddleLeft;
+        this.txt_Email.BackColor = SystemColors.Window;
+        this.txt_Email.BorderStyle = BorderStyle.Fixed3D;
+        this.txt_Email.Location = new Point(177, 191);
+        this.txt_Email.Margin = new Padding(6);
+        this.txt_Email.Name = "txt_Email";
+        this.txt_Email.Size = new Size(254, 30);
+        this.txt_Email.TabIndex = 35;
+        this.txt_Email.TextAlign = ContentAlignment.MiddleLeft;
         // 
-        // label5
+        // txt_Nom
         // 
-        this.label5.BackColor = SystemColors.Window;
-        this.label5.BorderStyle = BorderStyle.Fixed3D;
-        this.label5.Location = new Point(177, 139);
-        this.label5.Margin = new Padding(6);
-        this.label5.Name = "label5";
-        this.label5.Size = new Size(254, 30);
-        this.label5.TabIndex = 34;
-        this.label5.TextAlign = ContentAlignment.MiddleLeft;
+        this.txt_Nom.BackColor = SystemColors.Window;
+        this.txt_Nom.BorderStyle = BorderStyle.Fixed3D;
+        this.txt_Nom.Location = new Point(177, 139);
+        this.txt_Nom.Margin = new Padding(6);
+        this.txt_Nom.Name = "txt_Nom";
+        this.txt_Nom.Size = new Size(254, 30);
+        this.txt_Nom.TabIndex = 34;
+        this.txt_Nom.TextAlign = ContentAlignment.MiddleLeft;
         // 
         // lbl_Email
         // 
@@ -459,16 +459,16 @@ partial class SupplierView {
         this.lbl_Nom.Text = "Nom :";
         this.lbl_Nom.TextAlign = ContentAlignment.MiddleRight;
         // 
-        // label8
+        // txt_Phone
         // 
-        this.label8.BackColor = SystemColors.Window;
-        this.label8.BorderStyle = BorderStyle.Fixed3D;
-        this.label8.Location = new Point(177, 242);
-        this.label8.Margin = new Padding(6);
-        this.label8.Name = "label8";
-        this.label8.Size = new Size(254, 30);
-        this.label8.TabIndex = 37;
-        this.label8.TextAlign = ContentAlignment.MiddleLeft;
+        this.txt_Phone.BackColor = SystemColors.Window;
+        this.txt_Phone.BorderStyle = BorderStyle.Fixed3D;
+        this.txt_Phone.Location = new Point(177, 242);
+        this.txt_Phone.Margin = new Padding(6);
+        this.txt_Phone.Name = "txt_Phone";
+        this.txt_Phone.Size = new Size(254, 30);
+        this.txt_Phone.TabIndex = 37;
+        this.txt_Phone.TextAlign = ContentAlignment.MiddleLeft;
         // 
         // lbl_Phone
         // 
@@ -547,14 +547,14 @@ partial class SupplierView {
         this.lbl_Products.Text = "Liste de Produits :";
         this.lbl_Products.TextAlign = ContentAlignment.MiddleRight;
         // 
-        // listBox1
+        // listBox_Products
         // 
-        this.listBox1.FormattingEnabled = true;
-        this.listBox1.ItemHeight = 20;
-        this.listBox1.Location = new Point(174, 431);
-        this.listBox1.Name = "listBox1";
-        this.listBox1.Size = new Size(267, 164);
-        this.listBox1.TabIndex = 61;
+        this.listBox_Products.FormattingEnabled = true;
+        this.listBox_Products.ItemHeight = 20;
+        this.listBox_Products.Location = new Point(174, 431);
+        this.listBox_Products.Name = "listBox_Products";
+        this.listBox_Products.Size = new Size(267, 164);
+        this.listBox_Products.TabIndex = 61;
         // 
         // lbl_Prenom
         // 
@@ -566,16 +566,16 @@ partial class SupplierView {
         this.lbl_Prenom.Text = "Prénom :";
         this.lbl_Prenom.TextAlign = ContentAlignment.MiddleRight;
         // 
-        // label12
+        // txt_Prenom
         // 
-        this.label12.BackColor = SystemColors.Window;
-        this.label12.BorderStyle = BorderStyle.Fixed3D;
-        this.label12.Location = new Point(177, 84);
-        this.label12.Margin = new Padding(6);
-        this.label12.Name = "label12";
-        this.label12.Size = new Size(254, 30);
-        this.label12.TabIndex = 63;
-        this.label12.TextAlign = ContentAlignment.MiddleLeft;
+        this.txt_Prenom.BackColor = SystemColors.Window;
+        this.txt_Prenom.BorderStyle = BorderStyle.Fixed3D;
+        this.txt_Prenom.Location = new Point(177, 84);
+        this.txt_Prenom.Margin = new Padding(6);
+        this.txt_Prenom.Name = "txt_Prenom";
+        this.txt_Prenom.Size = new Size(254, 30);
+        this.txt_Prenom.TabIndex = 63;
+        this.txt_Prenom.TextAlign = ContentAlignment.MiddleLeft;
         // 
         // SupplierView
         // 
@@ -637,14 +637,14 @@ partial class SupplierView {
     private Button btn_Quit;
     private Label lbl_Company;
     private Label lbl_Id;
-    private Label label3;
-    private Label label8;
+    private Label txt_Id;
+    private Label txt_Phone;
     private Label lbl_Phone;
-    private Label label4;
-    private Label label5;
+    private Label txt_Email;
+    private Label txt_Nom;
     private Label lbl_Email;
     private Label lbl_Nom;
-    private Label label2;
+    private Label txt_Company;
     private DateTimePicker dateDeletedValue;
     private DateTimePicker dateModifiedValue;
     private DateTimePicker dateCreatedValue;
@@ -652,7 +652,7 @@ partial class SupplierView {
     private Label lbl_dateModified;
     private Label lbl_dateCreated;
     private Label lbl_Products;
-    private ListBox listBox1;
-    private Label label12;
+    private ListBox listBox_Products;
+    private Label txt_Prenom;
     private Label lbl_Prenom;
 }
