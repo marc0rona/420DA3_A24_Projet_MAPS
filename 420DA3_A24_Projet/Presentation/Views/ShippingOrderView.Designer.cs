@@ -30,7 +30,7 @@ partial class ShippingOrderView {
         // 
         this.AutoScaleDimensions = new SizeF(13F, 32F);
         this.AutoScaleMode = AutoScaleMode.Font;
-        this.ClientSize = new Size(917, 598);
+        this.ClientSize = new Size(1486, 1197);
         this.Name = "ShippingOrderView";
         this.Text = "ShippingOrderView";
         this.ResumeLayout(false);

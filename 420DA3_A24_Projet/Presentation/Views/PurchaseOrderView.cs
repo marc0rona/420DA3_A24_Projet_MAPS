@@ -13,4 +13,12 @@ public partial class PurchaseOrderView : Form {
     public PurchaseOrderView() {
         InitializeComponent();
     }
+
+    private void warehouseNameLabel_Click(object sender, EventArgs e) {
+
+    }
+
+    private void warehouseClientsLabel_Click(object sender, EventArgs e) {
+
+    }
 }

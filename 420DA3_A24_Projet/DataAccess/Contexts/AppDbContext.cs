@@ -434,7 +434,7 @@ internal class AppDbContext : DbContext {
         _ = modelBuilder.Entity<Product>()   /* PurchaseOrder : Relation 1 -> 0,n */
             .HasMany(prod => prod.OrderPurchases)       
             .WithOne(order => order.OrderedProduct)      //L'Ordre possède 1... ben,le Produit a vendre
-            .HasForeignKey(order => order.ProductId)     ///ABOUBACAR, MET LE ID POUR LE PRODUIT DANS TA CLASSE. THANK YOU
+            .HasForeignKey(order => order.ProductId)   
             .IsRequired(true)
             .OnDelete(DeleteBehavior.Cascade);
 
