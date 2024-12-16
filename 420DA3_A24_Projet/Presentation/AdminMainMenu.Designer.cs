@@ -351,7 +351,7 @@ partial class AdminMainMenu {
         this.shipmentSearchTextBox.Margin = new Padding(6, 6, 6, 6);
         this.shipmentSearchTextBox.Name = "shipmentSearchTextBox";
         this.shipmentSearchTextBox.PlaceholderText = "Rechercher une addresse";
-        this.shipmentSearchTextBox.Size = new Size(367, 39);
+        this.shipmentSearchTextBox.Size = new Size(195, 23);
         this.shipmentSearchTextBox.TabIndex = 13;
         // 
         // createShipmentTLP
@@ -378,7 +378,7 @@ partial class AdminMainMenu {
         this.buttonCreateShipment.Name = "buttonCreateShipment";
         this.buttonCreateShipment.Size = new Size(211, 47);
         this.buttonCreateShipment.TabIndex = 0;
-        this.buttonCreateShipment.Text = "Créer Adresse";
+        this.buttonCreateShipment.Text = "Créer Expédition";
         this.buttonCreateShipment.UseVisualStyleBackColor = true;
         this.buttonCreateShipment.Click += this.ButtonCreateShipment_Click;
         // 
