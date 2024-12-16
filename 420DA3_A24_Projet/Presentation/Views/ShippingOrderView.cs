@@ -13,4 +13,8 @@ public partial class ShippingOrderView : Form {
     public ShippingOrderView() {
         InitializeComponent();
     }
+
+    private void shippingOrderProductLabel_Click(object sender, EventArgs e) {
+
+    }
 }
