@@ -27,6 +27,10 @@ internal class WsysApplication {
     public ClientService ClientService { get; private set; }
     public WarehouseService WarehouseService { get; private set; }
 
+    public ProductImageService Images { get; private set; }
+    public ProductService ProductService { get; private set; }
+    public SupplierService SupplierService { get; private set; }
+
     public WsysApplication(AppDbContext context) {
         this.context = new AppDbContext();
         this.PasswordService = PasswordService.GetInstance();
@@ -37,7 +41,10 @@ internal class WsysApplication {
         this.ClientService = new ClientService(this, this.context);
         this.WarehouseService = new WarehouseService(this, this.context);
 
-
+        //Marco
+        this.ProductService = new ProductService(this, this.context);
+        this.Images = ProductImageService.GetInstance();
+        this.SupplierService = new SupplierService(this, this.context);
 
         // @Pierre
         this.AddressService = new AddressService(this, this.context);
